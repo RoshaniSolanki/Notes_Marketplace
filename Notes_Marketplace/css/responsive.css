@@ -1,0 +1,1814 @@
+/*=======================================================
+                    Mobile Menu
+=========================================================*/
+.navbar-header {
+    position: relative;
+}
+
+#mobile-nav-open-btn {
+    font-size: 40px;
+    color: #6255a5;
+    cursor: pointer;
+    z-index: 2;
+    position: absolute;
+    right: 0;
+    top: -10px;
+    /* hide mobile nav open btn */
+    display: none;
+}
+
+.white-nav-top #mobile-nav-open-btn {
+    position: absolute;
+    top: 2px;
+}
+
+#mobile-nav {
+    /* by default, mobile nav will be hidden with height 0% */
+    height: 0%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0px;
+    z-index: 3;
+    background-color: white;
+    transition: all 300ms linear;
+    -webkit-transition: all 300ms linear;
+    overflow-y: hidden;
+}
+
+#mobile-nav-close-btn {
+    font-size: 70px;
+    color: #6255a5;
+    font-weight: 400;
+    cursor: pointer;
+    position: absolute;
+    top: -15px;
+    right: 15px;
+    transition: .3s;
+    -webkit-transition: .3s;
+}
+
+#mobile-nav-content {
+    width: 100%;
+    margin-top: 10px;
+    margin-left: 10px;
+    position: relative;
+    top: 10%;
+}
+
+#mobile-nav .logo {
+    margin: 15px 0 0 20px;
+}
+
+#mobile-nav ul li {
+    margin-bottom: 40px;
+}
+
+#mobile-nav a {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    display: inline;
+    transition: .3s;
+    -webkit-transition: .3s;
+}
+
+#mobile-nav ul.nav>li:nth-child(6) {
+    margin: 20px 0px 50px 0px;
+}
+
+#mobile-nav .user-img {
+    height: 50px;
+    width: 50px;
+}
+
+#mobile-nav a .login-btn,
+#mobile-nav a .logout-btn {
+    color: #fff;
+    background: #6255a5;
+    width: 100px;
+    height: 50px;
+    font-weight: 700;
+    border-radius: 3px;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+#mobile-nav a:hover,
+#mobile-nav a:focus {
+    color: #6255a5;
+    background: none;
+}
+
+#mobile-nav-close-btn:hover,
+#mobile-nav-close-btn:focus {
+    color: #333;
+    background: none;
+}
+
+/*============================================
+        Bootstrap 3 Media Queries
+=============================================*/
+
+/* Large Devices */
+@media (min-width:1200px) {
+
+    /* Navigation */
+    /*.site-nav-wrapper {
+        padding: 0 10px;
+    }*/
+
+    /* user profile */
+    #userProfile #profile-picture {
+        padding-top: 55px;
+        padding-left: 210px;
+
+    }
+
+    /* Home Page */
+    .customer1 {
+        margin: 0 0 40px 0;
+    }
+
+    .customer2 {
+        margin: 0 0 40px 0;
+    }
+
+    .customer3 {
+        margin: 0;
+    }
+
+    .customer4 {
+        margin: 0;
+    }
+
+    /* Admin Footer */
+    .footer-text-right {
+        right: -5px;
+
+    }
+}
+
+/* Medium Devices */
+@media (min-width: 992px) and (max-width: 1199px) {
+
+    /** Navigation **/
+    .site-nav-wrapper {
+        padding: 0 25px;
+    }
+
+    .navbar-brand {
+        padding: 0px 0px;
+    }
+
+    ul.navbar-nav .user-img {
+        height: 30px;
+        width: 30px;
+    }
+
+    ul.navbar-nav>li>a {
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 22px;
+        color: #fff;
+    }
+
+    /*  Nav  Buttons  */
+    .login-btn,
+    .logout-btn {
+        width: 70px;
+        height: 36px;
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    /* white nav */
+    .white-nav-top ul.navbar-nav>li:nth-child(6) {
+        margin: 8px 10px 0 10px;
+    }
+
+    /* user profile */
+    #userProfile #profile-picture {
+        padding-top: 55px;
+        padding-left: 165px;
+
+    }
+
+    /* Home Page */
+    .customer1,
+    .customer2,
+    .customer3,
+    .customer4 {
+        margin: 0 5px 20px 5px;
+    }
+
+    .HPS3T1 {
+        margin: 17px 0 0 40px;
+    }
+
+    .HPS3T2 {
+        margin-left: 40px;
+    }
+
+    /* search page */
+
+    #search1,
+    #search2,
+    #search3,
+    #search4,
+    #search5,
+    #search6,
+    #search7,
+    #search8,
+    #search9 {
+        padding: 20px 10px 10px 15px;
+    }
+
+    /* Note Details */
+    .NDS1LH {
+        margin-left: 20px;
+        font-size: 30px;
+        font-weight: 600;
+        line-height: 34px;
+    }
+
+    .NDS1LT1 {
+        margin-left: 20px;
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .NDS1LT2 {
+        margin-left: 20px;
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    .note-details-page-download-btn {
+        margin-left: 20px;
+        width: 204px;
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    .NDS1RT1 {
+        font-size: 16px;
+        line-height: 34px;
+    }
+
+    .NDS1RT2 {
+        font-size: 16px;
+        line-height: 34px;
+    }
+
+    /* Dashboard */
+    #dashboard #section2 #part1 #search,
+    #dashboard #section3 #part1 #search {
+        margin-left: 0px;
+
+    }
+
+    .dashboard-search-icon-img {
+        left: 30px;
+    }
+
+    #dashboard #section1 #part2 .box3 {
+        width: 30%;
+        margin-left: 5px;
+    }
+
+    #dashboard #section1 #part2 .box3:nth-child(1) {
+        margin-left: 0px;
+    }
+
+    #dashboard #section1 #part2 img {
+        margin: 25px 0 0 5px;
+    }
+
+    #dashboard #section1 #part2 .box1 {
+        width: 200px;
+    }
+
+    #dashboard #section1 #part2 .box2 {
+        margin-bottom: 30px;
+        width: 350px;
+    }
+
+    /* My Downloads */
+    #myDownloads #part1 #search {
+        margin-left: 83px;
+    }
+
+    /* My Sold Notes */
+    #mySoldNotes #part1 #search {
+        margin-left: 83px;
+    }
+
+    /* My Rejected Notes */
+    #myRejectedNotes #part1 #search {
+        margin-left: 83px;
+    }
+
+    /* Buyer Requests */
+    #buyerRequests #part1 #search {
+        margin-left: 83px;
+    }
+
+    /* Admin Dashboard */
+    #adminDashboard #section1 #part2 .box {
+        margin-left: 20px;
+    }
+
+    #adminDashboard #section2 #part1 #search {
+        margin-left: 10px;
+        width: 300px;
+    }
+
+    #adminDashboard .search-icon-img {
+        right: 585px;
+    }
+
+    #adminDashboard #month {
+        width: 160px;
+    }
+
+    /* Admin Profile */
+    #adminProfile #first-name,
+    #adminProfile #last-name,
+    #adminProfile #email,
+    #adminProfile #secondary-email,
+    #adminProfile #code,
+    #adminProfile #phone-number,
+    #adminProfile #profile-picture {
+        width: 100%;
+    }
+
+    .apn-arrow-down-img {
+        right: 25px;
+    }
+
+    #adminProfile .upload-img {
+        left: 360px;
+    }
+
+    /* Admin Note Details */
+    #adminNoteDetails .NDS1LH {
+        margin-left: 20px;
+        font-size: 30px;
+        font-weight: 600;
+        line-height: 34px;
+    }
+
+    #adminNoteDetails .NDS1LT1 {
+        margin-left: 20px;
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    #adminNoteDetails .NDS1LT2 {
+        margin-left: 20px;
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    #adminNoteDetails .download-btn {
+        margin-left: 20px;
+        width: 204px;
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    #adminNoteDetails .NDS1RT1 {
+        font-size: 16px;
+        line-height: 34px;
+    }
+
+    #adminNoteDetails .NDS1RT2 {
+        font-size: 16px;
+        line-height: 34px;
+    }
+
+    /* Admin Members */
+    #adminMembers #part1 #search {
+        margin-left: 80px;
+    }
+
+    #adminMembers #part2 th:nth-child(6),
+    #adminMembers #part2 th:nth-child(7),
+    #adminMembers #part2 th:nth-child(8),
+    #adminMembers #part2 th:nth-child(9),
+    #adminMembers #part2 th:nth-child(10) {
+        padding-left: 5px;
+    }
+
+    #adminMembers #part2 td:nth-child(6),
+    #adminMembers #part2 td:nth-child(7),
+    #adminMembers #part2 td:nth-child(8),
+    #adminMembers #part2 td:nth-child(9),
+    #adminMembers #part2 td:nth-child(10) {
+        padding-left: 5px;
+    }
+
+    /* Member Details */
+    #adminMemberDetails #section1 #part2 img {
+        height: 150px;
+        width: 150px;
+    }
+
+    #adminMemberDetails #section1 #part2 .text1 {
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    #adminMemberDetails #section1 #part2 .text2 {
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    /* Admin Notes Under Review */
+    #adminNotesUnderReview #part2 #search {
+        margin-left: 0px;
+    }
+
+    #adminNotesUnderReview #part3 th {
+        font-size: 12px;
+        line-height: 20px;
+    }
+
+    #adminNotesUnderReview #part3 td {
+        font-size: 12px;
+        line-height: 20px;
+    }
+
+    #adminNotesUnderReview #part3 th:nth-child(1),
+    #adminNotesUnderReview #part3 th:nth-child(7) {
+        text-align: center;
+
+    }
+
+    #adminNotesUnderReview #part3 td:nth-child(1) {
+        text-align: center;
+    }
+
+    #adminNotesUnderReview #part3 td:nth-child(7) {
+
+        text-align: left;
+    }
+
+    #adminNotesUnderReview #part3 td .approve-btn,
+    #adminNotesUnderReview #part3 td .reject-btn,
+    #adminNotesUnderReview #part3 td .inreview-btn {
+        height: 30px;
+        width: 80px;
+        font-size: 14px;
+        line-height: 18px;
+        margin-right: 0px;
+    }
+
+    #adminNotesUnderReview #part3 td .eye-img {
+        padding-left: 5px;
+    }
+
+    #adminNotesUnderReview #part3 .dots-img {
+        margin-right: 10px;
+    }
+
+    /* Admin Published Notes */
+    #adminPublishedNotes #part2 #search {
+        margin-left: 2px;
+    }
+
+    #adminPublishedNotes #part3 th {
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    #adminPublishedNotes #part3 td {
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    #adminPublishedNotes #part3 td .dots-img {
+        margin-right: 10px;
+    }
+
+    /* Admin Downloads Notes */
+    #adminDownloadesNotes #part2 #search {
+        margin-left: 0px;
+    }
+
+    #adminDownloadesNotes #part2 .arrow-down-img1 {
+        left: 120px;
+    }
+
+    #adminDownloadesNotes #part2 .arrow-down-img2 {
+        left: 265px;
+    }
+
+    #adminDownloadesNotes #part2 .arrow-down-img3 {
+        right: 60px;
+    }
+
+    #adminDownloadesNotes .note {
+        padding-right: 105px;
+    }
+
+    #adminDownloadesNotes .seller {
+        padding-right: 96px;
+    }
+
+    #adminDownloadesNotes #seller,
+    #adminDownloadesNotes #note,
+    #adminDownloadesNotes #buyer {
+        padding-left: 10px;
+        width: 130px;
+    }
+
+    #adminDownloadesNotes .search-icon-img {
+        left: 30px;
+    }
+
+    /* Admin Rejected Notes */
+    #adminRejectedNotes #part2 #search {
+        margin-left: 2px;
+    }
+
+    #adminRejectedNotes .search-icon-img {
+        left: 35px;
+    }
+
+    /* Admin Footer */
+    .footer-text-right {
+        right: 1px;
+
+    }
+
+}
+
+/* Small Devices */
+
+@media (min-width: 768px) and (max-width: 800px) {
+    #mobile-nav-open-btn {
+        right: -450px;
+    }
+}
+
+@media (min-width: 800px) and (max-width: 850px) {
+    #mobile-nav-open-btn {
+        right: -470px;
+    }
+}
+
+@media (min-width: 850px) and (max-width: 900px) {
+    #mobile-nav-open-btn {
+        right: -500px;
+    }
+}
+
+@media (min-width: 900px) and (max-width: 991px) {
+    #mobile-nav-open-btn {
+        right: -540px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+    /* Navigation */
+    .navbar-nav {
+        display: none;
+    }
+
+    .navbar {
+        padding: 20px 0;
+    }
+
+    .site-nav-wrapper,
+    .white-nav-top {
+        padding: 0;
+    }
+
+    /* show mobile menu open btn */
+    #mobile-nav-open-btn {
+        display: block;
+    }
+
+    .white-nav-top {
+        padding: 25px 0;
+    }
+
+
+    .white-nav-top a img {
+        padding: 7px 0 0 0;
+    }
+
+    /* user profile */
+    #userProfile #profile-picture {
+        padding-top: 55px;
+        padding-left: 110px;
+    }
+
+    #userProfile .pn-arrow-down-img {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+    }
+
+    /* Home Page */
+    .home-page-download-btn {
+        margin-bottom: 40px;
+    }
+
+    .customer1,
+    .customer2,
+    .customer3,
+    .customer4 {
+        margin: 0 0 40px 0;
+    }
+
+    /* search page */
+    .SPS1C {
+        height: 240px;
+    }
+
+    .search-page-section1 #type,
+    .search-page-section1 #category,
+    .search-page-section1 #university,
+    .search-page-section1 #course,
+    .search-page-section1 #country,
+    .search-page-section1 #rating {
+        padding-left: 10px;
+    }
+
+    .search-page-section1 .arrow-down-img {
+        right: 30px;
+    }
+
+    /* Note Details */
+    .note-details-page-download-btn {
+        margin-bottom: 50px;
+    }
+
+    /* Dashboard */
+    #dashboard #section2 #part1 #search,
+    #dashboard #section3 #part1 #search {
+        margin-left: 15px;
+    }
+
+    .dashboard-search-icon-img {
+        left: 45px;
+    }
+
+    #dashboard #section1 #part2 .box3 {
+        width: 30%;
+        margin-left: 20px;
+    }
+
+    #dashboard #section1 #part2 .box3:nth-child(1) {
+        margin-left: 0px;
+    }
+
+    #dashboard #section1 #part2 img {
+        margin: 25px 0 0 25px;
+    }
+
+    #dashboard #section1 #part2 .box1 {
+        width: 250px;
+    }
+
+    #dashboard #section1 #part2 .box2 {
+        margin-bottom: 30px;
+        width: 465px;
+    }
+
+    /* My Downloads */
+    #myDownloads #part1 #search {
+        margin-left: 17px;
+    }
+
+    #myDownloads #part2 .dots-img {
+        margin-left: 20px;
+        margin-right: 10px;
+    }
+
+    /* My Sold Notes */
+    #mySoldNotes #part1 #search {
+        margin-left: 17px;
+    }
+
+    #mySoldNotes #part2 .dots-img {
+        margin-left: 30px;
+    }
+
+    /* My Rejected Notes */
+    #myRejectedNotes #part1 #search {
+        margin-left: 17px;
+    }
+
+    /* Buyer Requests */
+    #buyerRequests #part1 #search {
+        margin-left: 17px;
+    }
+
+    /* Admin Dashboard */
+    #adminDashboard #section1 #part2 .box {
+        margin-left: 15px;
+    }
+
+    #adminDashboard #section2 #part1 p {
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 24px;
+    }
+
+    #adminDashboard #section2 #part1 #search {
+        margin-left: 10px;
+        width: 250px;
+    }
+
+    #adminDashboard .search-icon-img {
+        right: 500px;
+    }
+
+    #adminDashboard .search-btn {
+        width: 100px;
+    }
+
+    #adminDashboard #month {
+        width: 145px;
+    }
+
+    #adminDashboard #section2 #part2 th {
+        padding-left: 5px;
+    }
+
+    #adminDashboard #section2 #part2 td {
+        padding-left: 5px;
+    }
+
+    /* Admin Profile */
+    #adminProfile #first-name,
+    #adminProfile #last-name,
+    #adminProfile #email,
+    #adminProfile #secondary-email,
+    #adminProfile #code,
+    #adminProfile #phone-number,
+    #adminProfile #profile-picture {
+        width: 100%;
+    }
+
+    .apn-arrow-down-img {
+        right: 25px;
+    }
+
+    #adminProfile .upload-img {
+        left: 350px;
+    }
+
+    /* Admin Add category */
+    #adminAddCategory .submit-btn {
+        margin: 20px 0 160px 0;
+    }
+
+    /* Admin Note Details */
+    #adminNoteDetails .download-btn {
+        margin-bottom: 50px;
+    }
+
+
+    /* Admin Members */
+    #adminMembers #part1 #search {
+        margin-left: 17px;
+    }
+
+    #adminMembers #part2 th {
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 16px;
+        padding-left: 5px;
+    }
+
+    #adminMembers #part2 td {
+        padding-left: 5px;
+    }
+
+    #adminMembers #part2 th:nth-child(6),
+    #adminMembers #part2 th:nth-child(7),
+    #adminMembers #part2 th:nth-child(8),
+    #adminMembers #part2 th:nth-child(9),
+    #adminMembers #part2 th:nth-child(10) {
+        padding-left: 5px;
+    }
+
+    #adminMembers #part2 td:nth-child(6),
+    #adminMembers #part2 td:nth-child(7),
+    #adminMembers #part2 td:nth-child(8),
+    #adminMembers #part2 td:nth-child(9),
+    #adminMembers #part2 td:nth-child(10) {
+        padding-left: 5px;
+    }
+
+    #adminMembers #part2 .dots-img {
+        margin-right: 10px;
+    }
+
+    /* Member Details */
+    #adminMemberDetails #section1 #part2 img {
+        height: 100px;
+        width: 100px;
+    }
+
+    #adminMemberDetails #section1 #part2 .text1 {
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    #adminMemberDetails #section1 #part2 .text2 {
+        font-size: 10px;
+        line-height: 18px;
+    }
+
+    /* Admin Notes Under Review */
+    #adminNotesUnderReview #part2 #search {
+        margin-left: 15px;
+    }
+
+    #adminNotesUnderReview #part3 th {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    #adminNotesUnderReview #part3 td .approve-btn,
+    #adminNotesUnderReview #part3 td .reject-btn,
+    #adminNotesUnderReview #part3 td .inreview-btn {
+        height: 30px;
+        width: 80px;
+        font-size: 14px;
+        line-height: 18px;
+        margin-right: 0px;
+        margin-bottom: 5px;
+    }
+
+    #adminNotesUnderReview #part3 td .inreview-btn {
+        margin-bottom: 0px;
+    }
+
+    #adminNotesUnderReview #part3 .dots-img {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+
+    /* Admin Published Notes */
+    #adminPublishedNotes #part2 #search {
+        margin-left: 17px;
+    }
+
+    #adminPublishedNotes #part3 th {
+        font-size: 12px;
+        line-height: 18px;
+        text-align: center;
+    }
+
+    #adminPublishedNotes #part3 td {
+        font-size: 12px;
+        line-height: 18px;
+        text-align: center;
+    }
+
+    #adminPublishedNotes #part3 td .dots-img {
+        margin-right: 10px;
+    }
+
+    /* Admin Downloads Notes */
+    #adminDownloadesNotes #part2 #search {
+        margin-left: -65px;
+        width: 180px;
+    }
+
+    #adminDownloadesNotes #part2 .arrow-down-img1 {
+        left: 120px;
+    }
+
+    #adminDownloadesNotes #part2 .arrow-down-img2 {
+        left: 265px;
+    }
+
+    #adminDownloadesNotes #part2 .arrow-down-img3 {
+        right: 75px;
+    }
+
+    #adminDownloadesNotes .note {
+        padding-right: 105px;
+    }
+
+    #adminDownloadesNotes .seller {
+        padding-right: 96px;
+    }
+
+    #adminDownloadesNotes #seller,
+    #adminDownloadesNotes #note,
+    #adminDownloadesNotes #buyer {
+        padding-left: 10px;
+        width: 130px;
+    }
+
+    #adminDownloadesNotes .search-icon-img {
+        left: -30px;
+    }
+
+    #adminDownloadesNotes .search-btn {
+        width: 90px;
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 700;
+    }
+
+    #adminDownloadesNotes #part3 th {
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    #adminDownloadesNotes #part3 td {
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    #adminDownloadesNotes #part3 td .eye-img {
+        margin-left: 10px;
+    }
+
+    #adminDownloadesNotes #part3 .dots-img {
+        margin-right: 15px;
+    }
+
+    /* Admin Rejected Notes */
+    #adminRejectedNotes #part2 #search {
+        margin-left: 16px;
+    }
+
+    #adminRejectedNotes .search-icon-img {
+        left: 50px;
+    }
+
+    #adminRejectedNotes #part3 th {
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    #adminRejectedNotes #part3 td {
+        font-size: 12px;
+        line-height: 14px;
+    }
+
+
+    /* Admin Footer */
+    .footer-text-right {
+        right: 10px;
+
+    }
+}
+
+
+/* Extra Small Devices */
+
+@media (max-width: 767px) {
+
+    /* Navigation */
+    .navbar {
+        padding: 20px 0;
+    }
+
+    .site-nav-wrapper,
+    .white-nav-top {
+        padding: 0;
+    }
+
+    /* show mobile menu open btn */
+    #mobile-nav-open-btn {
+        display: block;
+    }
+
+    .white-nav-top {
+        padding: 25px 0;
+    }
+
+    .white-nav-top a img {
+        padding: 7px 0 0 0;
+    }
+
+
+
+    /* user profile */
+    #userProfile #profile-picture {
+        padding-top: 55px;
+        padding-left: 170px;
+    }
+
+    /* Home Page */
+    .home-page-download-btn {
+        margin-bottom: 40px;
+    }
+
+    .customer1,
+    .customer2,
+    .customer3,
+    .customer4 {
+        margin: 0 0 40px 0;
+    }
+
+
+    /* Note Details */
+    .note-details-page-download-btn {
+        margin-bottom: 50px;
+    }
+
+    /* Dashboard */
+    #dashboard #section2 #part1 #search,
+    #dashboard #section3 #part1 #search {
+        margin-left: 28px;
+
+    }
+
+    .dashboard-search-icon-img {
+        left: 55px;
+    }
+
+    #dashboard #section1 #part2 .box3 {
+        width: 30%;
+        margin-left: 35px;
+    }
+
+    #dashboard #section1 #part2 .box3:nth-child(1) {
+        margin-left: 0px;
+    }
+
+    #dashboard #section1 #part2 img {
+        margin: 25px 0 0 25px;
+    }
+
+    #dashboard #section1 #part2 .box1 {
+        width: 250px;
+    }
+
+    #dashboard #section1 #part2 .box2 {
+        margin-bottom: 30px;
+        width: 485px;
+    }
+
+    /* My Downloads */
+    #myDownloads #part1 #search {
+        margin-left: 28px;
+    }
+
+    #myDownloads #part2 .dots-img {
+        margin-left: 15px;
+    }
+
+    /* My Sold Notes */
+    #mySoldNotes #part1 #search {
+        margin-left: 28px;
+    }
+
+    /* My Rejected Notes */
+    #myRejectedNotes #part1 #search {
+        margin-left: 27px;
+    }
+
+    /* Buyer Requests */
+    #buyerRequests #part1 #search {
+        margin-left: 27px;
+    }
+
+
+    /* Admin Dashboard */
+    #adminDashboard #section1 #part2 .box {
+        margin-left: 15px;
+    }
+
+    #adminDashboard #section2 #part1 p {
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 24px;
+    }
+
+    #adminDashboard #section2 #part1 #search {
+        margin-left: 10px;
+        width: 250px;
+    }
+
+    #adminDashboard .search-icon-img {
+        right: 515px;
+    }
+
+    #adminDashboard .search-btn {
+        width: 100px;
+    }
+
+    #adminDashboard #month {
+        width: 157px;
+    }
+
+    #adminDashboard #section2 #part2 th {
+        padding-left: 5px;
+        text-align: center;
+    }
+
+    #adminDashboard #section2 #part2 td {
+        padding-left: 5px;
+        text-align: center;
+    }
+
+    /* Admin Profile */
+    #adminProfile #first-name,
+    #adminProfile #last-name,
+    #adminProfile #email,
+    #adminProfile #secondary-email,
+    #adminProfile #code,
+    #adminProfile #phone-number,
+    #adminProfile #profile-picture {
+        width: 100%;
+    }
+
+    .apn-arrow-down-img {
+        right: 25px;
+    }
+
+    #adminProfile .upload-img {
+        left: 360px;
+    }
+
+    /* Admin Add category */
+    #adminAddCategory .submit-btn {
+        margin: 20px 0 160px 0;
+    }
+
+    /* Admin Note Details */
+    #adminNoteDetails .download-btn {
+        margin-bottom: 50px;
+    }
+
+    /* Admin Members */
+    #adminMembers #part1 #search {
+        margin-left: 28px;
+    }
+
+    #adminMembers #part2 th {
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 16px;
+    }
+
+    #adminMembers #part2 th:nth-child(6),
+    #adminMembers #part2 th:nth-child(7),
+    #adminMembers #part2 th:nth-child(8),
+    #adminMembers #part2 th:nth-child(9),
+    #adminMembers #part2 th:nth-child(10) {
+        padding-left: 5px;
+    }
+
+    #adminMembers #part2 td:nth-child(6),
+    #adminMembers #part2 td:nth-child(7),
+    #adminMembers #part2 td:nth-child(8),
+    #adminMembers #part2 td:nth-child(9),
+    #adminMembers #part2 td:nth-child(10) {
+        padding-left: 5px;
+    }
+
+    #adminMembers #part2 .dots-img {
+        margin-right: 10px;
+    }
+
+    /* Admin Member Details */
+    #adminMemberDetails #section1 #part2 img {
+        height: 100px;
+        width: 100px;
+    }
+
+    #adminMemberDetails #section1 #part2 .text1 {
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    #adminMemberDetails #section1 #part2 .text2 {
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    /* Admin Notes Under Review */
+    #adminNotesUnderReview #part2 #search {
+        margin-left: 28px;
+    }
+
+    #adminNotesUnderReview #part3 th {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    #adminNotesUnderReview #part3 td .approve-btn,
+    #adminNotesUnderReview #part3 td .reject-btn,
+    #adminNotesUnderReview #part3 td .inreview-btn {
+        height: 30px;
+        width: 80px;
+        font-size: 14px;
+        line-height: 18px;
+        margin-right: 0px;
+        margin-bottom: 5px;
+    }
+
+    #adminNotesUnderReview #part3 td .inreview-btn {
+        margin-bottom: 0px;
+    }
+
+    #adminNotesUnderReview #part3 .dots-img {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+
+    /* Admin Published Notes */
+    #adminPublishedNotes #part2 #search {
+        margin-left: 28px;
+    }
+
+    #adminPublishedNotes #part3 th {
+        font-size: 12px;
+        line-height: 18px;
+        padding-left: 10px;
+        text-align: center;
+    }
+
+    #adminPublishedNotes #part3 td {
+        font-size: 12px;
+        line-height: 18px;
+        padding-left: 10px;
+        text-align: center;
+    }
+
+    #adminPublishedNotes #part3 td .dots-img {
+        margin-right: 10px;
+    }
+
+    /* Admin Downloads Notes */
+    #adminDownloadesNotes #part2 #search {
+        margin-left: -60px;
+        width: 180px;
+    }
+
+    #adminDownloadesNotes #part2 .arrow-down-img1 {
+        left: 120px;
+    }
+
+    #adminDownloadesNotes #part2 .arrow-down-img2 {
+        left: 265px;
+    }
+
+    #adminDownloadesNotes #part2 .arrow-down-img3 {
+        right: 85px;
+    }
+
+    #adminDownloadesNotes .note {
+        padding-right: 105px;
+    }
+
+    #adminDownloadesNotes .seller {
+        padding-right: 96px;
+    }
+
+    #adminDownloadesNotes #seller,
+    #adminDownloadesNotes #note,
+    #adminDownloadesNotes #buyer {
+        padding-left: 10px;
+        width: 130px;
+    }
+
+    #adminDownloadesNotes .search-icon-img {
+        left: -30px;
+    }
+
+    #adminDownloadesNotes .search-btn {
+        width: 90px;
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 700;
+    }
+
+    #adminDownloadesNotes #part3 th {
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    #adminDownloadesNotes #part3 td {
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    #adminDownloadesNotes #part3 td .eye-img {
+        margin-left: 10px;
+    }
+
+    #adminDownloadesNotes #part3 .dots-img {
+        margin-right: 15px;
+    }
+
+    /* Admin Rejected Notes */
+    #adminRejectedNotes #part2 #search {
+        margin-left: 28px;
+    }
+
+    #adminRejectedNotes .search-icon-img {
+        left: 60px;
+    }
+
+    #adminRejectedNotes #part3 th {
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    #adminRejectedNotes #part3 td {
+        font-size: 12px;
+        line-height: 14px;
+    }
+
+    /* Admin Footer */
+    .footer-text-right {
+        right: 30px;
+
+    }
+}
+
+
+
+
+@media (min-width:320px) and (max-width: 600px) {
+
+    /* Home Page */
+    .home-page-img-content {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-70%);
+        -webkit-transform: translateY(-70%);
+        -moz-transform: translateY(-70%);
+        -ms-transform: translateY(-70%);
+        -o-transform: translateY(-70%);
+    }
+
+    .home-page-img-content .heading {
+        font-size: 30px;
+        line-height: 34px;
+    }
+
+    .home-page-img-content .text {
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    .HPS3H {
+        font-size: 30px;
+        line-height: 34px;
+    }
+
+    .customers img {
+        height: 70px;
+        width: 70px;
+    }
+
+    .HPS3T1 {
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 34px;
+        color: #6255a5;
+        margin: 0px 0 0 40px;
+    }
+
+    .HPS3T2 {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 26px;
+        color: #333;
+        margin-left: 40px;
+    }
+
+    .HPS3T3 {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        color: #333;
+    }
+
+}
+
+@media (min-width:450px) and (max-width: 767px) {
+
+    /* Search Page */
+    .SPS1C {
+        height: 305px;
+    }
+
+    .search-page-section1 .arrow-down-img {
+        right: 30px;
+    }
+}
+
+
+@media (min-width:320px) and (max-width: 450px) {
+
+    /* Search Page */
+    .SPS1C {
+        height: 305px;
+    }
+
+    .search-page-section1 #type,
+    .search-page-section1 #category,
+    .search-page-section1 #university,
+    .search-page-section1 #course,
+    .search-page-section1 #country,
+    .search-page-section1 #rating {
+        border: 1px solid #d1d1d1;
+        width: 100%;
+        height: 50px;
+        font-size: 10px;
+        font-weight: 400;
+        line-height: 20px;
+        padding-left: 5px;
+    }
+    .search-page-section1 .arrow-down-img {
+        right: 18px;
+    }
+}
+
+@media (min-width:641px) and (max-width: 767px) {
+
+    /* Search Page */
+    #search1,
+    #search2,
+    #search3,
+    #search4,
+    #search5,
+    #search6,
+    #search7,
+    #search8,
+    #search9 {
+        height: 300px;
+    }
+
+    .SPS2H {
+        height: 60px;
+    }
+
+    .SPS2T1,
+    .SPS2T2,
+    .SPS2T3,
+    .SPS2T4 {
+        margin-left: -100px;
+    }
+
+    .SPS2T5 {
+        margin-left: -170px;
+    }
+}
+
+@media (min-width:500px) and (max-width: 641px) {
+
+    /* Search Notes Page */
+
+    .SPS2T1,
+    .SPS2T2,
+    .SPS2T3,
+    .SPS2T4 {
+        margin-left: -60px;
+    }
+
+    .SPS2T5 {
+        margin-left: -90px;
+        margin-top: 3px;
+    }
+
+
+}
+
+@media (min-width:320px) and (max-width: 500px) {
+
+    /* Search Notes Page */
+    .search-page-section2 .Rating-Star {
+        height: 15px;
+        width: 15px;
+    }
+
+    .SPS2H {
+        font-size: 16px;
+        line-height: 20px;
+        height: 90px;
+    }
+
+    .SPS2T1,
+    .SPS2T2,
+    .SPS2T3,
+    .SPS2T4 {
+        margin-left: -30px;
+    }
+
+    .SPS2T5 {
+        margin-left: -50px;
+        margin-top: 3px;
+    }
+
+    .SPS2T1,
+    .SPS2T2,
+    .SPS2T3,
+    .SPS2T4,
+    .SPS2T5 {
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    #search1,
+    #search2,
+    #search3,
+    #search4,
+    #search5,
+    #search6,
+    #search7,
+    #search8,
+    #search9 {
+        height: 340px;
+        padding: 20px 0px 0px 20px;
+    }
+
+}
+
+@media (min-width:500px) and (max-width: 585px) {
+
+    /* Login */
+    #loginPage .login {
+        width: 500px;
+    }
+
+    #loginPage #email,
+    #loginPage #password,
+    #loginPage .login-btn {
+        width: 400px;
+    }
+
+    #loginPage #forgot-password a {
+        padding-left: 50px;
+    }
+
+    #loginPage .eye-img {
+        left: 380px;
+    }
+
+    /* Forgot Password */
+    #forgotPasswordPage .forgotPassword {
+        width: 500px;
+    }
+
+    #forgotPasswordPage #email {
+        width: 400px;
+    }
+
+    #forgotPasswordPage .submit-btn {
+        width: 400px;
+    }
+
+    /* Change Password */
+    #changePasswordPage .changePassword {
+        width: 500px;
+    }
+
+    #changePasswordPage #old-password,
+    #changePasswordPage #new-password,
+    #changePasswordPage #confirm-password {
+        width: 400px;
+    }
+
+    #changePasswordPage .submit-btn {
+        width: 400px;
+    }
+
+    #changePasswordPage .eye-img {
+        margin-left: 360px;
+    }
+
+    /* Sign Up */
+    #signUpPage .signUp {
+        width: 500px;
+    }
+
+    #signUpPage #first-name,
+    #signUpPage #last-name,
+    #signUpPage #email,
+    #signUpPage #password,
+    #signUpPage #confirm-password {
+        width: 400px;
+    }
+
+    #signUpPage .sign-up-btn {
+        width: 400px;
+    }
+
+    #signUpPage .eye-img {
+        margin-left: 360px;
+    }
+
+}
+
+@media (min-width:320px) and (max-width: 501px) {
+
+    /* Login */
+    #loginPage .login {
+        width: 320px;
+    }
+
+    #loginPage .login-text1 {
+        margin-bottom: 30px;
+    }
+
+    #loginPage #email,
+    #loginPage #password,
+    #loginPage .login-btn {
+        width: 220px;
+    }
+
+    #loginPage #forgot-password a {
+        padding-left: 0px;
+        font-size: 11px;
+        font-weight: 400;
+        line-height: 14px;
+    }
+
+    #loginPage .eye-img {
+        left: 200px;
+    }
+
+    #loginPage small {
+        font-size: 10px;
+        line-height: 16px;
+    }
+
+    #loginPage .login-text2 {
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    /* Forgot Password */
+    #forgotPasswordPage .forgotPassword {
+        width: 320px;
+    }
+
+    #forgotPasswordPage #email {
+        width: 220px;
+    }
+
+    #forgotPasswordPage .submit-btn {
+        width: 220px;
+    }
+
+    #forgotPasswordPage h1 {
+        font-size: 24px;
+        line-height: 34px;
+    }
+
+    #forgotPasswordPage .text {
+        margin-bottom: 30px;
+    }
+
+    /* Change Password */
+    #changePasswordPage .changePassword {
+        width: 320px;
+    }
+
+    #changePasswordPage #old-password,
+    #changePasswordPage #new-password,
+    #changePasswordPage #confirm-password {
+        width: 220px;
+    }
+
+    #changePasswordPage .submit-btn {
+        width: 220px;
+    }
+
+    #changePasswordPage .eye-img {
+        margin-left: 180px;
+    }
+
+    #changePasswordPage h1 {
+        font-size: 24px;
+        line-height: 30px;
+    }
+
+    #changePasswordPage .text {
+        font-size: 10px;
+        line-height: 14px;
+        margin-bottom: 20px;
+    }
+
+    #changePasswordPage .oldPasswordLabel,
+    #changePasswordPage .newPasswordLabel,
+    #changePasswordPage .confirmPasswordLabel {
+        font-size: 14px;
+    }
+
+    #changePasswordPage #old-password,
+    #changePasswordPage #new-password,
+    #changePasswordPage #confirm-password {
+        font-size: 12px;
+    }
+
+    /* Sign Up */
+    #signUpPage .signUp {
+        width: 320px;
+    }
+
+    #signUpPage h1 {
+        font-size: 24px;
+        line-height: 38px;
+    }
+
+    #signUpPage .text1 {
+        margin-bottom: 30px;
+    }
+
+    #signUpPage #first-name,
+    #signUpPage #last-name,
+    #signUpPage #email,
+    #signUpPage #password,
+    #signUpPage #confirm-password {
+        width: 220px;
+    }
+
+    #signUpPage .sign-up-btn {
+        width: 220px;
+    }
+
+    #signUpPage .eye-img {
+        margin-left: 180px;
+    }
+
+}
+
+@media (max-width: 520px) {
+
+    /* Footer */
+    .footer p {
+        font-size: 10px;
+        line-height: 14px;
+    }
+
+    /* Admin Footer */
+    .footer-text-left {
+        font-size: 10px;
+        line-height: 14px;
+        left: 10px;
+    }
+
+    .footer-text-right {
+        font-size: 10px;
+        line-height: 14px;
+        right: 10px;
+
+    }
+}
+
+@media (min-width:550px) and (max-width: 767px) {
+
+    /* User Profile */
+    #userProfile #profile-picture {
+        padding-left: 230px;
+    }
+}
+
+@media (min-width:381px) and (max-width: 450px) {
+
+    /* User Profile */
+    #userProfile #profile-picture {
+        padding-left: 130px;
+    }
+
+    /* Footer */
+    ul.social-list li a {
+        width: 27px;
+        height: 27px;
+        line-height: 27px;
+    }
+}
+
+@media (min-width:320px) and (max-width:380px) {
+
+    /* User Profile */
+    #userProfile #profile-picture {
+        padding-left: 100px;
+    }
+
+    /* Footer */
+    ul.social-list li a {
+        width: 20px;
+        height: 20px;
+        line-height: 16px;
+    }
+}
+
+@media (max-width: 350px) {
+
+    /*  White Nav */
+    .white-nav-top img {
+        width: 220px;
+    }
+}
