@@ -19,6 +19,7 @@
 
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="css/responsive.css">
+
 </head>
 
 <body>
@@ -36,7 +37,7 @@
 
                         <!-- Logo -->
                         <a class="navbar-brand" href="Admin_Dashboard.html">
-                            <img src="images/Admin/Dashboard/logo.png" alt="logo">
+                            <img src="images/Admin/Add_Administrator/logo.png" alt="logo">
                         </a>
                     </div>
 
@@ -73,12 +74,12 @@
 
                         <!-- Logo -->
                     <a href="Home_Page.html">
-                        <img src="images/home/logo.png" alt="logo">
+                        <img class="logo" src="images/Admin/Add_Administrator/logo.png" alt="logo">
                     </a>
-                        
+
                         <!-- Mobile Menu close Button -->
                         <span id="mobile-nav-close-btn">&times;</span>
-                        
+
                         <div id="mobile-nav-content">
                             <ul class="nav">
                                 <li>
@@ -95,8 +96,8 @@
                                 <li>
                                     <a href="#">Settings</a>
                                 </li>
-                                <li><a href="#"><img src="images/Admin/Dashboard/user-img.png" class="user-img" width="40" height="40"
-                                    alt="user-img"></a></li>
+                                <li><a href="#"><img src="images/Admin/Add_Administrator/user-img.png" class="user-img"
+                                            width="40" height="40" alt="user-img"></a></li>
                                 <li>
                                     <a href="Login.html">
                                         <button class="btn btn-primary logout-btn">Logout</button>
@@ -110,35 +111,57 @@
         </nav>
     </header>
     <!-- Header Ends -->
-    <!-- Add Country -->
-    <div id="adminAddCountry">
+    <!-- Add Ministrator -->
+    <div id="adminAddAdministrator">
         <form>
             <div class="container">
-                <p class="heading">Add Country</p>
+                <p class="heading">Add Administrator</p>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label class="countryName" for="countryName">Country Name *</label>
-                            <input type="text" name="country-name" id="country-name" class="form-control"
-                                placeholder="Enter your country">
+                            <label class="firstName" for="firstName">First Name *</label>
+                            <input type="text" name="first-name" id="first-name" class="form-control"
+                                placeholder="Enter your first name">
                         </div>
                     </div>
+
+
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label class="countryCode" for="countryCode">Country Code *</label>
-                            <input type="text" name="country-code" id="country-code" class="form-control"
-                                placeholder="Enter country code">
+                            <label class="lastName" for="lastName">Last Name *</label>
+                            <input type="text" name="last-name" id="last-name" class="form-control"
+                                placeholder="Enter your last name">
                         </div>
                     </div>
+
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="email" for="email">Email *</label>
+                            <input type="email" name="email" id="email" class="form-control"
+                                placeholder="Enter your email address">
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="phoneNumber" for="phoneNumber">Phone Number</label>
+                            <input type="tel" name="phone-number" id="phone-number" class="form-control"
+                                placeholder="Enter your phone number">
+                        </div>
+                    </div>
+
+
                     <div class="col-md-12">
                         <button class="btn btn-primary submit-btn">SUBMIT</button>
                     </div>
-                
+
                 </div>
             </div>
         </form>
     </div>
-    <!-- Add Country Ends -->
+    <!-- Add Ministrator Ends -->
     <!-- Footer -->
     <footer class="admin-footer">
         <hr>
