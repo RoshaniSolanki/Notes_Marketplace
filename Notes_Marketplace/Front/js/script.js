@@ -63,8 +63,7 @@ $(function () {
 
 $(function () {
     $("nav").addClass("white-nav-top");
-    $(".navbar-brand img").attr("src", "images/home/logo.png");
-});    
+});  
 /*=======================================================
                      Mobile Menu  
 =========================================================*/

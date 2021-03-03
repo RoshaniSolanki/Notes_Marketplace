@@ -1093,6 +1093,143 @@
     }
 }
 
+
+@media (min-width:430px) and (max-width: 600px) {
+
+    /* Note Details Page */
+    #adminNoteDetails #note-details-section1 img {
+        height: 200px;
+        width: 170px;
+    }
+    #adminNoteDetails .NDS1LH {
+        font-size: 30px;
+        line-height: 34px;
+    }
+    #adminNoteDetails .NDS1LT1 {
+        font-size: 16px;
+        line-height: 22px;
+    }
+    #adminNoteDetails .NDS1LT2 {
+        font-size: 14px;
+        line-height: 22px;
+    }
+    #adminNoteDetails .NDS1RT1 {
+        font-size: 16px;
+        line-height: 22px;
+        margin-bottom: 10px;
+    }
+    #adminNoteDetails .NDS1RT2 {
+        font-size: 16px;
+        line-height: 22px;
+        margin-bottom: 10px;
+    }
+    #adminNoteDetails #note-details-section1 .Rating {
+        margin: 0px 0 0 -70px;
+        text-align: right;
+    }
+    #adminNoteDetails #Iframe-Cicis-Menu-To-Go {
+        height: 100%;
+    } 
+    #adminNoteDetails #note-details-section2 .Rating {
+        margin: 0 0 10px 30px;
+    }  
+    #adminNoteDetails .NDS2RT1 {
+        font-size: 16px;
+        line-height: 22px;
+        margin-left: 30px;
+    }
+    #adminNoteDetails .NDS2RT2 {
+        font-size: 14px;
+        line-height: 20px;
+        margin-left: 30px;
+    }
+}
+
+@media (min-width:320px) and (max-width: 430px) {
+
+    /* Note Details Page */
+    #adminNoteDetails #note-details-section1 img {
+        height: 200px;
+        width: 150px;
+    }
+    #adminNoteDetails .NDS1LH {
+        font-size: 26px;
+        line-height: 30px;
+        margin-left: 25px;
+    }
+    #adminNoteDetails .NDS1LT1 {
+        font-size: 14px;
+        line-height: 20px;
+        margin-left: 25px;
+    }
+    #adminNoteDetails .NDS1LT2 {
+        font-size: 12px;
+        line-height: 16px;
+        margin-left: 25px;
+    }
+    #adminNoteDetails .download-btn {
+        width: 160px;
+    }
+    #adminNoteDetails  .NDS1RT1 {
+        font-size: 14px;
+        line-height: 20px;
+        margin-bottom: 10px;
+    }
+    #adminNoteDetails .NDS1RT2 {
+        font-size: 14px;
+        line-height: 20px;
+        margin-bottom: 10px;
+    }
+    #adminNoteDetails #note-details-section1 .Rating {
+        margin: 0px 0 0 -70px;
+        text-align: right;
+    }
+    #adminNoteDetails  #Iframe-Cicis-Menu-To-Go {
+        height: 100%;
+    }
+    #adminNoteDetails .NDS2RC img {
+        height: 40px;
+        width: 40px;
+    }
+    #adminNoteDetails .NDS2RT1 {
+        font-size: 14px;
+        line-height: 20px;
+        margin: -40px 0 0 50px;
+    }
+    #adminNoteDetails #note-details-section2 .Rating {
+        margin: 0 0 10px 50px;
+    }
+    #adminNoteDetails #note-details-section2 .Rating img {
+        height: 15px;
+        width: 15px;
+    }
+    #adminNoteDetails .NDS2RT2 {
+        font-size: 12px;
+        line-height: 16px;
+        margin-left: 50px;
+    }
+
+}
+
+@media (min-width:381px) and (max-width: 450px) {
+
+    /* Note Details Footer */
+    ul.social-list li a {
+        width: 27px;
+        height: 27px;
+        line-height: 27px;
+    }
+}
+
+@media (min-width:320px) and (max-width:380px) {
+
+    /* Note Details Footer */
+    ul.social-list li a {
+        width: 20px;
+        height: 20px;
+        line-height: 16px;
+    }
+}
 @media (max-width: 520px) {
 
     /* Admin Footer */

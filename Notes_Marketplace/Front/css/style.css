@@ -1226,6 +1226,7 @@ ul.navbar-nav>li>a:focus {
 #note-details-page .responsive-wrapper-padding-bottom-90pct {
     padding-bottom: 100%;
 }
+
 /* right side content */
 .NDS2RC {
     border: 1px solid #d1d1d1;
@@ -2486,7 +2487,6 @@ ul.navbar-nav>li>a:focus {
     color: #333;
     padding: 10px 0;
     font-weight: 600;
-
 }
 
 .user-menu-popup .user-menu-show p:nth-child(6) {

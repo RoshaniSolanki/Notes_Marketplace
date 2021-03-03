@@ -651,108 +651,115 @@
 
 }
 
-@media (min-width:380px) and (max-width: 600px) {
+@media (min-width:430px) and (max-width: 600px) {
 
     /* Note Details Page */
     #note-details-section1 img {
         height: 200px;
-        width: 150px;
+        width: 170px;
     }
-
     .NDS1LH {
         font-size: 30px;
         line-height: 34px;
     }
-
     .NDS1LT1 {
         font-size: 16px;
         line-height: 22px;
     }
-
     .NDS1LT2 {
         font-size: 14px;
+        line-height: 22px;
+    }
+    .NDS1RT1 {
+        font-size: 16px;
+        line-height: 22px;
+        margin-bottom: 10px;
+    }
+    .NDS1RT2 {
+        font-size: 16px;
+        line-height: 22px;
+        margin-bottom: 10px;
+    }
+    #note-details-section1 .Rating {
+        margin: 0px 0 0 -70px;
+        text-align: right;
+    }
+    #note-details-page #Iframe-Cicis-Menu-To-Go {
+        height: 100%;
+    } 
+    #note-details-section2 .Rating {
+        margin: 0 0 10px 30px;
+    }  
+    .NDS2RT1 {
+        font-size: 16px;
+        line-height: 22px;
+        margin-left: 30px;
+    }
+    .NDS2RT2 {
+        font-size: 14px;
         line-height: 20px;
+        margin-left: 30px;
     }
 }
 
-@media (min-width:320px) and (max-width: 380px) {
+@media (min-width:320px) and (max-width: 430px) {
 
     /* Note Details Page */
     #note-details-section1 img {
         height: 200px;
         width: 150px;
     }
-
     .NDS1LH {
         font-size: 26px;
         line-height: 30px;
         margin-left: 25px;
     }
-
     .NDS1LT1 {
         font-size: 14px;
         line-height: 20px;
         margin-left: 25px;
     }
-
     .NDS1LT2 {
         font-size: 12px;
         line-height: 16px;
         margin-left: 25px;
     }
-
     .note-details-page-download-btn {
         width: 160px;
-        height: 50px;
-        border-radius: 3px;
-        color: #fff;
-        font-size: 18px;
-        line-height: 22px;
     }
-
     .NDS1RT1 {
         font-size: 14px;
         line-height: 20px;
         margin-bottom: 10px;
     }
-
     .NDS1RT2 {
         font-size: 14px;
         line-height: 20px;
         margin-bottom: 10px;
     }
-
     #note-details-section1 .Rating {
         margin: 0px 0 0 -70px;
         text-align: right;
     }
-
     #note-details-page #Iframe-Cicis-Menu-To-Go {
         height: 100%;
     }
-
     .NDS2RC img {
         height: 40px;
         width: 40px;
     }
-
     .NDS2RT1 {
         font-size: 14px;
         line-height: 20px;
-        margin-left: 50px;
-        margin-bottom: 0;
-        margin-top: -40px;
+        margin: -40px 0 0 50px;
     }
-
     #note-details-section2 .Rating {
         margin: 0 0 10px 50px;
     }
-
     #note-details-section2 .Rating img {
         height: 15px;
         width: 15px;
     }
-
     .NDS2RT2 {
         font-size: 12px;
         line-height: 16px;
@@ -767,7 +774,6 @@
     .SPS1C {
         height: 305px;
     }
-
     .search-page-section1 .arrow-down-img {
         right: 30px;
     }
@@ -780,7 +786,6 @@
     .SPS1C {
         height: 305px;
     }
-
     .search-page-section1 #type,
     .search-page-section1 #category,
     .search-page-section1 #university,
@@ -795,7 +800,6 @@
         line-height: 20px;
         padding-left: 5px;
     }
-
     .search-page-section1 .arrow-down-img {
         right: 18px;
     }
@@ -815,18 +819,15 @@
     #search9 {
         height: 300px;
     }
-
     .SPS2H {
         height: 60px;
     }
-
     .SPS2T1,
     .SPS2T2,
     .SPS2T3,
     .SPS2T4 {
         margin-left: -100px;
     }
-
     .SPS2T5 {
         margin-left: -170px;
     }
@@ -842,15 +843,17 @@
     .SPS2T4 {
         margin-left: -60px;
     }
-
     .SPS2T5 {
         margin-left: -90px;
         margin-top: 3px;
     }
-
-
 }
-
+@media (min-width:510px) and (max-width: 766px) {
+    /* Dashboard */
+}
+@media (min-width:320px) and (max-width: 510px) {
+    /* Dashboard */
+}
 @media (min-width:320px) and (max-width: 500px) {
 
     /* Search Notes Page */
