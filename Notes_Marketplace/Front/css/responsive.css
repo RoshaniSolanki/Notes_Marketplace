@@ -113,11 +113,6 @@
 /* Large Devices */
 @media (min-width:1200px) {
 
-    /* Navigation */
-    /*.site-nav-wrapper {
-        padding: 0 10px;
-    }*/
-
     /* user profile */
     #userProfile #profile-picture {
         padding-top: 55px;
@@ -129,15 +124,12 @@
     .customer1 {
         margin: 0 0 40px 0;
     }
-
     .customer2 {
         margin: 0 0 40px 0;
     }
-
     .customer3 {
         margin: 0;
     }
-
     .customer4 {
         margin: 0;
     }
@@ -151,16 +143,13 @@
     .site-nav-wrapper {
         padding: 0 25px;
     }
-
     .navbar-brand {
         padding: 0px 0px;
     }
-
     ul.navbar-nav .user-img {
         height: 30px;
         width: 30px;
     }
-
     ul.navbar-nav>li>a {
         font-size: 14px;
         font-weight: 600;
@@ -196,11 +185,9 @@
     .customer4 {
         margin: 0 5px 20px 5px;
     }
-
     .HPS3T1 {
         margin: 17px 0 0 40px;
     }
-
     .HPS3T2 {
         margin-left: 40px;
     }
@@ -226,31 +213,26 @@
         font-weight: 600;
         line-height: 34px;
     }
-
     .NDS1LT1 {
         margin-left: 20px;
         font-size: 16px;
         line-height: 24px;
     }
-
     .NDS1LT2 {
         margin-left: 20px;
         font-size: 14px;
         line-height: 22px;
     }
-
     .note-details-page-download-btn {
         margin-left: 20px;
         width: 204px;
         font-size: 16px;
         line-height: 20px;
     }
-
     .NDS1RT1 {
         font-size: 16px;
         line-height: 34px;
     }
-
     .NDS1RT2 {
         font-size: 16px;
         line-height: 34px;
@@ -262,28 +244,22 @@
         margin-left: 0px;
 
     }
-
     .dashboard-search-icon-img {
         left: 30px;
     }
-
     #dashboard #section1 #part2 .box3 {
         width: 30%;
         margin-left: 5px;
     }
-
     #dashboard #section1 #part2 .box3:nth-child(1) {
         margin-left: 0px;
     }
-
     #dashboard #section1 #part2 img {
         margin: 25px 0 0 5px;
     }
-
     #dashboard #section1 #part2 .box1 {
         width: 200px;
     }
-
     #dashboard #section1 #part2 .box2 {
         margin-bottom: 30px;
         width: 350px;
@@ -323,11 +299,9 @@
     .navbar-nav {
         display: none;
     }
-
     .navbar {
         padding: 20px 0;
     }
-
     .site-nav-wrapper,
     .white-nav-top {
         padding: 0;
@@ -337,12 +311,9 @@
     #mobile-nav-open-btn {
         display: block;
     }
-
     .white-nav-top {
         padding: 25px 0;
     }
-
-
     .white-nav-top a img {
         padding: 7px 0 0 0;
     }
@@ -352,7 +323,6 @@
         padding-top: 55px;
         padding-left: 110px;
     }
-
     #userProfile .pn-arrow-down-img {
         position: absolute;
         right: 20px;
@@ -363,7 +333,6 @@
     .home-page-download-btn {
         margin-bottom: 40px;
     }
-
     .customer1,
     .customer2,
     .customer3,
@@ -375,7 +344,6 @@
     .SPS1C {
         height: 240px;
     }
-
     .search-page-section1 #type,
     .search-page-section1 #category,
     .search-page-section1 #university,
@@ -384,7 +352,6 @@
     .search-page-section1 #rating {
         padding-left: 10px;
     }
-
     .search-page-section1 .arrow-down-img {
         right: 30px;
     }
@@ -399,39 +366,31 @@
     #dashboard #section3 #part1 #search {
         margin-left: 15px;
     }
-
     .dashboard-search-icon-img {
         left: 45px;
     }
-
     #dashboard #section1 #part2 .box3 {
         width: 30%;
         margin-left: 20px;
     }
-
     #dashboard #section1 #part2 .box3:nth-child(1) {
         margin-left: 0px;
     }
-
     #dashboard #section1 #part2 img {
         margin: 25px 0 0 25px;
     }
-
     #dashboard #section1 #part2 .box1 {
         width: 250px;
     }
-
     #dashboard #section1 #part2 .box2 {
         margin-bottom: 30px;
         width: 465px;
     }
-
     /* My Downloads */
     #myDownloads #part2 .dots-img {
         margin-left: 20px;
         margin-right: 10px;
     }
-
     /* My Sold Notes */
     #mySoldNotes #part2 .dots-img {
         margin-left: 30px;
@@ -447,7 +406,6 @@
     .navbar {
         padding: 20px 0;
     }
-
     .site-nav-wrapper,
     .white-nav-top {
         padding: 0;
@@ -457,11 +415,9 @@
     #mobile-nav-open-btn {
         display: block;
     }
-
     .white-nav-top {
         padding: 25px 0;
     }
-
     .white-nav-top a img {
         padding: 7px 0 0 0;
     }
@@ -476,7 +432,6 @@
     .home-page-download-btn {
         margin-bottom: 40px;
     }
-
     .customer1,
     .customer2,
     .customer3,
@@ -497,17 +452,14 @@
     #loginPage .login {
         width: 500px;
     }
-
     #loginPage #email,
     #loginPage #password,
     #loginPage .login-btn {
         width: 400px;
     }
-
     #loginPage #forgot-password a {
         padding-left: 50px;
     }
-
     #loginPage .eye-img {
         left: 380px;
     }
@@ -516,11 +468,9 @@
     #forgotPasswordPage .forgotPassword {
         width: 500px;
     }
-
     #forgotPasswordPage #email {
         width: 400px;
     }
-
     #forgotPasswordPage .submit-btn {
         width: 400px;
     }
@@ -529,17 +479,14 @@
     #changePasswordPage .changePassword {
         width: 500px;
     }
-
     #changePasswordPage #old-password,
     #changePasswordPage #new-password,
     #changePasswordPage #confirm-password {
         width: 400px;
     }
-
     #changePasswordPage .submit-btn {
         width: 400px;
     }
-
     #changePasswordPage .eye-img {
         margin-left: 360px;
     }
@@ -548,7 +495,6 @@
     #signUpPage .signUp {
         width: 500px;
     }
-
     #signUpPage #first-name,
     #signUpPage #last-name,
     #signUpPage #email,
@@ -556,11 +502,9 @@
     #signUpPage #confirm-password {
         width: 400px;
     }
-
     #signUpPage .sign-up-btn {
         width: 400px;
     }
-
     #signUpPage .eye-img {
         margin-left: 360px;
     }
@@ -573,33 +517,27 @@
     #loginPage .login {
         width: 320px;
     }
-
     #loginPage .login-text1 {
         margin-bottom: 30px;
     }
-
     #loginPage #email,
     #loginPage #password,
     #loginPage .login-btn {
         width: 220px;
     }
-
     #loginPage #forgot-password a {
         padding-left: 0px;
         font-size: 11px;
         font-weight: 400;
         line-height: 14px;
     }
-
     #loginPage .eye-img {
         left: 200px;
     }
-
     #loginPage small {
         font-size: 10px;
         line-height: 16px;
     }
-
     #loginPage .login-text2 {
         font-size: 14px;
         line-height: 18px;
@@ -609,20 +547,16 @@
     #forgotPasswordPage .forgotPassword {
         width: 320px;
     }
-
     #forgotPasswordPage #email {
         width: 220px;
     }
-
     #forgotPasswordPage .submit-btn {
         width: 220px;
     }
-
     #forgotPasswordPage h1 {
         font-size: 24px;
         line-height: 34px;
     }
-
     #forgotPasswordPage .text {
         margin-bottom: 30px;
     }
@@ -631,38 +565,31 @@
     #changePasswordPage .changePassword {
         width: 320px;
     }
-
     #changePasswordPage #old-password,
     #changePasswordPage #new-password,
     #changePasswordPage #confirm-password {
         width: 220px;
     }
-
     #changePasswordPage .submit-btn {
         width: 220px;
     }
-
     #changePasswordPage .eye-img {
         margin-left: 180px;
     }
-
     #changePasswordPage h1 {
         font-size: 24px;
         line-height: 30px;
     }
-
     #changePasswordPage .text {
         font-size: 10px;
         line-height: 14px;
         margin-bottom: 20px;
     }
-
     #changePasswordPage .oldPasswordLabel,
     #changePasswordPage .newPasswordLabel,
     #changePasswordPage .confirmPasswordLabel {
         font-size: 14px;
     }
-
     #changePasswordPage #old-password,
     #changePasswordPage #new-password,
     #changePasswordPage #confirm-password {
@@ -673,16 +600,13 @@
     #signUpPage .signUp {
         width: 320px;
     }
-
     #signUpPage h1 {
         font-size: 24px;
         line-height: 38px;
     }
-
     #signUpPage .text1 {
         margin-bottom: 30px;
     }
-
     #signUpPage #first-name,
     #signUpPage #last-name,
     #signUpPage #email,
@@ -690,11 +614,9 @@
     #signUpPage #confirm-password {
         width: 220px;
     }
-
     #signUpPage .sign-up-btn {
         width: 220px;
     }
-
     #signUpPage .eye-img {
         margin-left: 180px;
     }
@@ -704,25 +626,21 @@
         height: 15px;
         width: 15px;
     }
-
     .SPS2H {
         font-size: 16px;
         line-height: 20px;
         height: 90px;
     }
-
     .SPS2T1,
     .SPS2T2,
     .SPS2T3,
     .SPS2T4 {
         margin-left: -30px;
     }
-
     .SPS2T5 {
         margin-left: -50px;
         margin-top: 3px;
     }
-
     .SPS2T1,
     .SPS2T2,
     .SPS2T3,
@@ -731,7 +649,6 @@
         font-size: 14px;
         line-height: 18px;
     }
-
     #search1,
     #search2,
     #search3,
@@ -753,7 +670,6 @@
     #email-verification-page {
         width: 480px;
     }
-
     .evp-btn {
         width: 440px;
         margin-left: -10px;
@@ -767,7 +683,6 @@
     #email-verification-page {
         width: 380px;
     }
-
     .evp-btn {
         width: 340px;
         margin-left: -10px;
@@ -783,7 +698,6 @@
         width: 300px;
         padding: 20px;
     }
-
     .evp-btn {
         width: 240px;
     }
@@ -802,27 +716,22 @@
         -ms-transform: translateY(-70%);
         -o-transform: translateY(-70%);
     }
-
     .home-page-img-content .heading {
         font-size: 30px;
         line-height: 34px;
     }
-
     .home-page-img-content .text {
         font-size: 16px;
         line-height: 26px;
     }
-
     .HPS3H {
         font-size: 30px;
         line-height: 34px;
     }
-
     .customers img {
         height: 70px;
         width: 70px;
     }
-
     .HPS3T1 {
         font-size: 20px;
         font-weight: 600;
@@ -830,7 +739,6 @@
         color: #6255a5;
         margin: 0px 0 0 40px;
     }
-
     .HPS3T2 {
         font-size: 14px;
         font-weight: 400;
@@ -838,7 +746,6 @@
         color: #333;
         margin-left: 40px;
     }
-
     .HPS3T3 {
         font-size: 16px;
         font-weight: 400;
@@ -855,53 +762,43 @@
         height: 200px;
         width: 170px;
     }
-
     .NDS1LH {
         font-size: 30px;
         line-height: 34px;
     }
-
     .NDS1LT1 {
         font-size: 16px;
         line-height: 22px;
     }
-
     .NDS1LT2 {
         font-size: 14px;
         line-height: 22px;
     }
-
     .NDS1RT1 {
         font-size: 16px;
         line-height: 22px;
         margin-bottom: 10px;
     }
-
     .NDS1RT2 {
         font-size: 16px;
         line-height: 22px;
         margin-bottom: 10px;
     }
-
     #note-details-section1 .Rating {
         margin: 0px 0 0 -70px;
         text-align: right;
     }
-
     #note-details-page #Iframe-Cicis-Menu-To-Go {
         height: 100%;
     }
-
     #note-details-section2 .Rating {
         margin: 0 0 10px 30px;
     }
-
     .NDS2RT1 {
         font-size: 16px;
         line-height: 22px;
         margin-left: 30px;
     }
-
     .NDS2RT2 {
         font-size: 14px;
         line-height: 20px;
@@ -916,70 +813,57 @@
         height: 200px;
         width: 150px;
     }
-
     .NDS1LH {
         font-size: 26px;
         line-height: 30px;
         margin-left: 25px;
     }
-
     .NDS1LT1 {
         font-size: 14px;
         line-height: 20px;
         margin-left: 25px;
     }
-
     .NDS1LT2 {
         font-size: 12px;
         line-height: 16px;
         margin-left: 25px;
     }
-
     .note-details-page-download-btn {
         width: 160px;
     }
-
     .NDS1RT1 {
         font-size: 14px;
         line-height: 20px;
         margin-bottom: 10px;
     }
-
     .NDS1RT2 {
         font-size: 14px;
         line-height: 20px;
         margin-bottom: 10px;
     }
-
     #note-details-section1 .Rating {
         margin: 0px 0 0 -70px;
         text-align: right;
     }
-
     #note-details-page #Iframe-Cicis-Menu-To-Go {
         height: 100%;
     }
-
     .NDS2RC img {
         height: 40px;
         width: 40px;
     }
-
     .NDS2RT1 {
         font-size: 14px;
         line-height: 20px;
         margin: -40px 0 0 50px;
     }
-
     #note-details-section2 .Rating {
         margin: 0 0 10px 50px;
     }
-
     #note-details-section2 .Rating img {
         height: 15px;
         width: 15px;
     }
-
     .NDS2RT2 {
         font-size: 12px;
         line-height: 16px;
@@ -1015,7 +899,6 @@
         width: 400px;
         height: 450px;
     }
-
     .add-review-popup .stars img {
         margin: 30px 10px 60px 0;
     }
@@ -1033,7 +916,6 @@
         width: 320px;
         height: 450px;
     }
-
     .add-review-popup .stars img {
         margin: 30px 5px 60px 0;
         height: 35px;
@@ -1048,7 +930,6 @@
     .SPS1C {
         height: 305px;
     }
-
     .search-page-section1 .arrow-down-img {
         right: 30px;
     }
@@ -1061,7 +942,6 @@
     .SPS1C {
         height: 305px;
     }
-
     .search-page-section1 #type,
     .search-page-section1 #category,
     .search-page-section1 #university,
@@ -1076,7 +956,6 @@
         line-height: 20px;
         padding-left: 5px;
     }
-
     .search-page-section1 .arrow-down-img {
         right: 18px;
     }
@@ -1096,18 +975,15 @@
     #search9 {
         height: 300px;
     }
-
     .SPS2H {
         height: 60px;
     }
-
     .SPS2T1,
     .SPS2T2,
     .SPS2T3,
     .SPS2T4 {
         margin-left: -100px;
     }
-
     .SPS2T5 {
         margin-left: -170px;
     }
@@ -1116,14 +992,12 @@
 @media (min-width:500px) and (max-width: 641px) {
 
     /* Search Notes Page */
-
     .SPS2T1,
     .SPS2T2,
     .SPS2T3,
     .SPS2T4 {
         margin-left: -60px;
     }
-
     .SPS2T5 {
         margin-left: -90px;
         margin-top: 3px;
@@ -1138,36 +1012,28 @@
         margin-left: 0px;
         width: 57%;
     }
-
     .dashboard-search-icon-img {
         left: 10%;
     }
-
     #dashboard #section1 #part2 .box3 {
         width: 30%;
         margin-left: 24px;
     }
-
     #dashboard #section1 #part2 .box3:nth-child(1) {
         margin-left: 0px;
     }
-
     #dashboard #section1 #part2 img {
         margin: 25px 0 0 0;
     }
-
     #dashboard #section1 #part2 .box1 {
         width: 99.5%;
         margin-bottom: 30px;
         text-align: center;
     }
-
     #dashboard #section1 #part2 .box2 {
         margin-bottom: 30px;
         width: 99.5%;
     }
-
-
 
 }
 
@@ -1178,80 +1044,66 @@
         font-size: 26px;
         line-height: 30px;
     }
-
     .dashboard-add-note-btn {
         width: 110px;
         height: 50px;
         font-size: 16px;
         line-height: 20px;
     }
-
     #dashboard #section1 #part2 .text1 {
         font-size: 26px;
         line-height: 30px;
     }
-
     #dashboard #section1 #part2 .text2 {
         font-size: 16px;
         line-height: 20px;
     }
-
     #dashboard #section1 #part2 .box3 {
         width: 31%;
         margin-left: 10px;
     }
-
     #dashboard #section1 #part2 .box3:nth-child(1) {
         margin-left: 0px;
     }
-
     #dashboard #section1 #part2 img {
         margin: 25px 0 0 0;
     }
-
     #dashboard #section1 #part2 .box1 {
         width: 99.5%;
         margin-bottom: 30px;
         text-align: center;
     }
-
     #dashboard #section1 #part2 .box2 {
         margin-bottom: 30px;
         width: 99.5%;
     }
-
     #dashboard #section2 #part1 p,
     #dashboard #section3 #part1 p {
         font-size: 18px;
         line-height: 24px;
     }
-
     #dashboard #section2 #part1 #search,
     #dashboard #section3 #part1 #search {
         margin-left: -50px;
         width: 55%;
     }
-
     .dashboard-search-btn {
         width: 90px;
         font-size: 16px;
         line-height: 20px;
     }
-
     #dashboard #section2 #part2 th,
     #dashboard #section3 #part2 th {
         font-size: 11px;
         line-height: 16px;
         padding-left: 5px;
     }
-
     #dashboard #section2 #part2 td,
     #dashboard #section3 #part2 td {
         font-size: 10px;
         line-height: 14px;
         padding-left: 5px;
     }
-
     #dashboard #section2 #part2 .edit-img {
         margin-right: 5px;
     }
@@ -1448,27 +1300,22 @@
         line-height: 12px;
         padding-left: 2px;
     }
-
     #buyerRequests #part2 td {
         font-size: 8px;
         line-height: 12px;
         padding-left: 2px;
     }
-
     #buyerRequests #part2 td:nth-child(9) {
         padding-left: 0px;
     }
-
     #buyerRequests #part2 td:nth-child(9) a {
         font-size: 14px;
     }
-
     #buyerRequests #part2 .dots-img {
         margin-left: 20px;
         margin-right: 5px;
         height: 15px;
     }
-
     #buyerRequests #part2 .eye-img {
         width: 15px;
     }
@@ -1746,26 +1593,21 @@
         line-height: 14px;
         padding-left: 1px;
     }
-
     #buyerRequests #part2 td {
         font-size: 5px;
         line-height: 14px;
         padding-left: 1px;
     }
-
     #buyerRequests #part2 td:nth-child(9) {
         padding-left: 0px;
     }
-
     #buyerRequests #part2 td:nth-child(9) a {
         font-size: 14px;
     }
-
     #buyerRequests #part2 .dots-img {
         margin-right: 5px;
         height: 15px;
     }
-
     #buyerRequests #part2 .eye-img {
         width: 15px;
     }
@@ -1786,17 +1628,14 @@
     .left-arrow-img {
         margin-right: 20px;
     }
-
     .right-arrow-img {
         margin-left: 20px;
     }
-
     .pagination-section #three,
     .pagination-section #four,
     .pagination-section #five {
         margin-left: 10px;
     }
-
     .pagination-section #two {
         margin-left: 10px;
     }
