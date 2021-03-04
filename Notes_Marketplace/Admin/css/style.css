@@ -397,7 +397,6 @@ select {
 }
 
 #adminDashboard #section2 #part1 #search {
-    margin-left: 89px;
     margin-right: 10px;
     padding-left: 45px;
     font-size: 16px;
@@ -409,7 +408,9 @@ select {
     border: 1px solid #d1d1d1;
     margin-bottom: 20px;
 }
-
+#adminDashboard #section2 #part1 .row div:nth-child(2){
+    text-align: right;
+}
 #adminDashboard .search-icon-img {
     position: absolute;
     right: 640px;

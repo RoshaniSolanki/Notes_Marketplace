@@ -1440,12 +1440,16 @@ ul.navbar-nav>li>a:focus {
     height: 50px;
     border: 1px solid #d1d1d1;
     margin-bottom: 20px;
-    margin-left: 102px;
 }
-
+#dashboard #section2 #part1 .row div:nth-child(2) {
+    text-align: right;
+}
+#dashboard #section3 #part1 .row div:nth-child(2) {
+    text-align: right;
+}
 .dashboard-search-icon-img {
     position: absolute;
-    left: 130px;
+    right: 435px;
     top: 16px;
 }
 
@@ -1459,7 +1463,6 @@ ul.navbar-nav>li>a:focus {
     line-height: 22px;
     font-weight: 700;
     margin-bottom: 3px;
-
 }
 
 #dashboard #section2 #part2 table,
@@ -1490,14 +1493,22 @@ ul.navbar-nav>li>a:focus {
     padding-left: 10px;
 }
 
+#dashboard #section2 #part2 th:nth-child(5),
+#dashboard #section3 #part2 th:nth-child(6) {
+    text-align: center;
+}
+#dashboard #section2 #part2 td:nth-child(5),
+#dashboard #section3 #part2 td:nth-child(6) {
+    text-align: center;
+}
+
 #dashboard #section2 #part2 tr:hover,
 #dashboard #section3 #part2 tr:hover {
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
     border-top: none;
 }
 
-#dashboard #section2 #part2 .edit-img,
-#dashboard #section3 #part2 .edit-img {
+#dashboard #section2 #part2 .edit-img{
     margin-right: 15px;
 }
 
@@ -1734,7 +1745,10 @@ ul.navbar-nav>li>a:focus {
     height: 50px;
     border: 1px solid #d1d1d1;
     margin-bottom: 20px;
-    margin-left: 199px;
+}
+
+#myDownloads #part1 .row div:nth-child(2) {
+    text-align: right;
 }
 
 .my-downloads-search-icon-img {
@@ -1928,7 +1942,10 @@ ul.navbar-nav>li>a:focus {
     height: 50px;
     border: 1px solid #d1d1d1;
     margin-bottom: 20px;
-    margin-left: 199px;
+}
+
+#mySoldNotes #part1 .row div:nth-child(2) {
+    text-align: right;
 }
 
 .my-sold-notes-search-btn {
@@ -2041,7 +2058,10 @@ ul.navbar-nav>li>a:focus {
     height: 50px;
     border: 1px solid #d1d1d1;
     margin-bottom: 20px;
-    margin-left: 199px;
+}
+
+#myRejectedNotes #part1 .row div:nth-child(2) {
+    text-align: right;
 }
 
 .my-rejected-notes-search-btn {
@@ -2154,7 +2174,10 @@ ul.navbar-nav>li>a:focus {
     height: 50px;
     border: 1px solid #d1d1d1;
     margin-bottom: 20px;
-    margin-left: 199px;
+}
+
+#buyerRequests #part1 .row div:nth-child(2) {
+    text-align: right;
 }
 
 .buyer-requests-search-btn {
