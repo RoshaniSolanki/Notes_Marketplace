@@ -127,13 +127,16 @@
     .site-nav-wrapper {
         padding: 0 25px;
     }
+
     .navbar-brand {
         padding: 0px 0px;
     }
+
     ul.navbar-nav .user-img {
         height: 30px;
         width: 30px;
     }
+
     ul.navbar-nav>li>a {
         font-size: 14px;
         font-weight: 600;
@@ -159,32 +162,19 @@
     #adminDashboard #section1 #part2 .box {
         margin-left: 20px;
     }
+
     #adminDashboard #section2 #part1 #search {
         width: 300px;
     }
+
     #adminDashboard .search-icon-img {
         right: 585px;
     }
+
     #adminDashboard #month {
         width: 160px;
     }
 
-    /* Admin Profile */
-    #adminProfile #first-name,
-    #adminProfile #last-name,
-    #adminProfile #email,
-    #adminProfile #secondary-email,
-    #adminProfile #code,
-    #adminProfile #phone-number,
-    #adminProfile #profile-picture {
-        width: 100%;
-    }
-    .apn-arrow-down-img {
-        right: 25px;
-    }
-    #adminProfile .upload-img {
-        left: 360px;
-    }
 
     /* Admin Note Details */
     #adminNoteDetails .NDS1LH {
@@ -193,35 +183,37 @@
         font-weight: 600;
         line-height: 34px;
     }
+
     #adminNoteDetails .NDS1LT1 {
         margin-left: 20px;
         font-size: 16px;
         line-height: 24px;
     }
+
     #adminNoteDetails .NDS1LT2 {
         margin-left: 20px;
         font-size: 14px;
         line-height: 22px;
     }
+
     #adminNoteDetails .download-btn {
         margin-left: 20px;
         width: 204px;
         font-size: 16px;
         line-height: 20px;
     }
+
     #adminNoteDetails .NDS1RT1 {
         font-size: 16px;
         line-height: 34px;
     }
+
     #adminNoteDetails .NDS1RT2 {
         font-size: 16px;
         line-height: 34px;
     }
 
     /* Admin Members */
-    #adminMembers #part1 #search {
-        margin-left: 80px;
-    }
     #adminMembers #part2 th:nth-child(6),
     #adminMembers #part2 th:nth-child(7),
     #adminMembers #part2 th:nth-child(8),
@@ -229,6 +221,7 @@
     #adminMembers #part2 th:nth-child(10) {
         padding-left: 5px;
     }
+
     #adminMembers #part2 td:nth-child(6),
     #adminMembers #part2 td:nth-child(7),
     #adminMembers #part2 td:nth-child(8),
@@ -242,39 +235,43 @@
         height: 150px;
         width: 150px;
     }
+
     #adminMemberDetails #section1 #part2 .text1 {
         font-size: 12px;
         line-height: 18px;
     }
+
     #adminMemberDetails #section1 #part2 .text2 {
         font-size: 12px;
         line-height: 18px;
     }
 
     /* Admin Notes Under Review */
-    #adminNotesUnderReview #part2 #search {
-        margin-left: 0px;
-    }
     #adminNotesUnderReview #part3 th {
         font-size: 12px;
         line-height: 20px;
     }
+
     #adminNotesUnderReview #part3 td {
         font-size: 12px;
         line-height: 20px;
     }
+
     #adminNotesUnderReview #part3 th:nth-child(1),
     #adminNotesUnderReview #part3 th:nth-child(7) {
         text-align: center;
 
     }
+
     #adminNotesUnderReview #part3 td:nth-child(1) {
         text-align: center;
     }
+
     #adminNotesUnderReview #part3 td:nth-child(7) {
 
         text-align: left;
     }
+
     #adminNotesUnderReview #part3 td .approve-btn,
     #adminNotesUnderReview #part3 td .reject-btn,
     #adminNotesUnderReview #part3 td .inreview-btn {
@@ -284,9 +281,11 @@
         line-height: 18px;
         margin-right: 0px;
     }
+
     #adminNotesUnderReview #part3 td .eye-img {
         padding-left: 5px;
     }
+
     #adminNotesUnderReview #part3 .dots-img {
         margin-right: 10px;
     }
@@ -295,14 +294,17 @@
     #adminPublishedNotes #part2 #search {
         margin-left: 2px;
     }
+
     #adminPublishedNotes #part3 th {
         font-size: 14px;
         line-height: 18px;
     }
+
     #adminPublishedNotes #part3 td {
         font-size: 14px;
         line-height: 18px;
     }
+
     #adminPublishedNotes #part3 td .dots-img {
         margin-right: 10px;
     }
@@ -311,27 +313,34 @@
     #adminDownloadesNotes #part2 #search {
         margin-left: 0px;
     }
+
     #adminDownloadesNotes #part2 .arrow-down-img1 {
         left: 120px;
     }
+
     #adminDownloadesNotes #part2 .arrow-down-img2 {
         left: 265px;
     }
+
     #adminDownloadesNotes #part2 .arrow-down-img3 {
         right: 60px;
     }
+
     #adminDownloadesNotes .note {
         padding-right: 105px;
     }
+
     #adminDownloadesNotes .seller {
         padding-right: 96px;
     }
+
     #adminDownloadesNotes #seller,
     #adminDownloadesNotes #note,
     #adminDownloadesNotes #buyer {
         padding-left: 10px;
         width: 130px;
     }
+
     #adminDownloadesNotes .search-icon-img {
         left: 30px;
     }
@@ -340,6 +349,7 @@
     #adminRejectedNotes #part2 #search {
         margin-left: 2px;
     }
+
     #adminRejectedNotes .search-icon-img {
         left: 35px;
     }
@@ -384,9 +394,11 @@
     .navbar-nav {
         display: none;
     }
+
     .navbar {
         padding: 20px 0;
     }
+
     .site-nav-wrapper,
     .white-nav-top {
         padding: 0;
@@ -396,9 +408,11 @@
     #mobile-nav-open-btn {
         display: block;
     }
+
     .white-nav-top {
         padding: 25px 0;
     }
+
     .white-nav-top a img {
         padding: 7px 0 0 0;
     }
@@ -407,50 +421,35 @@
     #adminDashboard #section1 #part2 .box {
         margin-left: 15px;
     }
+
     #adminDashboard #section2 #part1 p {
         font-size: 20px;
         font-weight: 600;
         line-height: 24px;
     }
+
     #adminDashboard #section2 #part1 #search {
         width: 250px;
     }
+
     #adminDashboard .search-icon-img {
         right: 500px;
     }
+
     #adminDashboard .search-btn {
         width: 100px;
     }
+
     #adminDashboard #month {
         width: 145px;
     }
+
     #adminDashboard #section2 #part2 th {
         padding-left: 5px;
     }
+
     #adminDashboard #section2 #part2 td {
         padding-left: 5px;
-    }
-
-    /* Admin Profile */
-    #adminProfile #first-name,
-    #adminProfile #last-name,
-    #adminProfile #email,
-    #adminProfile #secondary-email,
-    #adminProfile #code,
-    #adminProfile #phone-number,
-    #adminProfile #profile-picture {
-        width: 100%;
-    }
-    .apn-arrow-down-img {
-        right: 25px;
-    }
-    #adminProfile .upload-img {
-        left: 350px;
-    }
-
-    /* Admin Add category */
-    #adminAddCategory .submit-btn {
-        margin: 20px 0 160px 0;
     }
 
     /* Admin Note Details */
@@ -458,20 +457,18 @@
         margin-bottom: 50px;
     }
 
-
     /* Admin Members */
-    #adminMembers #part1 #search {
-        margin-left: 17px;
-    }
     #adminMembers #part2 th {
         font-size: 12px;
         font-weight: 600;
         line-height: 16px;
         padding-left: 5px;
     }
+
     #adminMembers #part2 td {
         padding-left: 5px;
     }
+
     #adminMembers #part2 th:nth-child(6),
     #adminMembers #part2 th:nth-child(7),
     #adminMembers #part2 th:nth-child(8),
@@ -479,6 +476,7 @@
     #adminMembers #part2 th:nth-child(10) {
         padding-left: 5px;
     }
+
     #adminMembers #part2 td:nth-child(6),
     #adminMembers #part2 td:nth-child(7),
     #adminMembers #part2 td:nth-child(8),
@@ -486,6 +484,7 @@
     #adminMembers #part2 td:nth-child(10) {
         padding-left: 5px;
     }
+
     #adminMembers #part2 .dots-img {
         margin-right: 10px;
     }
@@ -495,23 +494,23 @@
         height: 100px;
         width: 100px;
     }
+
     #adminMemberDetails #section1 #part2 .text1 {
         font-size: 12px;
         line-height: 18px;
     }
+
     #adminMemberDetails #section1 #part2 .text2 {
         font-size: 10px;
         line-height: 18px;
     }
 
     /* Admin Notes Under Review */
-    #adminNotesUnderReview #part2 #search {
-        margin-left: 15px;
-    }
     #adminNotesUnderReview #part3 th {
         font-size: 14px;
         line-height: 20px;
     }
+
     #adminNotesUnderReview #part3 td .approve-btn,
     #adminNotesUnderReview #part3 td .reject-btn,
     #adminNotesUnderReview #part3 td .inreview-btn {
@@ -522,9 +521,11 @@
         margin-right: 0px;
         margin-bottom: 5px;
     }
+
     #adminNotesUnderReview #part3 td .inreview-btn {
         margin-bottom: 0px;
     }
+
     #adminNotesUnderReview #part3 .dots-img {
         margin-right: 10px;
         margin-left: 10px;
@@ -534,16 +535,19 @@
     #adminPublishedNotes #part2 #search {
         margin-left: 17px;
     }
+
     #adminPublishedNotes #part3 th {
         font-size: 12px;
         line-height: 18px;
         text-align: center;
     }
+
     #adminPublishedNotes #part3 td {
         font-size: 12px;
         line-height: 18px;
         text-align: center;
     }
+
     #adminPublishedNotes #part3 td .dots-img {
         margin-right: 10px;
     }
@@ -553,15 +557,19 @@
         margin-left: -65px;
         width: 180px;
     }
+
     #adminDownloadesNotes #part2 .arrow-down-img1 {
         left: 120px;
     }
+
     #adminDownloadesNotes #part2 .arrow-down-img2 {
         left: 265px;
     }
+
     #adminDownloadesNotes #part2 .arrow-down-img3 {
         right: 75px;
     }
+
     #adminDownloadesNotes .note {
         padding-right: 105px;
     }
@@ -569,32 +577,39 @@
     #adminDownloadesNotes .seller {
         padding-right: 96px;
     }
+
     #adminDownloadesNotes #seller,
     #adminDownloadesNotes #note,
     #adminDownloadesNotes #buyer {
         padding-left: 10px;
         width: 130px;
     }
+
     #adminDownloadesNotes .search-icon-img {
         left: -30px;
     }
+
     #adminDownloadesNotes .search-btn {
         width: 90px;
         font-size: 16px;
         line-height: 20px;
         font-weight: 700;
     }
+
     #adminDownloadesNotes #part3 th {
         font-size: 12px;
         line-height: 16px;
     }
+
     #adminDownloadesNotes #part3 td {
         font-size: 12px;
         line-height: 16px;
     }
+
     #adminDownloadesNotes #part3 td .eye-img {
         margin-left: 10px;
     }
+
     #adminDownloadesNotes #part3 .dots-img {
         margin-right: 15px;
     }
@@ -603,13 +618,16 @@
     #adminRejectedNotes #part2 #search {
         margin-left: 16px;
     }
+
     #adminRejectedNotes .search-icon-img {
         left: 50px;
     }
+
     #adminRejectedNotes #part3 th {
         font-size: 14px;
         line-height: 18px;
     }
+
     #adminRejectedNotes #part3 td {
         font-size: 12px;
         line-height: 14px;
@@ -631,6 +649,7 @@
     .navbar {
         padding: 20px 0;
     }
+
     .site-nav-wrapper,
     .white-nav-top {
         padding: 0;
@@ -640,34 +659,13 @@
     #mobile-nav-open-btn {
         display: block;
     }
+
     .white-nav-top {
         padding: 25px 0;
     }
+
     .white-nav-top a img {
         padding: 7px 0 0 0;
-    }
-
-
-    /* Admin Profile */
-    #adminProfile #first-name,
-    #adminProfile #last-name,
-    #adminProfile #email,
-    #adminProfile #secondary-email,
-    #adminProfile #code,
-    #adminProfile #phone-number,
-    #adminProfile #profile-picture {
-        width: 100%;
-    }
-    .apn-arrow-down-img {
-        right: 25px;
-    }
-    #adminProfile .upload-img {
-        left: 360px;
-    }
-
-    /* Admin Add category */
-    #adminAddCategory .submit-btn {
-        margin: 20px 0 160px 0;
     }
 
     /* Admin Note Details */
@@ -675,89 +673,26 @@
         margin-bottom: 50px;
     }
 
-    /* Admin Members */
-    #adminMembers #part1 #search {
-        margin-left: 28px;
-    }
-    #adminMembers #part2 th {
-        font-size: 12px;
-        font-weight: 600;
-        line-height: 16px;
-    }
-    #adminMembers #part2 th:nth-child(6),
-    #adminMembers #part2 th:nth-child(7),
-    #adminMembers #part2 th:nth-child(8),
-    #adminMembers #part2 th:nth-child(9),
-    #adminMembers #part2 th:nth-child(10) {
-        padding-left: 5px;
-    }
-    #adminMembers #part2 td:nth-child(6),
-    #adminMembers #part2 td:nth-child(7),
-    #adminMembers #part2 td:nth-child(8),
-    #adminMembers #part2 td:nth-child(9),
-    #adminMembers #part2 td:nth-child(10) {
-        padding-left: 5px;
-    }
-    #adminMembers #part2 .dots-img {
-        margin-right: 10px;
-    }
-
-    /* Admin Member Details */
-    #adminMemberDetails #section1 #part2 img {
-        height: 100px;
-        width: 100px;
-    }
-    #adminMemberDetails #section1 #part2 .text1 {
-        font-size: 12px;
-        line-height: 18px;
-    }
-    #adminMemberDetails #section1 #part2 .text2 {
-        font-size: 12px;
-        line-height: 18px;
-    }
-
-    /* Admin Notes Under Review */
-    #adminNotesUnderReview #part2 #search {
-        margin-left: 28px;
-    }
-    #adminNotesUnderReview #part3 th {
-        font-size: 14px;
-        line-height: 20px;
-    }
-    #adminNotesUnderReview #part3 td .approve-btn,
-    #adminNotesUnderReview #part3 td .reject-btn,
-    #adminNotesUnderReview #part3 td .inreview-btn {
-        height: 30px;
-        width: 80px;
-        font-size: 14px;
-        line-height: 18px;
-        margin-right: 0px;
-        margin-bottom: 5px;
-    }
-    #adminNotesUnderReview #part3 td .inreview-btn {
-        margin-bottom: 0px;
-    }
-    #adminNotesUnderReview #part3 .dots-img {
-        margin-right: 10px;
-        margin-left: 10px;
-    }
 
     /* Admin Published Notes */
     #adminPublishedNotes #part2 #search {
         margin-left: 28px;
     }
+
     #adminPublishedNotes #part3 th {
         font-size: 12px;
         line-height: 18px;
         padding-left: 10px;
         text-align: center;
     }
+
     #adminPublishedNotes #part3 td {
         font-size: 12px;
         line-height: 18px;
         padding-left: 10px;
         text-align: center;
     }
+
     #adminPublishedNotes #part3 td .dots-img {
         margin-right: 10px;
     }
@@ -767,47 +702,59 @@
         margin-left: -60px;
         width: 180px;
     }
+
     #adminDownloadesNotes #part2 .arrow-down-img1 {
         left: 120px;
     }
+
     #adminDownloadesNotes #part2 .arrow-down-img2 {
         left: 265px;
     }
+
     #adminDownloadesNotes #part2 .arrow-down-img3 {
         right: 85px;
     }
+
     #adminDownloadesNotes .note {
         padding-right: 105px;
     }
+
     #adminDownloadesNotes .seller {
         padding-right: 96px;
     }
+
     #adminDownloadesNotes #seller,
     #adminDownloadesNotes #note,
     #adminDownloadesNotes #buyer {
         padding-left: 10px;
         width: 130px;
     }
+
     #adminDownloadesNotes .search-icon-img {
         left: -30px;
     }
+
     #adminDownloadesNotes .search-btn {
         width: 90px;
         font-size: 16px;
         line-height: 20px;
         font-weight: 700;
     }
+
     #adminDownloadesNotes #part3 th {
         font-size: 12px;
         line-height: 16px;
     }
+
     #adminDownloadesNotes #part3 td {
         font-size: 12px;
         line-height: 16px;
     }
+
     #adminDownloadesNotes #part3 td .eye-img {
         margin-left: 10px;
     }
+
     #adminDownloadesNotes #part3 .dots-img {
         margin-right: 15px;
     }
@@ -816,13 +763,16 @@
     #adminRejectedNotes #part2 #search {
         margin-left: 28px;
     }
+
     #adminRejectedNotes .search-icon-img {
         left: 60px;
     }
+
     #adminRejectedNotes #part3 th {
         font-size: 14px;
         line-height: 18px;
     }
+
     #adminRejectedNotes #part3 td {
         font-size: 12px;
         line-height: 14px;
@@ -841,14 +791,17 @@
     #loginPage .login {
         width: 500px;
     }
+
     #loginPage #email,
     #loginPage #password,
     #loginPage .login-btn {
         width: 400px;
     }
+
     #loginPage #forgot-password a {
         padding-left: 50px;
     }
+
     #loginPage .eye-img {
         left: 380px;
     }
@@ -857,9 +810,11 @@
     #forgotPasswordPage .forgotPassword {
         width: 500px;
     }
+
     #forgotPasswordPage #email {
         width: 400px;
     }
+
     #forgotPasswordPage .submit-btn {
         width: 400px;
     }
@@ -871,27 +826,33 @@
     #loginPage .login {
         width: 320px;
     }
+
     #loginPage .login-text1 {
         margin-bottom: 30px;
     }
+
     #loginPage #email,
     #loginPage #password,
     #loginPage .login-btn {
         width: 220px;
     }
+
     #loginPage #forgot-password a {
         padding-left: 0px;
         font-size: 11px;
         font-weight: 400;
         line-height: 14px;
     }
+
     #loginPage .eye-img {
         left: 200px;
     }
+
     #loginPage small {
         font-size: 10px;
         line-height: 16px;
     }
+
     #loginPage .login-text2 {
         font-size: 14px;
         line-height: 18px;
@@ -901,16 +862,20 @@
     #forgotPasswordPage .forgotPassword {
         width: 320px;
     }
+
     #forgotPasswordPage #email {
         width: 220px;
     }
+
     #forgotPasswordPage .submit-btn {
         width: 220px;
     }
+
     #forgotPasswordPage h1 {
         font-size: 24px;
         line-height: 34px;
     }
+
     #forgotPasswordPage .text {
         margin-bottom: 30px;
     }
@@ -933,43 +898,53 @@
         height: 200px;
         width: 170px;
     }
+
     #adminNoteDetails .NDS1LH {
         font-size: 30px;
         line-height: 34px;
     }
+
     #adminNoteDetails .NDS1LT1 {
         font-size: 16px;
         line-height: 22px;
     }
+
     #adminNoteDetails .NDS1LT2 {
         font-size: 14px;
         line-height: 22px;
     }
+
     #adminNoteDetails .NDS1RT1 {
         font-size: 16px;
         line-height: 22px;
         margin-bottom: 10px;
     }
+
     #adminNoteDetails .NDS1RT2 {
         font-size: 16px;
         line-height: 22px;
         margin-bottom: 10px;
     }
+
     #adminNoteDetails #note-details-section1 .Rating {
         margin: 0px 0 0 -70px;
         text-align: right;
     }
+
     #adminNoteDetails #Iframe-Cicis-Menu-To-Go {
         height: 100%;
     }
+
     #adminNoteDetails #note-details-section2 .Rating {
         margin: 0 0 10px 30px;
     }
+
     #adminNoteDetails .NDS2RT1 {
         font-size: 16px;
         line-height: 22px;
         margin-left: 30px;
     }
+
     #adminNoteDetails .NDS2RT2 {
         font-size: 14px;
         line-height: 20px;
@@ -984,57 +959,70 @@
         height: 200px;
         width: 150px;
     }
+
     #adminNoteDetails .NDS1LH {
         font-size: 26px;
         line-height: 30px;
         margin-left: 25px;
     }
+
     #adminNoteDetails .NDS1LT1 {
         font-size: 14px;
         line-height: 20px;
         margin-left: 25px;
     }
+
     #adminNoteDetails .NDS1LT2 {
         font-size: 12px;
         line-height: 16px;
         margin-left: 25px;
     }
+
     #adminNoteDetails .download-btn {
         width: 160px;
     }
+
     #adminNoteDetails .NDS1RT1 {
         font-size: 14px;
         line-height: 20px;
         margin-bottom: 10px;
     }
+
     #adminNoteDetails .NDS1RT2 {
         font-size: 14px;
         line-height: 20px;
         margin-bottom: 10px;
     }
+
     #adminNoteDetails #note-details-section1 .Rating {
         margin: 0px 0 0 -70px;
         text-align: right;
     }
+
     #adminNoteDetails #Iframe-Cicis-Menu-To-Go {
         height: 100%;
     }
+
     #adminNoteDetails .NDS2RC img {
         height: 40px;
         width: 40px;
     }
+
     #adminNoteDetails .NDS2RT1 {
         font-size: 14px;
         line-height: 20px;
         margin: -40px 0 0 50px;
     }
+
     #adminNoteDetails #note-details-section2 .Rating {
         margin: 0 0 10px 50px;
     }
+
     #adminNoteDetails #note-details-section2 .Rating img {
         height: 15px;
         width: 15px;
     }
+
     #adminNoteDetails .NDS2RT2 {
         font-size: 12px;
         line-height: 16px;
@@ -1049,35 +1037,44 @@
     #adminDashboard #section1 #part2 .box {
         margin-left: 14px;
     }
+
     #adminDashboard #section1 #part2 .box {
         width: 30%;
     }
+
     #adminDashboard #section1 #part2 .text2 {
         font-size: 16px;
     }
+
     #adminDashboard #section2 #part1 p {
         font-size: 20px;
         line-height: 24px;
     }
+
     #adminDashboard #section2 #part1 #search {
         width: 180px;
         margin-left: -100px;
     }
+
     #adminDashboard .search-icon-img {
         right: 440px;
     }
+
     #adminDashboard .search-btn {
         width: 100px;
     }
+
     #adminDashboard #month {
         width: 150px;
     }
+
     #adminDashboard #section2 #part2 th {
         font-size: 12px;
         line-height: 16px;
         padding-left: 5px;
         text-align: center;
     }
+
     #adminDashboard #section2 #part2 td {
         font-size: 12px;
         line-height: 16px;
@@ -1093,50 +1090,61 @@
     #adminDashboard #section1 #part2 .box {
         margin-left: 15px;
     }
+
     #adminDashboard #section1 #part2 .box {
         width: 29%;
     }
+
     #adminDashboard #section1 #part2 .text1 {
         font-size: 26px;
         line-height: 30px;
         margin-top: 20px;
     }
+
     #adminDashboard #section1 #part2 .text2 {
         font-size: 14px;
     }
+
     #adminDashboard #section2 #part1 p {
         font-size: 16px;
         line-height: 20px;
     }
+
     #adminDashboard #section2 #part1 #search {
         width: 130px;
         margin-left: -100px;
     }
+
     #adminDashboard .search-icon-img {
         right: 360px;
     }
+
     #adminDashboard .search-btn {
         width: 90px;
         font-size: 16px;
         line-height: 20px;
     }
+
     #adminDashboard #month {
         font-size: 14px;
         line-height: 18px;
         width: 130px;
     }
+
     #adminDashboard #section2 #part2 th {
         font-size: 10px;
         line-height: 14px;
         padding-left: 5px;
         text-align: center;
     }
+
     #adminDashboard #section2 #part2 td {
         font-size: 9px;
         line-height: 14px;
         padding-left: 5px;
         text-align: center;
     }
+
     #adminDashboard #section2 #part2 td:nth-child(10) {
         padding-right: 10px;
         padding-left: 0;
@@ -1150,22 +1158,27 @@
     #adminDashboard #section1 #part2 .box {
         margin-left: 3%;
     }
+
     #adminDashboard #section1 #part2 .box {
         width: 28%;
     }
+
     #adminDashboard #section1 #part2 .text1 {
         font-size: 24px;
         line-height: 28px;
         margin-top: 20px;
     }
+
     #adminDashboard #section1 #part2 .text2 {
         font-size: 11px;
         line-height: 14px;
     }
+
     #adminDashboard #section2 #part1 p {
         font-size: 12px;
         line-height: 14px;
     }
+
     #adminDashboard #section2 #part1 #search {
         width: 100px;
         margin-left: -95px;
@@ -1173,31 +1186,37 @@
         line-height: 14px;
         padding-left: 35px;
     }
+
     #adminDashboard .search-icon-img {
         right: 200px;
     }
+
     #adminDashboard .search-btn {
         width: 50px;
         font-size: 10px;
         line-height: 14px;
     }
+
     #adminDashboard #month {
         font-size: 14px;
         line-height: 18px;
         width: 130px;
     }
+
     #adminDashboard #section2 #part2 th {
         font-size: 10px;
         line-height: 14px;
         padding-left: 5px;
         text-align: center;
     }
+
     #adminDashboard #section2 #part2 td {
         font-size: 9px;
         line-height: 14px;
         padding-left: 5px;
         text-align: center;
     }
+
     #adminDashboard #section2 #part2 td:nth-child(10) {
         padding-right: 10px;
         padding-left: 0;
@@ -1205,20 +1224,660 @@
 
 }
 
+@media (min-width:320px) and (max-width: 390px) {
+
+    /* Profile */
+    #adminProfile #phone-number {
+        font-size: 13px;
+        line-height: 17px;
+    }
+
+    /* Add Administrator */
+    #adminAddAdministrator #phone-number {
+        font-size: 13px;
+        line-height: 17px;
+    }
+
+}
+
+@media (min-width:700px) and (max-width: 767px) {
+
+    /* Admin Members */
+    #adminMembers #part1 #search {
+        margin-left: -16px;
+    }
+
+    #adminMembers #part2 th {
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 16px;
+        padding-left: 5px;
+    }
+
+    #adminMembers #part2 td {
+        font-size: 11px;
+        line-height: 15px;
+        padding-left: 5px;
+    }
+
+    #adminMembers #part2 th:nth-child(6),
+    #adminMembers #part2 th:nth-child(7),
+    #adminMembers #part2 th:nth-child(8),
+    #adminMembers #part2 th:nth-child(9),
+    #adminMembers #part2 th:nth-child(10) {
+        padding-left: 5px;
+    }
+
+    #adminMembers #part2 td:nth-child(6),
+    #adminMembers #part2 td:nth-child(7),
+    #adminMembers #part2 td:nth-child(8),
+    #adminMembers #part2 td:nth-child(9),
+    #adminMembers #part2 td:nth-child(10) {
+        padding-left: 5px;
+    }
+
+    #adminMembers #part2 td:nth-child(11) a {
+        font-size: 14px;
+    }
+
+    #adminMembers #part2 .dots-img {
+        margin-right: 10px;
+    }
+
+}
+
+@media (min-width:600px) and (max-width: 700px) {
+
+    /* Admin Members */
+    #adminMembers #part1 #search {
+        margin-left: -85px;
+        width: 250px;
+    }
+
+    #adminMembers .search-icon-img {
+        right: 365px;
+    }
+
+    #adminMembers #part2 th {
+        font-size: 10px;
+        font-weight: 600;
+        line-height: 14px;
+        padding-left: 5px;
+    }
+
+    #adminMembers #part2 td {
+        font-size: 9px;
+        line-height: 13px;
+        padding-left: 5px;
+    }
+
+    #adminMembers #part2 th:nth-child(6),
+    #adminMembers #part2 th:nth-child(7),
+    #adminMembers #part2 th:nth-child(8),
+    #adminMembers #part2 th:nth-child(9),
+    #adminMembers #part2 th:nth-child(10) {
+        padding-left: 5px;
+    }
+
+    #adminMembers #part2 td:nth-child(6),
+    #adminMembers #part2 td:nth-child(7),
+    #adminMembers #part2 td:nth-child(8),
+    #adminMembers #part2 td:nth-child(9),
+    #adminMembers #part2 td:nth-child(10) {
+        padding-left: 5px;
+    }
+
+    #adminMembers #part2 td:nth-child(11) a {
+        font-size: 14px;
+    }
+
+    #adminMembers #part2 .dots-img {
+        margin-right: 10px;
+    }
+
+}
+
+@media (min-width:400px) and (max-width: 600px) {
+
+    /* Admin Members */
+    #adminMembers #part1 p {
+        font-size: 26px;
+        line-height: 30px;
+    }
+
+    #adminMembers #part1 #search {
+        margin-left: -85px;
+        width: 130px;
+    }
+
+    #adminMembers .search-icon-img {
+        right: 215px;
+    }
+
+    #adminMembers .search-btn {
+        width: 90px;
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    #adminMembers #part2 th {
+        font-size: 7px;
+        line-height: 11px;
+        padding-left: 2px;
+    }
+
+    #adminMembers #part2 td {
+        font-size: 5px;
+        line-height: 10px;
+        padding-left: 2px;
+    }
+
+    #adminMembers #part2 th:nth-child(6),
+    #adminMembers #part2 th:nth-child(7),
+    #adminMembers #part2 th:nth-child(8),
+    #adminMembers #part2 th:nth-child(9),
+    #adminMembers #part2 th:nth-child(10) {
+        padding-left: 2px;
+    }
+
+    #adminMembers #part2 td:nth-child(6),
+    #adminMembers #part2 td:nth-child(7),
+    #adminMembers #part2 td:nth-child(8),
+    #adminMembers #part2 td:nth-child(9),
+    #adminMembers #part2 td:nth-child(10) {
+        padding-left: 2px;
+    }
+
+    #adminMembers #part2 td:nth-child(11) a {
+        font-size: 14px;
+    }
+
+    #adminMembers #part2 .dots-img {
+        margin-right: 5px;
+    }
+
+}
+@media (min-width:650px) and (max-width: 767px) {
+
+    /* Admin Notes Under Review */
+    #adminNotesUnderReview #seller {
+        width: 150px;
+    }
+    
+    #adminNotesUnderReview #part2 .arrow-down-img {
+        left: 140px;
+    }
+
+    #adminNotesUnderReview #part2 #search {
+        margin-left: -50px;
+        width: 300px;
+    }
+    #adminNotesUnderReview .search-icon-img {
+        right: 410px;
+    }
+    #adminNotesUnderReview #part3 td .approve-btn,
+    #adminNotesUnderReview #part3 td .reject-btn,
+    #adminNotesUnderReview #part3 td .inreview-btn {
+        height: 28px;
+        width: 70px;
+        font-size: 12px;
+        line-height: 16px;
+        margin-right: 0px;
+        margin-bottom: 5px;
+    }
+
+}
+@media (min-width:500px) and (max-width: 650px) {
+
+    /* Admin Notes Under Review */
+
+    #adminNotesUnderReview #part1 p {
+        font-size: 26px;
+        line-height: 30px;
+    }
+
+    #adminNotesUnderReview #seller {
+        font-size: 12px;
+        line-height: 18px;
+        width: 100px;
+    }
+
+    #adminNotesUnderReview #part2 .arrow-down-img {
+        left: 90px;
+    }
+
+    #adminNotesUnderReview #part2 #search {
+        font-size: 14px;
+        line-height: 18px;
+        width: 180px;
+        margin: 0 5px 0px -30px;
+        padding-left: 30px;
+    }
+
+    #adminNotesUnderReview .search-icon-img {
+        right: 275px;
+    }
+
+    #adminNotesUnderReview .search-btn {
+        width: 100px;
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    #adminNotesUnderReview #part3 th {
+        font-size: 12px;
+        line-height: 16px;
+        padding-left: 5px;
+    }
+
+    #adminNotesUnderReview #part3 td {
+        font-size: 12px;
+        line-height: 16px;
+        padding-left: 5px;
+    }
+
+    #adminNotesUnderReview #part3 td .approve-btn,
+    #adminNotesUnderReview #part3 td .reject-btn,
+    #adminNotesUnderReview #part3 td .inreview-btn {
+        height: 24px;
+        width: 70px;
+        font-size: 10px;
+        line-height: 14px;
+        margin-right: 0px;
+        margin-bottom: 5px;
+    }
+
+    #adminNotesUnderReview #part3 .eye-img {
+        width: 30px;
+    }
+
+    #adminNotesUnderReview #part3 .dots-img {
+        height: 15px;
+        margin-right: 5px;
+        margin-left: 0px;
+    }
+
+}
+
+@media (min-width:400px) and (max-width: 500px) {
+
+    /* Admin Notes Under Review */
+
+    #adminNotesUnderReview #part1 p {
+        font-size: 26px;
+        line-height: 30px;
+    }
+
+    #adminNotesUnderReview #seller {
+        font-size: 12px;
+        line-height: 18px;
+        width: 100px;
+    }
+
+    #adminNotesUnderReview #part2 .arrow-down-img {
+        left: 90px;
+    }
+
+    #adminNotesUnderReview #part2 #search {
+        font-size: 12px;
+        line-height: 16px;
+        width: 140px;
+        margin: 0 5px 0px -30px;
+        padding-left: 30px;
+    }
+
+    #adminNotesUnderReview .search-icon-img {
+        right: 205px;
+    }
+
+    #adminNotesUnderReview .search-btn {
+        width: 70px;
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    #adminNotesUnderReview #part3 th {
+        font-size: 10px;
+        line-height: 14px;
+        padding-left: 5px;
+    }
+
+    #adminNotesUnderReview #part3 td {
+        font-size: 10px;
+        line-height: 12px;
+        padding-left: 5px;
+    }
+
+    #adminNotesUnderReview #part3 td .approve-btn,
+    #adminNotesUnderReview #part3 td .reject-btn,
+    #adminNotesUnderReview #part3 td .inreview-btn {
+        height: 20px;
+        width: 50px;
+        font-size: 7px;
+        line-height: 11px;
+        margin-right: 0px;
+        margin-bottom: 5px;
+    }
+
+    #adminNotesUnderReview #part3 .eye-img {
+        width: 30px;
+    }
+
+    #adminNotesUnderReview #part3 td .inreview-btn {
+        margin-bottom: 0px;
+    }
+
+    #adminNotesUnderReview #part3 .dots-img {
+        height: 15px;
+        margin-right: 5px;
+        margin-left: 0px;
+    }
+
+}
+
+@media (min-width:320px) and (max-width: 400px) {
+
+    /* Admin Members */
+    #adminMembers #part1 p {
+        font-size: 22px;
+        line-height: 26px;
+    }
+
+    #adminMembers #part1 #search {
+        margin-left: -85px;
+        padding-left: 30px;
+        width: 100px;
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    #adminMembers .search-icon-img {
+        right: 160px;
+    }
+
+    #adminMembers .search-btn {
+        width: 60px;
+        font-size: 10px;
+        line-height: 14px;
+    }
+
+    #adminMembers #part2 th {
+        font-size: 5px;
+        line-height: 10px;
+        padding-left: 2px;
+    }
+
+    #adminMembers #part2 td {
+        font-size: 5px;
+        line-height: 10px;
+        padding-left: 2px;
+    }
+
+    #adminMembers #part2 th:nth-child(6),
+    #adminMembers #part2 th:nth-child(7),
+    #adminMembers #part2 th:nth-child(8),
+    #adminMembers #part2 th:nth-child(9),
+    #adminMembers #part2 th:nth-child(10) {
+        padding-left: 2px;
+    }
+
+    #adminMembers #part2 td:nth-child(6),
+    #adminMembers #part2 td:nth-child(7),
+    #adminMembers #part2 td:nth-child(8),
+    #adminMembers #part2 td:nth-child(9),
+    #adminMembers #part2 td:nth-child(10) {
+        padding-left: 2px;
+    }
+
+    #adminMembers #part2 td:nth-child(11) a {
+        font-size: 14px;
+    }
+
+    #adminMembers #part2 .dots-img {
+        margin-right: 5px;
+    }
+
+    /* Admin Notes Under Review */
+
+    #adminNotesUnderReview #part1 p {
+        font-size: 26px;
+        line-height: 30px;
+    }
+
+
+    #adminNotesUnderReview #seller {
+        font-size: 12px;
+        line-height: 18px;
+        width: 90px;
+    }
+
+    #adminNotesUnderReview #part2 .arrow-down-img {
+        left: 80px;
+    }
+
+    #adminNotesUnderReview #part2 #search {
+        font-size: 12px;
+        line-height: 16px;
+        width: 100px;
+        margin: 0 5px 0px -30px;
+        padding-left: 30px;
+    }
+
+    #adminNotesUnderReview .search-icon-img {
+        right: 165px;
+    }
+
+    #adminNotesUnderReview .search-btn {
+        width: 70px;
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    #adminNotesUnderReview #part3 th {
+        font-size: 8px;
+        line-height: 12px;
+        padding-left: 5px;
+    }
+
+    #adminNotesUnderReview #part3 td {
+        font-size: 6px;
+        line-height: 10px;
+        padding-left: 5px;
+    }
+
+    #adminNotesUnderReview #part3 td .approve-btn,
+    #adminNotesUnderReview #part3 td .reject-btn,
+    #adminNotesUnderReview #part3 td .inreview-btn {
+        height: 20px;
+        width: 50px;
+        font-size: 7px;
+        line-height: 11px;
+        margin-right: 0px;
+        margin-bottom: 5px;
+    }
+
+    #adminNotesUnderReview #part3 .eye-img {
+        width: 30px;
+    }
+
+    #adminNotesUnderReview #part3 td .inreview-btn {
+        margin-bottom: 0px;
+    }
+
+    #adminNotesUnderReview #part3 .dots-img {
+        height: 15px;
+        margin-right: 5px;
+        margin-left: 0px;
+    }
+
+}
+
+@media (min-width:600px) and (max-width: 767px) {
+
+    /* Admin Member Details */
+    #adminMemberDetails #section1 #part2 img {
+        height: 80px;
+        width: 80px;
+    }
+
+    #adminMemberDetails #section1 #part2 .vl {
+        height: 130px;
+    }
+
+    #adminMemberDetails #section1 #part2 .text1 {
+        font-size: 10px;
+        line-height: 14px;
+        margin-bottom: 5px;
+    }
+
+    #adminMemberDetails #section1 #part2 .text2 {
+        font-size: 10px;
+        line-height: 14px;
+        margin-bottom: 5px;
+    }
+
+    #adminMemberDetails #section2 #part2 th {
+        font-size: 12px;
+        line-height: 16px;
+        padding-left: 5px;
+    }
+
+    #adminMemberDetails #section2 #part2 td {
+        font-size: 12px;
+        line-height: 16px;
+        padding-left: 5px;
+    }
+
+    #adminMemberDetails #section2 #part2 td:nth-child(9) a {
+        font-size: 14px;
+    }
+
+    #adminMemberDetails #section2 #part2 .dots-img {
+        margin-right: 5px;
+        height: 15px;
+        margin-left: 5px;
+    }
+
+}
+
+@media (min-width:450px) and (max-width: 600px) {
+
+    /* Admin Member Details */
+    #adminMemberDetails #section1 #part1 p {
+        font-size: 24px;
+        line-height: 26px;
+    }
+
+    #adminMemberDetails #section1 #part2 img {
+        height: 50px;
+        width: 50px;
+    }
+
+    #adminMemberDetails #section1 #part2 .vl {
+        height: 100px;
+    }
+
+    #adminMemberDetails #section1 #part2 .text1 {
+        font-size: 6px;
+        line-height: 10px;
+        margin-bottom: 5px;
+    }
+
+    #adminMemberDetails #section1 #part2 .text2 {
+        font-size: 6px;
+        line-height: 10px;
+        margin-bottom: 5px;
+    }
+
+    #adminMemberDetails #section2 #part2 th {
+        font-size: 10px;
+        line-height: 14px;
+        padding-left: 5px;
+    }
+
+    #adminMemberDetails #section2 #part2 td {
+        font-size: 9px;
+        line-height: 13px;
+        padding-left: 5px;
+    }
+
+    #adminMemberDetails #section2 #part2 td:nth-child(9) a {
+        font-size: 14px;
+    }
+
+    #adminMemberDetails #section2 #part2 .dots-img {
+        margin-right: 5px;
+        height: 15px;
+    }
+
+}
+
 @media (min-width:320px) and (max-width: 450px) {
+
+    /* Admin Member Details */
+    #adminMemberDetails #section1 #part1 p {
+        font-size: 24px;
+        line-height: 26px;
+    }
+
+    #adminMemberDetails #section1 #part2 img {
+        height: 40px;
+        width: 40px;
+    }
+
+    #adminMemberDetails #section1 #part2 .vl {
+        height: 100px;
+    }
+
+    #adminMemberDetails #section1 #part2 .text1 {
+        font-size: 5px;
+        line-height: 9px;
+        margin-bottom: 5px;
+    }
+
+    #adminMemberDetails #section1 #part2 .text2 {
+        font-size: 5px;
+        line-height: 9px;
+        margin-bottom: 5px;
+    }
+
+    #adminMemberDetails #section2 #part2 th {
+        font-size: 6px;
+        line-height: 10px;
+        padding-left: 5px;
+    }
+
+    #adminMemberDetails #section2 #part2 td {
+        font-size: 5px;
+        line-height: 9px;
+        padding-left: 5px;
+    }
+
+    #adminMemberDetails #section2 #part2 td:nth-child(9) a {
+        font-size: 14px;
+    }
+
+    #adminMemberDetails #section2 #part2 .dots-img {
+        margin-right: 5px;
+        height: 15px;
+    }
+
 
     /* Pagination */
     .left-arrow-img {
         margin-right: 20px;
     }
+
     .right-arrow-img {
         margin-left: 20px;
     }
+
     .pagination-section #three,
     .pagination-section #four,
     .pagination-section #five {
         margin-left: 10px;
     }
+
     .pagination-section #two {
         margin-left: 10px;
     }
@@ -1252,6 +1911,7 @@
         line-height: 14px;
         left: 10px;
     }
+
     .footer-text-right {
         font-size: 10px;
         line-height: 14px;

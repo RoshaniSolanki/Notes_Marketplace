@@ -117,46 +117,58 @@
             <div class="container">
                 <p class="heading">Add Administrator</p>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label class="firstName" for="firstName">First Name *</label>
                             <input type="text" name="first-name" id="first-name" class="form-control"
                                 placeholder="Enter your first name">
                         </div>
                     </div>
-
-
-                    <div class="col-md-12">
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label class="lastName" for="lastName">Last Name *</label>
                             <input type="text" name="last-name" id="last-name" class="form-control"
                                 placeholder="Enter your last name">
                         </div>
                     </div>
-
-
-                    <div class="col-md-12">
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label class="email" for="email">Email *</label>
                             <input type="email" name="email" id="email" class="form-control"
                                 placeholder="Enter your email address">
                         </div>
                     </div>
-
-
-                    <div class="col-md-12">
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label class="phoneNumber" for="phoneNumber">Phone Number</label>
-                            <input type="tel" name="phone-number" id="phone-number" class="form-control"
+                            <div class="row">
+                                <div class="col-md-3 col-xs-4">
+                                    <span><img class="pn-arrow-down-img"
+                                        src="images/Admin/Profile/down-arrow.png"></span>
+                                <select type="text" name="code" id="code" class="form-control"
+                                    placeholder="">
+                                    <option selected disabled hidden>+91</option>
+                                </select>
+                                </div>
+                                <div class="col-md-9 col-xs-8">
+                                    <input type="tel" name="phone-number" id="phone-number" class="form-control"
                                 placeholder="Enter your phone number">
+                                </div>
+                            </div>
+                            
                         </div>
                     </div>
-
-
-                    <div class="col-md-12">
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
                         <button class="btn btn-primary submit-btn">SUBMIT</button>
                     </div>
-
                 </div>
             </div>
         </form>

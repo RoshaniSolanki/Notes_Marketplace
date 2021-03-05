@@ -27,6 +27,7 @@ ul.navbar-nav>li>a {
     line-height: 22px;
     color: #fff;
 }
+
 ul.navbar-nav>li>a:hover,
 ul.navbar-nav>li>a:focus {
     background: none;
@@ -127,6 +128,7 @@ ul.navbar-nav>li>a:focus {
 select {
     -webkit-appearance: none;
 }
+
 /*=======================================================
                          Login
 =========================================================*/
@@ -202,7 +204,7 @@ select {
 #loginPage #forgot-password a {
     padding-left: 93px;
     font-size: 16px;
-    font-weight: 400; 
+    font-weight: 400;
     line-height: 20px;
     color: #6255a5;
 }
@@ -408,9 +410,11 @@ select {
     border: 1px solid #d1d1d1;
     margin-bottom: 20px;
 }
-#adminDashboard #section2 #part1 .row div:nth-child(2){
+
+#adminDashboard #section2 #part1 .row div:nth-child(2) {
     text-align: right;
 }
+
 #adminDashboard .search-icon-img {
     position: absolute;
     right: 640px;
@@ -519,7 +523,7 @@ select {
 #adminProfile .email,
 #adminProfile .secondaryEmail,
 #adminProfile .phoneNumber,
-#adminProfile .profilePicture{
+#adminProfile .profilePicture {
     font-size: 16px;
     font-weight: 400;
     line-height: 20px;
@@ -534,7 +538,7 @@ select {
 #adminProfile #code,
 #adminProfile #phone-number,
 #adminProfile #profile-picture {
-    width: 705px;
+    width: 100%;
     height: 50px;
     border-radius: 3px;
     font-size: 16px;
@@ -543,27 +547,30 @@ select {
     color: #8a8a8a;
     margin-bottom: 30px;
 }
-#adminProfile #code{
-    width: 90px;
-}
-#adminProfile #phone-number {
-    width: 605px;
-}
 
 #adminProfile #profile-picture {
     height: 110px;
     padding-top: 55px;
     text-align: center;
 }
+
 .apn-arrow-down-img {
     position: absolute;
-    right: 5px;
+    right: 25px;
     top: 20px;
 }
+
 #adminProfile .upload-img {
     position: absolute;
     top: 50px;
-    left: 346px;
+    /*left: 346px;
+    */
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
 }
 
 #adminProfile .submit-btn {
@@ -711,8 +718,9 @@ select {
 #adminAddAdministrator #first-name,
 #adminAddAdministrator #last-name,
 #adminAddAdministrator #email,
-#adminAddAdministrator #phone-number {
-    width: 705px;
+#adminAddAdministrator #phone-number,
+#adminAddAdministrator #code {
+    width: 100%;
     height: 50px;
     border-radius: 3px;
     font-size: 16px;
@@ -721,6 +729,13 @@ select {
     color: #8a8a8a;
     margin-bottom: 30px;
 }
+
+#adminAddAdministrator .pn-arrow-down-img {
+    position: absolute;
+    right: 25px;
+    top: 20px;
+}
+
 #adminAddAdministrator .submit-btn {
     background: #6255a5;
     width: 150px;
@@ -865,7 +880,7 @@ select {
 
 #adminAddCategory #category-name,
 #adminAddCategory #description {
-    width: 705px;
+    width: 100%;
     height: 50px;
     border-radius: 3px;
     font-size: 16px;
@@ -1022,7 +1037,7 @@ select {
 
 #adminAddCountry #country-name,
 #adminAddCountry #country-code {
-    width: 705px;
+    width: 100%;
     height: 50px;
     border-radius: 3px;
     font-size: 16px;
@@ -1174,7 +1189,7 @@ select {
 
 #adminAddType #type,
 #adminAddType #description {
-    width: 705px;
+    width: 100%;
     height: 50px;
     border-radius: 3px;
     font-size: 16px;
@@ -1416,7 +1431,11 @@ select {
     width: 322px;
     height: 50px;
     border: 1px solid #d1d1d1;
-    margin: 60px 10px 30px 199px;
+    margin: 60px 10px 30px 0px;
+}
+
+#adminMembers #part1 .row div:nth-child(2) {
+    text-align: right;
 }
 
 #adminMembers .search-icon-img {
@@ -1520,6 +1539,7 @@ select {
     border-left: 1px solid #d1d1d1;
     height: 190px;
 }
+
 #adminMemberDetails #section1 #part2 .text1 {
     font-size: 14px;
     font-weight: 400;
@@ -1785,6 +1805,21 @@ select {
     margin: 60px 0 30px 0;
 }
 
+#adminNotesUnderReview .seller,
+#adminNotesUnderReview #seller {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #333;
+}
+
+#adminNotesUnderReview #seller {
+    width: 174px;
+    height: 50px;
+    border: 1px solid #d1d1d1;
+    margin: 0px 0 20px 0;
+}
+
 #adminNotesUnderReview #part2 .arrow-down-img {
     position: absolute;
     top: 20px;
@@ -1792,7 +1827,6 @@ select {
 }
 
 #adminNotesUnderReview #part2 #search {
-    margin-left: 102px;
     margin-right: 10px;
     padding-left: 45px;
     font-size: 16px;
@@ -1802,7 +1836,10 @@ select {
     width: 322px;
     height: 50px;
     border: 1px solid #d1d1d1;
+}
 
+#adminNotesUnderReview #part2 .row:nth-child(2) div:nth-child(2) {
+    text-align: right;
 }
 
 #adminNotesUnderReview .search-icon-img {
@@ -1823,20 +1860,6 @@ select {
     margin-bottom: 3px;
 }
 
-#adminNotesUnderReview .seller,
-#adminNotesUnderReview #seller {
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 20px;
-    color: #333;
-}
-
-#adminNotesUnderReview #seller {
-    width: 174px;
-    height: 50px;
-    border: 1px solid #d1d1d1;
-    margin: 0px 0 20px 0;
-}
 
 #adminNotesUnderReview #part3 table {
     width: 100%;
@@ -2412,6 +2435,7 @@ select {
     right: -150px;
 
 }
+
 /*** Note Details ***/
 /* Social List */
 ul.social-list {
