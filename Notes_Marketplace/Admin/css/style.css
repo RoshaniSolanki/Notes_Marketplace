@@ -493,7 +493,7 @@ select {
     text-align: center;
 }
 
-#adminDashboard #section2 #part2 td:nth-child(10) {
+#adminDashboard #section2 #part2 td .dots-img {
     padding-right: 20px;
 }
 
@@ -1960,7 +1960,6 @@ select {
 }
 
 #adminPublishedNotes #part2 #search {
-    margin-left: 102px;
     margin-right: 10px;
     padding-left: 45px;
     font-size: 16px;
@@ -1971,6 +1970,9 @@ select {
     height: 50px;
     border: 1px solid #d1d1d1;
 
+}
+#adminPublishedNotes #part2 .row:nth-child(2) div:nth-child(2) {
+    text-align: right;
 }
 
 #adminPublishedNotes .search-icon-img {
@@ -2094,7 +2096,6 @@ select {
 }
 
 #adminDownloadesNotes #part2 #search {
-    margin-left: 102px;
     margin-right: 10px;
     padding-left: 45px;
     font-size: 16px;
@@ -2106,10 +2107,12 @@ select {
     border: 1px solid #d1d1d1;
 
 }
-
+#adminDownloadesNotes #part2 .row:nth-child(2) div:nth-child(2) {
+    text-align: right;
+}
 #adminDownloadesNotes .search-icon-img {
     position: absolute;
-    left: 130px;
+    right: 435px;
     top: 16px;
 }
 
@@ -2132,9 +2135,13 @@ select {
     font-weight: 400;
     line-height: 20px;
     color: #333;
+}
+#adminDownloadesNotes .note {
     padding-right: 144px;
 }
-
+#adminDownloadesNotes .buyer {
+    padding-right: 0px;
+}
 #adminDownloadesNotes .seller {
     padding-right: 138px;
 }
@@ -2226,6 +2233,20 @@ select {
     color: #6255a5;
     margin: 60px 0 30px 0;
 }
+#adminRejectedNotes .seller,
+#adminRejectedNotes #seller {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #333;
+}
+
+#adminRejectedNotes #seller {
+    width: 174px;
+    height: 50px;
+    border: 1px solid #d1d1d1;
+    margin: 0px 0 20px 0;
+}
 
 #adminRejectedNotes #part2 .arrow-down-img {
     position: absolute;
@@ -2234,7 +2255,6 @@ select {
 }
 
 #adminRejectedNotes #part2 #search {
-    margin-left: 102px;
     margin-right: 10px;
     padding-left: 45px;
     font-size: 16px;
@@ -2246,10 +2266,12 @@ select {
     border: 1px solid #d1d1d1;
 
 }
-
+#adminRejectedNotes #part2 .row:nth-child(2) div:nth-child(2) {
+    text-align: right;
+}
 #adminRejectedNotes .search-icon-img {
     position: absolute;
-    left: 130px;
+    right: 435px;
     top: 16px;
 }
 
@@ -2265,20 +2287,6 @@ select {
     margin-bottom: 3px;
 }
 
-#adminRejectedNotes .seller,
-#adminRejectedNotes #seller {
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 20px;
-    color: #333;
-}
-
-#adminRejectedNotes #seller {
-    width: 174px;
-    height: 50px;
-    border: 1px solid #d1d1d1;
-    margin: 0px 0 20px 0;
-}
 
 #adminRejectedNotes #part3 table {
     width: 100%;
