@@ -145,11 +145,11 @@ ul.navbar-nav>li>a:focus {
     font-weight: 400;
     line-height: 20px;
     color: #8a8a8a;
-    border: 1px solid #ff5e5e;
+    border: 1px solid #6255a5;
     width: 480px;
     height: 50px;
     border-radius: 3px;
-    margin: 10px 0 10px 0;
+    margin: 10px 0 50px 0;
 }
 
 #loginPage #forgot-password a {
@@ -166,13 +166,13 @@ ul.navbar-nav>li>a:focus {
     left: 455px;
 }
 
-#loginPage small {
+/*#loginPage small {
     font-size: 13px;
     font-weight: 300;
     line-height: 20px;
     color: #ff3636;
     margin-bottom: 20px;
-}
+}*/
 
 #loginPage #checkbox {
     border: 1px solid #d1d1d1;
@@ -188,7 +188,7 @@ ul.navbar-nav>li>a:focus {
     line-height: 20px;
     color: #333;
     position: absolute;
-    top: 375px;
+    top: 380px;
     left: 60px;
 }
 

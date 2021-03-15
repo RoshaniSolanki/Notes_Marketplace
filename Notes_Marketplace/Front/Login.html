@@ -46,11 +46,11 @@
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <h1>Login</h1>
                         <p class="login-text1">Enter your email address and password to login</p>
-                        <form>
+                        <form method="POST" name="login" onsubmit="return loginForm()">
                             <div class="form-group">
                                 <label class="emailLabel" for="email">Email</label>
                                 
-                                    <input type="email" class="form-control" id="email"
+                                    <input type="email" class="form-control" id="email" name="email"
                                         aria-describedby="emailHelp" placeholder="Enter email">
                                 
                             </div>
@@ -73,13 +73,13 @@
                                         placeholder="Enter Your Password" name="password">
                              
                                 <span class="show-pass" target="#password"><img class="eye-img" src="images/login/eye.png"></span>
-                                <small>The password that you have entered is incorrect</small>
+                                <!--small>The password that you have entered is incorrect</small-->
                             </div>
                             
                                 <input type="checkbox" class="form-check-input" id="checkbox">
                                 <label class="form-check-label" for="remember-me">Remember Me</label>
                             
-                            <button type="submit" class="btn btn-primary login-btn">LOGIN</button>
+                            <button type="submit" name="submit" class="btn btn-primary login-btn">LOGIN</button>
                             <div class="login-text2">
                              
                                     <p class="">Don't have an account? <a href="Sign_Up_Page.html">Sign Up</a></p>
@@ -105,3 +105,19 @@
 </body>
 
 </html>
+
+<script>
+    function loginForm() {
+        var email=document.login.email.value;
+        var password=document.login.password.value;
+
+        if(email==' ') {
+            alert("please enter email address");
+            return false;
+        }
+
+        if(password==' ') {
+            alert("please enter password");
+        }
+    }
+</script>
