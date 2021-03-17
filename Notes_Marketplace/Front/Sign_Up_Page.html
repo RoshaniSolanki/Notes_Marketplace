@@ -50,34 +50,40 @@
                         <p class="text1">Enter your details to signup</p>
                         <p class="text2"><i class="fa fa-check-circle"></i> Your account has
                             been successfully created</p>
-                        <form>
+                        <form action="" method="POST" id="sign_up_form">
                             <div class="form-group">
                                 <label class="firstNameLabel" for="firstName">First Name *</label>
                                 <input type="text" class="form-control" id="first-name"
                                     placeholder="Enter your first name">
+                                <small>Error Message</small>
                             </div>
                             <div class="form-group">
                                 <label class="lastNameLabel" for="lastName">Last Name *</label>
                                 <input type="text" class="form-control" id="last-name"
                                     placeholder="Enter your last name">
+                                <small>Error Message</small>
                             </div>
                             <div class="form-group">
                                 <label class="emailLabel" for="email">Email *</label>
                                 <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
                                     placeholder="Enter email">
+                                <small>Error Message</small>
                             </div>
                             <div class="form-group">
                                 <label class="passwordLabel" for="password">Password</label>
                                 <input type="password" class="form-control" id="password"
                                     placeholder="Enter Your Password" name="password">
                                 <span class="show-pass" target="#password"><img class="eye-img" src="images/login/eye.png"></span>
+                                <small>Error Message</small>
                             </div>
                             <div class="form-group">
                                 <label class="confirmPasswordLabel" for="confirmPassword">Confirm Password</label>
                                 <input type="password" class="form-control" id="confirm-password"
                                     placeholder="Enter Your Password" name="confirmpassword">
+                                
                                 <span class="show-pass" target="#confirm-password"><img class="eye-img"
                                         src="images/login/eye.png"></span>
+                                <small>Error Message</small>
                             </div>
                             <button type="submit" class="btn btn-primary sign-up-btn">SIGN UP</button>
                             <p class="text3">Already have an account? <a href="Login.html">Login</a></p>
@@ -101,3 +107,72 @@
 </body>
 
 </html>
+
+<script>
+    const sign_up_form = document.getElementById('sign_up_form');
+    const first_name = document.getElementById('first-name');
+    const last_name = document.getElementById('last-name');
+    const email = document.getElementById('email');
+    const password = document.getElementById('password');
+    const confirm_password = document.getElementById('confirm-password');
+
+    sign_up_form.addEventListener('submit', e =>{
+        e.preventDefault();
+
+        checkInputs();
+    });
+
+    function checkInputs() {
+        const emailValue = email.value.trim();
+        const firstNameValue = first_name.value.trim();
+        const lastNameValue = last_name.value.trim();
+        const passwordValue = password.value.trim();
+        const confirmPasswordValue = confirm_password.value.trim();
+
+        var a=/[A-Za-z]+$/;
+        if (firstNameValue === '') {
+            setErrorFor(first_name, 'First Name cannot be blank');
+        }else if(!firstNameValue.match(a)) {
+            setErrorFor(first_name, 'Not a valid First Name');
+        }
+    
+        if (lastNameValue === '') {
+            setErrorFor(last_name, 'Last Name cannot be blank');
+        }
+
+        if (emailValue === '') {
+            setErrorFor(email, 'Email cannot be blank');
+        } else if (!isEmail(emailValue)) {
+            setErrorFor(email, 'Not a valid email');
+        }else {
+		setSuccessFor(p);
+	    }
+	}
+
+        if (passwordValue === '') {
+            setErrorFor(password, 'Password cannot be blank');
+        }
+
+        if (confirmPasswordValue === '') {
+            setErrorFor(confirm_password, 'Password cannot be blank');
+        } else if(passwordValue !== confirmPasswordValue) {
+		setErrorFor(confirm_password, 'Passwords does not match');
+        } 
+    }
+
+    function setErrorFor(input, message) {
+        const formGroup = input.parentElement;
+        const small = formGroup.querySelector('small');
+        formGroup.className = 'form-group error';
+        small.innerText = message;
+    }
+
+    function setSuccessFor(p) {
+        className = 'success';
+    }
+
+    function isEmail(email) {
+      return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            .test(email);
+    }
+</script>

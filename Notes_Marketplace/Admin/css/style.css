@@ -141,11 +141,15 @@ select {
     height: 600px;
     width: 580px;
     background: white;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
 }
 
 #loginPage .logo {
     position: absolute;
-    top: 30px;
+    top: 40px;
     left: 50%;
     transform: translateX(-50%);
 }
@@ -177,7 +181,8 @@ select {
     color: #333;
 }
 
-#loginPage #email {
+#loginPage #email,
+#loginPage #password {
     font-size: 16px;
     font-weight: 400;
     line-height: 20px;
@@ -186,21 +191,8 @@ select {
     width: 480px;
     height: 50px;
     border-radius: 3px;
-    margin: 10px 0 30px 0;
+    margin: 10px 0 0px 0;
 }
-
-#loginPage #password {
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 20px;
-    color: #8a8a8a;
-    border: 1px solid #6255a5;
-    width: 480px;
-    height: 50px;
-    border-radius: 3px;
-    margin: 10px 0 50px 0;
-}
-
 #loginPage #forgot-password a {
     padding-left: 93px;
     font-size: 16px;
@@ -211,18 +203,24 @@ select {
 
 #loginPage .eye-img {
     position: absolute;
-    top: 289px;
+    top: 294px;
     left: 455px;
 }
-
-/*#loginPage small {
+#loginPage .error #email,
+#loginPage .error #password {
+    border: 1px solid #ff3636;
+}
+#loginPage small {
+    visibility: hidden;
     font-size: 13px;
     font-weight: 300;
     line-height: 20px;
     color: #ff3636;
     margin-bottom: 20px;
-}*/
-
+}
+#loginPage .error small {
+    visibility: visible;
+}
 #loginPage #checkbox {
     border: 1px solid #d1d1d1;
     width: 30px;
@@ -237,9 +235,10 @@ select {
     line-height: 20px;
     color: #333;
     position: absolute;
-    top: 380px;
+    top: 375px;
     left: 60px;
 }
+
 #loginPage .login-btn {
     background-color: #6255a5;
     width: 480px;

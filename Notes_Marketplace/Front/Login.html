@@ -39,20 +39,21 @@
     <!-- Login Page -->
     <div id="loginPage">
         <img class="logo" src="images/login/top-logo.png" alt="logo">
-        
-            <div class="container">
-                <div class="login">
+
+        <div class="container">
+            <div class="login">
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <h1>Login</h1>
                         <p class="login-text1">Enter your email address and password to login</p>
-                        <form method="POST" name="login" onsubmit="return loginForm()">
+                        <form method="POST" name="login" id="login">
                             <div class="form-group">
                                 <label class="emailLabel" for="email">Email</label>
-                                
-                                    <input type="email" class="form-control" id="email" name="email"
-                                        aria-describedby="emailHelp" placeholder="Enter email">
-                                
+
+                                <input type="email" class="form-control" id="email" name="email"
+                                    aria-describedby="emailHelp" placeholder="Enter email">
+                                <small>Error Message</small>
+
                             </div>
                             <div class="form-group">
                                 <div class="conatainer">
@@ -68,22 +69,23 @@
                                         </div>
                                     </div>
                                 </div>
-                               
-                                    <input type="password" class="form-control" id="password"
-                                        placeholder="Enter Your Password" name="password">
-                             
-                                <span class="show-pass" target="#password"><img class="eye-img" src="images/login/eye.png"></span>
-                                <!--small>The password that you have entered is incorrect</small-->
+
+                                <input type="password" class="form-control" id="password"
+                                    placeholder="Enter Your Password" name="password">
+
+                                <span class="show-pass" target="#password"><img class="eye-img"
+                                        src="images/login/eye.png"></span>
+                                <small>The password that you have entered is incorrect</small>
                             </div>
-                            
-                                <input type="checkbox" class="form-check-input" id="checkbox">
-                                <label class="form-check-label" for="remember-me">Remember Me</label>
-                            
+
+                            <input type="checkbox" class="form-check-input" id="checkbox">
+                            <label class="form-check-label" for="remember-me">Remember Me</label>
+
                             <button type="submit" name="submit" class="btn btn-primary login-btn">LOGIN</button>
                             <div class="login-text2">
-                             
-                                    <p class="">Don't have an account? <a href="Sign_Up_Page.html">Sign Up</a></p>
-                               
+
+                                <p class="">Don't have an account? <a href="Sign_Up_Page.html">Sign Up</a></p>
+
                             </div>
                         </form>
                     </div>
@@ -107,17 +109,40 @@
 </html>
 
 <script>
-    function loginForm() {
-        var email=document.login.email.value;
-        var password=document.login.password.value;
+    const login_form = document.getElementById('login');
+    const email = document.getElementById('email');
+    const password = document.getElementById('password');
 
-        if(email==' ') {
-            alert("please enter email address");
-            return false;
+    login_form.addEventListener('submit', e => {
+        e.preventDefault();
+
+        checkInputs();
+    });
+
+    function checkInputs() {
+        const emailValue = email.value.trim();
+        const passwordValue = password.value.trim();
+
+        if (emailValue === '') {
+            setErrorFor(email, 'Email cannot be blank');
+        } else if (!isEmail(emailValue)) {
+            setErrorFor(email, 'Not a valid email');
         }
 
-        if(password==' ') {
-            alert("please enter password");
+        if (passwordValue === '') {
+            setErrorFor(password, 'Password cannot be blank');
         }
+    }
+
+    function setErrorFor(input, message) {
+        const formGroup = input.parentElement;
+        const small = formGroup.querySelector('small');
+        formGroup.className = 'form-group error';
+        small.innerText = message;
+    }
+
+    function isEmail(email) {
+        return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            .test(email);
     }
 </script>

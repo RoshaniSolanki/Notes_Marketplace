@@ -96,7 +96,7 @@ ul.navbar-nav>li>a:focus {
 
 #loginPage .logo {
     position: absolute;
-    top: 30px;
+    top: 40px;
     left: 50%;
     transform: translateX(-50%);
 }
@@ -128,30 +128,22 @@ ul.navbar-nav>li>a:focus {
     color: #333;
 }
 
-#loginPage #email {
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 20px;
-    color: #000;
-    border: 1px solid #6255a5;
-    width: 480px;
-    height: 50px;
-    border-radius: 3px;
-    margin: 10px 0 30px 0;
-}
-
+#loginPage #email,
 #loginPage #password {
     font-size: 16px;
     font-weight: 400;
     line-height: 20px;
-    color: #8a8a8a;
-    border: 1px solid #6255a5;
+    color: #000;
+    border: 1px solid #d1d1d1;
     width: 480px;
     height: 50px;
     border-radius: 3px;
-    margin: 10px 0 50px 0;
+    margin: 10px 0 0px 0;
 }
-
+#loginPage #email:focus,
+#loginPage #password:focus {
+    border: 1px solid #6255a5;
+}
 #loginPage #forgot-password a {
     padding-left: 93px;
     font-size: 16px;
@@ -162,18 +154,24 @@ ul.navbar-nav>li>a:focus {
 
 #loginPage .eye-img {
     position: absolute;
-    top: 289px;
+    top: 294px;
     left: 455px;
 }
-
-/*#loginPage small {
+#loginPage .error #email,
+#loginPage .error #password {
+    border: 1px solid #ff3636;
+}
+#loginPage small {
+    visibility: hidden;
     font-size: 13px;
     font-weight: 300;
     line-height: 20px;
     color: #ff3636;
     margin-bottom: 20px;
-}*/
-
+}
+#loginPage .error small {
+    visibility: visible;
+}
 #loginPage #checkbox {
     border: 1px solid #d1d1d1;
     width: 30px;
@@ -188,7 +186,7 @@ ul.navbar-nav>li>a:focus {
     line-height: 20px;
     color: #333;
     position: absolute;
-    top: 380px;
+    top: 375px;
     left: 60px;
 }
 
@@ -407,21 +405,29 @@ ul.navbar-nav>li>a:focus {
 }
 
 #signUpPage .text1,
-#signUpPage .text2,
 #signUpPage .text3 {
     font-size: 15px;
     font-weight: 400;
     line-height: 19px;
     color: #333;
     text-align: center;
+    
+}
+#signUpPage .text1 {
     margin-bottom: 45px;
 }
-
 #signUpPage .text2 {
+    visibility: hidden;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 19px;
+    text-align: center;
     margin-bottom: 10px;
     color: green;
 }
-
+#signUpPage .success .text2 { 
+    visibility: visible;
+}
 #signUpPage .text3 a {
     color: #6255a5;
 }
@@ -442,7 +448,6 @@ ul.navbar-nav>li>a:focus {
 #signUpPage #email,
 #signUpPage #password,
 #signUpPage #confirm-password {
-
     font-size: 16px;
     font-weight: 400;
     line-height: 20px;
@@ -451,10 +456,33 @@ ul.navbar-nav>li>a:focus {
     width: 480px;
     height: 50px;
     border-radius: 3px;
-    margin: 5px 0 30px 0;
+    margin: 5px 0 0px 0;
+}
+#signUpPage small {
+    visibility: hidden;
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 20px;
+    color: #ff3636;
+    margin-bottom: 20px;
+}
+#signUpPage .error small {
+    visibility: visible;
+}
+#signUpPage .error #first-name,
+#signUpPage .error #last-name,
+#signUpPage .error #email,
+#signUpPage .error #password,
+#signUpPage .error #confirm-password {
+
+    border: 1px solid #ff3636;
 }
 
-#signUpPage #first-name {
+#signUpPage #first-name:focus,
+#signUpPage #last-name:focus,
+#signUpPage #email:focus,
+#signUpPage #password:focus,
+#signUpPage #confirm-password:focus {
     border: 1px solid #6255a5;
 }
 

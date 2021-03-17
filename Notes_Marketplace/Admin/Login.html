@@ -46,12 +46,13 @@
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <h1>Login</h1>
                         <p class="login-text1">Enter your email address and password to login</p>
-                        <form>
+                        <form action="" method="POST" name="login" id="login">
                             <div class="form-group">
                                 <label class="emailLabel" for="email">Email</label>
                                 
                                     <input type="email" class="form-control" id="email"
                                         aria-describedby="emailHelp" placeholder="Enter email">
+                                    <small>Error Message</small>
                                 
                             </div>
                             <div class="form-group">
@@ -69,11 +70,11 @@
                                     </div>
                                 </div>
                                
-                                    <input type="password" class="form-control" id="password"
+                                <input type="password" class="form-control" id="password"
                                         placeholder="Enter Your Password" name="password">
                              
                                 <span class="show-pass" target="#password"><img class="eye-img" src="../Admin/images/Admin/login/eye.png"></span>
-                                <!--small>The password that you have entered is incorrect</small-->
+                                <small>The password that you have entered is incorrect</small>
                             </div>
                             
                                 <input type="checkbox" class="form-check-input" id="checkbox">
@@ -105,3 +106,42 @@
 </body>
 
 </html>
+
+<script>
+    const login_form = document.getElementById('login');
+    const email = document.getElementById('email');
+    const password = document.getElementById('password');
+
+    login_form.addEventListener('submit', e => {
+        e.preventDefault();
+
+        checkInputs();
+    });
+
+    function checkInputs() {
+        const emailValue = email.value.trim();
+        const passwordValue = password.value.trim();
+
+        if (emailValue === '') {
+            setErrorFor(email, 'Email cannot be blank');
+        } else if (!isEmail(emailValue)) {
+            setErrorFor(email, 'Not a valid email');
+        }
+
+        if (passwordValue === '') {
+            setErrorFor(password, 'Password cannot be blank');
+        }
+    }
+
+    function setErrorFor(input, message) {
+        const formGroup = input.parentElement;
+        const small = formGroup.querySelector('small');
+        formGroup.className = 'form-group error';
+        small.innerText = message;
+    }
+
+    function isEmail(email) {
+        return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            .test(email);
+    }
+</script>
