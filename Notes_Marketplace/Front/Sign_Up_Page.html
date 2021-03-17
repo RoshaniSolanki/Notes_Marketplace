@@ -22,7 +22,7 @@
 
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="css/responsive.css">
-    
+
     <style>
         body {
             background-image: url('images/login/banner-with-overlay.jpg');
@@ -73,14 +73,15 @@
                                 <label class="passwordLabel" for="password">Password</label>
                                 <input type="password" class="form-control" id="password"
                                     placeholder="Enter Your Password" name="password">
-                                <span class="show-pass" target="#password"><img class="eye-img" src="images/login/eye.png"></span>
+                                <span class="show-pass" target="#password"><img class="eye-img"
+                                        src="images/login/eye.png"></span>
                                 <small>Error Message</small>
                             </div>
                             <div class="form-group">
                                 <label class="confirmPasswordLabel" for="confirmPassword">Confirm Password</label>
                                 <input type="password" class="form-control" id="confirm-password"
                                     placeholder="Enter Your Password" name="confirmpassword">
-                                
+
                                 <span class="show-pass" target="#confirm-password"><img class="eye-img"
                                         src="images/login/eye.png"></span>
                                 <small>Error Message</small>
@@ -116,7 +117,7 @@
     const password = document.getElementById('password');
     const confirm_password = document.getElementById('confirm-password');
 
-    sign_up_form.addEventListener('submit', e =>{
+    sign_up_form.addEventListener('submit', e => {
         e.preventDefault();
 
         checkInputs();
@@ -129,35 +130,78 @@
         const passwordValue = password.value.trim();
         const confirmPasswordValue = confirm_password.value.trim();
 
-        var a=/[A-Za-z]+$/;
+        var a = /[A-Za-z]+$/;
         if (firstNameValue === '') {
             setErrorFor(first_name, 'First Name cannot be blank');
-        }else if(!firstNameValue.match(a)) {
+        } else if (!firstNameValue.match(a)) {
             setErrorFor(first_name, 'Not a valid First Name');
+        } else {
+            setSuccessFor(first_name);
         }
-    
+
         if (lastNameValue === '') {
             setErrorFor(last_name, 'Last Name cannot be blank');
+        } else if (!lastNameValue.match(a)) {
+            setErrorFor(last_name, 'Not a valid Last Name');
+        } else {
+            setSuccessFor(last_name);
         }
 
         if (emailValue === '') {
             setErrorFor(email, 'Email cannot be blank');
         } else if (!isEmail(emailValue)) {
             setErrorFor(email, 'Not a valid email');
-        }else {
-		setSuccessFor(p);
-	    }
-	}
-
-        if (passwordValue === '') {
-            setErrorFor(password, 'Password cannot be blank');
+        } else {
+            setSuccessFor(email);
         }
 
+
+        var c = 0;
+        for (var i = 0; i < passwordValue.length; i++) {
+            if (passwordValue[i] == " ")
+                c++;
+        }
+        if (passwordValue === '') {
+            setErrorFor(password, 'Password cannot be blank');
+        } else if (passwordValue.length < 6 || passwordValue.length > 24) {
+            setErrorFor(password, 'Password must be between 6 and 24 characters long');
+        }else if(passwordValue.search(/[a-z]/) == -1) {
+            setErrorFor(password, 'Password must have at least 1 lowercase character');
+        }else if(passwordValue.search(/[0-9]/) == -1) {
+            setErrorFor(password, 'Password must have at least 1 digit character');
+        }else if(passwordValue.search(/[!\@\#\$\%\^\&\(\)\;\:\_\+\,\.]/) == -1) {
+            setErrorFor(password, 'Password must have at least 1 special character');
+        }else if(c!=0) {
+            setErrorFor(password, 'Password must not contain whitespaces');
+        }
+        else {
+            setSuccessFor(password);
+        }
+
+        var c = 0;
+        for (var i = 0; i < confirmPasswordValue.length; i++) {
+            if (confirmPasswordValue[i] == " ")
+                c++;
+        }
         if (confirmPasswordValue === '') {
             setErrorFor(confirm_password, 'Password cannot be blank');
-        } else if(passwordValue !== confirmPasswordValue) {
-		setErrorFor(confirm_password, 'Passwords does not match');
-        } 
+        }else if (confirmPasswordValue.length < 6 || confirmPasswordValue.length > 24) {
+            setErrorFor(confirm_password, 'Password must be between 6 and 24 characters long');
+        }else if(confirmPasswordValue.search(/[a-z]/) == -1) {
+            setErrorFor(confirm_password, 'Password must have at least 1 lowercase character');
+        }else if(confirmPasswordValue.search(/[0-9]/) == -1) {
+            setErrorFor(confirm_password, 'Password must have at least 1 digit character');
+        }else if(confirmPasswordValue.search(/[!\@\#\$\%\^\&\(\)\;\:\_\+\,\.]/) == -1) {
+            setErrorFor(confirm_password, 'Password must have at least 1 special character');
+        }else if(c!=0) {
+            setErrorFor(confirm_password, 'Password must not contain whitespaces');
+        }
+         else if (passwordValue !== confirmPasswordValue) {
+            setErrorFor(confirm_password, 'Passwords does not match');
+        }else {
+            setSuccessFor(confirm_password);
+        }
+        
     }
 
     function setErrorFor(input, message) {
@@ -167,12 +211,16 @@
         small.innerText = message;
     }
 
-    function setSuccessFor(p) {
-        className = 'success';
+    function setSuccessFor(input) {
+        const formGroup = input.parentElement;
+        formGroup.className = 'form-group';
     }
+    /*if(valid) {
+        setSuccessFor(p);
+    }*/
 
     function isEmail(email) {
-      return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
             .test(email);
     }
 </script>

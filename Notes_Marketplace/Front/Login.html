@@ -127,10 +127,30 @@
             setErrorFor(email, 'Email cannot be blank');
         } else if (!isEmail(emailValue)) {
             setErrorFor(email, 'Not a valid email');
+        } else {
+            setSuccessFor(email);
         }
 
+        var c = 0;
+        for (var i = 0; i < passwordValue.length; i++) {
+            if (passwordValue[i] == " ")
+                c++;
+        }
         if (passwordValue === '') {
             setErrorFor(password, 'Password cannot be blank');
+        } else if (passwordValue.length < 6 || passwordValue.length > 24) {
+            setErrorFor(password, 'Password must be between 6 and 24 characters long');
+        }else if(passwordValue.search(/[a-z]/) == -1) {
+            setErrorFor(password, 'Password must have at least 1 lowercase character');
+        }else if(passwordValue.search(/[0-9]/) == -1) {
+            setErrorFor(password, 'Password must have at least 1 digit character');
+        }else if(passwordValue.search(/[!\@\#\$\%\^\&\(\)\;\:\_\+\,\.]/) == -1) {
+            setErrorFor(password, 'Password must have at least 1 special character');
+        }else if(c!=0) {
+            setErrorFor(password, 'Password must not contain whitespaces');
+        }
+        else {
+            setSuccessFor(password);
         }
     }
 
@@ -139,6 +159,11 @@
         const small = formGroup.querySelector('small');
         formGroup.className = 'form-group error';
         small.innerText = message;
+    }
+
+    function setSuccessFor(input) {
+        const formGroup = input.parentElement;
+        formGroup.className = 'form-group';
     }
 
     function isEmail(email) {
