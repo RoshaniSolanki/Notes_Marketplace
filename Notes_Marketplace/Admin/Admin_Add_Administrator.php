@@ -36,7 +36,7 @@
                         <span id="mobile-nav-open-btn">&#9776;</span>
 
                         <!-- Logo -->
-                        <a class="navbar-brand" href="Admin_Dashboard.html">
+                        <a class="navbar-brand" href="Admin_Dashboard.php">
                             <img src="images/Admin/Add_Administrator/logo.png" alt="logo">
                         </a>
                     </div>

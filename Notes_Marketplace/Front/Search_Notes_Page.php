@@ -37,7 +37,7 @@
                         <span id="mobile-nav-open-btn">&#9776;</span>
 
                         <!-- Logo -->
-                        <a class="navbar-brand" href="Home_Page.html">
+                        <a class="navbar-brand" href="Home_Page.php">
                             <img src="images/home/top-logo.png" alt="logo">
                         </a>
                     </div>

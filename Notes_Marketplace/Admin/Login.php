@@ -1,3 +1,5 @@
+<?php include "../includes/db.php" ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,7 +24,7 @@
 
     <style>
         body {
-            background-image: url('images/login/banner-with-overlay.jpg');
+            background-image: url('../Admin/images/Admin/login/banner-with-overlay.jpg');
             position: absolute;
             width: 100%;
             height: 100%;
@@ -31,29 +33,28 @@
         }
     </style>
 
-
 </head>
 
 <body>
 
     <!-- Login Page -->
     <div id="loginPage">
-        <img class="logo" src="images/login/top-logo.png" alt="logo">
-
-        <div class="container">
-            <div class="login">
+        <img class="logo" src="../Admin/images/Admin/login/top-logo.png" alt="logo">
+        
+            <div class="container">
+                <div class="login">
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <h1>Login</h1>
                         <p class="login-text1">Enter your email address and password to login</p>
-                        <form method="POST" name="login" id="login">
+                        <form action="" method="POST" name="login" id="login">
                             <div class="form-group">
                                 <label class="emailLabel" for="email">Email</label>
-
-                                <input type="email" class="form-control" id="email" name="email"
-                                    aria-describedby="emailHelp" placeholder="Enter email">
-                                <small>Error Message</small>
-
+                                
+                                    <input type="email" class="form-control" id="email"
+                                        aria-describedby="emailHelp" placeholder="Enter email">
+                                    <small>Error Message</small>
+                                
                             </div>
                             <div class="form-group">
                                 <div class="conatainer">
@@ -69,23 +70,22 @@
                                         </div>
                                     </div>
                                 </div>
-
+                               
                                 <input type="password" class="form-control" id="password"
-                                    placeholder="Enter Your Password" name="password">
-
-                                <span class="show-pass" target="#password"><img class="eye-img"
-                                        src="images/login/eye.png"></span>
+                                        placeholder="Enter Your Password" name="password">
+                             
+                                <span class="show-pass" target="#password"><img class="eye-img" src="../Admin/images/Admin/login/eye.png"></span>
                                 <small>The password that you have entered is incorrect</small>
                             </div>
-
-                            <input type="checkbox" class="form-check-input" id="checkbox">
-                            <label class="form-check-label" for="remember-me">Remember Me</label>
-
-                            <button type="submit" name="submit" class="btn btn-primary login-btn">LOGIN</button>
+                            
+                                <input type="checkbox" class="form-check-input" id="checkbox">
+                                <label class="form-check-label" for="remember-me">Remember Me</label>
+                            
+                            <button type="submit" class="btn btn-primary login-btn">LOGIN</button>
                             <div class="login-text2">
-
-                                <p class="">Don't have an account? <a href="Sign_Up_Page.html">Sign Up</a></p>
-
+                             
+                                    <p class="">Don't have an account? <a href="Sign_Up_Page.html">Sign Up</a></p>
+                               
                             </div>
                         </form>
                     </div>
@@ -127,30 +127,10 @@
             setErrorFor(email, 'Email cannot be blank');
         } else if (!isEmail(emailValue)) {
             setErrorFor(email, 'Not a valid email');
-        } else {
-            setSuccessFor(email);
         }
 
-        var c = 0;
-        for (var i = 0; i < passwordValue.length; i++) {
-            if (passwordValue[i] == " ")
-                c++;
-        }
         if (passwordValue === '') {
             setErrorFor(password, 'Password cannot be blank');
-        } else if (passwordValue.length < 6 || passwordValue.length > 24) {
-            setErrorFor(password, 'Password must be between 6 and 24 characters long');
-        }else if(passwordValue.search(/[a-z]/) == -1) {
-            setErrorFor(password, 'Password must have at least 1 lowercase character');
-        }else if(passwordValue.search(/[0-9]/) == -1) {
-            setErrorFor(password, 'Password must have at least 1 digit character');
-        }else if(passwordValue.search(/[!\@\#\$\%\^\&\(\)\;\:\_\+\,\.]/) == -1) {
-            setErrorFor(password, 'Password must have at least 1 special character');
-        }else if(c!=0) {
-            setErrorFor(password, 'Password must not contain whitespaces');
-        }
-        else {
-            setSuccessFor(password);
         }
     }
 
@@ -159,11 +139,6 @@
         const small = formGroup.querySelector('small');
         formGroup.className = 'form-group error';
         small.innerText = message;
-    }
-
-    function setSuccessFor(input) {
-        const formGroup = input.parentElement;
-        formGroup.className = 'form-group';
     }
 
     function isEmail(email) {

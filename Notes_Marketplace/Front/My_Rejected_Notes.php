@@ -21,10 +21,8 @@
         <link rel="stylesheet" href="css/responsive.css">
     
     </head>
-
 <body>
     <!-- Header -->
-
     <header>
         <nav class="navbar navbar-fixed-top">
             <div class="container-fluid">
@@ -36,7 +34,7 @@
                         <span id="mobile-nav-open-btn">&#9776;</span>
 
                         <!-- Logo -->
-                        <a class="navbar-brand" href="Home_Page.html">
+                        <a class="navbar-brand" href="Home_Page.php">
                             <img src="images/home/logo.png" alt="logo">
                         </a>
                     </div>
@@ -65,7 +63,6 @@
                                         </div>
                                     </div>
                                 </li>
-
                                 <li><a href="Logout.html">
                                         <button class="btn btn-primary logout-btn">Logout</button>
                                     </a></li>
@@ -78,7 +75,7 @@
 
                         <!-- Logo -->
                         <a href="Home_Page.html">
-                            <img class="logo" src="images/home/logo.png" alt="logo">
+                            <img  class="logo" src="images/home/logo.png" alt="logo">
                         </a>
 
 
@@ -103,10 +100,10 @@
                                 </li>
                                 <li><a href="#"><img class="user-img" src="images/User-Profile/user-img.png" width="40"
                                             height="40" alt=""></a></li>
-                                <li>
-                                    <a href="Login.html">
-                                        <button class="btn btn-primary logout-btn">Logout</button>
-                                    </a>
+
+                                <a href="Login.html">
+                                    <button class="btn btn-primary logout-btn">Logout</button>
+                                </a>
                                 </li>
                             </ul>
                         </div>
@@ -116,19 +113,19 @@
         </nav>
     </header>
     <!-- Header Ends -->
-    <!-- My Sold Notes -->
-    <div id="mySoldNotes">
+    <!-- My Rejected Notes -->
+    <div id="myRejectedNotes">
         <div class="container">
 
             <div id="part1">
                 <div class="row">
                     <div class="col-md-5 col-sm-4 col-xs-4">
-                        <p>My Sold Notes</p>
+                        <p>My Rejected Notes</p>
                     </div>
                     <div class="col-md-7 col-sm-8 col-xs-8">
                         <input type="text" name="search" id="search" placeholder="Search"><span><img class="search-icon-img"
-                                src="./images/My_Sold_Notes/search-icon.png"></span>
-                        <a href=""><button class="btn btn-primary my-sold-notes-search-btn">SEARCH</button></a>
+                                src="./images/My_Rejected_Notes/search-icon.png"></span>
+                        <a href=""><button class="btn btn-primary my-rejected-notes-search-btn">SEARCH</button></a>
                     </div>
                 </div>
             </div>
@@ -140,28 +137,22 @@
                                 <th>SR NO.</th>
                                 <th>NOTE TITLE</th>
                                 <th>CATEGORY</th>
-                                <th>BUYER</th>
-                                <th>SELL TYPE</th>
-                                <th>PRICE</th>
-                                <th>DOWNLOADED DATE/TIME</th>
+                                <th>REMARKS</th>
+                                <th>CLONE</th>
                                 <th></th>
                             </tr>
                             <tr>
                                 <td>1</td>
                                 <td>Data Science</td>
                                 <td>Science</td>
-                                <td>testting123@gmail.com</td>
-                                <td>Paid</td>
-                                <td>$250</td>
-                                <td>27 Nov 2020, 11:24:34</td>
-                                <td><img class="eye-img" src="./images/My_Sold_Notes/eye.png">
-                                    
-                                    <div class="my-sold-menu-popup">
-                                        <a class="my-sold-menu-check" target="#ms1">
-                                            <img class="dots-img"
-                                        src="./images/My_Sold_Notes/dots.png">
+                                <td>Lorem ipsum is simply dummy text</td>
+                                <td>Clone</td>
+                                <td>
+                                    <div class="my-rej-menu-popup">
+                                        <a class="my-rej-menu-check" target="#mr1">
+                                            <img class="dots-img" src="./images/My_Rejected_Notes/dots.png">
                                         </a>
-                                        <div id="ms1" class="my-sold-menu-show">
+                                        <div id="mr1" class="my-rej-menu-show">
                                             <p><a href="#">Download Note</a></p>
                                         </div>
                                     </div>
@@ -171,18 +162,14 @@
                                 <td>2</td>
                                 <td>Accounts</td>
                                 <td>Commerce</td>
-                                <td>testting123@gmail.com</td>
-                                <td>Free</td>
-                                <td>$0</td>
-                                <td>27 Nov 2020, 11:24:34</td>
-                                <td><img class="eye-img" src="./images/My_Sold_Notes/eye.png">
-                                    
-                                    <div class="my-sold-menu-popup">
-                                        <a class="my-sold-menu-check" target="#ms2">
-                                            <img class="dots-img"
-                                        src="./images/My_Sold_Notes/dots.png">
+                                <td>Lorem ipsum is simply dummy text</td>
+                                <td>Clone</td>
+                                <td>
+                                    <div class="my-rej-menu-popup">
+                                        <a class="my-rej-menu-check" target="#mr2">
+                                            <img class="dots-img" src="./images/My_Rejected_Notes/dots.png">
                                         </a>
-                                        <div id="ms2" class="my-sold-menu-show">
+                                        <div id="mr2" class="my-rej-menu-show">
                                             <p><a href="#">Download Note</a></p>
                                         </div>
                                     </div>
@@ -192,18 +179,14 @@
                                 <td>3</td>
                                 <td>Social Studies</td>
                                 <td>Social</td>
-                                <td>testting123@gmail.com</td>
-                                <td>Free</td>
-                                <td>$0</td>
-                                <td>27 Nov 2020, 11:24:34</td>
-                                <td><img class="eye-img" src="./images/My_Sold_Notes/eye.png">
-                                    
-                                    <div class="my-sold-menu-popup">
-                                        <a class="my-sold-menu-check" target="#ms3">
-                                            <img class="dots-img"
-                                        src="./images/My_Sold_Notes/dots.png">
+                                <td>Lorem ipsum is simply dummy text</td>
+                                <td>Clone</td>
+                                <td>
+                                    <div class="my-rej-menu-popup">
+                                        <a class="my-rej-menu-check" target="#mr3">
+                                            <img class="dots-img" src="./images/My_Rejected_Notes/dots.png">
                                         </a>
-                                        <div id="ms3" class="my-sold-menu-show">
+                                        <div id="mr3" class="my-rej-menu-show">
                                             <p><a href="#">Download Note</a></p>
                                         </div>
                                     </div>
@@ -213,18 +196,14 @@
                                 <td>4</td>
                                 <td>AI</td>
                                 <td>IT</td>
-                                <td>testting123@gmail.com</td>
-                                <td>Paid</td>
-                                <td>$158</td>
-                                <td>27 Nov 2020, 11:24:34</td>
-                                <td><img class="eye-img" src="./images/My_Sold_Notes/eye.png">
-                                    
-                                    <div class="my-sold-menu-popup">
-                                        <a class="my-sold-menu-check" target="#ms4">
-                                            <img class="dots-img"
-                                        src="./images/My_Sold_Notes/dots.png">
+                                <td>Lorem ipsum is simply dummy text</td>
+                                <td>Clone</td>
+                                <td>
+                                    <div class="my-rej-menu-popup">
+                                        <a class="my-rej-menu-check" target="#mr4">
+                                            <img class="dots-img" src="./images/My_Rejected_Notes/dots.png">
                                         </a>
-                                        <div id="ms4" class="my-sold-menu-show">
+                                        <div id="mr4" class="my-rej-menu-show">
                                             <p><a href="#">Download Note</a></p>
                                         </div>
                                     </div>
@@ -234,18 +213,14 @@
                                 <td>5</td>
                                 <td>Lorem ipsum</td>
                                 <td>Lorem</td>
-                                <td>testting123@gmail.com</td>
-                                <td>Free</td>
-                                <td>$0</td>
-                                <td>27 Nov 2020, 11:24:34</td>
-                                <td><img class="eye-img" src="./images/My_Sold_Notes/eye.png">
-                                    
-                                    <div class="my-sold-menu-popup">
-                                        <a class="my-sold-menu-check" target="#ms5">
-                                            <img class="dots-img"
-                                        src="./images/My_Sold_Notes/dots.png">
+                                <td>Lorem ipsum is simply dummy text</td>
+                                <td>Clone</td>
+                                <td>
+                                    <div class="my-rej-menu-popup">
+                                        <a class="my-rej-menu-check" target="#mr5">
+                                            <img class="dots-img" src="./images/My_Rejected_Notes/dots.png">
                                         </a>
-                                        <div id="ms5" class="my-sold-menu-show">
+                                        <div id="mr5" class="my-rej-menu-show">
                                             <p><a href="#">Download Note</a></p>
                                         </div>
                                     </div>
@@ -255,18 +230,14 @@
                                 <td>6</td>
                                 <td>Data Science</td>
                                 <td>Science</td>
-                                <td>testting123@gmail.com</td>
-                                <td>Paid</td>
-                                <td>$555</td>
-                                <td>27 Nov 2020, 11:24:34</td>
-                                <td><img class="eye-img" src="./images/My_Sold_Notes/eye.png">
-                                    
-                                    <div class="my-sold-menu-popup">
-                                        <a class="my-sold-menu-check" target="#ms6">
-                                            <img class="dots-img"
-                                        src="./images/My_Sold_Notes/dots.png">
+                                <td>Lorem ipsum is simply dummy text</td>
+                                <td>Clone</td>
+                                <td>
+                                    <div class="my-rej-menu-popup">
+                                        <a class="my-rej-menu-check" target="#mr6">
+                                            <img class="dots-img" src="./images/My_Rejected_Notes/dots.png">
                                         </a>
-                                        <div id="ms6" class="my-sold-menu-show">
+                                        <div id="mr6" class="my-rej-menu-show">
                                             <p><a href="#">Download Note</a></p>
                                         </div>
                                     </div>
@@ -276,18 +247,14 @@
                                 <td>7</td>
                                 <td>Accounts</td>
                                 <td>Commerce</td>
-                                <td>testting123@gmail.com</td>
-                                <td>Free</td>
-                                <td>$0</td>
-                                <td>27 Nov 2020, 11:24:34</td>
-                                <td><img class="eye-img" src="./images/My_Sold_Notes/eye.png">
-                                    
-                                    <div class="my-sold-menu-popup">
-                                        <a class="my-sold-menu-check" target="#ms7">
-                                            <img class="dots-img"
-                                        src="./images/My_Sold_Notes/dots.png">
+                                <td>Lorem ipsum is simply dummy text</td>
+                                <td>Clone</td>
+                                <td>
+                                    <div class="my-rej-menu-popup">
+                                        <a class="my-rej-menu-check" target="#mr7">
+                                            <img class="dots-img" src="./images/My_Rejected_Notes/dots.png">
                                         </a>
-                                        <div id="ms7" class="my-sold-menu-show">
+                                        <div id="mr7" class="my-rej-menu-show">
                                             <p><a href="#">Download Note</a></p>
                                         </div>
                                     </div>
@@ -297,18 +264,14 @@
                                 <td>8</td>
                                 <td>Social Studies</td>
                                 <td>Social</td>
-                                <td>testting123@gmail.com</td>
-                                <td>Free</td>
-                                <td>$0</td>
-                                <td>27 Nov 2020, 11:24:34</td>
-                                <td><img class="eye-img" src="./images/My_Sold_Notes/eye.png">
-                                    
-                                    <div class="my-sold-menu-popup">
-                                        <a class="my-sold-menu-check" target="#ms8">
-                                            <img class="dots-img"
-                                        src="./images/My_Sold_Notes/dots.png">
+                                <td>Lorem ipsum is simply dummy text</td>
+                                <td>Clone</td>
+                                <td>
+                                    <div class="my-rej-menu-popup">
+                                        <a class="my-rej-menu-check" target="#mr8">
+                                            <img class="dots-img" src="./images/My_Rejected_Notes/dots.png">
                                         </a>
-                                        <div id="ms8" class="my-sold-menu-show">
+                                        <div id="mr8" class="my-rej-menu-show">
                                             <p><a href="#">Download Note</a></p>
                                         </div>
                                     </div>
@@ -318,18 +281,14 @@
                                 <td>9</td>
                                 <td>AI</td>
                                 <td>IT</td>
-                                <td>testting123@gmail.com</td>
-                                <td>Paid</td>
-                                <td>$250</td>
-                                <td>27 Nov 2020, 11:24:34</td>
-                                <td><img class="eye-img" src="./images/My_Sold_Notes/eye.png">
-                                    
-                                    <div class="my-sold-menu-popup">
-                                        <a class="my-sold-menu-check" target="#ms9">
-                                            <img class="dots-img"
-                                        src="./images/My_Sold_Notes/dots.png">
+                                <td>Lorem ipsum is simply dummy text</td>
+                                <td>Clone</td>
+                                <td>
+                                    <div class="my-rej-menu-popup">
+                                        <a class="my-rej-menu-check" target="#mr9">
+                                            <img class="dots-img" src="./images/My_Rejected_Notes/dots.png">
                                         </a>
-                                        <div id="ms9" class="my-sold-menu-show">
+                                        <div id="mr9" class="my-rej-menu-show">
                                             <p><a href="#">Download Note</a></p>
                                         </div>
                                     </div>
@@ -339,18 +298,14 @@
                                 <td>10</td>
                                 <td>Lorem ipsum</td>
                                 <td>Lorem</td>
-                                <td>testting123@gmail.com</td>
-                                <td>Free</td>
-                                <td>$115</td>
-                                <td>27 Nov 2020, 11:24:34</td>
-                                <td><img class="eye-img" src="./images/My_Sold_Notes/eye.png">
-                                    
-                                    <div class="my-sold-menu-popup">
-                                        <a class="my-sold-menu-check" target="#ms10">
-                                            <img class="dots-img"
-                                        src="./images/My_Sold_Notes/dots.png">
+                                <td>Lorem ipsum is simply dummy text</td>
+                                <td>Clone</td>
+                                <td>
+                                    <div class="my-rej-menu-popup">
+                                        <a class="my-rej-menu-check" target="#mr10">
+                                            <img class="dots-img" src="./images/My_Rejected_Notes/dots.png">
                                         </a>
-                                        <div id="ms10" class="my-sold-menu-show">
+                                        <div id="mr10" class="my-rej-menu-show">
                                             <p><a href="#">Download Note</a></p>
                                         </div>
                                     </div>
@@ -368,7 +323,7 @@
                                 <ul class="pagination">
                                     <li class="page-item">
                                         <a class="page-link" href="#">
-                                            <img class="left-arrow-img" src="./images/My_Sold_Notes/left-arrow.png">
+                                            <img class="left-arrow-img" src="./images/My_Rejected_Notes/left-arrow.png">
                                         </a>
                                     </li>
                                     <li class="page-item"><a id="one" class="page-link" href="#">1</a></li>
@@ -378,7 +333,8 @@
                                     <li class="page-item"><a id="five" class="page-link" href="#">5</a></li>
                                     <li class="page-item">
                                         <a class="page-link" href="#">
-                                            <img class="right-arrow-img" src="./images/My_Sold_Notes/right-arrow.png">
+                                            <img class="right-arrow-img"
+                                                src="./images/My_Rejected_Notes/right-arrow.png">
                                         </a>
                                     </li>
                                 </ul>
@@ -390,7 +346,7 @@
 
             </div>
         </div>
-        <!-- My Sold Notes Ends -->
+        <!-- My Rejected Notes Ends -->
         <!-- Footer -->
         <footer class="footer">
             <hr>
@@ -403,9 +359,9 @@
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-6">
                         <ul class="social-list">
-                            <li><a href="#"><img src="images/My_Sold_Notes/facebook.png"></a></li>
-                            <li><a href="#"><img src="images/My_Sold_Notes/twitter.png"></a></li>
-                            <li><a href="#"><img src="images/My_Sold_Notes/linkedin.png"></a></li>
+                            <li><a href="#"><img src="images/My_Rejected_Notes/facebook.png"></a></li>
+                            <li><a href="#"><img src="images/My_Rejected_Notes/twitter.png"></a></li>
+                            <li><a href="#"><img src="images/My_Rejected_Notes/linkedin.png"></a></li>
                         </ul>
                     </div>
                 </div>

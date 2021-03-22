@@ -87,7 +87,7 @@
                                 <small>Error Message</small>
                             </div>
                             <button type="submit" class="btn btn-primary sign-up-btn">SIGN UP</button>
-                            <p class="text3">Already have an account? <a href="Login.html">Login</a></p>
+                            <p class="text3">Already have an account? <a href="Login.php">Login</a></p>
 
                         </form>
                     </div>
