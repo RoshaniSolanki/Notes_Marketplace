@@ -1,5 +1,12 @@
 <?php include "../includes/db.php" ?>
 
+<?php 
+
+if(isset($_POST['submit'])) {
+    echo $e = $_POST['email'];
+}
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -47,7 +54,7 @@
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <h1>Login</h1>
                         <p class="login-text1">Enter your email address and password to login</p>
-                        <form method="POST" name="login" id="login">
+                        <form action="Login.php" method="POST" name="login" id="login">
                             <div class="form-group">
                                 <label class="emailLabel" for="email">Email</label>
 

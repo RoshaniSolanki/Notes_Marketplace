@@ -1,3 +1,39 @@
+<?php include "../includes/db.php"; ?>
+<?php include "../includes/functions.php"; ?>
+<?php 
+
+if(isset($_POST['submit'])) {
+    /*$firstname  = $_POST['firstname'];
+    $lastname   = $_POST['lastname'];
+    $email      = $_POST['email'];
+    $password   = $_POST['password'];
+    $confirmpassword = $_POST['confirmpassword'];
+
+
+    $firstname       = mysqli_real_escape_string($connection, $firstname);
+    $lastname        = mysqli_real_escape_string($connection, $lastname);
+    $email           = mysqli_real_escape_string($connection, $email);
+    $password        = mysqli_real_escape_string($connection, $password);
+    $confirmpassword = mysqli_real_escape_string($connection, $confirmpassword);*/
+
+    $firstname = escape_string($_POST['firstname']);
+    $lastname = escape_string($_POST['lastname']);
+    $email = escape_string($_POST['email']);
+    $password = escape_string($_POST['password']);
+    $confirmpassword = escape_string($_POST['confirmpassword']);
+
+    $createdDate = date("Y-m-d H:i:s");
+    $modifiedDate = date("Y-m-d H:i:s");
+
+    $query = query("INSERT INTO users(RoleID, FirstName, LastName, EmailID, Password, CreatedBy, CreatedDate, ModifiedBy, ModifiedDate) VALUES (3, '{$firstname}', '{$lastname}', '{$email}', '{$password}', null, '{$createdDate}', null, '{$modifiedDate}')");
+    confirm($query);
+    
+   /* echo "<p class='text2' style='text-align:center;margin-top:20px;'><i class='fa fa-check-circle'></i>Your account has
+    been successfully created</p>";*/
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,24 +84,25 @@
                     <div class="col-md-12">
                         <h1>Create an Account</h1>
                         <p class="text1">Enter your details to signup</p>
-                        <p class="text2"><i class="fa fa-check-circle"></i> Your account has
+                        <p class="text2"><i class="fa fa-check-circle"></i>Your account has
                             been successfully created</p>
-                        <form action="" method="POST" id="sign_up_form">
+
+                        <form action="Sign_Up_Page.php" method="post" id="sign_up_form" onsubmit="return Sign_Up()">
                             <div class="form-group">
                                 <label class="firstNameLabel" for="firstName">First Name *</label>
-                                <input type="text" class="form-control" id="first-name"
+                                <input type="text" class="form-control" id="first-name" name="firstname"
                                     placeholder="Enter your first name">
                                 <small>Error Message</small>
                             </div>
                             <div class="form-group">
                                 <label class="lastNameLabel" for="lastName">Last Name *</label>
-                                <input type="text" class="form-control" id="last-name"
+                                <input type="text" class="form-control" id="last-name" name="lastname"
                                     placeholder="Enter your last name">
                                 <small>Error Message</small>
                             </div>
                             <div class="form-group">
                                 <label class="emailLabel" for="email">Email *</label>
-                                <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
                                     placeholder="Enter email">
                                 <small>Error Message</small>
                             </div>
@@ -86,7 +123,7 @@
                                         src="images/login/eye.png"></span>
                                 <small>Error Message</small>
                             </div>
-                            <button type="submit" class="btn btn-primary sign-up-btn">SIGN UP</button>
+                            <button type="submit" name="submit" class="btn btn-primary sign-up-btn">SIGN UP</button>
                             <p class="text3">Already have an account? <a href="Login.php">Login</a></p>
 
                         </form>
@@ -110,6 +147,24 @@
 </html>
 
 <script>
+
+   /***** function Sign_Up() {
+        const first_name = document.getElementById('first-name');
+        const firstNameValue = first_name.value.trim();
+
+        var a = /[A-Za-z]+$/;
+        if (firstNameValue === '') {
+            first_name.style.border = "1px solid red";
+            document.getElementById('fn').innerHTML = "First Name cannot be blank";
+            return false;
+
+        }if (!firstNameValue.match(a)) {
+            document.getElementById('fn').innerHTML = "Not a valid First Name";
+            return false;
+        } 
+        
+    }*****/
+    /*
     const sign_up_form = document.getElementById('sign_up_form');
     const first_name = document.getElementById('first-name');
     const last_name = document.getElementById('last-name');
@@ -118,7 +173,7 @@
     const confirm_password = document.getElementById('confirm-password');
 
     sign_up_form.addEventListener('submit', e => {
-        e.preventDefault();
+       e.preventDefault();
 
         checkInputs();
     });
@@ -215,12 +270,10 @@
         const formGroup = input.parentElement;
         formGroup.className = 'form-group';
     }
-    /*if(valid) {
-        setSuccessFor(p);
-    }*/
+    
 
     function isEmail(email) {
         return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
             .test(email);
-    }
+    }*/
 </script>
