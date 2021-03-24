@@ -1,3 +1,39 @@
+<?php include "../includes/db.php" ?>
+<?php include "../includes/functions.php"; ?>
+<?php 
+
+if(isset($_POST['submit'])) {
+
+    $email = escape_string($_POST['email']);
+
+    $email_search = query("SELECT * FROM users WHERE EmailID = '$email' ");
+    confirm($email_search);
+
+    $email_count = mysqli_num_rows($email_search);
+
+    if($email_count) {
+        $subject = "New Temporary Password has been created for you";
+        $email = $_POST['email'];
+        $body = "Hello, "."\r\n"."\r\n"."We have generated a new password for you"."\r\n". "Password:" ."\r\n"."\r\n"."Regards,"."\r\n". "Notes Marketplace";
+        $sender_email = "Email From: {$email}";
+         
+        $result = mail($email, $subject, $body, $sender_email);
+         
+         if(!$result) {
+             echo "Email sending failed....";
+             redirect("");
+         }else {
+              /*echo "Email successfully sent to $to_email...";*/
+              redirect("");
+         }
+        
+    }else {
+        echo "Invalid Email";
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,12 +81,12 @@
                             <div class="form-group">
                                 <label class="emailLabel" for="email">Email</label>
                                
-                                    <input type="email" class="form-control" id="email"
+                                    <input type="email" class="form-control" id="email" name="email"
                                         aria-describedby="emailHelp" placeholder="Enter email">
                                 
                             </div>
                             <div class="forgot-password-page-button">
-                                <button type="submit" class="btn btn-primary submit-btn">SUBMIT</button>
+                                <button type="submit" name="submit" class="btn btn-primary submit-btn">SUBMIT</button>
                             </div>
                         </form>
 

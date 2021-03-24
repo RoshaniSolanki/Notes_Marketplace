@@ -9,6 +9,12 @@ function query($sql) {
     
 }
 
+function redirect($location) {
+    
+    header("Location: $location ");
+        
+    }
+
 function confirm($result) {
     
     global $connection;

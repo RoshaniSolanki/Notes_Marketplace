@@ -1,3 +1,20 @@
+<?php include "../includes/db.php"; ?>
+<?php include "../includes/functions.php"; ?>
+
+<?php 
+
+session_start(); 
+if(isset($_POST['email_verify_btn'])) {
+
+$update_query = "UPDATE users SET IsEmailVerified = 1";
+
+}
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,7 +46,7 @@
        <p class="EVPH">Dear Smith,</p>
        <p class="EVPT">Thanks for Signing up!</p>
        <p class="EVPT">Simply click below for email verification.</p>
-       <button class="btn btn-primary evp-btn">VERIFY EMAIL ADDRESS</button>
+       <button class="btn btn-primary evp-btn" type="submit" name="email-verify-btn">VERIFY EMAIL ADDRESS</button>
     </div>
     <!-- JQuery -->
     <script src="js/jquery-3.5.1.min.js"></script>

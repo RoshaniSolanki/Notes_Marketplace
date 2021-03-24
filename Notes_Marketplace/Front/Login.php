@@ -1,9 +1,31 @@
 <?php include "../includes/db.php" ?>
-
+<?php include "../includes/functions.php"; ?>
 <?php 
 
 if(isset($_POST['submit'])) {
-    echo $e = $_POST['email'];
+
+    $email = escape_string($_POST['email']);
+    $password = escape_string($_POST['password']);
+
+    $email_search = query("SELECT * FROM users WHERE EmailID = '$email' and IsEmailVerified=1 ");
+    confirm($email_search);
+
+    $email_count = mysqli_num_rows($email_search);
+
+    if($email_count) {
+        $pass = mysqli_fetch_assoc($email_search);
+
+        $db_pass = $pass['password'];
+
+        if($password == $db_pass) {
+            redirect("Note_Details_Page.php");
+        }else {
+            echo "Password Incorrect";
+        }
+        
+    }else {
+        echo "Invalid Email";
+    }
 }
 ?>
 
@@ -117,7 +139,7 @@ if(isset($_POST['submit'])) {
 </html>
 
 <script>
-    const login_form = document.getElementById('login');
+   /* const login_form = document.getElementById('login');
     const email = document.getElementById('email');
     const password = document.getElementById('password');
 
@@ -177,5 +199,5 @@ if(isset($_POST['submit'])) {
     function isEmail(email) {
         return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
             .test(email);
-    }
+    }*/
 </script>

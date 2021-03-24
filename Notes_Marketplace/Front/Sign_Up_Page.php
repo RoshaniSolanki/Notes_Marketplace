@@ -1,20 +1,10 @@
 <?php include "../includes/db.php"; ?>
 <?php include "../includes/functions.php"; ?>
+<?php session_start(); ?>
+
 <?php 
 
 if(isset($_POST['submit'])) {
-    /*$firstname  = $_POST['firstname'];
-    $lastname   = $_POST['lastname'];
-    $email      = $_POST['email'];
-    $password   = $_POST['password'];
-    $confirmpassword = $_POST['confirmpassword'];
-
-
-    $firstname       = mysqli_real_escape_string($connection, $firstname);
-    $lastname        = mysqli_real_escape_string($connection, $lastname);
-    $email           = mysqli_real_escape_string($connection, $email);
-    $password        = mysqli_real_escape_string($connection, $password);
-    $confirmpassword = mysqli_real_escape_string($connection, $confirmpassword);*/
 
     $firstname = escape_string($_POST['firstname']);
     $lastname = escape_string($_POST['lastname']);
@@ -25,9 +15,37 @@ if(isset($_POST['submit'])) {
     $createdDate = date("Y-m-d H:i:s");
     $modifiedDate = date("Y-m-d H:i:s");
 
-    $query = query("INSERT INTO users(RoleID, FirstName, LastName, EmailID, Password, CreatedBy, CreatedDate, ModifiedBy, ModifiedDate) VALUES (3, '{$firstname}', '{$lastname}', '{$email}', '{$password}', null, '{$createdDate}', null, '{$modifiedDate}')");
-    confirm($query);
-    
+    $email_query = query("SELECT * FROM users where EmailID='{$email}'");
+    $email_count = mysqli_num_rows($email_query);
+
+    if($email_count>0) {
+        echo "<script> alert('Email Already Exists'); </script>";
+    }else {
+
+    $insert_query = query("INSERT INTO users(RoleID, FirstName, LastName, EmailID, Password, CreatedBy, CreatedDate, ModifiedBy, ModifiedDate) VALUES (3, '{$firstname}', '{$lastname}', '{$email}', '{$password}', null, '{$createdDate}', null, '{$modifiedDate}')");
+    confirm($insert_query);
+    }
+
+    if($insert_query) {
+        $subject = "Note Marketplace - Email Verification";
+        $email = $_POST['email'];
+        $body = "Hello " . $firstname ." ". $lastname.","."\r\n"."\r\n"."Thank you for signing up with us. Please click on below link to verify your email address and to do login."."\r\n"."\r\n". "http://localhost/Roshani_php/Training/NotesMarketPlace/Notes_Marketplace/Front/Email_Verification_Page.php" ."\r\n"."\r\n"."Regards,"."\r\n". "Notes Marketplace";
+        $sender_email = "Email From: {$email}";
+         
+        $result = mail($email, $subject, $body, $sender_email);
+         
+         if(!$result) {
+             echo "Email sending failed....";
+             redirect("Sign_Up_Page.php");
+         }else {
+              /*echo "Email successfully sent to $to_email...";*/
+              redirect("Login.php");
+         }
+    }else {
+        echo '<script>alert("Not Inserted");</script>';
+    }
+
+
    /* echo "<p class='text2' style='text-align:center;margin-top:20px;'><i class='fa fa-check-circle'></i>Your account has
     been successfully created</p>";*/
 }
@@ -84,7 +102,7 @@ if(isset($_POST['submit'])) {
                     <div class="col-md-12">
                         <h1>Create an Account</h1>
                         <p class="text1">Enter your details to signup</p>
-                        <p class="text2"><i class="fa fa-check-circle"></i>Your account has
+                        <p class="text2"> <i class='fa fa-check-circle'></i>Your account has
                             been successfully created</p>
 
                         <form action="Sign_Up_Page.php" method="post" id="sign_up_form" onsubmit="return Sign_Up()">
