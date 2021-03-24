@@ -38,12 +38,12 @@ $update_query = "UPDATE users SET IsEmailVerified = 1";
     <link rel="stylesheet" href="css/responsive.css">
 </head>
 
-<body style="background: black;">
+<body>
     <!-- h:412 w:600-->
     <div id="email-verification-page">
        <img src="images/login/logo.png">
        <p class="EVPMH">Email Verification</p>
-       <p class="EVPH">Dear Smith,</p>
+       <p class="EVPH">Dear <?php echo $_SESSION['firstname'] ?>,</p>
        <p class="EVPT">Thanks for Signing up!</p>
        <p class="EVPT">Simply click below for email verification.</p>
        <button class="btn btn-primary evp-btn" type="submit" name="email-verify-btn">VERIFY EMAIL ADDRESS</button>

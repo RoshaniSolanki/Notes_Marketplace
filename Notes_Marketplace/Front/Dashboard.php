@@ -48,7 +48,7 @@
                             <div class="collapse navbar-collapse">
                                 <ul class="nav navbar-nav pull-right">
                                     <li><a href="Search_Notes_Page.html">Search Notes</a></li>
-                                    <li><a href="My_Sold_Notes.html">Sell Your Notes</a></li>
+                                    <li><a href="Dashboard.php">Sell Your Notes</a></li>
                                     <li><a href="Buyer_Requests.html">Buyer Requests</a></li>
                                     <li><a href="FAQ.html">FAQ</a></li>
                                     <li><a href="Contact_Us.html">Contact Us</a></li>
@@ -156,7 +156,7 @@
                                                     <p>100</p>
                                                 </div>
                                                 <div class="row text2">
-                                                    <p>Number of Notes Sold</p>
+                                                    <p><a href="My_Sold_Notes.php">Number of Notes Sold</a></p>
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-sm-6 col-xs-6">
@@ -164,7 +164,7 @@
                                                     <p>$10,00,000</p>
                                                 </div>
                                                 <div class="row text2">
-                                                    <p>Money Earned</p>
+                                                    <p><a href="My_Sold_Notes.php">Money Earned</a></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -177,7 +177,7 @@
                                                 <p>38</p>
                                             </div>
                                             <div class="row text2">
-                                                <p>My Downloads</p>
+                                                <p><a href="My_Downloads.php">My Downloads</a></p>
                                             </div>
                                         </div>
                                         <div class="col-md-4 col-sm-4 col-xs-4 box3">
@@ -185,7 +185,7 @@
                                                 <p>12</p>
                                             </div>
                                             <div class="row text2">
-                                                <p>My Rejected<br>Notes</p>
+                                                <p><a href="My_Rejected_Notes.php">My Rejected<br>Notes</a></p>
                                             </div>
                                         </div>
                                         <div class="col-md-4 col-sm-4 col-xs-4 box3">
@@ -193,7 +193,7 @@
                                                 <p>102</p>
                                             </div>
                                             <div class="row text2">
-                                                <p>Buyer Requests</p>
+                                                <p><a href="Buyer_Requests.php">Buyer Requests</a></p>
                                             </div>
                                         </div>
                                     </div>

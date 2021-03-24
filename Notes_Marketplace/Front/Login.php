@@ -7,7 +7,7 @@ if(isset($_POST['submit'])) {
     $email = escape_string($_POST['email']);
     $password = escape_string($_POST['password']);
 
-    $email_search = query("SELECT * FROM users WHERE EmailID = '$email' and IsEmailVerified=1 ");
+    $email_search = query("SELECT * FROM users WHERE EmailID = '$email' ");
     confirm($email_search);
 
     $email_count = mysqli_num_rows($email_search);
@@ -15,12 +15,18 @@ if(isset($_POST['submit'])) {
     if($email_count) {
         $pass = mysqli_fetch_assoc($email_search);
 
-        $db_pass = $pass['password'];
+        $db_pass = $pass['Password'];
 
         if($password == $db_pass) {
-            redirect("Note_Details_Page.php");
-        }else {
-            echo "Password Incorrect";
+            if(isset($_POST['rememberme'])) {
+                setcookie('emailcookie', $email, time()+86400);
+                setcookie('passwordcookie', $password, time()+86400);
+                redirect("Note_Details_Page.php");
+
+            }else {
+                redirect("Note_Details_Page.php");
+            }
+            
         }
         
     }else {
@@ -81,7 +87,7 @@ if(isset($_POST['submit'])) {
                                 <label class="emailLabel" for="email">Email</label>
 
                                 <input type="email" class="form-control" id="email" name="email"
-                                    aria-describedby="emailHelp" placeholder="Enter email">
+                                    aria-describedby="emailHelp" placeholder="Enter email" value="<?php if(isset($_COOKIE['emailcookie'])) {echo $_COOKIE['emailcookie']; } ?>">
                                 <small>Error Message</small>
 
                             </div>
@@ -101,14 +107,14 @@ if(isset($_POST['submit'])) {
                                 </div>
 
                                 <input type="password" class="form-control" id="password"
-                                    placeholder="Enter Your Password" name="password">
+                                    placeholder="Enter Your Password" name="password" value="<?php if(isset($_COOKIE['passwordcookie'])) {echo $_COOKIE['passwordcookie']; } ?>">
 
                                 <span class="show-pass" target="#password"><img class="eye-img"
                                         src="images/login/eye.png"></span>
                                 <small>The password that you have entered is incorrect</small>
                             </div>
 
-                            <input type="checkbox" class="form-check-input" id="checkbox">
+                            <input type="checkbox" name="rememberme" class="form-check-input" id="checkbox">
                             <label class="form-check-label" for="remember-me">Remember Me</label>
 
                             <button type="submit" name="submit" class="btn btn-primary login-btn">LOGIN</button>

@@ -11,13 +11,13 @@ if(isset($_POST['submit'])) {
     $email = escape_string($_POST['email']);
     $password = escape_string($_POST['password']);
     $confirmpassword = escape_string($_POST['confirmpassword']);
-
+    
     $createdDate = date("Y-m-d H:i:s");
     $modifiedDate = date("Y-m-d H:i:s");
 
     $email_query = query("SELECT * FROM users where EmailID='{$email}'");
     $email_count = mysqli_num_rows($email_query);
-
+   
     if($email_count>0) {
         echo "<script> alert('Email Already Exists'); </script>";
     }else {

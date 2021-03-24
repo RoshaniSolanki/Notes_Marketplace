@@ -626,7 +626,7 @@ ul.navbar-nav>li>a:focus {
 #email-verification-page {
     height: 412px;
     width: 600px;
-    background: white;
+    background-color:whitesmoke;
     position: absolute;
     top: 0;
     left: 0;
@@ -1439,8 +1439,15 @@ ul.navbar-nav>li>a:focus {
     line-height: 22px;
     color: #333;
     text-align: center;
+    
 }
-
+#dashboard #section1 #part2 .text2 p a {
+    text-decoration: none;
+    color: inherit;
+}
+#dashboard #section1 #part2 .text2 p a:hover {
+    text-decoration: none;
+}
 
 /**   section2 & section3   **/
 #dashboard #section2 #part1 p,

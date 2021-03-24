@@ -11,20 +11,32 @@ if(isset($_POST['submit'])) {
 
     $email_count = mysqli_num_rows($email_search);
 
+    function randomPassword() {
+        $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*().,;';
+        $pass = array(); 
+        $alphaLength = strlen($alphabet) - 1; 
+        for ($i = 0; $i < 8; $i++) {
+            $n = rand(0, $alphaLength);
+            $pass[] = $alphabet[$n];
+        }
+        return implode($pass); 
+    }
+    $randomPassword = randomPassword();
     if($email_count) {
         $subject = "New Temporary Password has been created for you";
         $email = $_POST['email'];
-        $body = "Hello, "."\r\n"."\r\n"."We have generated a new password for you"."\r\n". "Password:" ."\r\n"."\r\n"."Regards,"."\r\n". "Notes Marketplace";
+        $body = "Hello, "."\r\n"."\r\n"."We have generated a new password for you"."\r\n". "Password: " .$randomPassword."\r\n"."\r\n"."Regards,"."\r\n". "Notes Marketplace";
         $sender_email = "Email From: {$email}";
          
         $result = mail($email, $subject, $body, $sender_email);
          
          if(!$result) {
              echo "Email sending failed....";
-             redirect("");
+             redirect("Fogot_Password.php");
          }else {
-              /*echo "Email successfully sent to $to_email...";*/
-              redirect("");
+              echo "Your password has been changed 
+              successfully and newly generated password is sent on your registered email address.";
+              redirect("Login.php");
          }
         
     }else {
