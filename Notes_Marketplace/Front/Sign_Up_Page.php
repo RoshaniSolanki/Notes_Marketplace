@@ -17,6 +17,13 @@ if(isset($_POST['submit'])) {
 
     $email_query = query("SELECT * FROM users where EmailID='{$email}'");
     $email_count = mysqli_num_rows($email_query);
+
+    if($email_count) {
+        $query = mysqli_fetch_assoc($email_query);
+
+        $_SESSION['firstname'] = $query['FirstName'];
+        $_SESSION['email'] = $query['EmailID'];
+    }
    
     if($email_count>0) {
         echo "<script> alert('Email Already Exists'); </script>";
@@ -105,7 +112,7 @@ if(isset($_POST['submit'])) {
                         <p class="text2"> <i class='fa fa-check-circle'></i>Your account has
                             been successfully created</p>
 
-                        <form action="Sign_Up_Page.php" method="post" id="sign_up_form" onsubmit="return Sign_Up()">
+                        <form action="" method="post" id="sign_up_form" onsubmit="return Sign_Up()">
                             <div class="form-group">
                                 <label class="firstNameLabel" for="firstName">First Name *</label>
                                 <input type="text" class="form-control" id="first-name" name="firstname"

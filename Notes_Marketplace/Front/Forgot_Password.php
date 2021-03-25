@@ -1,6 +1,6 @@
 <?php include "../includes/db.php" ?>
 <?php include "../includes/functions.php"; ?>
-<?php 
+<?php session_start();
 
 if(isset($_POST['submit'])) {
 
@@ -13,15 +13,12 @@ if(isset($_POST['submit'])) {
 
     function randomPassword() {
         $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*().,;';
-        $pass = array(); 
-        $alphaLength = strlen($alphabet) - 1; 
-        for ($i = 0; $i < 8; $i++) {
-            $n = rand(0, $alphaLength);
-            $pass[] = $alphabet[$n];
-        }
-        return implode($pass); 
+        $l = rand(6,24);
+        $pass = substr(str_shuffle(sha1(rand() . time()) . $alphabet), 0 ,$l);
+        return $pass;
     }
     $randomPassword = randomPassword();
+    
     if($email_count) {
         $subject = "New Temporary Password has been created for you";
         $email = $_POST['email'];
@@ -34,8 +31,8 @@ if(isset($_POST['submit'])) {
              echo "Email sending failed....";
              redirect("Fogot_Password.php");
          }else {
-              echo "Your password has been changed 
-              successfully and newly generated password is sent on your registered email address.";
+              echo "<script> alert('Your password has been changed 
+              successfully and newly generated password is sent on your registered email address.');</script>";
               redirect("Login.php");
          }
         
@@ -89,7 +86,7 @@ if(isset($_POST['submit'])) {
                     <div class="col-md-12">
                         <h1>Forgot Password?</h1>
                         <p class="text">Enter your email to reset your password</p>
-                        <form>
+                        <form action="" method="POST">
                             <div class="form-group">
                                 <label class="emailLabel" for="email">Email</label>
                                

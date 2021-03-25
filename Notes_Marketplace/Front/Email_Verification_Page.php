@@ -4,9 +4,14 @@
 <?php 
 
 session_start(); 
-if(isset($_POST['email_verify_btn'])) {
+$email = $_SESSION['email'];
+$firstname = $_SESSION['firstname'];
+if(isset($_POST['email-verify-btn'])) {
 
-$update_query = "UPDATE users SET IsEmailVerified = 1";
+$update_query = query("UPDATE users SET IsEmailVerified = 1 WHERE EmailID ='$email' ");
+confirm($update_query);
+
+redirect("Login.php");
 
 }
 
@@ -42,11 +47,13 @@ $update_query = "UPDATE users SET IsEmailVerified = 1";
     <!-- h:412 w:600-->
     <div id="email-verification-page">
        <img src="images/login/logo.png">
+       <form action="" method="POST">
        <p class="EVPMH">Email Verification</p>
-       <p class="EVPH">Dear <?php echo $_SESSION['firstname'] ?>,</p>
+       <p class="EVPH">Dear <?php echo $firstname; ?>,</p>
        <p class="EVPT">Thanks for Signing up!</p>
        <p class="EVPT">Simply click below for email verification.</p>
        <button class="btn btn-primary evp-btn" type="submit" name="email-verify-btn">VERIFY EMAIL ADDRESS</button>
+       </form>
     </div>
     <!-- JQuery -->
     <script src="js/jquery-3.5.1.min.js"></script>

@@ -1,3 +1,33 @@
+<?php 
+ include "../includes/db.php";
+ include "../includes/functions.php"; 
+ session_start(); 
+
+ if(isset($_POST['submit'])) {
+    $full_name = $_POST['full-name'];
+    $email = $_POST['email'];
+    $subject = $_POST['subject'];
+    $comments = $_POST['comments'];
+
+
+    $subject = $full_name." - Query";
+    $email_to = $_POST['email'];
+    $body = "Hello, "."\r\n"."\r\n".$comments."\r\n"."\r\n"."Regards,"."\r\n". $full_name;
+    $sender_email = "Email From: {$email}";
+         
+    $result = mail($email_to, $subject, $body, $sender_email);
+         
+    if(!$result) {
+        echo "Email sending failed....";
+        redirect("Contact_Us.php");
+    }else {
+        redirect("Contact_Us.php");
+         }
+ }
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -102,7 +132,7 @@
             <img src="images/Contact_Us/banner-with-overlay.jpg">
             <div class="contact-us-img-text">Contact Us</div>
         </div>
-        <form>
+        <form action="" method="POST">
             <div class="container">
                 <h1>Get in Touch</h1>
                 <p>Let us know how to get back to you</p>
@@ -141,7 +171,7 @@
                     </div>
                     
                 </div>
-                <a href=""><button class="btn btn-primary contact-us-submit-btn">SUBMIT</button></a>
+                <button type="submit" name="submit" class="btn btn-primary contact-us-submit-btn">SUBMIT</button>
             </div>
         </form>
     </div>
