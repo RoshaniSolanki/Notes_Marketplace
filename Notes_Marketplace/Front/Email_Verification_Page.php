@@ -11,8 +11,6 @@ if(isset($_POST['email-verify-btn'])) {
 $update_query = query("UPDATE users SET IsEmailVerified = 1 WHERE EmailID ='$email' ");
 confirm($update_query);
 
-redirect("Login.php");
-
 }
 
 ?>

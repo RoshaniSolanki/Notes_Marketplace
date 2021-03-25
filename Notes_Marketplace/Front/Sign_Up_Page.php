@@ -17,21 +17,25 @@ if(isset($_POST['submit'])) {
 
     $email_query = query("SELECT * FROM users where EmailID='{$email}'");
     $email_count = mysqli_num_rows($email_query);
-
-    if($email_count) {
-        $query = mysqli_fetch_assoc($email_query);
-
-        $_SESSION['firstname'] = $query['FirstName'];
-        $_SESSION['email'] = $query['EmailID'];
-    }
    
     if($email_count>0) {
         echo "<script> alert('Email Already Exists'); </script>";
     }else {
 
-    $insert_query = query("INSERT INTO users(RoleID, FirstName, LastName, EmailID, Password, CreatedBy, CreatedDate, ModifiedBy, ModifiedDate) VALUES (3, '{$firstname}', '{$lastname}', '{$email}', '{$password}', null, '{$createdDate}', null, '{$modifiedDate}')");
-    confirm($insert_query);
-    }
+        $insert_query = query("INSERT INTO users(RoleID, FirstName, LastName, EmailID, Password, CreatedBy, CreatedDate, ModifiedBy, ModifiedDate) VALUES (3, '{$firstname}', '{$lastname}', '{$email}', '{$password}', null, '{$createdDate}', null, '{$modifiedDate}')");
+        confirm($insert_query);
+
+        $query = query("SELECT * FROM users where EmailID='{$email}'");
+        confirm($query);
+        $email_count = mysqli_num_rows($query);
+        while($row = mysqli_fetch_assoc($query)) {
+            $_SESSION['userid'] =$row['ID'];
+            $_SESSION['firstname'] = $row['FirstName'];
+            $_SESSION['lastname'] = $row['lastName'];
+            $_SESSION['email'] = $row['EmailID'];
+
+        }
+        }
 
     if($insert_query) {
         $subject = "Note Marketplace - Email Verification";

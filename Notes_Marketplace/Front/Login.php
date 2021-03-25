@@ -16,18 +16,16 @@ if(isset($_POST['submit'])) {
         $query = mysqli_fetch_assoc($email_search);
 
         $db_pass = $query['Password'];
-        /*$_SESSION['firstname'] = $query['FirstName'];
-        $_SESSION['email'] = $query['EmailID'];*/
 
         if($password == $db_pass) {
-           /* if(isset($_POST['rememberme'])) {
+           if(isset($_POST['rememberme'])) {
                 setcookie('emailcookie', $email, time()+86400);
                 setcookie('passwordcookie', $password, time()+86400);
                 redirect("Note_Details_Page.php");
 
             }else {
                 redirect("Note_Details_Page.php");
-            }*/
+            }
             redirect("Note_Details_Page.php");
         }
         
@@ -89,7 +87,7 @@ if(isset($_POST['submit'])) {
                                 <label class="emailLabel" for="email">Email</label>
 
                                 <input type="email" class="form-control" id="email" name="email"
-                                    aria-describedby="emailHelp" placeholder="Enter email" value="<?php //if(isset($_COOKIE['emailcookie'])) {echo $_COOKIE['emailcookie']; } ?>">
+                                    aria-describedby="emailHelp" placeholder="Enter email" value="<?php if(isset($_COOKIE['emailcookie'])) {echo $_COOKIE['emailcookie']; } ?>">
                                 <small>Error Message</small>
 
                             </div>
@@ -109,7 +107,7 @@ if(isset($_POST['submit'])) {
                                 </div>
 
                                 <input type="password" class="form-control" id="password"
-                                    placeholder="Enter Your Password" name="password" value="<?php //if(isset($_COOKIE['passwordcookie'])) {echo $_COOKIE['passwordcookie']; } ?>">
+                                    placeholder="Enter Your Password" name="password" value="<?php if(isset($_COOKIE['passwordcookie'])) {echo $_COOKIE['passwordcookie']; } ?>">
 
                                 <span class="show-pass" target="#password"><img class="eye-img"
                                         src="images/login/eye.png"></span>
