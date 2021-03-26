@@ -51,7 +51,7 @@
                                     <li><a href="Dashboard.php">Sell Your Notes</a></li>
                                     <li><a href="Buyer_Requests.html">Buyer Requests</a></li>
                                     <li><a href="FAQ.html">FAQ</a></li>
-                                    <li><a href="Contact_Us.html">Contact Us</a></li>
+                                    <li><a href="Contact_Us.php">Contact Us</a></li>
                                     <li>
                                         <div class="user-menu-popup">
                                             <a class="user-menu-check" target=".user-menu-show"><img class="user-img"
@@ -99,7 +99,7 @@
                                     </li>
 
                                     <li>
-                                        <a href="Contact_Us.html">Contact Us</a>
+                                        <a href="Contact_Us.php">Contact Us</a>
                                     </li>
                                     <li>
                                         <a><img class="user-img" src="images/User-Profile/user-img.png" width="40"

@@ -30,8 +30,9 @@ if(isset($_POST['submit'])) {
         $email_count = mysqli_num_rows($query);
         while($row = mysqli_fetch_assoc($query)) {
             $_SESSION['userid'] =$row['ID'];
+            $_SESSION['roleid'] =$row['RoleID'];
             $_SESSION['firstname'] = $row['FirstName'];
-            $_SESSION['lastname'] = $row['lastName'];
+            $_SESSION['lastname'] = $row['LastName'];
             $_SESSION['email'] = $row['EmailID'];
 
         }
@@ -46,8 +47,8 @@ if(isset($_POST['submit'])) {
         $result = mail($email, $subject, $body, $sender_email);
          
          if(!$result) {
-             echo "Email sending failed....";
-             redirect("Sign_Up_Page.php");
+            echo "<script>alert('Email sending failed....')</script>";
+            redirect("Sign_Up_Page.php");
          }else {
               /*echo "Email successfully sent to $to_email...";*/
               redirect("Login.php");

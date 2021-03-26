@@ -20,6 +20,9 @@ if(isset($_POST['submit'])) {
     $randomPassword = randomPassword();
     
     if($email_count) {
+        $update_query = query("UPDATE users SET Password='{$randomPassword}' WHERE EmailID ='$email' ");
+        confirm($update_query);
+
         $subject = "New Temporary Password has been created for you";
         $email = $_POST['email'];
         $body = "Hello, "."\r\n"."\r\n"."We have generated a new password for you"."\r\n". "Password: " .$randomPassword."\r\n"."\r\n"."Regards,"."\r\n". "Notes Marketplace";
@@ -28,16 +31,18 @@ if(isset($_POST['submit'])) {
         $result = mail($email, $subject, $body, $sender_email);
          
          if(!$result) {
-             echo "Email sending failed....";
+            echo "<script>alert('Email sending failed....')</script>";
              redirect("Fogot_Password.php");
          }else {
+              /*$_SESSION['msg'] = "Your password has been changed 
+              successfully and newly generated password is sent on your registered email address.";*/
               echo "<script> alert('Your password has been changed 
               successfully and newly generated password is sent on your registered email address.');</script>";
               redirect("Login.php");
          }
         
     }else {
-        echo "Invalid Email";
+        echo "<script>alert('Invalid Email');</script>";
     }
 }
 ?>
@@ -86,6 +91,7 @@ if(isset($_POST['submit'])) {
                     <div class="col-md-12">
                         <h1>Forgot Password?</h1>
                         <p class="text">Enter your email to reset your password</p>
+                        
                         <form action="" method="POST">
                             <div class="form-group">
                                 <label class="emailLabel" for="email">Email</label>

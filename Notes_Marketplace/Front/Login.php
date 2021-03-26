@@ -16,21 +16,35 @@ if(isset($_POST['submit'])) {
         $query = mysqli_fetch_assoc($email_search);
 
         $db_pass = $query['Password'];
+        $role_id = $query['RoleID'];
 
         if($password == $db_pass) {
-           if(isset($_POST['rememberme'])) {
-                setcookie('emailcookie', $email, time()+86400);
-                setcookie('passwordcookie', $password, time()+86400);
-                redirect("Note_Details_Page.php");
+           
+           if($role_id==3) {
+                if(isset($_POST['rememberme'])) {
+                    setcookie('emailcookie', $email, time()+86400);
+                    setcookie('passwordcookie', $password, time()+86400);
+                    redirect("Note_Details_Page.php");
 
-            }else {
-                redirect("Note_Details_Page.php");
+                }else {
+                    redirect("Note_Details_Page.php");
+                }
             }
-            redirect("Note_Details_Page.php");
+
+            if($role_id==2) {
+                if(isset($_POST['rememberme'])) {
+                    setcookie('emailcookie', $email, time()+86400);
+                    setcookie('passwordcookie', $password, time()+86400);
+                    redirect("../Admin/Admin_Dashboard.php");
+
+                }else {
+                    redirect("../Admin/Admin_Dashboard.php");
+                }
+            }
         }
         
     }else {
-        echo "Invalid Email";
+        echo "<script>alert('Invalid Email')</script>";
     }
 }
 ?>

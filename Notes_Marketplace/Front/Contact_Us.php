@@ -2,27 +2,38 @@
  include "../includes/db.php";
  include "../includes/functions.php"; 
  session_start(); 
+ 
+ if($_SESSION['roleid']==3) {
+   // echo "<script>alert('USER')</script>";
+    $firstname = $_SESSION['firstname'];
+    $lastname = $_SESSION['lastname'];
+    $full_name = $firstname . ' ' . $lastname;
+    $email = $_SESSION['email'];
+}
+    
 
  if(isset($_POST['submit'])) {
+    if($_SESSION['roleid']!=3) {
     $full_name = $_POST['full-name'];
-    $email = $_POST['email'];
+    $email = $_POST['email-address'];
+    }
     $subject = $_POST['subject'];
     $comments = $_POST['comments'];
 
-
+ 
     $subject = $full_name." - Query";
-    $email_to = $_POST['email'];
+    $email_to = "sroshani025@gmail.com";
     $body = "Hello, "."\r\n"."\r\n".$comments."\r\n"."\r\n"."Regards,"."\r\n". $full_name;
     $sender_email = "Email From: {$email}";
          
     $result = mail($email_to, $subject, $body, $sender_email);
          
     if(!$result) {
-        echo "Email sending failed....";
-        redirect("Contact_Us.php");
+        //$_SESSION['msg'] ="Email sending failed....";
+        echo "<script>alert('Email sending failed....')</script>";
     }else {
         redirect("Contact_Us.php");
-         }
+    }
  }
 
 
@@ -132,7 +143,7 @@
             <img src="images/Contact_Us/banner-with-overlay.jpg">
             <div class="contact-us-img-text">Contact Us</div>
         </div>
-        <form action="" method="POST">
+        <form action="Contact_Us.php" method="POST">
             <div class="container">
                 <h1>Get in Touch</h1>
                 <p>Let us know how to get back to you</p>
@@ -144,15 +155,15 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="fullNameLabel" for="fullName">Full Name *</label>
-                                    <input type="text" id="full-name" name="full-name"
+                                    <input type="text" id="full-name" name="full-name" value="<?php if($_SESSION['roleid']==3) {echo $_SESSION['firstname'].' '.$_SESSION['lastname']; } ?>"
                                         placeholder="Enter your full name" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="emailAddressLabel" for="emailAddress">Email Address *</label>
-                                    <input type="text" id="email-address" name="email-address"
-                                        placeholder="Enter your email address" class="form-control">
+                                    <input type="text" id="email-address" name="email-address" value="<?php if($_SESSION['roleid']==3) {echo $_SESSION['email'];}?>"
+                                        placeholder="Enter your email address" class="form-control" <?php if($_SESSION['roleid']==3){?>disabled<?php }?>>
                                 </div>
                             </div>
                             <div class="col-md-12">
