@@ -24,10 +24,10 @@ if(isset($_POST['submit'])) {
                 if(isset($_POST['rememberme'])) {
                     setcookie('emailcookie', $email, time()+86400);
                     setcookie('passwordcookie', $password, time()+86400);
-                    redirect("Note_Details_Page.php");
+                    redirect("Search_Notes_Page.php");
 
                 }else {
-                    redirect("Note_Details_Page.php");
+                    redirect("Search_Notes_Page.php");
                 }
             }
 

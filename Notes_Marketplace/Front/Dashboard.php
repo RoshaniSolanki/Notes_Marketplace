@@ -47,7 +47,7 @@
                         <div class="container">
                             <div class="collapse navbar-collapse">
                                 <ul class="nav navbar-nav pull-right">
-                                    <li><a href="Search_Notes_Page.html">Search Notes</a></li>
+                                    <li><a href="Search_Notes_Page.php">Search Notes</a></li>
                                     <li><a href="Dashboard.php">Sell Your Notes</a></li>
                                     <li><a href="Buyer_Requests.html">Buyer Requests</a></li>
                                     <li><a href="FAQ.html">FAQ</a></li>
@@ -88,10 +88,10 @@
                             <div id="mobile-nav-content">
                                 <ul class="nav">
                                     <li>
-                                        <a href="Search_Notes_Page.html">Search Notes</a>
+                                        <a href="Search_Notes_Page.php">Search Notes</a>
                                     </li>
                                     <li>
-                                        <a href="My_Sold_Notes.html">Sell Your Notes</a>
+                                        <a href="Dashboard.php">Sell Your Notes</a>
                                     </li>
                                     <li><a href="Buyer_Requests.html">Buyer Requests</a></li>
                                     <li>
@@ -129,7 +129,7 @@
                                 <h1>Dashboard</h1>
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-6">
-                                <a href=""><button class="btn btn-primary dashboard-add-note-btn">ADD
+                                <a href="Add_Notes.php"><button class="btn btn-primary dashboard-add-note-btn">ADD
                                         NOTE</button></a>
                             </div>
                         </div>

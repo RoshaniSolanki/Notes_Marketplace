@@ -1,3 +1,125 @@
+<?php
+include "../includes/db.php";
+include "../includes/functions.php";
+
+function show_note_category() {
+
+    $category_query = query("SELECT * FROM note_categories");
+    confirm($category_query);
+
+    while($category_row = mysqli_fetch_assoc($category_query)) {
+     
+    $categories_options = <<<DELIMETER
+    <option value="">{$category_row['Name']}</option>
+        
+DELIMETER;
+        
+    echo $categories_options;
+    }
+
+}
+
+function show_note_type() {
+
+    $note_type = query("SELECT * FROM note_types");
+    confirm($note_type);
+
+    while($note_row = mysqli_fetch_assoc($note_type)) {
+     
+    $note_options = <<<DELIMETER
+    <option value="">{$note_row['Name']}</option>
+        
+DELIMETER;
+        
+    echo $note_options;
+    }
+
+}
+
+function show_countries() {
+
+    $country = query("SELECT * FROM countries");
+    confirm($country);
+
+    while($country_row = mysqli_fetch_assoc($country)) {
+     
+    $country_options = <<<DELIMETER
+    <option value="">{$country_row['Name']}</option>
+        
+DELIMETER;
+        
+    echo $country_options;
+    }
+
+}
+
+if(isset($_POST['save'])) {
+        
+        //echo  $category_title = escape_string($_POST['category']);
+
+        $category_title = escape_string($_POST['category']);
+        $cat_id = query("SELECT ID FROM note_categories WHERE Name = '{$category_title}' ");
+        confirm($cat_id);
+        $cat_id_row = mysqli_fetch_assoc($cat_id);
+        $category =$cat_id_row['ID'];
+
+        $note_title = escape_string($_POST['type']);
+        $note_id = query("SELECT ID FROM note_types WHERE Name = '{$note_title}' ");
+        confirm($note_id);
+        $note_id_row = mysqli_fetch_assoc($note_id);
+        $type =$note_id_row['ID'];
+
+        $country_title = escape_string($_POST['country']);
+        $country_id = query("SELECT ID FROM countries WHERE Name = '{$country_title}' ");
+        confirm($country_id);
+        $country_id_row = mysqli_fetch_assoc($note_id);
+        $country =$country_id_row['ID'];
+
+        $sell_for_radio_btn        = escape_string($_POST['sellfor-radio']);
+        if($sell_for_radio_btn == "free") {
+            $ispaid = 'false';
+            $selling_price = 0;
+        }else {
+            $ispaid = 'true';
+            $selling_price = escape_string($_POST['sell-price']);
+        }
+       
+        $title                     = escape_string($_POST['title']);
+        //$category           = escape_string($_POST['category']);
+        //$type               = escape_string($_POST['type']);
+        $display_picture           = escape_string($_FILES['display-picture']['name']);
+        $display_picture_temp_loc  = escape_string($_FILES['display-picture']['tmp_name']);
+        $upload_notes              = escape_string($_FILES['upload-notes']['name']);
+        $upload_notes_temp_loc     = escape_string($_FILES['upload-notes']['tmp_name']);
+        $number_of_pages           = escape_string($_POST['number-of-pages']);
+        $description               = escape_string($_POST['description']);
+        //$country            = escape_string($_POST['country']);
+        $institute_name            = escape_string($_POST['institution-name']);
+        $course_name               = escape_string($_POST['course-name']);
+        $course_code               = escape_string($_POST['course-code']);
+        $professor                 = escape_string($_POST['professor']);
+        //$sell_for_radio_btn        = escape_string($_POST['sellfor-radio']);
+        $note_preview              = escape_string($_FILES['note-preview']['name']);
+        $note_preview_temp_loc     = escape_string($_FILES['note-preview']['tmp_name']);
+        $created_date = date("Y-m-d H:i:s");
+        $modified_date = date("Y-m-d H:i:s");
+        
+        move_uploaded_file($display_picture_temp_loc, "C://xampp/htdocs/Roshani_php/Training/NotesMarketPlace/Notes_Marketplace/Front".$display_picture);
+        move_uploaded_file($upload_notes_temp_loc, "C://xampp/htdocs/Roshani_php/Training/NotesMarketPlace/Notes_Marketplace/Front".$upload_notes);
+        move_uploaded_file($note_preview_temp_loc, "C://xampp/htdocs/Roshani_php/Training/NotesMarketPlace/Notes_Marketplace/Front".$note_preview);
+
+        $upload_notes_insert = query("INSERT INTO seller_notes_attachements(FilePath, CreatedDate, ModifiedDate) VALUES('{$upload_notes}', '{$created_date)}', '{$modified_date)}'");
+
+        $query  = "INSERT INTO ";
+        $query .="seller_notes(SellerID, Title, Category, Type, NumberOfPages, Description, Country, UniversityName, CourseName, CourseCode, Professor, IsPaid, NotePreview, CreatedDate, ModifiedDate) ";
+        $query .="VALUES('{$_SESSION['userid']}', {$title}', '{$category}', '{$display_picture}, {$type}', '{$number_of_pages}', '{$description}', '{$country}', '{$institute_name}', '{$course_name}', '{$course_code}', '{$professor}', '{$ispaid}', '{$note_preview}', '{$created_date}', '{$modified_date}')";
+        $query =query($query);
+        confirm($query);
+        //set_message("New Product with id {$last_id} was Added");
+
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,11 +171,11 @@
                     <div class="container">
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav pull-right">
-                                <li><a href="Search_Notes_Page.html">Search Notes</a></li>
-                                <li><a href="My_Sold_Notes.html">Sell Your Notes</a></li>
+                                <li><a href="Search_Notes_Page.php">Search Notes</a></li>
+                                <li><a href="Dashboard.php">Sell Your Notes</a></li>
                                 <li><a href="Buyer_Requests.html">Buyer Requests</a></li>
                                 <li><a href="FAQ.html">FAQ</a></li>
-                                <li><a href="Contact_Us.html">Contact Us</a></li>
+                                <li><a href="Contact_Us.php">Contact Us</a></li>
                                 <li>
                                     <div class="user-menu-popup">
                                         <a class="user-menu-check" target=".user-menu-show"><img class="user-img"
@@ -90,10 +212,10 @@
                         <div id="mobile-nav-content">
                             <ul class="nav">
                                 <li>
-                                    <a href="Search_Notes_Page.html">Search Notes</a>
+                                    <a href="Search_Notes_Page.php">Search Notes</a>
                                 </li>
                                 <li>
-                                    <a href="My_Sold_Notes.html">Sell Your Notes</a>
+                                    <a href="Dashboard.php">Sell Your Notes</a>
                                 </li>
                                 <li><a href="Buyer_Requests.html">Buyer Requests</a></li>
                                 <li>
@@ -101,7 +223,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="Contact_Us.html">Contact Us</a>
+                                    <a href="Contact_Us.php">Contact Us</a>
                                 </li>
                                 <li><a href="#"><img class="user-img" src="images/User-Profile/user-img.png" width="40"
                                             height="40" alt=""></a></li>
@@ -125,7 +247,7 @@
             <div class="add-notes-img-text">Add Notes</div>
         </div>
 
-        <form>
+        <form action="" method="POST">
             <div class="container">
                 <p class="add-notes-headings"></p>
                 <div class="row">
@@ -141,35 +263,39 @@
                         <div class="form-group">
                             <label class="category" for="category">Category *</label>
                             <span><img class="add-notes-arrow-down-img" src="./images/Add-notes/arrow-down.svg"></span>
-                            <select class="form-control" id="category">
-                                <option selected disabled hidden>Select your category</option>
+                            <select class="form-control" id="category" name="category">
+                                <option selected value="">Select your category</option>
+
+                                <?php show_note_category(); ?>
                             </select>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="displayPicture" for="displayPicture">Display Picture</label>
-                            <span><img class="add-notes-upload-file-img1"
-                                    src="./images/Add-notes/upload-file.png"></span>
-                            <input type="text" id="display-picture" name="display-picture" class="form-control"
+                            <label for="display-picture"><img class="add-notes-upload-file-img1"
+                                    src="./images/Add-notes/upload-file.png"></label>
+                            <input type="file" id="display-picture" name="display-picture" class="form-control"
                                 placeholder="Upload a picture">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="uploadNotes" for="uploadNotes">Upload your notes *</label>
-                            <span><img class="add-notes-upload-notes-img"
-                                    src="./images/Add-notes/upload-note.png"></span>
-                            <input type="text" id="upload-notes" name="upload-notes" class="form-control"
+                            <label for="upload-notes"><img class="add-notes-upload-notes-img"
+                                    src="./images/Add-notes/upload-note.png"></label>
+                            <input type="file" accept=".pdf" id="upload-notes" name="upload-notes" class="form-control"
                                 placeholder="Upload your notes">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="type" for="type">Type</label>
-                            <span><img class="add-notes-arrow-down-img" src="./images/Add-notes/arrow-down.svg"></span>
+                            <label for="type"><img class="add-notes-arrow-down-img" src="./images/Add-notes/arrow-down.svg"></label>
                             <select class="form-control" id="type" name="type">
-                                <option selected disabled hidden>Select your notes type</option>
+                                <option>Select your notes type</option>
+
+                                <?php show_note_type(); ?>
                             </select>
                         </div>
                     </div>
@@ -194,7 +320,9 @@
                             <label class="country" for="country">Country </label>
                             <span><img class="add-notes-arrow-down-img" src="./images/Add-notes/arrow-down.svg"></span>
                             <select class="form-control" id="country" name="country">
-                                <option selected disabled hidden>Select your country</option>
+                                <option selected>Select your country</option>
+
+                                <?php show_countries(); ?>
                             </select>
                         </div>
                     </div>
@@ -202,7 +330,7 @@
                         <div class="form-group">
                             <label class="institutionName" for="institutionName">Institution Name</label>
                             <input type="text" name="institution-name" id="institution-name" class="form-control"
-                                placeholder="Enter your institutionvname">
+                                placeholder="Enter your institution name">
                         </div>
                     </div>
                 </div>
@@ -272,9 +400,9 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="notePreview" for="notePreview">Note Preview</label>
-                            <span><img class="add-notes-upload-file-img2"
-                                    src="./images/Add-notes/upload-file.png"></span>
-                            <input type="text" id="note-preview" name="note-preview" class="form-control"
+                            <label for="note-preview"><img class="add-notes-upload-file-img2"
+                                    src="./images/Add-notes/upload-file.png"></label>
+                            <input type="file" id="note-preview" name="note-preview" class="form-control"
                                 placeholder="Upload a file">
                         </div>
                     </div>
@@ -283,10 +411,10 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-2 col-sm-3 col-xs-6">
-                        <button class="btn btn-primary add-notes-save-btn">SAVE</button>
+                        <button type="submit" name="save" class="btn btn-primary add-notes-save-btn">SAVE</button>
                     </div>
                     <div class="col-md-10 col-sm-9 col-xs-6">
-                        <button class="btn btn-primary add-notes-publish-btn">PUBLISH</button>
+                        <button type="submit" name="publish" class="btn btn-primary add-notes-publish-btn">PUBLISH</button>
                     </div>
                 </div>
             </div>
