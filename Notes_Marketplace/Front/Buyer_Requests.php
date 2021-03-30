@@ -45,11 +45,11 @@
                     <div class="container">
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav pull-right">
-                                <li><a href="Search_Notes_Page.html">Search Notes</a></li>
-                                <li><a href="My_Sold_Notes.html">Sell Your Notes</a></li>
-                                <li><a href="Buyer_Requests.html">Buyer Requests</a></li>
-                                <li><a href="FAQ.html">FAQ</a></li>
-                                <li><a href="Contact_Us.html">Contact Us</a></li>
+                                <li><a href="Search_Notes_Page.php">Search Notes</a></li>
+                                <li><a href="Dashboard.php">Sell Your Notes</a></li>
+                                <li><a href="Buyer_Requests.php">Buyer Requests</a></li>
+                                <li><a href="FAQ.php">FAQ</a></li>
+                                <li><a href="Contact_Us.php">Contact Us</a></li>
                                 <li>
                                     <div class="user-menu-popup">
                                     <a class="user-menu-check" target=".user-menu-show"><img class="user-img"
@@ -86,18 +86,18 @@
                         <div id="mobile-nav-content">
                             <ul class="nav">
                                 <li>
-                                    <a href="Search_Notes_Page.html">Search Notes</a>
+                                    <a href="Search_Notes_Page.php">Search Notes</a>
                                 </li>
                                 <li>
-                                    <a href="My_Sold_Notes.html">Sell Your Notes</a>
+                                    <a href="Dashboard.php">Sell Your Notes</a>
                                 </li>
-                                <li><a href="Buyer_Requests.html">Buyer Requests</a></li>
+                                <li><a href="Buyer_Requests.php">Buyer Requests</a></li>
                                 <li>
-                                    <a href="FAQ.html">FAQ</a>
+                                    <a href="FAQ.php">FAQ</a>
                                 </li>
 
                                 <li>
-                                    <a href="Contact_Us.html">Contact Us</a>
+                                    <a href="Contact_Us.php">Contact Us</a>
                                 </li>
                                 <li><a href="#"><img class="user-img" src="images/User-Profile/user-img.png" width="40" height="40"
                                     alt=""></a></li>

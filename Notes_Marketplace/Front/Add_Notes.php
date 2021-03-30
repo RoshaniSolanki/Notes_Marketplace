@@ -104,15 +104,15 @@ if(isset($_POST['save'])) {
         $created_date = date("Y-m-d H:i:s");
         $modified_date = date("Y-m-d H:i:s");
         
-        move_uploaded_file($display_picture_temp_loc, "C://xampp/htdocs/Roshani_php/Training/NotesMarketPlace/Notes_Marketplace/Front".$display_picture);
-        move_uploaded_file($upload_notes_temp_loc, "C://xampp/htdocs/Roshani_php/Training/NotesMarketPlace/Notes_Marketplace/Front".$upload_notes);
-        move_uploaded_file($note_preview_temp_loc, "C://xampp/htdocs/Roshani_php/Training/NotesMarketPlace/Notes_Marketplace/Front".$note_preview);
+        move_uploaded_file($display_picture_temp_loc, "C://xampp/htdocs/Roshani_php/Training/NotesMarketPlace/Notes_Marketplace/Front/Members/".$display_picture);
+        move_uploaded_file($upload_notes_temp_loc, "C://xampp/htdocs/Roshani_php/Training/NotesMarketPlace/Notes_Marketplace/Front/Members/".$upload_notes);
+        move_uploaded_file($note_preview_temp_loc, "C://xampp/htdocs/Roshani_php/Training/NotesMarketPlace/Notes_Marketplace/Front/Members/".$note_preview);
 
-        $upload_notes_insert = query("INSERT INTO seller_notes_attachements(FilePath, CreatedDate, ModifiedDate) VALUES('{$upload_notes}', '{$created_date)}', '{$modified_date)}'");
+        //$upload_notes_insert = query("INSERT INTO seller_notes_attachements(FilePath, CreatedDate, ModifiedDate) VALUES('{$upload_notes}', '{$created_date)}', '{$modified_date}')");
 
         $query  = "INSERT INTO ";
-        $query .="seller_notes(SellerID, Title, Category, Type, NumberOfPages, Description, Country, UniversityName, CourseName, CourseCode, Professor, IsPaid, NotePreview, CreatedDate, ModifiedDate) ";
-        $query .="VALUES('{$_SESSION['userid']}', {$title}', '{$category}', '{$display_picture}, {$type}', '{$number_of_pages}', '{$description}', '{$country}', '{$institute_name}', '{$course_name}', '{$course_code}', '{$professor}', '{$ispaid}', '{$note_preview}', '{$created_date}', '{$modified_date}')";
+        $query .="seller_notes(SellerID, Status, Title, Category, Type, NumberOfPages, Description, Country, UniversityName, CourseName, CourseCode, Professor, IsPaid, NotePreview, CreatedDate, CreatedBy, ModifiedDate, ModifiedBy) ";
+        $query .="VALUES('{$_SESSION['userid']}', 6, {$title}', '{$category}', '{$display_picture}, {$type}', '{$number_of_pages}', '{$description}', '{$country}', '{$institute_name}', '{$course_name}', '{$course_code}', '{$professor}', '{$ispaid}', '{$note_preview}', '{$created_date}', '{$_SESSION['userid']}', '{$modified_date}', '{$_SESSION['userid']}')";
         $query =query($query);
         confirm($query);
         //set_message("New Product with id {$last_id} was Added");
@@ -173,8 +173,8 @@ if(isset($_POST['save'])) {
                             <ul class="nav navbar-nav pull-right">
                                 <li><a href="Search_Notes_Page.php">Search Notes</a></li>
                                 <li><a href="Dashboard.php">Sell Your Notes</a></li>
-                                <li><a href="Buyer_Requests.html">Buyer Requests</a></li>
-                                <li><a href="FAQ.html">FAQ</a></li>
+                                <li><a href="Buyer_Requests.php">Buyer Requests</a></li>
+                                <li><a href="FAQ.php">FAQ</a></li>
                                 <li><a href="Contact_Us.php">Contact Us</a></li>
                                 <li>
                                     <div class="user-menu-popup">
@@ -217,9 +217,9 @@ if(isset($_POST['save'])) {
                                 <li>
                                     <a href="Dashboard.php">Sell Your Notes</a>
                                 </li>
-                                <li><a href="Buyer_Requests.html">Buyer Requests</a></li>
+                                <li><a href="Buyer_Requests.php">Buyer Requests</a></li>
                                 <li>
-                                    <a href="FAQ.html">FAQ</a>
+                                    <a href="FAQ.php">FAQ</a>
                                 </li>
 
                                 <li>
@@ -228,7 +228,7 @@ if(isset($_POST['save'])) {
                                 <li><a href="#"><img class="user-img" src="images/User-Profile/user-img.png" width="40"
                                             height="40" alt=""></a></li>
                                 <li>
-                                    <a href="Login.html">
+                                    <a href="">
                                         <button class="btn btn-primary logout-btn">Logout</button>
                                     </a>
                                 </li>
@@ -247,7 +247,7 @@ if(isset($_POST['save'])) {
             <div class="add-notes-img-text">Add Notes</div>
         </div>
 
-        <form action="" method="POST">
+        <form action="" method="POST" enctype="multipart/form-data">
             <div class="container">
                 <p class="add-notes-headings"></p>
                 <div class="row">
@@ -371,7 +371,7 @@ if(isset($_POST['save'])) {
                                         <div class="col-md-3 col-sm-2 col-xs-4">
                                             <label for="free" class="radio">
                                                 <input type="radio" name="sellfor-radio" id="free" value="free"
-                                                    class="radio-input form-control">
+                                                    class="radio-input form-control" onChange="getValue(this)">
                                                 <div class="internal-circle"></div>
                                                 Free
                                             </label>
@@ -379,7 +379,7 @@ if(isset($_POST['save'])) {
                                         <div class="col-md-9 col-sm-10 col-xs-8">
                                             <label for="paid" class="radio">
                                                 <input type="radio" name="sellfor-radio" id="paid" value="paid"
-                                                    class="radio-input form-control">
+                                                    class="radio-input form-control" onChange="getValue(this)" checked>
                                                 <div class="internal-circle"></div>
                                                 Paid
                                             </label>
@@ -389,7 +389,7 @@ if(isset($_POST['save'])) {
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="form-group">
+                                <div class="form-group" id="sell-price-field">
                                     <label class="sellPrice" for="sellPrice">Sell Price *</label>
                                     <input type="text" name="sell-price" id="sell-price" class="form-control"
                                         placeholder="Enter your price">
@@ -414,7 +414,7 @@ if(isset($_POST['save'])) {
                         <button type="submit" name="save" class="btn btn-primary add-notes-save-btn">SAVE</button>
                     </div>
                     <div class="col-md-10 col-sm-9 col-xs-6">
-                        <button type="submit" name="publish" class="btn btn-primary add-notes-publish-btn">PUBLISH</button>
+                        <button type="submit" name="publish" onClick='return check()' class="btn btn-primary add-notes-publish-btn">PUBLISH</button>
                     </div>
                 </div>
             </div>
@@ -455,3 +455,19 @@ if(isset($_POST['save'])) {
 </body>
 
 </html>
+<script>
+    function getValue(radioBtn) {
+        if(radioBtn.value == 'free') {
+            document.getElementById("sell-price-field").style.display = 'none';
+        }else {
+            document.getElementById("sell-price-field").style.display = 'block';
+        }
+    }
+    /*
+    function check() {
+        var r= confirm('Publishing this note will send note to administrator for review, once administrator review and approve then this note will be published to portal. Press yes to continue.');
+        if(r==true) {
+
+        }
+    }*/
+</script>

@@ -1,3 +1,59 @@
+<?php
+include "../includes/db.php";
+include "../includes/functions.php";
+
+/* In Progress Notes */
+if(isset($_GET['page_t1'])) {
+
+    $page_t1 = $_GET['page_t1'];
+}else {
+    $page_t1 = 1;
+}
+
+$item_per_page_t1 = 2;
+$start_from_t1 = ($page_t1-1)*2;
+
+$select_in_progress_notes = query("SELECT * FROM seller_notes ORDER BY CreatedDate DESC LIMIT $start_from_t1,$item_per_page_t1");
+confirm($select_in_progress_notes);
+
+if(isset($_POST['progress_notes_search_btn'])) {
+
+    $search = $_POST['search_progress_notes'];
+
+    $find_status = query("SELECT * FROM reference_data");
+    confirm($find_status);
+
+    $search_query = query("SELECT * FROM seller_notes WHERE Title LIKE '%$search%' OR Category LIKE '%$search%' ");
+    confirm($search_query);
+
+    $count = mysqli_num_rows($search_query);
+
+    if($count == 0) {
+        echo "<script>alert('No record found');</script>";
+    }else {
+        //echo "<script>alert('record found');</script>";
+    }
+
+}
+
+/* Published Notes */
+if(isset($_GET['page_t2'])) {
+
+    $page_t2 = $_GET['page_t2'];
+}else {
+    $page_t2 = 1;
+}
+
+$item_per_page_t2 = 2;
+$start_from_t2 = ($page_t2-1)*2;
+
+$select_published_notes = query("SELECT * FROM seller_notes ORDER BY CreatedDate DESC LIMIT $start_from_t2,$item_per_page_t2");
+confirm($select_published_notes);
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -208,12 +264,15 @@
                             <div class="col-md-6 col-sm-4 col-xs-4">
                                 <p>In Progress Notes</p>
                             </div>
+                            
                             <div class="col-md-6 col-sm-8 col-xs-8">
+                            <form action="" method="POST">
                                 <span><img class="dashboard-search-icon-img"
                                         src="./images/My_Download/search-icon.png"></span>
-                                <input type="text" name="search" id="search" placeholder="Search">
-                                <a href=""><button class="btn btn-primary dashboard-search-btn">SEARCH</button></a>
-                            </div>
+                                <input type="text" name="search_progress_notes" class="search" placeholder="Search">
+                                <a href=""><button type="submit" name="progress_notes_search_btn" class="btn btn-primary dashboard-search-btn">SEARCH</button></a>
+                                </form></div>
+                            
                         </div>
                     </div>
                     <div id="part2">
@@ -228,6 +287,51 @@
                                         <th>ACTION</th>
                                     </tr>
                                     <tr>
+                                    <?php 
+                        
+                                    while($row = mysqli_fetch_assoc($select_in_progress_notes)) {
+
+                                        $note_id    = $row['ID'];
+                                        $added_date = $row['CreatedDate'];
+                                        $title      = $row['Title'];
+                                        $category   = $row['Category'];
+                                        $status     = $row['Status'];
+                                    
+                                        $select_category = query("SELECT * FROM note_categories WHERE ID = '$category' ");
+                                        confirm($select_category);
+                                        while($category_row = mysqli_fetch_assoc($select_category))
+                                        {
+                                            $Category = $category_row['Name'];
+                                        }
+
+                                        $select_status = query("SELECT * FROM reference_data WHERE ID = '$status' ");
+                                        confirm($select_status);
+                                        while($status_row = mysqli_fetch_assoc($select_status))
+                                        {
+                                            $Status = $status_row['Value'];
+                                        }
+                                    
+                                    ?>
+                                                <td><?php echo $added_date ?></td>
+                                                <td><?php echo $title ?></td>
+                                                <td><?php echo $Category ?></td>
+                                                <td><?php echo $Status ?></td>
+                                                <?php if($Status == 'Draft') { ?>
+                                                <td><a><img class="edit-img" src="./images/Dashboard/edit.png"></a>
+                                                <a href="delete_note.php?id=<?php echo $note_id; ?>" onclick="return check_delete()"><img
+                                                src="./images/Dashboard/delete.png"></a></td>
+                                                <?php } ?>
+                                                <?php if($Status != 'Draft') { ?>
+                                                <td><a href="Note_Details_Page.php"><img src="./images/Dashboard/eye.png"></a></td>
+                                                <?php } ?>
+                                            </tr>
+                                    
+                                    <?php
+                                    }
+                                    
+                                    
+                                    ?>
+                                    <!--tr>
                                         <td>09-10-2020</td>
                                         <td>Data Science</td>
                                         <td>Science</td>
@@ -268,7 +372,7 @@
                                         <td><img class="edit-img" src="./images/Dashboard/edit.png"><img
                                                 src="./images/Dashboard/delete.png">
                                         </td>
-                                    </tr>
+                                    </tr-->
                                 </table>
                             </div>
                         </div>
@@ -276,24 +380,55 @@
                     <div id="part3">
                         <div class="row">
                             <!-- Pagination-->
+                            <?php 
+                            
+                                    $p_query_t1 = query("SELECT * FROM seller_notes");
+                                    confirm($p_query_t1);
+                                    $total_progress_notes_t1 = mysqli_num_rows($p_query_t1);
+                                    $total_page_t1 = ceil($total_progress_notes_t1/$item_per_page_t1);
+                            
+                            ?>
                             <center>
                                 <div class="pagination-section">
 
                                     <ul class="pagination">
                                         <li class="page-item">
-                                            <a class="page-link" href="#">
-                                                <img class="left-arrow-img" src="./images/search-page/left-arrow.png">
-                                            </a>
+
+                                            <?php
+                                             echo "<a class='page-link' href='Dashboard.php?page_t1=".($page_t1-1)."'>
+                                             <img class='left-arrow-img' src='./images/search-page/left-arrow.png'></a>";
+                                            ?>
+                                            
                                         </li>
-                                        <li class="page-item"><a id="one" class="page-link" href="#">1</a></li>
+                                        <?php 
+
+                                            for($i=1;$i<=$total_page_t1;$i++) {
+
+                                                if($i==$page_t1){
+                                                    
+                                                    echo "<li class='page-item'><a class='page-link active-link' href='Dashboard.php?page_t1=".$i."'>$i</a></li>";
+
+                                                }else {
+
+                                                    echo "<li class='page-item'><a class='page-link' href='Dashboard.php?page_t1=".$i."'>$i</a></li>";
+
+                                                }
+                                                
+                                            }
+
+                                        ?>
+                                        <!--li class="page-item"><a id="one" class="page-link" href="#">1</a></li>
                                         <li class="page-item"><a id="two" class="page-link" href="#">2</a></li>
                                         <li class="page-item"><a id="three" class="page-link" href="#">3</a></li>
                                         <li class="page-item"><a id="four" class="page-link" href="#">4</a></li>
-                                        <li class="page-item"><a id="five" class="page-link" href="#">5</a></li>
+                                        <li class="page-item"><a id="five" class="page-link" href="#">5</a></li-->
                                         <li class="page-item">
-                                            <a class="page-link" href="#">
-                                                <img class="right-arrow-img" src="./images/search-page/right-arrow.png">
-                                            </a>
+
+                                        <?php 
+                                             echo "<a class='page-link' href='Dashboard.php?page_t1=".($page_t1+1)."'>
+                                             <img class='right-arrow-img' src='./images/search-page/right-arrow.png'></a>";
+                                        ?>
+
                                         </li>
                                     </ul>
 
@@ -310,10 +445,12 @@
                                 <p>Published Notes</p>
                             </div>
                             <div class="col-md-6 col-sm-8 col-xs-8">
+                            <form action="" method="POST">
                                 <span><img class="dashboard-search-icon-img"
                                         src="./images/My_Download/search-icon.png"></span>
-                                <input type="text" name="search" id="search" placeholder="Search">
+                                <input type="text" name="search_published_notes" class="search" placeholder="Search">
                                 <a href=""><button class="btn btn-primary dashboard-search-btn">SEARCH</button></a>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -330,6 +467,42 @@
                                         <th>ACTION</th>
                                     </tr>
                                     <tr>
+                                    <?php 
+                                    while($row1 = mysqli_fetch_assoc($select_published_notes)) {
+
+                                        $added_date = $row1['CreatedDate'];
+                                        $title      = $row1['Title'];
+                                        $category   = $row1['Category'];
+                                        $ispaid     = $row1['IsPaid'];
+                                        $price      = $row1['SellingPrice'];
+
+                                        $select_category = query("SELECT * FROM note_categories WHERE ID = '$category' ");
+                                        confirm($select_category);
+                                        while($category_row = mysqli_fetch_assoc($select_category))
+                                        {
+                                            $Category = $category_row['Name'];
+                                        }
+                                    
+                                    ?>
+                                                <td><?php echo $added_date ?></td>
+                                                <td><?php echo $title ?></td>
+                                                <td><?php echo $Category ?></td>
+                                                <?php if($ispaid == 1) { ?>
+                                                <td>Paid</td>
+                                                <?php } ?>
+                                                <?php if($ispaid == 0) { ?>
+                                                <td>Free</td>
+                                                <?php } ?>
+                                                <td><?php echo $price ?></td>
+                                                <td><a href="Note_Details_Page.php"><img src="./images/Dashboard/eye.png"></a></td>
+                                            </tr>
+                                    
+                                    <?php
+                                    }
+                                    
+                                    
+                                    ?>
+                                    <!--tr>
                                         <td>09-10-2020</td>
                                         <td>Data Science</td>
                                         <td>Science</td>
@@ -373,7 +546,7 @@
                                         <td>$0</td>
                                         <td><img src="./images/Dashboard/eye.png">
                                         </td>
-                                    </tr>
+                                    </tr-->
                                 </table>
                             </div>
                         </div>
@@ -381,25 +554,60 @@
                     <div id="part3">
                         <div class="row">
                             <!-- Pagination-->
-                            <center>
+
+                            <?php 
+                            
+                                    $p_query_t2 = query("SELECT * FROM seller_notes");
+                                    confirm($p_query_t2);
+                                    $total_progress_notes_t2 = mysqli_num_rows($p_query_t2);
+                                    $total_page_t2 = ceil($total_progress_notes_t2/$item_per_page_t2);
+                            
+                            ?>
+
+<center>
                                 <div class="pagination-section">
+
                                     <ul class="pagination">
                                         <li class="page-item">
-                                            <a class="page-link" href="#">
-                                                <img class="left-arrow-img" src="./images/search-page/left-arrow.png">
-                                            </a>
+
+                                            <?php
+                                             echo "<a class='page-link' href='Dashboard.php?page_t2=".($page_t2-1)."'>
+                                             <img class='left-arrow-img' src='./images/search-page/left-arrow.png'></a>";
+                                            ?>
+                                            
                                         </li>
-                                        <li class="page-item"><a id="one" class="page-link" href="#">1</a></li>
+                                        <?php 
+
+                                            for($i=1;$i<=$total_page_t2;$i++) {
+
+                                                if($i==$page_t2){
+                                                    
+                                                    echo "<li class='page-item'><a class='page-link active-link' href='Dashboard.php?page_t2=".$i."'>$i</a></li>";
+
+                                                }else {
+
+                                                    echo "<li class='page-item'><a class='page-link' href='Dashboard.php?page_t2=".$i."'>$i</a></li>";
+
+                                                }
+                                                
+                                            }
+
+                                        ?>
+                                        <!--li class="page-item"><a id="one" class="page-link" href="#">1</a></li>
                                         <li class="page-item"><a id="two" class="page-link" href="#">2</a></li>
                                         <li class="page-item"><a id="three" class="page-link" href="#">3</a></li>
                                         <li class="page-item"><a id="four" class="page-link" href="#">4</a></li>
-                                        <li class="page-item"><a id="five" class="page-link" href="#">5</a></li>
+                                        <li class="page-item"><a id="five" class="page-link" href="#">5</a></li-->
                                         <li class="page-item">
-                                            <a class="page-link" href="#">
-                                                <img class="right-arrow-img" src="./images/search-page/right-arrow.png">
-                                            </a>
+
+                                        <?php 
+                                             echo "<a class='page-link' href='Dashboard.php?page_t2=".($page_t2+1)."'>
+                                             <img class='right-arrow-img' src='./images/search-page/right-arrow.png'></a>";
+                                        ?>
+
                                         </li>
                                     </ul>
+
                                 </div>
                             </center>
                             <!-- Pagination Ends -->
@@ -444,3 +652,8 @@
 </body>
 
 </html>
+<script>
+    function check_delete() {
+        return confirm("Are you sure, you want to delete this note?");
+    }
+</script>

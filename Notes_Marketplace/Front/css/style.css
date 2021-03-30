@@ -1083,7 +1083,7 @@ ul.navbar-nav>li>a:focus {
     margin-bottom: 50px;
 }
 
-.pagination-section #one {
+.pagination-section li .active-link {
     width: 34px;
     height: 34px;
     background: #6255a5;
@@ -1091,18 +1091,18 @@ ul.navbar-nav>li>a:focus {
     border-radius: 50%;
 }
 
-.pagination-section #two,
-.pagination-section #three,
+.pagination-section li .page-item
+/*.pagination-section #three,
 .pagination-section #four,
-.pagination-section #five {
+.pagination-section #five */{
     color: #333;
     margin-left: 30px;
 }
-
+/*
 .pagination-section #two {
     color: #333;
     margin-left: 20px;
-}
+}*/
 
 /*=======================================================
                     Note Details  
@@ -1459,8 +1459,8 @@ ul.navbar-nav>li>a:focus {
     margin-bottom: 0px;
 }
 
-#dashboard #section2 #part1 #search,
-#dashboard #section3 #part1 #search {
+#dashboard #section2 #part1 .search,
+#dashboard #section3 #part1 .search {
     margin-right: 10px;
     padding-left: 40px;
     font-size: 16px;
