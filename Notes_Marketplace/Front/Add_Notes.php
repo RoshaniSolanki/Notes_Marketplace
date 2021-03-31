@@ -75,7 +75,7 @@ if(isset($_POST['save'])) {
         $country_id_row = mysqli_fetch_assoc($note_id);
         $country =$country_id_row['ID'];
 
-        $sell_for_radio_btn        = escape_string($_POST['sellfor-radio']);
+        $sell_for_radio_btn = escape_string($_POST['sellfor-radio']);
         if($sell_for_radio_btn == "free") {
             $ispaid = 'false';
             $selling_price = 0;
@@ -414,7 +414,7 @@ if(isset($_POST['save'])) {
                         <button type="submit" name="save" class="btn btn-primary add-notes-save-btn">SAVE</button>
                     </div>
                     <div class="col-md-10 col-sm-9 col-xs-6">
-                        <button type="submit" name="publish" onClick='return check()' class="btn btn-primary add-notes-publish-btn">PUBLISH</button>
+                        <a><button type="submit" name="publish" onclick="publish_btn_check()" class="btn btn-primary add-notes-publish-btn">PUBLISH</button></a>
                     </div>
                 </div>
             </div>
@@ -463,11 +463,47 @@ if(isset($_POST['save'])) {
             document.getElementById("sell-price-field").style.display = 'block';
         }
     }
-    /*
-    function check() {
-        var r= confirm('Publishing this note will send note to administrator for review, once administrator review and approve then this note will be published to portal. Press yes to continue.');
-        if(r==true) {
+    
+    function publish_btn_check() {
+        var r= confirm("Publishing this note will send note to administrator for review, once administrator review and approve then this note will be published to portal. Press yes to continue.");
+        if(r) {
+            <?php 
+                $t = escape_string($_POST['title']);
+                $select_id = query("SELECT * FROM seller_notes WHERE Title='$t' ");
+                confirm($select_id);
+                while($note_row=mysqli_fetch_assoc($select_id)) {
+                   $note_id = $note_row['ID'];
+                   $seller_id = $note_row['SellerID'];
+                }
 
+                $select_seller_name = query("SELECT * FROM users WHERE ID='$seller_id' ");
+                confirm($select_seller_name);
+                while($seller_row=mysqli_fetch_assoc($select_seller_name)) {
+                   $seller_fname = $seller_row['FirstName'];
+                   $seller_lname = $seller_row['LastName'];
+                }
+
+                $update_status = query("UPDATE seller_notes SET Status=7 WHERE ID='$note_id' ");
+                confirm($update_status);
+
+                $subject = $seller_fname." ".$seller_lname." sent his note for review";
+                $email = "sroshani025@gmail.com";
+                $body = "Hello Admins, "."\r\n"."\r\n"."We want to inform you that, " .$seller_fname." ".$seller_lname. " sent his note"."\r\n".$t." for review. Please look at the notes and take required actions. " ."\r\n"."\r\n"."Regards,"."\r\n". "Notes Marketplace";
+                $sender_email = "Email From: {$email}";
+         
+                $result = mail($email, $subject, $body, $sender_email);
+         
+                if(!$result) {
+                echo "<script>alert('Email sending failed....')</script>";
+                }else {
+                    redirect("Dashboard.php");
+                }
+                return true;
+
+            ?>
+           
+        }else {
+            return false;
         }
-    }*/
+    }
 </script>

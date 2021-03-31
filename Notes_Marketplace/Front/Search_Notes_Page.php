@@ -1,3 +1,14 @@
+<?php
+include "../includes/db.php";
+include "../includes/functions.php";
+
+$select_query = query("SELECT * FROM seller_notes");
+confirm($select_query);
+
+/*while($row = mysqli_fetch_assoc($select_query)) {
+    $note_id = $row['ID'];
+}*/
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,7 +49,7 @@
 
                         <!-- Logo -->
                         <a class="navbar-brand" href="Home_Page.php">
-                            <img src="images/home/top-logo.png" alt="logo">
+                            <img src="images/home/logo.png" alt="logo">
                         </a>
                     </div>
 
@@ -167,10 +178,15 @@
         <div class="container">
             <p class="SPS2MH">Total 18 notes</p>
             <div class="row">
+               <?php 
+               while($row = mysqli_fetch_assoc($select_query)) {
+                $note_id = $row['ID'];
+                ?>
+            
                 <div class="col-md-4 col-sm-6 col-xs-12">
                     <img class="search1-img" src="./images/search-page/search1.png">
                     <div id="search1">
-                        <p class="SPS2H">Computer Operating System - Final Exam Book With Paper Solution</p>
+                        <a href="Note_details_Page.php?Note_id=<?php echo $note_id;?>"><p class="SPS2H">Computer Operating System - Final Exam Book With Paper Solution</p></a>
                         <div class="row">
                             <div class="col-md-2 col-sm-2 col-xs-3">
                                 <img class="university-img" src="./images/search-page/university.png">
@@ -216,8 +232,8 @@
                             <div class="col-md-6 col-sm-6 col-xs-6"><p class="SPS2T5">100 reviews</p></div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4 col-sm-6 col-xs-12">
+                </div><?php }?>
+                <!--div class="col-md-4 col-sm-6 col-xs-12">
                     <img class="search2-img" src="./images/search-page/search2.png">
                     <div id="search2">
                         <p class="SPS2H">Computer Science</p>
@@ -618,7 +634,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div-->
     </div>
     <!-- Pagination-->
     <center>

@@ -394,9 +394,11 @@ confirm($select_published_notes);
                                     <ul class="pagination">
                                         <li class="page-item">
 
-                                            <?php
+                                            <?php 
+                                            if($page_t1>1){
                                              echo "<a class='page-link' href='Dashboard.php?page_t1=".($page_t1-1)."'>
                                              <img class='left-arrow-img' src='./images/search-page/left-arrow.png'></a>";
+                                            }
                                             ?>
                                             
                                         </li>
@@ -425,8 +427,10 @@ confirm($select_published_notes);
                                         <li class="page-item">
 
                                         <?php 
+                                             if($i>$page_t1){
                                              echo "<a class='page-link' href='Dashboard.php?page_t1=".($page_t1+1)."'>
                                              <img class='right-arrow-img' src='./images/search-page/right-arrow.png'></a>";
+                                             }
                                         ?>
 
                                         </li>

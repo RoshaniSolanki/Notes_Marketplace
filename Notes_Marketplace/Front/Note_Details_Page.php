@@ -1,3 +1,14 @@
+<?php
+include "../includes/db.php";
+include "../includes/functions.php";
+
+$note_id = $_GET['Note_id'];
+
+$select_query = query("SELECT * FROM seller_notes WHERE ID = '$note_id' ");
+confirm($select_query);
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -136,7 +147,59 @@
                                 <p class="NDS1LT2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut ab
                                     voluptatem corporis velit facere accusamus cum, quae ducimus, unde reprehenderit
                                     vitae sed veniam esse. Quos nihil fugiat numquam facilis reprehenderit!</p>
-                                <a href="#"><button class="note-details-page-download-btn">DOWNLOAD/$15</button></a>
+
+                                <?php  
+                                /*$note_pdf = $_GET['note_pdf'] . ".pdf";
+                                header("content-disposition: attachment; filename=" .urldecode($note_pdf));
+                                $fb = fopen($note_pdf, "r");
+                                while(!feof($fb)){
+                                    echo fread($fb, 8192);
+                                    flush();
+                                }     
+                                fclose($fb);  */
+                                while($row = mysqli_fetch_assoc($select_query)) {
+                                    $ispaid = $row['IsPaid'];
+                                    if($ispaid == 0){ ?>
+                                        <a href="#"><button class="note-details-page-download-btn">DOWNLOAD</button></a>
+                                    <?php
+                                    }else { ?>
+                                        <a href="Note_Details_Page.php?note_pdf=srs" target="_blank"><button class="note-details-page-download-btn" onClick='check()'>DOWNLOAD/$15</button></a>
+                                        <script>
+                                       function check() {
+                                        var a = confirm('Are you sure you want to download this Paid note. Please confirm.');
+                                        if(a == true) {
+                                            $(function () {
+
+                                                $(".note-details-page-download-btn").click(function () {
+                                                    $("#thank-you-popup1").show();
+                                                });
+                                                $(".close-btn").click(function () {
+                                                    $("#thank-you-popup1").hide();
+                                                });
+                                            
+                                            });
+                                           /* $subject = "<Buyer name> wants to purchase your notes";
+                                            $email = "sroshani025@gmail.com";
+                                            $body = "Hello <Seller name>,"."\r\n"."\r\n"."We would like to inform you that, <Buyer name> wants to purchase your notes. Please see Buyer Requests tab and allow download access to Buyer if you have received the payment from him. " ."\r\n"."\r\n"."Regards,"."\r\n". "Notes Marketplace";
+                                            $sender_email = "Email From: {$email}";
+         
+                                            $result = mail($email, $subject, $body, $sender_email);
+         
+                                            if(!$result) {
+                                                echo "<script>alert('Email sending failed....')</script>";
+                                            }*/
+                                         return true;
+                                        }else {
+                                            console.log("Cancle");
+                                            return false;
+                                        }
+                                    }
+                                    </script>  
+                                   <?php 
+                                    }
+                                }
+                                ?>
+                                
                             </div>
                         </div>
                     </div>
