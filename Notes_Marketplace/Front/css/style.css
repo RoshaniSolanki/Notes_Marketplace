@@ -1083,6 +1083,11 @@ ul.navbar-nav>li>a:focus {
     margin-bottom: 50px;
 }
 
+.pagination-section .page-item a{
+    color: #333;
+    margin-left: 30px;
+}
+
 .pagination-section li .active-link {
     width: 34px;
     height: 34px;
@@ -1090,19 +1095,13 @@ ul.navbar-nav>li>a:focus {
     color: #fff;
     border-radius: 50%;
 }
-
-.pagination-section li .page-item
-/*.pagination-section #three,
-.pagination-section #four,
-.pagination-section #five */{
-    color: #333;
-    margin-left: 30px;
+.pagination-section .page-link:hover {
+   background: none;
 }
-/*
-.pagination-section #two {
-    color: #333;
-    margin-left: 20px;
-}*/
+.pagination-section li .active-link:hover {
+    background: #6255a5;
+    color:#fff;
+}
 
 /*=======================================================
                     Note Details  
@@ -1602,6 +1601,8 @@ ul.navbar-nav>li>a:focus {
 #addNotes .sellFor {
     margin-bottom: 0;
 }
+
+
 #addNotes #title,
 #addNotes #category,
 #addNotes #display-picture,

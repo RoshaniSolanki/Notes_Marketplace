@@ -301,7 +301,7 @@ confirm($select_published_notes);
                                         confirm($select_category);
                                         while($category_row = mysqli_fetch_assoc($select_category))
                                         {
-                                            $Category = $category_row['Name'];
+                                            $Category = $category_row['Category_Name'];
                                         }
 
                                         $select_status = query("SELECT * FROM reference_data WHERE ID = '$status' ");
@@ -317,7 +317,7 @@ confirm($select_published_notes);
                                                 <td><?php echo $Category ?></td>
                                                 <td><?php echo $Status ?></td>
                                                 <?php if($Status == 'Draft') { ?>
-                                                <td><a><img class="edit-img" src="./images/Dashboard/edit.png"></a>
+                                                <td><a href="add_notes.php?note_id=<?php echo $note_id; ?>"><img class="edit-img" src="./images/Dashboard/edit.png"></a>
                                                 <a href="delete_note.php?id=<?php echo $note_id; ?>" onclick="return check_delete()"><img
                                                 src="./images/Dashboard/delete.png"></a></td>
                                                 <?php } ?>
@@ -484,7 +484,7 @@ confirm($select_published_notes);
                                         confirm($select_category);
                                         while($category_row = mysqli_fetch_assoc($select_category))
                                         {
-                                            $Category = $category_row['Name'];
+                                            $Category = $category_row['Category_Name'];
                                         }
                                     
                                     ?>
@@ -575,8 +575,10 @@ confirm($select_published_notes);
                                         <li class="page-item">
 
                                             <?php
+                                            if($page_t2>1){
                                              echo "<a class='page-link' href='Dashboard.php?page_t2=".($page_t2-1)."'>
                                              <img class='left-arrow-img' src='./images/search-page/left-arrow.png'></a>";
+                                            }
                                             ?>
                                             
                                         </li>
@@ -605,8 +607,10 @@ confirm($select_published_notes);
                                         <li class="page-item">
 
                                         <?php 
+                                            if($i>$page_t2){
                                              echo "<a class='page-link' href='Dashboard.php?page_t2=".($page_t2+1)."'>
                                              <img class='right-arrow-img' src='./images/search-page/right-arrow.png'></a>";
+                                            }
                                         ?>
 
                                         </li>

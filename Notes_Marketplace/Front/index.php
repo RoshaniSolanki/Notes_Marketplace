@@ -22,6 +22,8 @@
 </head>
 
 <body>
+    
+    <a href="download.php?note_pdf=srs"><p>CLICK TO download </p></a>
 
 
 
@@ -34,4 +36,4 @@
 
     <!-- Custom JS -->
     <script src="js/script.js"></script>
-</body></html>
+</body></html>q

@@ -1,16 +1,20 @@
 <?php
 include "../includes/db.php";
 include "../includes/functions.php";
+session_start();
 
+$seller_id = $_SESSION['userid'];
+/*
 function show_note_category() {
 
     $category_query = query("SELECT * FROM note_categories");
     confirm($category_query);
 
     while($category_row = mysqli_fetch_assoc($category_query)) {
-     
+    $catid = $category_row['ID'];
+    $cattitle = $category_row['Category_Name'];
     $categories_options = <<<DELIMETER
-    <option value="">{$category_row['Name']}</option>
+    <option value="{$catid}">{$cattitle}</option>
         
 DELIMETER;
         
@@ -27,7 +31,7 @@ function show_note_type() {
     while($note_row = mysqli_fetch_assoc($note_type)) {
      
     $note_options = <<<DELIMETER
-    <option value="">{$note_row['Name']}</option>
+    <option value="{$note_row['ID']}">{$note_row['Name']}</option>
         
 DELIMETER;
         
@@ -42,9 +46,9 @@ function show_countries() {
     confirm($country);
 
     while($country_row = mysqli_fetch_assoc($country)) {
-     
+    $countryid=$country_row['ID'];
     $country_options = <<<DELIMETER
-    <option value="">{$country_row['Name']}</option>
+    <option value="{$countryid}">{$country_row['Name']}</option>
         
 DELIMETER;
         
@@ -52,29 +56,34 @@ DELIMETER;
     }
 
 }
-
+*/
 if(isset($_POST['save'])) {
         
         //echo  $category_title = escape_string($_POST['category']);
 
-        $category_title = escape_string($_POST['category']);
-        $cat_id = query("SELECT ID FROM note_categories WHERE Name = '{$category_title}' ");
+        /*$category_title = escape_string($_POST['category']);
+        $cat_id = query("SELECT * FROM note_categories WHERE Category_Name = '{$category_title}' ");
         confirm($cat_id);
-        $cat_id_row = mysqli_fetch_assoc($cat_id);
-        $category =$cat_id_row['ID'];
+        
 
-        $note_title = escape_string($_POST['type']);
-        $note_id = query("SELECT ID FROM note_types WHERE Name = '{$note_title}' ");
+        while($cat_id_row = mysqli_fetch_assoc($cat_id)){
+        $category =$cat_id_row['ID'];
+        }
+
+        $note_type = escape_string($_POST['type']);
+        $note_id = query("SELECT * FROM note_types WHERE Type_Name = '{$note_type}' ");
         confirm($note_id);
-        $note_id_row = mysqli_fetch_assoc($note_id);
+        while($note_id_row = mysqli_fetch_assoc($note_id)){
         $type =$note_id_row['ID'];
+        }
 
         $country_title = escape_string($_POST['country']);
-        $country_id = query("SELECT ID FROM countries WHERE Name = '{$country_title}' ");
+        $country_id = query("SELECT * FROM countries WHERE Country_Name = '{$country_title}' ");
         confirm($country_id);
-        $country_id_row = mysqli_fetch_assoc($note_id);
+        while($country_id_row = mysqli_fetch_assoc($country_id)){
         $country =$country_id_row['ID'];
-
+        }
+*/
         $sell_for_radio_btn = escape_string($_POST['sellfor-radio']);
         if($sell_for_radio_btn == "free") {
             $ispaid = 'false';
@@ -85,40 +94,128 @@ if(isset($_POST['save'])) {
         }
        
         $title                     = escape_string($_POST['title']);
-        //$category           = escape_string($_POST['category']);
-        //$type               = escape_string($_POST['type']);
-        $display_picture           = escape_string($_FILES['display-picture']['name']);
+        $category           = escape_string($_POST['category']);
+        $type               = escape_string($_POST['type']);
+        $display_picture    = "Members/Default/Admin_default_img.png";
+        /*$display_picture           = escape_string($_FILES['display-picture']['name']);
         $display_picture_temp_loc  = escape_string($_FILES['display-picture']['tmp_name']);
         $upload_notes              = escape_string($_FILES['upload-notes']['name']);
-        $upload_notes_temp_loc     = escape_string($_FILES['upload-notes']['tmp_name']);
+        $upload_notes_temp_loc     = escape_string($_FILES['upload-notes']['tmp_name']);*/
         $number_of_pages           = escape_string($_POST['number-of-pages']);
         $description               = escape_string($_POST['description']);
-        //$country            = escape_string($_POST['country']);
+        $country            = escape_string($_POST['country']);
         $institute_name            = escape_string($_POST['institution-name']);
         $course_name               = escape_string($_POST['course-name']);
         $course_code               = escape_string($_POST['course-code']);
         $professor                 = escape_string($_POST['professor']);
         //$sell_for_radio_btn        = escape_string($_POST['sellfor-radio']);
-        $note_preview              = escape_string($_FILES['note-preview']['name']);
-        $note_preview_temp_loc     = escape_string($_FILES['note-preview']['tmp_name']);
+        /*$note_preview              = escape_string($_FILES['note-preview']['name']);
+        $note_preview_temp_loc     = escape_string($_FILES['note-preview']['tmp_name']);*/
         $created_date = date("Y-m-d H:i:s");
         $modified_date = date("Y-m-d H:i:s");
+
+
         
-        move_uploaded_file($display_picture_temp_loc, "C://xampp/htdocs/Roshani_php/Training/NotesMarketPlace/Notes_Marketplace/Front/Members/".$display_picture);
+       /* move_uploaded_file($display_picture_temp_loc, "C://xampp/htdocs/Roshani_php/Training/NotesMarketPlace/Notes_Marketplace/Front/Members/".$display_picture);
         move_uploaded_file($upload_notes_temp_loc, "C://xampp/htdocs/Roshani_php/Training/NotesMarketPlace/Notes_Marketplace/Front/Members/".$upload_notes);
         move_uploaded_file($note_preview_temp_loc, "C://xampp/htdocs/Roshani_php/Training/NotesMarketPlace/Notes_Marketplace/Front/Members/".$note_preview);
-
+        */
         //$upload_notes_insert = query("INSERT INTO seller_notes_attachements(FilePath, CreatedDate, ModifiedDate) VALUES('{$upload_notes}', '{$created_date)}', '{$modified_date}')");
+        
 
-        $query  = "INSERT INTO ";
-        $query .="seller_notes(SellerID, Status, Title, Category, Type, NumberOfPages, Description, Country, UniversityName, CourseName, CourseCode, Professor, IsPaid, NotePreview, CreatedDate, CreatedBy, ModifiedDate, ModifiedBy) ";
-        $query .="VALUES('{$_SESSION['userid']}', 6, {$title}', '{$category}', '{$display_picture}, {$type}', '{$number_of_pages}', '{$description}', '{$country}', '{$institute_name}', '{$course_name}', '{$course_code}', '{$professor}', '{$ispaid}', '{$note_preview}', '{$created_date}', '{$_SESSION['userid']}', '{$modified_date}', '{$_SESSION['userid']}')";
-        $query =query($query);
+
+        /*  $upload_notes           = escape_string($_FILES['display-picture']);
+        $upload_notes_name      = $upload_notes['name'];
+        $upload_notes_tmp_loc   = $upload_notes['tmp_name'];
+        $upload_notes_extension = explode('.',$upload_notes_name);
+        $upload_notes_check     = strtolower(end($upload_notes_extension));
+        $upload_notes_extstored = array('png', 'jpg', 'jpeg');
+
+            if(in_array($upload_notes_check, $upload_notes_extstored)) {
+                if(!is_dir("../Members/")) {
+                    mkdir('../Members/');
+                }
+                if(!is_dir("../Members/" . $seller_id)) {
+                    mkdir('../Members/' . $seller_id);
+                }
+                if(!is_dir("../Members/" . $seller_id . "/" . $note_id)) {
+                    mkdir('../Members/' . $seller_id . '/' . $note_id);
+                }
+                if(!is_dir("../Members/" . $seller_id . "/" . $note_id . "/" . "Attachements")) {
+                    mkdir('../Members/' . $seller_id . '/' . $note_id . '/' . "Attachements");
+                }
+                $upload_notes_destination = '../Members/' . $seller_id . '/' . $note_id . '/'. 'Attachements' . '/' . "AttachementID" . time() . '.' .$upload_notes_check;
+                move_uploaded_file($upload_notes_tmp_loc, $upload_notes_destination);
+                $upload_notes_query = query("");
+                confirm($upload_notes_query);
+
+            }else {
+                echo "Display Picture Upload failed";
+            }
+        */
+
+
+
+       /* $query  = query("INSERT INTO seller_notes(SellerID, Status, Title, Category, DisplayPicture, NoteType, NumberOfPages, Description, Country, UniversityName, Course, CourseCode, Professor, IsPaid, NotesPreview, CreatedDate, CreatedBy, ModifiedDate, ModifiedBy) VALUES('{$seller_id}', '6', '{$title}', '{$category}', '{$display_picture}', '{$type}', '{$number_of_pages}', '{$description}', '{$country}', '{$institute_name}', '{$course_name}', '{$course_code}', '{$professor}', '{$ispaid}', '{$note_preview}', '{$created_date}', '{$seller_id}', '{$modified_date}', '{$seller_id}')");
         confirm($query);
+        if($query){
+            echo "<script>alert('Inserted Sucessfully...........');</script>";
+        }*/
         //set_message("New Product with id {$last_id} was Added");
 
 }
 
+
+      /*  $display_picture           = escape_string($_FILES['display-picture']);
+        $display_picture_name      = $display_picture['name'];
+        $display_picture_tmp_loc   = $display_picture['tmp_name'];
+        $display_picture_extension = explode('.',$display_picture_name);
+        $display_picture_check     = strtolower(end($display_picture_extension));
+        $display_picture_extstored = array('png', 'jpg', 'jpeg');
+
+            if(in_array($display_picture_check, $display_picture_extstored)) {
+                if(!is_dir("../Members/")) {
+                    mkdir('../Members/');
+                }
+                if(!is_dir("../Members/" . $seller_id)) {
+                    mkdir('../Members/' . $seller_id);
+                }
+                if(!is_dir("../Members/" . $seller_id . "/" . $note_id)) {
+                    mkdir('../Members/' . $seller_id . '/' . $note_id);
+                }
+                $display_picture_destination = '../Members/' . $seller_id . '/' . $note_id . '/' . "DP_" . time() . '.' .$display_picture_check;
+                move_uploaded_file($display_picture_tmp_loc, $display_picture_destination);
+                $display_picture_query = query("UPDATE seller_notes SET DisplayPicture='$display_picture_destination' WHERE ID=$note_id");
+                confirm($display_picture_query);
+
+            }else {
+                echo "Display Picture Upload failed";
+            }
+        */
+
+
+        
+       /* if(isset($_GET['note_id'])) {
+
+            $select_query = query("SELECT * FROM seller_notes WHERE ID = '$_GET['note_id']' ");
+            confirm($select_query);
+
+            while($row = mysqli_fetch_assoc($select_query)) {
+                $title = escape_string($row['Title']);
+                $category_id = escape_string($row['Category']);
+                $display_pic = escape_string($row['DisplayPicture']);
+                $type_id = escape_string($row['Type']);
+                $no_of_page = escape_string($row['NumberOfPages']);
+                $description = escape_string($row['Description']);
+                $country_id = escape_string($row['Country']);
+                $university_name = escape_string($row['UniversityName']);
+                $course_name = escape_string($row['CourseName']);
+                $course_code = escape_string($row['CourseCode']);
+                $professor = escape_string($row['Professor']);
+                $note_preview = escape_string($row['NotesPreview']);
+
+            }
+        }*/
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -143,7 +240,6 @@ if(isset($_POST['save'])) {
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="css/responsive.css">
     <style>
-
     </style>
 
 </head>
@@ -256,7 +352,7 @@ if(isset($_POST['save'])) {
                         <div class="form-group">
                             <label class="title" for="title">Title *</label>
                             <input type="text" name="title" id="title" class="form-control"
-                                placeholder="Enter your notes title">
+                                placeholder="Enter your notes title" value="<?php if(isset($_GET['note_id'])){}?>">
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -266,7 +362,17 @@ if(isset($_POST['save'])) {
                             <select class="form-control" id="category" name="category">
                                 <option selected value="">Select your category</option>
 
-                                <?php show_note_category(); ?>
+                                <?php 
+                            
+                                 $category_query = query("SELECT ID,Category_Name FROM note_categories");
+                                 confirm($category_query);
+                            
+                                while($category_row = mysqli_fetch_assoc($category_query)) {
+                                $category_id=$category_row['ID'];
+                                $category_name=$category_row['Category_Name'];
+                                echo "<option value='$category_id'>$category_name</option>";
+                                }
+                                ?>
                             </select>
                         </div>
                     </div>
@@ -295,7 +401,16 @@ if(isset($_POST['save'])) {
                             <select class="form-control" id="type" name="type">
                                 <option>Select your notes type</option>
 
-                                <?php show_note_type(); ?>
+                                <?php  
+                                $type_query = query("SELECT ID,Type_Name FROM note_types");
+                                confirm($type_query);
+                           
+                               while($type_row = mysqli_fetch_assoc($type_query)) {
+                               $type_id=$type_row['ID'];
+                               $type_name=$type_row['Type_Name'];
+                               echo "<option value='$type_id'>$type_name</option>";
+                               }
+                                ?>
                             </select>
                         </div>
                     </div>
@@ -320,9 +435,19 @@ if(isset($_POST['save'])) {
                             <label class="country" for="country">Country </label>
                             <span><img class="add-notes-arrow-down-img" src="./images/Add-notes/arrow-down.svg"></span>
                             <select class="form-control" id="country" name="country">
+                            
                                 <option selected>Select your country</option>
 
-                                <?php show_countries(); ?>
+                                <?php 
+                                $country = query("SELECT ID,Country_Name FROM countries");
+                                confirm($country);
+                            
+                                while($country_row = mysqli_fetch_assoc($country)) {
+                                $country_id=$country_row['ID'];
+                                $country_name=$country_row['Country_Name'];
+                                echo "<option value='$country_id'>$country_name</option>";
+                                }
+                                ?>
                             </select>
                         </div>
                     </div>
@@ -486,7 +611,7 @@ if(isset($_POST['save'])) {
                 $update_status = query("UPDATE seller_notes SET Status=7 WHERE ID='$note_id' ");
                 confirm($update_status);
 
-                $subject = $seller_fname." ".$seller_lname." sent his note for review";
+               /* $subject = $seller_fname." ".$seller_lname." sent his note for review";
                 $email = "sroshani025@gmail.com";
                 $body = "Hello Admins, "."\r\n"."\r\n"."We want to inform you that, " .$seller_fname." ".$seller_lname. " sent his note"."\r\n".$t." for review. Please look at the notes and take required actions. " ."\r\n"."\r\n"."Regards,"."\r\n". "Notes Marketplace";
                 $sender_email = "Email From: {$email}";
@@ -497,7 +622,7 @@ if(isset($_POST['save'])) {
                 echo "<script>alert('Email sending failed....')</script>";
                 }else {
                     redirect("Dashboard.php");
-                }
+                }*/
                 return true;
 
             ?>
