@@ -292,7 +292,9 @@ confirm($select_published_notes);
                                     while($row = mysqli_fetch_assoc($select_in_progress_notes)) {
 
                                         $note_id    = $row['ID'];
-                                        $added_date = $row['CreatedDate'];
+                                        $created_date = $row['CreatedDate'];
+                                        $date = new DateTime($created_date);
+                                        $added_date = $date->format('Y-m-d');
                                         $title      = $row['Title'];
                                         $category   = $row['Category'];
                                         $status     = $row['Status'];
@@ -474,7 +476,9 @@ confirm($select_published_notes);
                                     <?php 
                                     while($row1 = mysqli_fetch_assoc($select_published_notes)) {
 
-                                        $added_date = $row1['CreatedDate'];
+                                        $created_date = $row['CreatedDate'];
+                                        $date = new DateTime($created_date);
+                                        $added_date = $date->format('Y-m-d');
                                         $title      = $row1['Title'];
                                         $category   = $row1['Category'];
                                         $ispaid     = $row1['IsPaid'];
@@ -491,10 +495,10 @@ confirm($select_published_notes);
                                                 <td><?php echo $added_date ?></td>
                                                 <td><?php echo $title ?></td>
                                                 <td><?php echo $Category ?></td>
-                                                <?php if($ispaid == 1) { ?>
+                                                <?php if($ispaid = 1) { ?>
                                                 <td>Paid</td>
                                                 <?php } ?>
-                                                <?php if($ispaid == 0) { ?>
+                                                <?php if($ispaid = 0) { ?>
                                                 <td>Free</td>
                                                 <?php } ?>
                                                 <td><?php echo $price ?></td>
