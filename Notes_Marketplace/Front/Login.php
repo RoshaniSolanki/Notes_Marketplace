@@ -82,7 +82,6 @@ if(isset($_POST['submit'])) {
         }
     </style>
 
-
 </head>
 <body>
 
@@ -96,7 +95,7 @@ if(isset($_POST['submit'])) {
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <h1>Login</h1>
                         <p class="login-text1">Enter your email address and password to login</p>
-                        <form action="Login.php" method="POST" name="login" id="login">
+                        <form action="Login.php" method="POST" name="login" id="login" onsubmit="return loginForm(event)">
                             <div class="form-group">
                                 <label class="emailLabel" for="email">Email</label>
 
@@ -159,17 +158,24 @@ if(isset($_POST['submit'])) {
 </html>
 
 <script>
-   /* const login_form = document.getElementById('login');
+    
+   /*const login_form = document.getElementById('login');
     const email = document.getElementById('email');
     const password = document.getElementById('password');
 
     login_form.addEventListener('submit', e => {
         e.preventDefault();
-
+    
         checkInputs();
+        
     });
+  /* function loginForm(event) {
+        event.preventDefault();
+        checkInputs();
+        return false;
+    }*/
 
-    function checkInputs() {
+   /* function checkInputs(){
         const emailValue = email.value.trim();
         const passwordValue = password.value.trim();
 
@@ -202,6 +208,7 @@ if(isset($_POST['submit'])) {
         else {
             setSuccessFor(password);
         }
+
     }
 
     function setErrorFor(input, message) {
@@ -209,11 +216,13 @@ if(isset($_POST['submit'])) {
         const small = formGroup.querySelector('small');
         formGroup.className = 'form-group error';
         small.innerText = message;
+        
     }
 
     function setSuccessFor(input) {
         const formGroup = input.parentElement;
         formGroup.className = 'form-group';
+       
     }
 
     function isEmail(email) {

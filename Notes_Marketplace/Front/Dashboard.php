@@ -10,31 +10,13 @@ if(isset($_GET['page_t1'])) {
     $page_t1 = 1;
 }
 
-$item_per_page_t1 = 2;
-$start_from_t1 = ($page_t1-1)*2;
+$item_per_page_t1 = 5;
+$start_from_t1 = ($page_t1-1)*5;
 
 $select_in_progress_notes = query("SELECT * FROM seller_notes ORDER BY CreatedDate DESC LIMIT $start_from_t1,$item_per_page_t1");
 confirm($select_in_progress_notes);
 
-if(isset($_POST['progress_notes_search_btn'])) {
 
-    $search = $_POST['search_progress_notes'];
-
-    $find_status = query("SELECT * FROM reference_data");
-    confirm($find_status);
-
-    $search_query = query("SELECT * FROM seller_notes WHERE Title LIKE '%$search%' OR Category LIKE '%$search%' ");
-    confirm($search_query);
-
-    $count = mysqli_num_rows($search_query);
-
-    if($count == 0) {
-        echo "<script>alert('No record found');</script>";
-    }else {
-        //echo "<script>alert('record found');</script>";
-    }
-
-}
 
 /* Published Notes */
 if(isset($_GET['page_t2'])) {
@@ -44,8 +26,8 @@ if(isset($_GET['page_t2'])) {
     $page_t2 = 1;
 }
 
-$item_per_page_t2 = 2;
-$start_from_t2 = ($page_t2-1)*2;
+$item_per_page_t2 = 5;
+$start_from_t2 = ($page_t2-1)*5;
 
 $select_published_notes = query("SELECT * FROM seller_notes ORDER BY CreatedDate DESC LIMIT $start_from_t2,$item_per_page_t2");
 confirm($select_published_notes);
@@ -331,50 +313,70 @@ confirm($select_published_notes);
                                     <?php
                                     }
                                     
+
+                                   /* if(isset($_POST['progress_notes_search_btn'])) {
+
+                                        $search = $_POST['search_progress_notes'];
                                     
+                                        $find_status = query("SELECT * FROM reference_data");
+                                        confirm($find_status);
+                                    
+                                        $search_query = query("SELECT * FROM seller_notes WHERE Title LIKE '%$search%' LIMIT $start_from_t1,$item_per_page_t1");
+                                        confirm($search_query);
+                                    
+                                        $count = mysqli_num_rows($search_query);
+                                    
+                                        if($count == 0) {
+                                            echo "<script>alert('No record found');</script>";
+                                        }else {
+                                            //echo "<script>alert('record found');</script>";
+                                            while($srow = mysqli_fetch_assoc($search_query)) {
+
+                                                $note_id1    = $srow['ID'];
+                                                $created_date1 = $srow['CreatedDate'];
+                                                $date1 = new DateTime($created_date);
+                                                $added_date1 = $date->format('Y-m-d');
+                                                $title1      = $srow['Title'];
+                                                $category1   = $srow['Category'];
+                                                $status1     = $srow['Status'];
+                                            
+                                                $search_category = query("SELECT * FROM note_categories WHERE ID = '$category1' ");
+                                                confirm($search_category);
+                                                while($search_cat_row = mysqli_fetch_assoc($search_category))
+                                                {
+                                                    $Cat = $search_cat_row['Category_Name'];
+                                                }
+        
+                                                $search_status = query("SELECT * FROM reference_data WHERE ID = '$status1' ");
+                                                confirm($search_status);
+                                                while($search_status_row = mysqli_fetch_assoc($search_status))
+                                                {
+                                                    $Sta = $search_status_row['Value'];
+                                                }
+                                            
+                                            ?>
+                                                        <td><?php echo $added_date1 ?></td>
+                                                        <td><?php echo $title1 ?></td>
+                                                        <td><?php echo $Cat ?></td>
+                                                        <td><?php echo $Sta ?></td>
+                                                        <?php if($Sta == 'Draft') { ?>
+                                                        <td><a href="add_notes.php?note_id=<?php echo $note_id1; ?>"><img class="edit-img" src="./images/Dashboard/edit.png"></a>
+                                                        <a href="delete_note.php?id=<?php echo $note_id1; ?>" onclick="return check_delete()"><img
+                                                        src="./images/Dashboard/delete.png"></a></td>
+                                                        <?php } ?>
+                                                        <?php if($Sta != 'Draft') { ?>
+                                                        <td><a href="Note_Details_Page.php"><img src="./images/Dashboard/eye.png"></a></td>
+                                                        <?php } ?>
+                                                    </tr>
+                                            
+                                            <?php
+                                            }
+                                        }
+                                    
+                                    }
+                                    */
                                     ?>
-                                    <!--tr>
-                                        <td>09-10-2020</td>
-                                        <td>Data Science</td>
-                                        <td>Science</td>
-                                        <td>Draft</td>
-                                        <td><img class="edit-img" src="./images/Dashboard/edit.png"><img
-                                                src="./images/Dashboard/delete.png">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>10-10-2020</td>
-                                        <td>Accounts</td>
-                                        <td>Commerce</td>
-                                        <td>In Review</td>
-                                        <td><img src="./images/Dashboard/eye.png">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>11-10-2020</td>
-                                        <td>Social Studies</td>
-                                        <td>Social</td>
-                                        <td>Submitted</td>
-                                        <td><img src="./images/Dashboard/eye.png">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>12-10-2020</td>
-                                        <td>AI</td>
-                                        <td>IT</td>
-                                        <td>Submitted</td>
-                                        <td><img src="./images/Dashboard/eye.png">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>13-10-2020</td>
-                                        <td>Lorem ipsum dolor sit ametsectetur</td>
-                                        <td>Lorem</td>
-                                        <td>Draft</td>
-                                        <td><img class="edit-img" src="./images/Dashboard/edit.png"><img
-                                                src="./images/Dashboard/delete.png">
-                                        </td>
-                                    </tr-->
+                                    
                                 </table>
                             </div>
                         </div>
@@ -421,11 +423,7 @@ confirm($select_published_notes);
                                             }
 
                                         ?>
-                                        <!--li class="page-item"><a id="one" class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a id="two" class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a id="three" class="page-link" href="#">3</a></li>
-                                        <li class="page-item"><a id="four" class="page-link" href="#">4</a></li>
-                                        <li class="page-item"><a id="five" class="page-link" href="#">5</a></li-->
+                                        
                                         <li class="page-item">
 
                                         <?php 
@@ -510,51 +508,7 @@ confirm($select_published_notes);
                                     
                                     
                                     ?>
-                                    <!--tr>
-                                        <td>09-10-2020</td>
-                                        <td>Data Science</td>
-                                        <td>Science</td>
-                                        <td>Paid</td>
-                                        <td>$575</td>
-                                        <td><img src="./images/Dashboard/eye.png">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>10-10-2020</td>
-                                        <td>Accounts</td>
-                                        <td>Commerce</td>
-                                        <td>Free</td>
-                                        <td>$0</td>
-                                        <td><img src="./images/Dashboard/eye.png">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>11-10-2020</td>
-                                        <td>Social Studies</td>
-                                        <td>Social</td>
-                                        <td>Free</td>
-                                        <td>$0</td>
-                                        <td><img src="./images/Dashboard/eye.png">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>12-10-2020</td>
-                                        <td>AI</td>
-                                        <td>IT</td>
-                                        <td>Paid</td>
-                                        <td>$3542</td>
-                                        <td><img src="./images/Dashboard/eye.png">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>13-10-2020</td>
-                                        <td>Lorem ipsum dolor sit ametsectetur</td>
-                                        <td>Lorem</td>
-                                        <td>Free</td>
-                                        <td>$0</td>
-                                        <td><img src="./images/Dashboard/eye.png">
-                                        </td>
-                                    </tr-->
+                                    
                                 </table>
                             </div>
                         </div>
@@ -603,11 +557,7 @@ confirm($select_published_notes);
                                             }
 
                                         ?>
-                                        <!--li class="page-item"><a id="one" class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a id="two" class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a id="three" class="page-link" href="#">3</a></li>
-                                        <li class="page-item"><a id="four" class="page-link" href="#">4</a></li>
-                                        <li class="page-item"><a id="five" class="page-link" href="#">5</a></li-->
+                                        
                                         <li class="page-item">
 
                                         <?php 

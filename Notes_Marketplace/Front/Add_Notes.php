@@ -4,6 +4,7 @@ include "../includes/functions.php";
 session_start();
 
 $seller_id = $_SESSION['userid'];
+
 /*
 function show_note_category() {
 
@@ -87,7 +88,7 @@ if(isset($_POST['save'])) {
         $sell_for_radio_btn = escape_string($_POST['sellfor-radio']);
         if($sell_for_radio_btn == "free") {
             $ispaid = 'false';
-            $selling_price = 0;
+            $selling_price = null;
         }else {
             $ispaid = 'true';
             $selling_price = escape_string($_POST['sell-price']);
@@ -97,10 +98,6 @@ if(isset($_POST['save'])) {
         $category                  = escape_string($_POST['category']);
         $type                      = escape_string($_POST['type']);
         $display_picture           = "../Members/Default/Admin_default_img.png";
-        /*$display_picture           = escape_string($_FILES['display-picture']['name']);
-        $display_picture_temp_loc  = escape_string($_FILES['display-picture']['tmp_name']);
-        $upload_notes              = escape_string($_FILES['upload-notes']['name']);
-        $upload_notes_temp_loc     = escape_string($_FILES['upload-notes']['tmp_name']);*/
         $number_of_pages           = escape_string($_POST['number-of-pages']);
         $description               = escape_string($_POST['description']);
         $country                   = escape_string($_POST['country']);
@@ -108,62 +105,9 @@ if(isset($_POST['save'])) {
         $course_name               = escape_string($_POST['course-name']);
         $course_code               = escape_string($_POST['course-code']);
         $professor                 = escape_string($_POST['professor']);
-
         $note_preview           = "../Members/Default/Admin_default_img.png";
-        
-
-
-        //$note_preview              = escape_string($_FILES['note-preview']['name']);
-        //$note_preview_temp_loc     = escape_string($_FILES['note-preview']['tmp_name']);
         $created_date              = date("Y-m-d H:i:s");
         $modified_date             = date("Y-m-d H:i:s");
-
-
-        
-       /* move_uploaded_file($display_picture_temp_loc, "C://xampp/htdocs/Roshani_php/Training/NotesMarketPlace/Notes_Marketplace/Front/Members/".$display_picture);
-        move_uploaded_file($upload_notes_temp_loc, "C://xampp/htdocs/Roshani_php/Training/NotesMarketPlace/Notes_Marketplace/Front/Members/".$upload_notes);
-        move_uploaded_file($note_preview_temp_loc, "C://xampp/htdocs/Roshani_php/Training/NotesMarketPlace/Notes_Marketplace/Front/Members/".$note_preview);
-        */
-        //$upload_notes_insert = query("INSERT INTO seller_notes_attachements(FilePath, CreatedDate, ModifiedDate) VALUES('{$upload_notes}', '{$created_date)}', '{$modified_date}')");
-        
-
-
-        /*  
-        foreach($_FILES['upload_notes']['name'] as $key=>$val) {
-            move_uploaded_files($_FILES['upload_notes']['tmp_name'][$key], );
-
-        }
-        
-        $upload_notes       = $_FILES['display-picture'][''];
-        $upload_notes_name      = $upload_notes['name'];
-        $upload_notes_tmp_loc   = $upload_notes['tmp_name'];
-        $upload_notes_extension = explode('.',$upload_notes_name);
-        $upload_notes_check     = strtolower(end($upload_notes_extension));
-        $upload_notes_extstored = array('png', 'jpg', 'jpeg');
-
-            if(in_array($upload_notes_check, $upload_notes_extstored)) {
-                if(!is_dir("../Members/")) {
-                    mkdir('../Members/');
-                }
-                if(!is_dir("../Members/" . $seller_id)) {
-                    mkdir('../Members/' . $seller_id);
-                }
-                if(!is_dir("../Members/" . $seller_id . "/" . $note_id)) {
-                    mkdir('../Members/' . $seller_id . '/' . $note_id);
-                }
-                if(!is_dir("../Members/" . $seller_id . "/" . $note_id . "/" . "Attachements")) {
-                    mkdir('../Members/' . $seller_id . '/' . $note_id . '/' . "Attachements");
-                }
-                $upload_notes_destination = '../Members/' . $seller_id . '/' . $note_id . '/'. 'Attachements' . '/' . "AttachementID" . time() . '.' .$upload_notes_check;
-                move_uploaded_file($upload_notes_tmp_loc, $upload_notes_destination);
-                $upload_notes_query = query("");
-                confirm($upload_notes_query);
-
-            }else {
-                echo "Display Picture Upload failed";
-            }
-        */
-
 
 
         $query  = query("INSERT INTO seller_notes(SellerID, Status, Title, Category, DisplayPicture, NoteType, NumberOfPages, Description, Country, UniversityName, Course, CourseCode, Professor, IsPaid, SellingPrice, NotesPreview, CreatedDate, CreatedBy, ModifiedDate, ModifiedBy) VALUES('{$seller_id}', 6, '{$title}', '{$category}', '{$display_picture}', '{$type}', '{$number_of_pages}', '{$description}', '{$country}', '{$institute_name}', '{$course_name}', '{$course_code}', '{$professor}', '{$ispaid}','{$selling_price}', '{$note_preview}', '{$created_date}', '{$seller_id}', '{$modified_date}', '{$seller_id}')");
@@ -271,27 +215,75 @@ if(isset($_POST['save'])) {
         }
 }
         
-       /* if(isset($_GET['note_id'])) {
+        if(isset($_GET['note_id'])) {
 
-            $select_query = query("SELECT * FROM seller_notes WHERE ID = '$_GET['note_id']' ");
+            $select_query = query("SELECT * FROM seller_notes WHERE ID = ".$_GET['note_id']." ");
             confirm($select_query);
 
             while($row = mysqli_fetch_assoc($select_query)) {
-                $title = escape_string($row['Title']);
-                $category_id = escape_string($row['Category']);
-                $display_pic = escape_string($row['DisplayPicture']);
-                $type_id = escape_string($row['Type']);
-                $no_of_page = escape_string($row['NumberOfPages']);
-                $description = escape_string($row['Description']);
-                $country_id = escape_string($row['Country']);
-                $university_name = escape_string($row['UniversityName']);
-                $course_name = escape_string($row['CourseName']);
-                $course_code = escape_string($row['CourseCode']);
-                $professor = escape_string($row['Professor']);
-                $note_preview = escape_string($row['NotesPreview']);
+                $db_title = escape_string($row['Title']);
+                $db_category_id = escape_string($row['Category']);
+                $db_display_pic = escape_string($row['DisplayPicture']);
+                $db_type_id = escape_string($row['NoteType']);
+                $db_no_of_page = escape_string($row['NumberOfPages']);
+                $db_description = escape_string($row['Description']);
+                $db_country_id = escape_string($row['Country']);
+                $db_university_name = escape_string($row['UniversityName']);
+                $db_course_name = escape_string($row['Course']);
+                $db_course_code = escape_string($row['CourseCode']);
+                $db_professor = escape_string($row['Professor']);
+                $db_sell_price = escape_string($row['SellingPrice']);
+                $db_note_preview = escape_string($row['NotesPreview']);
 
             }
-        }*/
+            if(isset($_POST['save'])) {
+
+            $title                     = escape_string($_POST['title']);
+            $category                  = escape_string($_POST['category']);
+            $type                      = escape_string($_POST['type']);
+            $display_picture           = escape_string($_FILES['display-picture']['name']);
+            $display_picture_tmp_loc   = escape_string($_FILES['display-picture']['tmp_name']);
+            $upload_notes              = escape_string($_FILES['upload-notes']['name']);
+            $upload_notes_tmp_loc      = escape_string($_FILES['upload-notes']['tmp_name']);
+            $number_of_pages           = escape_string($_POST['number-of-pages']);
+            $description               = escape_string($_POST['description']);
+            $country                   = escape_string($_POST['country']);
+            $institute_name            = escape_string($_POST['institution-name']);
+            $course_name               = escape_string($_POST['course-name']);
+            $course_code               = escape_string($_POST['course-code']);
+            $professor                 = escape_string($_POST['professor']);
+            $note_preview              = escape_string($_FILES['note-preview']['name']);
+            $note_preview_tmp_loc      = escape_string($_FILES['note-preview']['tmp_name']);
+            $sell_price                = escape_string($_POST['sell-price']);
+
+            if(empty($display_picture) || empty($note_preview)) {
+
+                $get_pic = query("SELECT DisplayPicture, NotesPreview FROM seller_notes WHERE ID =".escape_string($_GET['note_id'])." ");
+                confirm($get_pic);
+    
+                while($pic = mysqli_fetch_assoc($get_pic)) {
+    
+                    $display_picture = $pic['DisplayPicture'];
+                    $note_preview = $pic['NotesPreview'];
+    
+                }
+           }
+
+           if(empty($upload_notes)) {
+
+            $get_notes = query("SELECT FilePath FROM seller_notes_attachements WHERE NoteID =".escape_string($_GET['note_id'])." ");
+            confirm($get_notes);
+
+            while($pic = mysqli_fetch_assoc($get_notes)) {
+
+                $upload_notes = $pic['FilePath'];
+            }
+            }
+
+            $update_upload_notes = query("UPDATE seller_notes_attachements SET FilePath = $upload_notes  WHERE ID = ".escape_string($_GET['note_id'])." ");
+            confirm($update_upload_notes);
+            }
+        }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -327,8 +319,7 @@ if(isset($_POST['save'])) {
     }
     }
 
-
-    
+  
     </script>
     
 
@@ -442,7 +433,7 @@ if(isset($_POST['save'])) {
                         <div class="form-group">
                             <label class="title" for="title">Title *</label>
                             <input type="text" name="title" id="title" class="form-control"
-                                placeholder="Enter your notes title" value="<?php if(isset($_GET['note_id'])){}?>">
+                                placeholder="Enter your notes title" value="<?php if(isset($_GET['note_id'])){echo $db_title;}?>">
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -450,13 +441,20 @@ if(isset($_POST['save'])) {
                             <label class="category" for="category">Category *</label>
                             <span><img class="add-notes-arrow-down-img" src="./images/Add-notes/arrow-down.svg"></span>
                             <select class="form-control" id="category" name="category">
-                                <option selected value="">Select your category</option>
+                                <?php
+                                $show_category_query = query("SELECT Category_Name FROM note_categories WHERE ID='$db_category_id' ");
+                                confirm($show_category_query);
+
+                                while($show_category_row = mysqli_fetch_assoc($show_category_query)) {
+                                    $category_title=$show_category_row['Category_Name'];
+                                    }
+                                ?>
+                                <option selected value="<?php if(isset($_GET['note_id'])){echo $db_category_id;}?>"><?php if(isset($_GET['note_id'])){echo $category_title;}?><?php if(!isset($_GET['note_id'])){?>Select Your Category<?php }?></option>
 
                                 <?php 
-                            
-                                 $category_query = query("SELECT ID,Category_Name FROM note_categories");
-                                 confirm($category_query);
-                            
+                                $category_query = query("SELECT ID,Category_Name FROM note_categories");
+                                confirm($category_query);
+
                                 while($category_row = mysqli_fetch_assoc($category_query)) {
                                 $category_id=$category_row['ID'];
                                 $category_name=$category_row['Category_Name'];
@@ -471,8 +469,10 @@ if(isset($_POST['save'])) {
                             <label class="displayPicture" for="displayPicture">Display Picture</label>
                             <label for="display-picture"><img class="add-notes-upload-file-img1"
                                     src="./images/Add-notes/upload-file.png"></label>
+                            <div style="border:1px solid #d1d1d1;border-radius: 3px;height: 110px;">
                             <input type="file" id="display-picture" name="display-picture" class="form-control"
-                                placeholder="Upload a picture">
+                                placeholder="Upload a picture" value="<?php if(isset($_GET['note_id'])){echo $db_display_picture;}?>">
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -480,8 +480,10 @@ if(isset($_POST['save'])) {
                             <label class="uploadNotes" for="uploadNotes">Upload your notes *</label>
                             <label for="upload-notes"><img class="add-notes-upload-notes-img"
                                     src="./images/Add-notes/upload-note.png"></label>
+                            <div style="border:1px solid #d1d1d1;border-radius: 3px;height: 110px;">
                             <input type="file" accept=".pdf" id="upload-notes" name="upload-notes[]" class="form-control"
-                                placeholder="Upload your notes" multiple>
+                                placeholder="Upload your notes" multiple value="<?php if(isset($_GET['note_id'])){echo $db_upload_notes;}?>">
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -489,12 +491,20 @@ if(isset($_POST['save'])) {
                             <label class="type" for="type">Type</label>
                             <label for="type"><img class="add-notes-arrow-down-img" src="./images/Add-notes/arrow-down.svg"></label>
                             <select class="form-control" id="type" name="type">
-                                <option>Select your notes type</option>
+                            <?php
+                                $show_type_query = query("SELECT Type_Name FROM note_types WHERE ID='$db_type_id' ");
+                                confirm($show_type_query);
+
+                                while($show_type_row = mysqli_fetch_assoc($show_type_query)) {
+                                    $note_type_title = $show_type_row['Type_Name'];
+                                    }
+                            ?>
+                                <option selected value="<?php if(isset($_GET['note_id'])){echo $db_type_id;}?>"><?php if(isset($_GET['note_id'])){echo $note_type_title;}?><?php if(!isset($_GET['note_id'])){?>Select your notes type<?php }?></option>
 
                                 <?php  
                                 $type_query = query("SELECT ID,Type_Name FROM note_types");
                                 confirm($type_query);
-                           
+
                                while($type_row = mysqli_fetch_assoc($type_query)) {
                                $type_id=$type_row['ID'];
                                $type_name=$type_row['Type_Name'];
@@ -508,13 +518,13 @@ if(isset($_POST['save'])) {
                         <div class="form-group">
                             <label class="noOfPages" for="noOfPages">Number of Pages</label>
                             <input type="text" name="number-of-pages" id="number-of-pages" class="form-control"
-                                placeholder="Enter number of notes pages">
+                                placeholder="Enter number of notes pages" value="<?php if(isset($_GET['note_id'])){echo $db_no_of_page;}?>">
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
                             <label class="description" for="description">Description *</label>
-                            <input type="text" id="description" name="description" placeholder="Enter your description">
+                            <input type="text" id="description" name="description" placeholder="Enter your description" value="<?php if(isset($_GET['note_id'])){echo $db_description;}?>">
                         </div>
                     </div>
                 </div>
@@ -525,13 +535,21 @@ if(isset($_POST['save'])) {
                             <label class="country" for="country">Country </label>
                             <span><img class="add-notes-arrow-down-img" src="./images/Add-notes/arrow-down.svg"></span>
                             <select class="form-control" id="country" name="country">
-                            
-                                <option selected>Select your country</option>
+
+                            <?php
+                                $show_country_query = query("SELECT Country_Name FROM countries WHERE ID='$db_country_id' ");
+                                confirm($show_country_query);
+
+                                while($show_country_row = mysqli_fetch_assoc($show_country_query)) {
+                                    $country_title = $show_country_row['Country_Name'];
+                                    }
+                            ?>
+                            <option selected value="<?php if(isset($_GET['note_id'])){echo $db_country_id;}?>"><?php if(isset($_GET['note_id'])){echo $country_title;}?><?php if(!isset($_GET['note_id'])){?>Select your country<?php }?></option>
 
                                 <?php 
                                 $country = query("SELECT ID,Country_Name FROM countries");
                                 confirm($country);
-                            
+
                                 while($country_row = mysqli_fetch_assoc($country)) {
                                 $country_id=$country_row['ID'];
                                 $country_name=$country_row['Country_Name'];
@@ -545,7 +563,7 @@ if(isset($_POST['save'])) {
                         <div class="form-group">
                             <label class="institutionName" for="institutionName">Institution Name</label>
                             <input type="text" name="institution-name" id="institution-name" class="form-control"
-                                placeholder="Enter your institution name">
+                                placeholder="Enter your institution name" value="<?php if(isset($_GET['note_id'])){echo $db_university_name;}?>">
                         </div>
                     </div>
                 </div>
@@ -555,21 +573,21 @@ if(isset($_POST['save'])) {
                         <div class="form-group">
                             <label class="courseName" for="courseName">Course Name</label>
                             <input type="text" name="course-name" id="course-name" class="form-control"
-                                placeholder="Enter your course name">
+                                placeholder="Enter your course name" value="<?php if(isset($_GET['note_id'])){echo $db_course_name;}?>">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="courseCode" for="courseCode">Course Code</label>
                             <input type="text" name="course-code" id="course-code" class="form-control"
-                                placeholder="Enter your course code">
+                                placeholder="Enter your course code" value="<?php if(isset($_GET['note_id'])){echo $db_course_code;}?>">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="professor" for="professor">Professor / Lecturer</label>
                             <input type="text" name="professor" id="professor" class="form-control"
-                                placeholder="Enter your professor name">
+                                placeholder="Enter your professor name" value="<?php if(isset($_GET['note_id'])){echo $db_professor;}?>">
                         </div>
                     </div>
                 </div>
@@ -607,7 +625,7 @@ if(isset($_POST['save'])) {
                                 <div class="form-group" id="sell-price-field">
                                     <label class="sellPrice" for="sellPrice">Sell Price *</label>
                                     <input type="text" name="sell-price" id="sell-price" class="form-control"
-                                        placeholder="Enter your price">
+                                        placeholder="Enter your price" value="<?php if(isset($_GET['note_id'])){echo $db_sell_price;}?>">
                                 </div>
                             </div>
                         </div>
@@ -617,8 +635,10 @@ if(isset($_POST['save'])) {
                             <label class="notePreview" for="notePreview">Note Preview</label>
                             <label for="note-preview"><img class="add-notes-upload-file-img2"
                                     src="./images/Add-notes/upload-file.png"></label>
+                            <div style="border:1px solid #d1d1d1;border-radius: 3px;height: 130px;">
                             <input type="file" id="note-preview" name="note-preview" class="form-control"
-                                placeholder="Upload a file">
+                                placeholder="Upload a file" value="<?php if(isset($_GET['note_id'])){echo $db_note_preview;}?>">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -629,7 +649,7 @@ if(isset($_POST['save'])) {
                         <button type="submit" name="save" class="btn btn-primary add-notes-save-btn">SAVE</button>
                     </div>
                     <div class="col-md-10 col-sm-9 col-xs-6">
-                        <a><button type="submit" name="publish" onclick="publish_btn_check()" class="btn btn-primary add-notes-publish-btn">PUBLISH</button></a>
+                        <a><button type="submit" name="publish" onclick="publish_btn_check()" class="btn btn-primary add-notes-publish-btn" <?php if(isset($_GET['note_id'])){ ?> style="opacity:1;" <?php }if(!isset($_GET['note_id'])){?> style="opacity:0;" <?php }?>>PUBLISH</button></a>
                     </div>
                 </div>
             </div>
@@ -671,11 +691,13 @@ if(isset($_POST['save'])) {
 
 </html>
 <script>
-function publish_btn_check() {
+  
+  function publish_btn_check() {
         var r= confirm("Publishing this note will send note to administrator for review, once administrator review and approve then this note will be published to portal. Press yes to continue.");
         if(r) {
             <?php 
-                $t = escape_string($_POST['title']);
+            echo "<script>alert('ok');<script>";
+              /*  $t = escape_string($_POST['title']);
                 $select_id = query("SELECT * FROM seller_notes WHERE Title='$t' ");
                 confirm($select_id);
                 while($note_row=mysqli_fetch_assoc($select_id)) {
@@ -688,10 +710,10 @@ function publish_btn_check() {
                 while($seller_row=mysqli_fetch_assoc($select_seller_name)) {
                    $seller_fname = $seller_row['FirstName'];
                    $seller_lname = $seller_row['LastName'];
-                }
+                }*/
 
-                $update_status = query("UPDATE seller_notes SET Status=7 WHERE ID='$note_id' ");
-                confirm($update_status);
+              /*  $update_status = query("UPDATE seller_notes SET Status=7 WHERE ID='$note_id' ");
+                confirm($update_status);*/
 
                /* $subject = $seller_fname." ".$seller_lname." sent his note for review";
                 $email = "sroshani025@gmail.com";
@@ -704,13 +726,16 @@ function publish_btn_check() {
                 echo "<script>alert('Email sending failed....')</script>";
                 }else {
                     redirect("Dashboard.php");
-                }*/
-                return true;
-
-            ?>
+                }*/?>
+              
+                alert('ok...............');
+           
            
         }else {
+            alert('cancel...............');
             return false;
         }
     }
+
+    
 </script>

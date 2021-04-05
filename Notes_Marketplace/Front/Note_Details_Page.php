@@ -33,8 +33,37 @@ confirm($select_query);
 
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="css/responsive.css">
-    <style>
-    </style>
+    
+<script>
+function download1(){
+   /* if(confirm('sure?')) {
+        header("content-disposition: attachment; filename=" .urldecode('srs.pdf'));
+                $fb = fopen($note_pdf, "r");
+                while(!feof($fb)){
+                    echo fread($fb, 8192);
+                    flush();
+                    }     
+                fclose($fb);
+                    return true;
+    }else {
+        console.log("hiiiiiiiiiiiiiiii");
+        return false;
+    }*/
+        if(confirm('Are you sure you want to download this Paid note. Please confirm.')) {
+            $(function () {
+            $("#thank-you-popup1").show();
+            $(".close-btn").click(function () {
+                $("#thank-you-popup1").hide();
+            });
+        });
+
+    }else {
+        
+    }
+}
+</script>  
+
+
 
 </head>
 
@@ -155,8 +184,8 @@ confirm($select_query);
                                         <a href="download.php?note_pdf=srs"><button class="note-details-page-download-btn">DOWNLOAD</button></a>
                                     <?php
                                     }else { ?>
-                                        <a href="download.php?note_pdf=srs"><button class="note-details-page-download-btn" onClick='check()'>DOWNLOAD/$15</button></a>
-                                        
+                                        <!--a href="download.php?note_pdf=srs"><button class="note-details-page-download-btn" onClick="return confirm('Are you sure you want to download this Paid note. Please confirm.')">DOWNLOAD/$15</button></a-->
+                                        <a href="download.php?note_pdf=srs"><button class="note-details-page-download-btn" onclick="download1()">DOWNLOAD/$15</button></a>
                                    <?php 
                                     }
                                 }
@@ -166,7 +195,7 @@ confirm($select_query);
                         </div>
                     </div>
                     <div class="col-md-5 col-sm-12 col-xs-12">
-                        <div class="row">
+                        <div class="row"> 
                             <div class="col-md-6 col-sm-6 col-xs-6">
                                 <p class="NDS1RT1">Institution:</p>
                             </div>

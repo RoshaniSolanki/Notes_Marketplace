@@ -1632,6 +1632,7 @@ ul.navbar-nav>li>a:focus {
 #addNotes #upload-notes,
 #addNotes #note-preview {
     height: 110px;
+    opacity: 0;
 }
 #addNotes #note-preview {
     height: 130px;

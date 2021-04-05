@@ -194,8 +194,8 @@ if(isset($_POST['submit'])) {
         } 
         
     }*****/
-    /*
-    const sign_up_form = document.getElementById('sign_up_form');
+    
+   /* const sign_up_form = document.getElementById('sign_up_form');
     const first_name = document.getElementById('first-name');
     const last_name = document.getElementById('last-name');
     const email = document.getElementById('email');
@@ -203,7 +203,7 @@ if(isset($_POST['submit'])) {
     const confirm_password = document.getElementById('confirm-password');
 
     sign_up_form.addEventListener('submit', e => {
-       e.preventDefault();
+        e.preventDefault();
 
         checkInputs();
     });
