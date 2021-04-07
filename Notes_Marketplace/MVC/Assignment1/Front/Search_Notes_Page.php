@@ -181,18 +181,29 @@ confirm($select_query);
                <?php 
                while($row = mysqli_fetch_assoc($select_query)) {
                 $note_id = $row['ID'];
+                $title = $row['Title'];
+                $university = $row['UniversityName'];
+                $country_id = $row['Country'];
+                $no_of_pages = $row['NumberOfPages'];
+
+                $get_country = query("SELECT Country_Name FROM countries WHERE ID = '$country_id' ");
+                confirm($get_country);
+
+                while($crow = mysqli_fetch_assoc($get_country)) {
+                    $country = $crow['Country_Name'];
+                }    
                 ?>
             
                 <div class="col-md-4 col-sm-6 col-xs-12">
                     <img class="search1-img" src="./images/search-page/search1.png">
                     <div id="search1">
-                        <a href="Note_details_Page.php?Note_id=<?php echo $note_id;?>"><p class="SPS2H">Computer Operating System - Final Exam Book With Paper Solution</p></a>
+                        <a href="Note_details_Page.php?Note_id=<?php echo $note_id; ?>"><p class="SPS2H"><?php echo $title; ?></p></a>
                         <div class="row">
                             <div class="col-md-2 col-sm-2 col-xs-3">
                                 <img class="university-img" src="./images/search-page/university.png">
                             </div>
                             <div class="col-md-10 col-sm-10 col-xs-9">
-                                <p class="SPS2T1">University of California, US</p>
+                                <p class="SPS2T1"><?php echo $university; ?>, <?php echo $country; ?></p>
                             </div>
                         </div>
                         <div class="row">
@@ -200,7 +211,7 @@ confirm($select_query);
                                 <img class="page-img" src="./images/search-page/pages.png">
                             </div>
                             <div class="col-md-10 col-sm-10 col-xs-9">
-                                <p class="SPS2T2">204 Pages</p>
+                                <p class="SPS2T2"><?php echo $no_of_pages; ?> Pages</p>
                             </div>
                         </div>
                         <div class="row">

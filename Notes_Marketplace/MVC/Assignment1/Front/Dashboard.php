@@ -13,9 +13,31 @@ if(isset($_GET['page_t1'])) {
 $item_per_page_t1 = 5;
 $start_from_t1 = ($page_t1-1)*5;
 
-$select_in_progress_notes = query("SELECT * FROM seller_notes ORDER BY CreatedDate DESC LIMIT $start_from_t1,$item_per_page_t1");
-confirm($select_in_progress_notes);
+if(isset($_POST['progress_notes_search_btn'])) {
 
+    $search = $_POST['search_progress_notes'];
+
+    $select_in_progress_notes = query("SELECT * FROM seller_notes WHERE Title LIKE '%$search%' AND Status IN(6,7,8) ORDER BY CreatedDate LIMIT $start_from_t1,$item_per_page_t1");
+    confirm($select_in_progress_notes);
+
+    $total_progress_notes = mysqli_num_rows($select_in_progress_notes);
+    $total_page_t1 = ceil($total_progress_notes/$item_per_page_t1);
+                                    
+    $count = mysqli_num_rows($select_in_progress_notes);
+
+    if($count == 0) {
+        echo "<script>alert('No record found');</script>";
+    }
+
+}else {   
+
+$select_in_progress_notes = query("SELECT * FROM seller_notes WHERE Status IN(6,7,8) ORDER BY CreatedDate DESC LIMIT $start_from_t1,$item_per_page_t1");
+confirm($select_in_progress_notes);
+                            
+    $total_progress_notes = mysqli_num_rows($select_in_progress_notes);
+    $total_page_t1 = ceil($total_progress_notes/$item_per_page_t1); 
+                            
+}
 
 
 /* Published Notes */
@@ -29,8 +51,38 @@ if(isset($_GET['page_t2'])) {
 $item_per_page_t2 = 5;
 $start_from_t2 = ($page_t2-1)*5;
 
-$select_published_notes = query("SELECT * FROM seller_notes ORDER BY CreatedDate DESC LIMIT $start_from_t2,$item_per_page_t2");
-confirm($select_published_notes);
+if(isset($_POST['published_notes_search_btn'])) {
+
+    $search = $_POST['search_published_notes'];
+
+    $select_published_notes = query("SELECT * FROM seller_notes WHERE Title LIKE '%$search%' AND Status=9 ORDER BY CreatedDate LIMIT $start_from_t1,$item_per_page_t1");
+    confirm($select_published_notes); 
+
+    $total_published_notes = mysqli_num_rows($select_published_notes);
+    $total_page_t1 = ceil($total_published_notes/$item_per_page_t1);
+                                    
+    $count = mysqli_num_rows($select_published_notes);
+
+    if($count == 0) {
+        echo "<script>alert('No record found');</script>";
+    }
+
+}else {   
+
+    $select_published_notes = query("SELECT * FROM seller_notes WHERE Status=9 ORDER BY CreatedDate DESC LIMIT $start_from_t2,$item_per_page_t2");
+    confirm($select_published_notes);
+                            
+    $total_published_notes = mysqli_num_rows($select_published_notes);
+    $total_page_t2 = ceil($total_published_notes/$item_per_page_t2);
+                            
+}
+
+ /*                           
+$p_query_t2 = query("SELECT * FROM seller_notes");
+confirm($p_query_t2);
+$total_progress_notes_t2 = mysqli_num_rows($p_query_t2);
+$total_page_t2 = ceil($total_progress_notes_t2/$item_per_page_t2);
+*/
 
 
 
@@ -306,22 +358,22 @@ confirm($select_published_notes);
                                                 src="./images/Dashboard/delete.png"></a></td>
                                                 <?php } ?>
                                                 <?php if($Status != 'Draft') { ?>
-                                                <td><a href="Note_Details_Page.php"><img src="./images/Dashboard/eye.png"></a></td>
+                                                <td><a href="Note_Details_Page.php?Note_id=<?php echo $note_id; ?>"><img src="./images/Dashboard/eye.png"></a></td>
                                                 <?php } ?>
                                             </tr>
                                     
                                     <?php
-                                    }
+                                    }?>
                                     
-
-                                    if(isset($_POST['progress_notes_search_btn'])) {
+                                    <?php
+                                    /*if(isset($_POST['progress_notes_search_btn'])) {
 
                                         $search = $_POST['search_progress_notes'];
                                     
                                         $find_status = query("SELECT * FROM reference_data");
                                         confirm($find_status);
                                     
-                                        $search_query = query("SELECT * FROM seller_notes WHERE Title LIKE '%$search%' LIMIT $start_from_t1,$item_per_page_t1");
+                                        $search_query = query("SELECT * FROM seller_notes WHERE Title LIKE '%$search%' ORDER BY CreatedDate LIMIT $start_from_t1,$item_per_page_t1");
                                         confirm($search_query);
                                     
                                         $count = mysqli_num_rows($search_query);
@@ -334,8 +386,8 @@ confirm($select_published_notes);
 
                                                 $note_id1    = $srow['ID'];
                                                 $created_date1 = $srow['CreatedDate'];
-                                                $date1 = new DateTime($created_date);
-                                                $added_date1 = $date->format('Y-m-d');
+                                                $date1 = new DateTime($created_date1);
+                                                $added_date1 = $date1->format('Y-m-d');
                                                 $title1      = $srow['Title'];
                                                 $category1   = $srow['Category'];
                                                 $status1     = $srow['Status'];
@@ -373,7 +425,7 @@ confirm($select_published_notes);
                                             }
                                         }
                                     
-                                    }
+                                    }*/
                                     
                                     ?>
                                     
@@ -384,14 +436,7 @@ confirm($select_published_notes);
                     <div id="part3">
                         <div class="row">
                             <!-- Pagination-->
-                            <?php 
-                            
-                                    $p_query_t1 = query("SELECT * FROM seller_notes");
-                                    confirm($p_query_t1);
-                                    $total_progress_notes_t1 = mysqli_num_rows($p_query_t1);
-                                    $total_page_t1 = ceil($total_progress_notes_t1/$item_per_page_t1);
-                            
-                            ?>
+    
                             <center>
                                 <div class="pagination-section">
 
@@ -453,7 +498,7 @@ confirm($select_published_notes);
                                 <span><img class="dashboard-search-icon-img"
                                         src="./images/My_Download/search-icon.png"></span>
                                 <input type="text" name="search_published_notes" class="search" placeholder="Search">
-                                <a href=""><button class="btn btn-primary dashboard-search-btn">SEARCH</button></a>
+                                <a href=""><button name="published_notes_search_btn" class="btn btn-primary dashboard-search-btn">SEARCH</button></a>
                                 </form>
                             </div>
                         </div>
@@ -474,7 +519,8 @@ confirm($select_published_notes);
                                     <?php 
                                     while($row1 = mysqli_fetch_assoc($select_published_notes)) {
 
-                                        $created_date = $row['CreatedDate'];
+                                        $note_id = $row1['ID'];
+                                        $created_date = $row1['CreatedDate'];
                                         $date = new DateTime($created_date);
                                         $added_date = $date->format('Y-m-d');
                                         $title      = $row1['Title'];
@@ -500,7 +546,7 @@ confirm($select_published_notes);
                                                 <td>Free</td>
                                                 <?php } ?>
                                                 <td><?php echo $price ?></td>
-                                                <td><a href="Note_Details_Page.php"><img src="./images/Dashboard/eye.png"></a></td>
+                                                <td><a href="Note_Details_Page.php?Note_id=<?php echo $note_id; ?>"><img src="./images/Dashboard/eye.png"></a></td>
                                             </tr>
                                     
                                     <?php
@@ -516,15 +562,6 @@ confirm($select_published_notes);
                     <div id="part3">
                         <div class="row">
                             <!-- Pagination-->
-
-                            <?php 
-                            
-                                    $p_query_t2 = query("SELECT * FROM seller_notes");
-                                    confirm($p_query_t2);
-                                    $total_progress_notes_t2 = mysqli_num_rows($p_query_t2);
-                                    $total_page_t2 = ceil($total_progress_notes_t2/$item_per_page_t2);
-                            
-                            ?>
 
 <center>
                                 <div class="pagination-section">

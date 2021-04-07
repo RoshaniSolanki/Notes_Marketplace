@@ -57,10 +57,9 @@ function download1(){
             });
         });
 
-    }else {
-        
-    }
+        }else {}    
 }
+
 </script>  
 
 
@@ -167,28 +166,53 @@ function download1(){
                 <div class="row">
                     <div class="col-md-7 col-sm-12 col-xs-12">
                         <div class="row">
+                            <?php 
+                            while($row = mysqli_fetch_assoc($select_query)) {
+                                $ispaid       = $row['IsPaid'];
+                                $title        = $row['Title'];
+                                $description  = $row['Description'];
+                                $price        = $row['SellingPrice'];
+                                $category_id  = $row['Category'];
+                                $university   = $row['UniversityName'];
+                                $country_id   = $row['Country'];
+                                $course_name  = $row['Course'];
+                                $course_code  = $row['CourseCode'];
+                                $professor    = $row['Professor'];
+                                $no_of_pages  = $row['NumberOfPages'];
+                                $approve_date = $row['PublishedDate'];
+
+                            
+                            $get_cat = query("SELECT Category_Name FROM note_categories WHERE ID = '$category_id' ");
+                            confirm($get_cat);
+                            while($crow = mysqli_fetch_assoc($get_cat)) {
+                                $category = $crow['Category_Name'];
+                            }
+
+                            $get_country = query("SELECT Country_Name FROM countries WHERE ID = '$country_id' ");
+                            confirm($get_country);
+                            while($country_row = mysqli_fetch_assoc($get_country)) {
+                                $country = $country_row['Country_Name'];
+                            }
+
+                            ?>
                             <div class="col-md-5 col-sm-5 col-xs-5">
                                 <img src="./images/Note-Details/computer-science.png">
                             </div>
                             <div class="col-md-7 col-sm-7 col-xs-7">
-                                <p class="NDS1LH">Computer Science</p>
-                                <p class="NDS1LT1">Sciences</p>
-                                <p class="NDS1LT2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut ab
-                                    voluptatem corporis velit facere accusamus cum, quae ducimus, unde reprehenderit
-                                    vitae sed veniam esse. Quos nihil fugiat numquam facilis reprehenderit!</p>
+                                <p class="NDS1LH"><?php echo $title; ?></p>
+                                <p class="NDS1LT1"><?php echo $category; ?></p>
+                                <p class="NDS1LT2"><?php echo $description; ?></p>
 
                                 <?php  
-                                while($row = mysqli_fetch_assoc($select_query)) {
-                                    $ispaid = $row['IsPaid'];
                                     if($ispaid == 0){ ?>
                                         <a href="download.php?note_pdf=srs"><button class="note-details-page-download-btn">DOWNLOAD</button></a>
                                     <?php
                                     }else { ?>
                                         <!--a href="download.php?note_pdf=srs"><button class="note-details-page-download-btn" onClick="return confirm('Are you sure you want to download this Paid note. Please confirm.')">DOWNLOAD/$15</button></a-->
-                                        <a href="download.php?note_pdf=srs"><button class="note-details-page-download-btn" onclick="download1()">DOWNLOAD/$15</button></a>
+                                        <a href="download.php?note_pdf=srs"><button class="note-details-page-download-btn" onclick="download1()">DOWNLOAD/$<?php echo $price; ?></button></a>
                                    <?php 
                                     }
-                                }
+                                
                                 ?>
                                 
                             </div>
@@ -200,7 +224,7 @@ function download1(){
                                 <p class="NDS1RT1">Institution:</p>
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-6">
-                                <p class="NDS1RT2">University of California</p>
+                                <p class="NDS1RT2"><?php echo $university; ?></p>
                             </div>
                         </div>
                         <div class="row">
@@ -208,7 +232,7 @@ function download1(){
                                 <p class="NDS1RT1">Country:</p>
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-6">
-                                <p class="NDS1RT2">United State</p>
+                                <p class="NDS1RT2"><?php echo $country; ?></p>
                             </div>
                         </div>
                         <div class="row">
@@ -216,7 +240,7 @@ function download1(){
                                 <p class="NDS1RT1">Course Name:</p>
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-6">
-                                <p class="NDS1RT2">Computer Engineering</P>
+                                <p class="NDS1RT2"><?php echo $course_name; ?></P>
                             </div>
                         </div>
                         <div class="row">
@@ -224,7 +248,7 @@ function download1(){
                                 <p class="NDS1RT1">Course Code:</p>
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-6">
-                                <p class="NDS1RT2">248705</p>
+                                <p class="NDS1RT2"><?php echo $course_code; ?></p>
                             </div>
                         </div>
                         <div class="row">
@@ -232,7 +256,7 @@ function download1(){
                                 <p class="NDS1RT1">Professor:</p>
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-6">
-                                <p class="NDS1RT2">Mr. Richard Brown</p>
+                                <p class="NDS1RT2"><?php echo $professor; ?></p>
                             </div>
                         </div>
                         <div class="row">
@@ -240,7 +264,7 @@ function download1(){
                                 <p class="NDS1RT1">Number of Pages:</p>
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-6">
-                                <p class="NDS1RT2">277</p>
+                                <p class="NDS1RT2"><?php echo $no_of_pages; ?></p>
                             </div>
                         </div>
                         <div class="row">
@@ -248,7 +272,7 @@ function download1(){
                                 <p class="NDS1RT1">Approved Date:</p>
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-6">
-                                <p class="NDS1RT2">November 25 2020</p>
+                                <p class="NDS1RT2"><?php echo $approve_date; ?></p>
                             </div>
                         </div>
                         <div class="row">
@@ -278,7 +302,7 @@ function download1(){
                             <div class="col-md-6  col-sm-6 col-xs-12">
                                 <p class="NDS1RT3">5 Users marked this note as inappropriate</p>
                             </div>
-
+                               <?php } ?>     
                         </div>
                     </div>
                 </div>

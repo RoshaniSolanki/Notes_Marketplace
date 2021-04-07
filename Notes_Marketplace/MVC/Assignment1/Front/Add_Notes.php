@@ -221,19 +221,20 @@ if(isset($_POST['save'])) {
             confirm($select_query);
 
             while($row = mysqli_fetch_assoc($select_query)) {
-                $db_title = escape_string($row['Title']);
-                $db_category_id = escape_string($row['Category']);
-                $db_display_pic = escape_string($row['DisplayPicture']);
-                $db_type_id = escape_string($row['NoteType']);
-                $db_no_of_page = escape_string($row['NumberOfPages']);
-                $db_description = escape_string($row['Description']);
-                $db_country_id = escape_string($row['Country']);
+                $db_title           = escape_string($row['Title']);
+                $db_category_id     = escape_string($row['Category']);
+                $db_display_pic     = escape_string($row['DisplayPicture']);
+                $db_type_id         = escape_string($row['NoteType']);
+                $db_no_of_page      = escape_string($row['NumberOfPages']);
+                $db_description     = escape_string($row['Description']);
+                $db_country_id      = escape_string($row['Country']);
                 $db_university_name = escape_string($row['UniversityName']);
-                $db_course_name = escape_string($row['Course']);
-                $db_course_code = escape_string($row['CourseCode']);
-                $db_professor = escape_string($row['Professor']);
-                $db_sell_price = escape_string($row['SellingPrice']);
-                $db_note_preview = escape_string($row['NotesPreview']);
+                $db_course_name     = escape_string($row['Course']);
+                $db_course_code     = escape_string($row['CourseCode']);
+                $db_professor       = escape_string($row['Professor']);
+                $db_ispaid          = escape_string($row['IsPaid']);
+                $db_sell_price      = escape_string($row['SellingPrice']);
+                $db_note_preview    = escape_string($row['NotesPreview']);
 
             }
             if(isset($_POST['save'])) {
@@ -254,6 +255,7 @@ if(isset($_POST['save'])) {
             $professor                 = escape_string($_POST['professor']);
             $note_preview              = escape_string($_FILES['note-preview']['name']);
             $note_preview_tmp_loc      = escape_string($_FILES['note-preview']['tmp_name']);
+            
             $sell_price                = escape_string($_POST['sell-price']);
 
             if(empty($display_picture) || empty($note_preview)) {
