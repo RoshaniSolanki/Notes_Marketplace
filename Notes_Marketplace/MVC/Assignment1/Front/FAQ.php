@@ -101,127 +101,112 @@
             <img src="images/FAQ/banner-with-overlay.jpg">
             <div class="FAQ-img-text">Frequently Asked Questions</div>
         </div>
+
         <div class="container">
-            <p class="FAQ-heading">General Questions</p>
-            <div class="row">
-                <div id="part1">
-                    <div class="col-md-12">
-                        <div class="accordion">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h5>What is Marketplace-Notes?</h5>
-                                    <span><img class="FAQ-minus-img" src="./images/FAQ/minus.png"></span>
+                <p class="FAQ-heading">General Questions</p>
+                <div class="row">
+                    <div id="part1">
+                        <div class="col-md-12">
+                            <div class="accordion">
+
+                                <div class="accordion_item">
+                                    <button type="button" class="collapsible">What is Note-Marketplaces?</button>
+                                    <div class="accordion_content">
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia quae est quis?
+                                            Laborum
+                                            minus odio, in voluptate modi<br>consectetur obcaecati
+                                            ducimus, ex dolore sint! Dignissimos, voluptatibus!
+                                        </p>
+                                    </div>
                                 </div>
-                                <div class="card-body active">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia quae est quis?
-                                        Laborum
-                                        minus odio, in voluptate modi<br>consectetur obcaecati
-                                        ducimus, ex dolore sint! Dignissimos, voluptatibus!</p>
+
+                                <div class="accordion_item">
+                                    <button type="button" class="collapsible">What do the University say?</button>
+                                    <div class="accordion_content">
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia quae est quis?
+                                            Laborum
+                                            minus odio, in voluptate modi<br>consectetur obcaecati
+                                            ducimus, ex dolore sint! Dignissimos, voluptatibus!</p>
+                                    </div>
+                                </div>
+
+                                <div class="accordion_item">
+                                    <button type="button" class="collapsible">Is this legal?</button>
+                                    <div class="accordion_content">
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia quae est quis?
+                                            Laborum
+                                            minus odio, in voluptate modi<br>consectetur obcaecati
+                                            ducimus, ex dolore sint! Dignissimos, voluptatibus!</p>
+                                    </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="FAQ-heading">Uploaders</p>
+                <div class="row">
+                    <div id="part2">
+                        <div class="col-md-12">
+                            <div class="accordion">
+                                <div class="accordion_item">
+                                    <button type="button" class="collapsible">Why should I upload now?</button>
+                                    <div class="accordion_content">
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia quae est quis?
+                                            Laborum
+                                            minus odio, in voluptate modi<br>consectetur obcaecati
+                                            ducimus, ex dolore sint! Dignissimos, voluptatibus!</p>
+                                    </div>
+                                </div>
 
-                            <div class="card">
-                                <div class="card-header">
-                                    <h5>What do the University say?</h5>
-                                    <span><img class="FAQ-plus-img" src="./images/FAQ/plus.png"></span>
+                                <div class="accordion_item">
+                                    <button type="button" class="collapsible">What notes can i sell?</button>
+                                    <div class="accordion_content">
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia quae est quis?
+                                            Laborum
+                                            minus odio, in voluptate modi<br>consectetur obcaecati
+                                            ducimus, ex dolore sint! Dignissimos, voluptatibus!</p>
+                                    </div>
                                 </div>
-                                <div class="card-body">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia quae est quis?
-                                        Laborum
-                                        minus odio, in voluptate modi<br>consectetur obcaecati
-                                        ducimus, ex dolore sint! Dignissimos, voluptatibus!</p>
-                                </div>
+
                             </div>
-
-                            <div class="card">
-                                <div class="card-header">
-                                    <h5>Is this legal?</h5>
-                                    <span><img class="FAQ-minus-img" src="./images/FAQ/plus.png"></span>
+                        </div>
+                    </div>
+                </div>
+                <p class="FAQ-heading">Downloaders</p>
+                <div class="row">
+                    <div id="part3">
+                        <div class="col-md-12">
+                            <div class="accordion">
+                                <div class="accordion_item">
+                                    <button type="button" class="collapsible">How do i buy notes?</button>
+                                    <div class="accordion_content">
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia quae est quis?
+                                            Laborum
+                                            minus odio, in voluptate modi<br>consectetur obcaecati
+                                            ducimus, ex dolore sint! Dignissimos, voluptatibus!</p>
+                                    </div>
                                 </div>
-                                <div class="card-body">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia quae est quis?
-                                        Laborum
-                                        minus odio, in voluptate modi<br>consectetur obcaecati
-                                        ducimus, ex dolore sint! Dignissimos, voluptatibus!</p>
+
+                                <div class="accordion_item">
+                                    <button type="button" class="collapsible">Can i edit the notes i purchased?</button>
+                                    <div class="accordion_content">
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia quae est quis?
+                                            Laborum
+                                            minus odio, in voluptate modi<br>consectetur obcaecati
+                                            ducimus, ex dolore sint! Dignissimos, voluptatibus!</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <p class="FAQ-heading">Uploaders</p>
-            <div class="row">
-                <div id="part2">
-                    <div class="col-md-12">
-                        <div class="accordion">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h5>What can't i sell?</h5>
-                                    <span><img class="FAQ-minus-img" src="./images/FAQ/plus.png"></span>
-                                </div>
-                                <div class="card-body">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia quae est quis?
-                                        Laborum
-                                        minus odio, in voluptate modi<br>consectetur obcaecati
-                                        ducimus, ex dolore sint! Dignissimos, voluptatibus!</p>
-                                </div>
-                            </div>
 
-                            <div class="card">
-                                <div class="card-header">
-                                    <h5>What notes can i sell?</h5>
-                                    <span><img class="FAQ-minus-img" src="./images/FAQ/plus.png"></span>
-                                </div>
-                                <div class="card-body">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia quae est quis?
-                                        Laborum
-                                        minus odio, in voluptate modi<br>consectetur obcaecati
-                                        ducimus, ex dolore sint! Dignissimos, voluptatibus!</p>
-                                </div>
-                            </div>
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <p class="FAQ-heading">Downloaders</p>
-            <div class="row">
-                <div id="part3">
-                    <div class="col-md-12">
-                        <div class="accordion">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h5>How do i buy notes?</h5>
-                                    <span><img class="FAQ-minus-img" src="./images/FAQ/plus.png"></span>
-                                </div>
-                                <div class="card-body">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia quae est quis?
-                                        Laborum
-                                        minus odio, in voluptate modi<br>consectetur obcaecati
-                                        ducimus, ex dolore sint! Dignissimos, voluptatibus!</p>
-                                </div>
-                            </div>
-
-                            <div class="card">
-                                <div class="card-header">
-                                    <h5>Can i edit the notes i purchased?</h5>
-                                    <span><img class="FAQ-minus-img" src="./images/FAQ/plus.png"></span>
-                                </div>
-                                <div class="card-body">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia quae est quis?
-                                        Laborum
-                                        minus odio, in voluptate modi<br>consectetur obcaecati
-                                        ducimus, ex dolore sint! Dignissimos, voluptatibus!</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
-    </div>
+        
 
-    <!-- FAQ Ends -->
+
     <!-- Footer -->
     <footer class="footer">
         <hr>

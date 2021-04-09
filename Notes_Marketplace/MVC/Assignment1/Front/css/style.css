@@ -36,7 +36,7 @@ ul.navbar-nav>li>a:focus {
 /* White Navigation */
 .white-nav-top {
     background: #fff;
-    padding: 25px 0 15px 0;
+    padding: 25px 50px 15px 0;
     box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.08);
 }
 
@@ -45,6 +45,11 @@ ul.navbar-nav>li>a:focus {
 }
 
 .white-nav-top ul.navbar-nav>li>a:hover {
+    border-bottom: 4px solid #6255a5;
+}
+
+.white-nav-top .navbar-nav .active a {
+    color: #6255a5;
     border-bottom: 4px solid #6255a5;
 }
 
@@ -605,10 +610,21 @@ ul.navbar-nav>li>a:focus {
 
 #userProfile #profile-picture{
     height: 110px;
-    padding-top: 55px;
-    padding-left: 210px;
+    opacity: 0;
+   /* padding-top: 55px;
+    padding-left: 210px;*/
 }
-
+#userProfile .pp-text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #8a8a8a;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    
+}
 .user-profile-submit-btn {
     background: #6255a5;
     width: 150px;
@@ -1642,16 +1658,25 @@ ul.navbar-nav>li>a:focus {
     padding: 0 0 105px 15px;
 }
 
-#addNotes #display-picture,
-#addNotes #note-preview {
+#addNotes .dp-text,
+#addNotes .un-text,
+#addNotes .np-text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #8a8a8a;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+#addNotes .np-text {
+    top:110px;
+}
+/*#addNotes #upload-notes {
     text-align: center;
     padding-top: 50px;
-}
-
-#addNotes #upload-notes {
-    text-align: center;
-    padding-top: 50px;
-}
+}*/
 .add-notes-arrow-down-img {
     position: absolute;
     right: 30px;
@@ -2414,103 +2439,57 @@ ul.navbar-nav>li>a:focus {
     margin-bottom: 30px;
 }
 
-#FAQ #part1 .accordion .card,
-#FAQ #part2 .accordion .card,
-#FAQ #part3 .accordion .card {
-    width: 100%;
-    height: 60px;
-    background: #f3f3f3;
-    margin-bottom: 15px;
-
+#FAQ .collapsible {
+	background-color: #f3f3f3;
+	color: #333333;
+	cursor: pointer;
+	padding: 18px;
+	width: 100%;
+	font-weight: 400;
+	border: none;
+	text-align: left;
+	font-size: 18px;
+	line-height: 22px;
 }
 
-#FAQ #part1 .accordion .card:nth-child(1) {
-    background: white;
-    width: 100%;
-    height: 120px;
-    border: 1px solid #d1d1d1;
-    margin-bottom: 15px;
-    padding: 15px;
+#FAQ .accordion_content {
+	padding: 0 18px;
+	display: none;
+	overflow: hidden;
+	background-color: #fff;
+	margin-bottom: 15px;
 }
 
-#FAQ #part1 .accordion .card .card-header,
-#FAQ #part2 .accordion .card .card-header,
-#FAQ #part3 .accordion .card .card-header {
-    position: relative;
+#FAQ .accordion_item {
+	border: 1px solid #d1d1d1;
+	margin-bottom: 20px;
 }
 
-#FAQ #part1 .accordion .card .card-header h5,
-#FAQ #part2 .accordion .card .card-header h5,
-#FAQ #part3 .accordion .card .card-header h5 {
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 22px;
-    color: #333;
-    margin-bottom: 20px;
+#FAQ .collapsible:focus-within {
+	background-color: #fff;
+	margin-bottom: 0px;
+	font-weight: 600;
 }
 
-#FAQ #part1 .accordion .card:nth-child(1) .card-header h5 {
-    font-size: 18px;
-    font-weight: 600;
-    line-height: 22px;
-    color: #333;
-    margin-bottom: 20px;
+
+#FAQ .collapsible:hover {
+	background-color: #ccc;
 }
 
-#FAQ #part1 .accordion .card .card-header span,
-#FAQ #part2 .accordion .card .card-header span,
-#FAQ #part3 .accordion .card .card-header span {
-    width: 16px;
-    height: 2px;
-    position: absolute;
-    right: 15px;
-    top: 0px;
+#FAQ .collapsible:after {
+	content: '\02795';
+	font-size: 13px;
+	color: white;
+	float: right;
+	margin-left: 5px;
 }
 
-#FAQ #part1 .accordion .card:nth-child(1) .card-header span {
-    width: 16px;
-    height: 2px;
-    position: absolute;
-    right: 10px;
-    top: -1px;
+#FAQ .active:after {
+	content: '\02796';
 }
 
-#FAQ #part1 .accordion .card .card-body,
-#FAQ #part2 .accordion .card .card-body,
-#FAQ #part3 .accordion .card .card-body {
-    display: none;
-}
-
-#FAQ #part1 .accordion .card,
-#FAQ #part2 .accordion .card,
-#FAQ #part3 .accordion .card {
-    width: 100%;
-    height: 60px;
-    background: #f3f3f3;
-    margin-bottom: 15px;
-    padding: 10px;
-}
-
-#FAQ #part1 .accordion .card:nth-child(1) {
-    background: white;
-    width: 100%;
-    height: 120px;
-    border: 1px solid #d1d1d1;
-    margin-bottom: 15px;
-    padding: 15px;
-}
-
-#FAQ #part1 .accordion .card:nth-child(1) .card-body {
-    display: block;
-}
-
-#FAQ #part1 .accordion .card .card-body p,
-#FAQ #part2 .accordion .card .card-body p,
-#FAQ #part3 .accordion .card .card-body p {
-    font-size: 16px;
-    font-weight: 400;
-    list-style: 22px;
-    color: #333;
+#FAQ button:focus{
+	outline: 0px solid -webkit-focus-ring-color;
 }
 
 /*=======================================================

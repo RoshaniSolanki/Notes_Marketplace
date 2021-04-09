@@ -104,7 +104,7 @@
                 <p class="heading">Download Free/Paid Notes<br>or Sale your Book </p>
                 <p class="text">Lorem ipsum has been the industry's standard dummy text ever since the <br>1500s, when
                     an unknown printer took a galley of type.</p>
-                <a href="FAQ.html">
+                <a href="FAQ.php">
                     <button class="btn btn-primary home-page-learnmore-btn">LEARN MORE</button>
                 </a>
             </div>
@@ -139,7 +139,7 @@
                         </div>
                         <p class="HPS2T1">Download Free/Paid Notes</p>
                         <p class="HPS2T2">Get Material for your<br>Cource etc.</p>
-                        <a href="Search_Notes_Page.html"><button
+                        <a href="Search_Notes_Page.php"><button
                                 class="btn home-page-download-btn">Download</button></a>
                     </center>
                 </div>

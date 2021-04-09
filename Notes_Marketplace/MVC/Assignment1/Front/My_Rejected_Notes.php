@@ -123,9 +123,11 @@
                         <p>My Rejected Notes</p>
                     </div>
                     <div class="col-md-7 col-sm-8 col-xs-8">
-                        <input type="text" name="search" id="search" placeholder="Search"><span><img class="search-icon-img"
-                                src="./images/My_Rejected_Notes/search-icon.png"></span>
+                        <form action="" method="POST">
+                        <input type="text" name="search" id="search" placeholder="Search">
+                        <span><img class="search-icon-img" src="./images/My_Rejected_Notes/search-icon.png"></span>
                         <a href=""><button class="btn btn-primary my-rejected-notes-search-btn">SEARCH</button></a>
+                        </form>
                     </div>
                 </div>
             </div>

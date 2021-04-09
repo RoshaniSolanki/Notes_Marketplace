@@ -22,7 +22,7 @@ $(function () {
 
 $(function () {
     $(".calendar-img").click(function () {
-        $("#dob").datepicker();
+        //$("#dob").datepicker();
         $("#dob").datepicker('show');
     });
 });
@@ -64,6 +64,17 @@ $(function () {
 $(function () {
     $("nav").addClass("white-nav-top");
 });  
+
+/* Change Color of active link */
+
+$(document).ready(function() {
+    $('ul.navbar-nav > li').click(function(e) {
+      e.preventDefault();
+      $('ul.navbar-nav > li').removeClass('active');
+      $(this).addClass('active');
+    });
+});
+
 /*=======================================================
                      Mobile Menu  
 =========================================================*/
@@ -214,8 +225,28 @@ $(function () {
 /*=======================================================
                   FAQ SlideDown & SlideUp  
 =========================================================*/
-$(function () {
-    $(".card-header , .FAQ-minus-img").click(function () {
-        $(".card .card-body").slideUP()
+
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i<coll.length;i++) {
+    coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var accordion_content = this.nextElementSibling;
+
+        if(accordion_content.style.maxHeight) {
+            accordion_content.style.maxHeight = accordion_content.scrollHeight + "px";
+        }else {
+            accordion_content.style.maxHeight = null;
+            if(accordion_content.style.display === "block") {
+                accordion_content.style.display ="none";
+                $(".accordion_item").css("border-color", "#d1d1d1");
+            } else {
+                accordion_content.style.display = "block";
+                $(".accordion_item").css("border-color", "#d1d1d1");
+                $(".collapsible").css("border-color", "none");
+            }
+        }
     });
-});
+}
+

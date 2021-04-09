@@ -95,13 +95,14 @@ if(isset($_POST['submit'])) {
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <h1>Login</h1>
                         <p class="login-text1">Enter your email address and password to login</p>
-                        <form action="Login.php" method="POST" name="login" id="login" onsubmit="return loginForm(event)">
+                        <form action="Login.php" method="POST" name="login" id="login">
                             <div class="form-group">
                                 <label class="emailLabel" for="email">Email</label>
 
                                 <input type="email" class="form-control" id="email" name="email"
                                     aria-describedby="emailHelp" placeholder="Enter email" value="<?php if(isset($_COOKIE['emailcookie'])) {echo $_COOKIE['emailcookie']; } ?>">
                                 <small>Error Message</small>
+                                    <!--span id="email_id" style="display:none;color:#ff3636;">Error Message</span-->
 
                             </div>
                             <div class="form-group">
@@ -124,7 +125,8 @@ if(isset($_POST['submit'])) {
 
                                 <span class="show-pass" target="#password"><img class="eye-img"
                                         src="images/login/eye.png"></span>
-                                <small>The password that you have entered is incorrect</small>
+                                <small>Error Message</small>
+                                <!--span id="pass" style="display:none;color:#ff3636;">Error Message</span-->
                             </div>
 
                             <input type="checkbox" name="rememberme" class="form-check-input" id="checkbox">
@@ -158,24 +160,56 @@ if(isset($_POST['submit'])) {
 </html>
 
 <script>
-    
-   /*const login_form = document.getElementById('login');
+
+/*function loginForm() {
+        const email = document.getElementById('email');
+        const password = document.getElementById('password');
+        
+        const emailValue = email.value.trim();
+        const passwordValue = password.value.trim();
+
+        var a = /[A-Za-z]+$/;
+        if (emailValue === '') {
+            email.style.border = "1px solid #ff3636";
+            document.getElementById('email_id').innerHTML = "Email cannot be blank";
+            email_id.style.display = "block";
+            return false;
+
+        }else {
+            email.style.border = "1px solid #d1d1d1";
+            email_id.style.display = "none";
+        }
+
+
+        if (passwordValue === ''){
+            password.style.border = "1px solid #ff3636";
+            document.getElementById('pass').innerHTML = "Password cannot be blank";
+            pass.style.display = "block";
+            return false;
+
+        }else {
+            password.style.border = "1px solid #d1d1d1";
+        }
+        
+    }
+    */
+   const login_form = document.getElementById('login');
     const email = document.getElementById('email');
     const password = document.getElementById('password');
 
-    login_form.addEventListener('submit', e => {
+   login_form.addEventListener('submit', e => {
         e.preventDefault();
     
         checkInputs();
         
     });
-  /* function loginForm(event) {
+   /*function loginForm(event) {
         event.preventDefault();
         checkInputs();
         return false;
     }*/
 
-   /* function checkInputs(){
+    function checkInputs(){
         const emailValue = email.value.trim();
         const passwordValue = password.value.trim();
 
@@ -228,5 +262,5 @@ if(isset($_POST['submit'])) {
     function isEmail(email) {
         return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
             .test(email);
-    }*/
+    }
 </script>

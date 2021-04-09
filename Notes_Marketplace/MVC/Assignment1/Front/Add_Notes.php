@@ -362,7 +362,7 @@ if(isset($_POST['save'])) {
                                                 alt=""></a>
                                         <div class="user-menu-show">
                                             <p><a href="#">My Profile</a></p>
-                                            <p><a href="">My Downloads</a></p>
+                                            <p><a href="#">My Downloads</a></p>
                                             <p><a href="#">My Sold Notes</a></p>
                                             <p><a href="#">My Rejected Notes</a></p>
                                             <p><a href="#">Change Password</a></p>
@@ -471,6 +471,7 @@ if(isset($_POST['save'])) {
                             <label class="displayPicture" for="displayPicture">Display Picture</label>
                             <label for="display-picture"><img class="add-notes-upload-file-img1"
                                     src="./images/Add-notes/upload-file.png"></label>
+                            <span class="dp-text">Upload a picture</span>
                             <div style="border:1px solid #d1d1d1;border-radius: 3px;height: 110px;">
                             <input type="file" id="display-picture" name="display-picture" class="form-control"
                                 placeholder="Upload a picture" value="<?php if(isset($_GET['note_id'])){echo $db_display_picture;}?>">
@@ -482,6 +483,7 @@ if(isset($_POST['save'])) {
                             <label class="uploadNotes" for="uploadNotes">Upload your notes *</label>
                             <label for="upload-notes"><img class="add-notes-upload-notes-img"
                                     src="./images/Add-notes/upload-note.png"></label>
+                            <span class="un-text">Upload your notes</span>
                             <div style="border:1px solid #d1d1d1;border-radius: 3px;height: 110px;">
                             <input type="file" accept=".pdf" id="upload-notes" name="upload-notes[]" class="form-control"
                                 placeholder="Upload your notes" multiple value="<?php if(isset($_GET['note_id'])){echo $db_upload_notes;}?>">
@@ -637,6 +639,7 @@ if(isset($_POST['save'])) {
                             <label class="notePreview" for="notePreview">Note Preview</label>
                             <label for="note-preview"><img class="add-notes-upload-file-img2"
                                     src="./images/Add-notes/upload-file.png"></label>
+                            <span class="np-text">Upload a file</span>
                             <div style="border:1px solid #d1d1d1;border-radius: 3px;height: 130px;">
                             <input type="file" id="note-preview" name="note-preview" class="form-control"
                                 placeholder="Upload a file" value="<?php if(isset($_GET['note_id'])){echo $db_note_preview;}?>">
@@ -698,7 +701,7 @@ if(isset($_POST['save'])) {
         var r= confirm("Publishing this note will send note to administrator for review, once administrator review and approve then this note will be published to portal. Press yes to continue.");
         if(r) {
             <?php 
-            echo "<script>alert('ok');<script>";
+            
               /*  $t = escape_string($_POST['title']);
                 $select_id = query("SELECT * FROM seller_notes WHERE Title='$t' ");
                 confirm($select_id);

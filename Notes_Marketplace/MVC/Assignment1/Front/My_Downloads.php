@@ -124,10 +124,12 @@
                         <p>My Downloads</p>
                     </div>
                     <div class="col-md-7 col-sm-8 col-xs-8">
+                        <form action="" method="POST">
                         <span><img class="my-downloads-search-icon-img"
                                 src="./images/My_Download/search-icon.png"></span>
                         <input type="text" name="search" id="search" placeholder="Search">
                         <a href=""><button class="btn btn-primary my-downloads-search-btn">SEARCH</button></a>
+                        </form>
                     </div>
                 </div>
             </div>

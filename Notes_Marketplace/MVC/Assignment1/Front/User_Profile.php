@@ -1,3 +1,6 @@
+<?php include "../includes/db.php"; ?>
+<?php include "../includes/functions.php"; ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,6 +21,9 @@
         <!-- Custom CSS -->
         <link rel="stylesheet" href="css/style.css">
     
+        <!-- CSS For Calender-->
+        <link rel="stylesheet" href="css/jquery/jquery-ui.css">
+
         <!-- Responsive CSS -->
         <link rel="stylesheet" href="css/responsive.css">
     
@@ -37,7 +43,7 @@
 
                         <!-- Logo -->
                         <a class="navbar-brand" href="Home_Page.php">
-                            <img src="images/home/top-logo.png" alt="logo">
+                            <img src="images/home/logo.png" alt="logo">
                         </a>
                     </div>
 
@@ -179,7 +185,18 @@
                                             src="images/User-Profile/down-arrow.png"></span>
                                     <select type="text" name="code" id="code" class="form-control"
                                         placeholder="">
-                                        <option selected disabled hidden>+91</option>
+
+                                        <?php  
+                                        $get_country_code = query("SELECT CountryCode FROM countries");
+                                        confirm($get_country_code);
+
+                                        while($row = mysqli_fetch_assoc($get_country_code)) {
+                                        $country_id=$row['ID'];
+                                        $country_name=$row['CountryCode'];
+                                        echo "<option value='$country_id'>$country_name</option>";
+                                        }
+                                        ?>
+                                        <!--option selected>+91</option-->
                                     </select>
                                 </div>
                                 <div class="col-md-9 col-sm-9">
@@ -193,9 +210,12 @@
                     <div class="col-md-6 col-sm-6">
                         <div class="form-group">
                             <label class="profilePicture" for="profilePicture">Profile Picture</label>
-                            <span><img class="upload-img" src="./images/User-Profile/upload.png"></span>
-                            <input type="text" name="profile-picture" id="profile-picture" class="form-control"
+                            <label for="profile-picture"><img class="upload-img" src="./images/User-Profile/upload.png"></label>
+                            <span class="pp-text">Upload a picture</span>
+                            <div style="border:1px solid #d1d1d1;border-radius: 3px;height: 110px;">
+                            <input type="file" name="profile-picture" id="profile-picture" class="form-control"
                                 placeholder="Upload a Picture">
+                            </div>
                         </div>
                     </div>
                 </div>
