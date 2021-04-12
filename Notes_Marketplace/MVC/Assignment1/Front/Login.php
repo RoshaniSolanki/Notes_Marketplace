@@ -19,6 +19,12 @@ if(isset($_POST['submit'])) {
         $role_id = $query['RoleID'];
 
         if($password == $db_pass) {
+
+            $_SESSION['userid'] =$query['ID'];
+            $_SESSION['roleid'] =$query['RoleID'];
+            $_SESSION['firstname'] = $query['FirstName'];
+            $_SESSION['lastname'] = $query['LastName'];
+            $_SESSION['email'] = $query['EmailID'];
            
            if($role_id==3) {
                 if(isset($_POST['rememberme'])) {
@@ -41,6 +47,8 @@ if(isset($_POST['submit'])) {
                     redirect("../Admin/Admin_Dashboard.php");
                 }
             }
+        }else {
+            echo "<script>alert('Invalid Password')</script>";
         }
         
     }else {
@@ -193,7 +201,7 @@ if(isset($_POST['submit'])) {
         
     }
     */
-   const login_form = document.getElementById('login');
+  /* const login_form = document.getElementById('login');
     const email = document.getElementById('email');
     const password = document.getElementById('password');
 
@@ -202,13 +210,13 @@ if(isset($_POST['submit'])) {
     
         checkInputs();
         
-    });
+    });*/
    /*function loginForm(event) {
         event.preventDefault();
         checkInputs();
         return false;
     }*/
-
+    /*
     function checkInputs(){
         const emailValue = email.value.trim();
         const passwordValue = password.value.trim();
@@ -262,5 +270,5 @@ if(isset($_POST['submit'])) {
     function isEmail(email) {
         return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
             .test(email);
-    }
+    }*/
 </script>

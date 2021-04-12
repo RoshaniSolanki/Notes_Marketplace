@@ -87,10 +87,8 @@ if(isset($_POST['save'])) {
         */
         $sell_for_radio_btn = escape_string($_POST['sellfor-radio']);
         if($sell_for_radio_btn == "free") {
-            $ispaid = 'false';
             $selling_price = null;
         }else {
-            $ispaid = 'true';
             $selling_price = escape_string($_POST['sell-price']);
         }
        
@@ -105,7 +103,8 @@ if(isset($_POST['save'])) {
         $course_name               = escape_string($_POST['course-name']);
         $course_code               = escape_string($_POST['course-code']);
         $professor                 = escape_string($_POST['professor']);
-        $note_preview           = "../Members/Default/Admin_default_img.png";
+        $ispaid                    = escape_string($_POST['sellfor-radio']);
+        $note_preview              = "../Members/Default/Admin_default_img.png";
         $created_date              = date("Y-m-d H:i:s");
         $modified_date             = date("Y-m-d H:i:s");
 
@@ -237,7 +236,7 @@ if(isset($_POST['save'])) {
                 $db_note_preview    = escape_string($row['NotesPreview']);
 
             }
-            if(isset($_POST['save'])) {
+            if(isset($_POST['save2'])) {
 
             $title                     = escape_string($_POST['title']);
             $category                  = escape_string($_POST['category']);
@@ -255,10 +254,10 @@ if(isset($_POST['save'])) {
             $professor                 = escape_string($_POST['professor']);
             $note_preview              = escape_string($_FILES['note-preview']['name']);
             $note_preview_tmp_loc      = escape_string($_FILES['note-preview']['tmp_name']);
-            
+            $ispaid                    = escape_string($_POST['sellfor-radio']);
             $sell_price                = escape_string($_POST['sell-price']);
 
-            if(empty($display_picture) || empty($note_preview)) {
+            /*if(empty($display_picture) || empty($note_preview)) {
 
                 $get_pic = query("SELECT DisplayPicture, NotesPreview FROM seller_notes WHERE ID =".escape_string($_GET['note_id'])." ");
                 confirm($get_pic);
@@ -283,7 +282,29 @@ if(isset($_POST['save'])) {
             }
 
             $update_upload_notes = query("UPDATE seller_notes_attachements SET FilePath = $upload_notes  WHERE ID = ".escape_string($_GET['note_id'])." ");
-            confirm($update_upload_notes);
+            confirm($update_upload_notes);*/
+
+
+            $update_query ="UPDATE seller_notes SET ";
+            $update_query .="Title             = '{$title}'             , ";
+            $update_query .="Category          = '{$category}'          , ";
+            $update_query .="DisplayPicture    = '{$display_picture}'   , ";
+            $update_query .="NoteType          = '{$type}'              , ";
+            $update_query .="NumberOfPages     = '{$number_of_pages}'   , ";
+            $update_query .="Description       = '{$description}'       , ";
+            $update_query .="Country           = '{$country}'           , ";
+            $update_query .="UniversityName    = '{$institute_name}'    , ";
+            $update_query .="Course            = '{$course_name}'       , ";
+            $update_query .="CourseCode        = '{$course_code}'       , ";
+            $update_query .="Professor         = '{$professor}'         , ";
+            $update_query .="IsPaid            = '{$ispaid}'            , ";
+            $update_query .="SellingPrice      = '{$sell_price}'        , ";
+            $update_query .="NotesPreview      = '{$note_preview}'        ";
+            $update_query .="WHERE ID=" . escape_string($_GET['note_id']);
+
+            $update_notes = query($update_query);
+            confirm($update_notes);
+            
             }
         }
 ?>
@@ -650,12 +671,23 @@ if(isset($_POST['save'])) {
             </div>
             <div class="container">
                 <div class="row">
+
+                    <?php 
+                        if(isset($_GET['note_id'])){?>
+
+                            <div class="col-md-2 col-sm-3 col-xs-6">
+                                <button type="submit" name="save2" class="btn btn-primary add-notes-save-btn">SAVE</button>
+                            </div>
+                            <div class="col-md-10 col-sm-9 col-xs-6">
+                                <a><button type="submit" name="publish" onclick="publish_btn_check()" class="btn btn-primary add-notes-publish-btn">PUBLISH</button></a>
+                            </div>
+
+                     <?php }else{
+                     ?>
                     <div class="col-md-2 col-sm-3 col-xs-6">
                         <button type="submit" name="save" class="btn btn-primary add-notes-save-btn">SAVE</button>
                     </div>
-                    <div class="col-md-10 col-sm-9 col-xs-6">
-                        <a><button type="submit" name="publish" onclick="publish_btn_check()" class="btn btn-primary add-notes-publish-btn" <?php if(isset($_GET['note_id'])){ ?> style="opacity:1;" <?php }if(!isset($_GET['note_id'])){?> style="opacity:0;" <?php }?>>PUBLISH</button></a>
-                    </div>
+                    <?php }?>
                 </div>
             </div>
 
