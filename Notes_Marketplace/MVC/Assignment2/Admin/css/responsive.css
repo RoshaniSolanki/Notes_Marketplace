@@ -214,7 +214,7 @@
     }
 
     /* Admin Members */
-    #adminMembers #part2 th:nth-child(6),
+   /* #adminMembers #part2 th:nth-child(6),
     #adminMembers #part2 th:nth-child(7),
     #adminMembers #part2 th:nth-child(8),
     #adminMembers #part2 th:nth-child(9),
@@ -228,7 +228,7 @@
     #adminMembers #part2 td:nth-child(9),
     #adminMembers #part2 td:nth-child(10) {
         padding-left: 5px;
-    }
+    }*/
 
     /* Member Details */
     #adminMemberDetails #section1 #part2 img {
@@ -247,7 +247,7 @@
     }
 
     /* Admin Notes Under Review */
-    #adminNotesUnderReview #part3 th {
+    /*#adminNotesUnderReview #part3 th {
         font-size: 12px;
         line-height: 20px;
     }
@@ -288,10 +288,10 @@
 
     #adminNotesUnderReview #part3 .dots-img {
         margin-right: 10px;
-    }
+    }*/
 
     /* Admin Published Notes */
-    #adminPublishedNotes #part3 th {
+   /* #adminPublishedNotes #part3 th {
         font-size: 14px;
         line-height: 18px;
     }
@@ -303,7 +303,7 @@
 
     #adminPublishedNotes #part3 td .dots-img {
         margin-right: 10px;
-    }
+    }*/
 
     /* Admin Downloads Notes */
     #adminDownloadesNotes #part2 .arrow-down-img1 {
@@ -432,13 +432,13 @@
         width: 145px;
     }
 
-    #adminDashboard #section2 #part2 th {
+   /* #adminDashboard #section2 #part2 th {
         padding-left: 5px;
     }
 
     #adminDashboard #section2 #part2 td {
         padding-left: 5px;
-    }
+    }*/
 
     /* Admin Note Details */
     #adminNoteDetails .download-btn {
@@ -446,7 +446,7 @@
     }
 
     /* Admin Members */
-    #adminMembers #part2 th {
+  /*  #adminMembers #part2 th {
         font-size: 12px;
         font-weight: 600;
         line-height: 16px;
@@ -475,7 +475,7 @@
 
     #adminMembers #part2 .dots-img {
         margin-right: 10px;
-    }
+    }*/
 
     /* Member Details */
     #adminMemberDetails #section1 #part2 img {
@@ -494,7 +494,7 @@
     }
 
     /* Admin Notes Under Review */
-    #adminNotesUnderReview #part3 th {
+   /* #adminNotesUnderReview #part3 th {
         font-size: 14px;
         line-height: 20px;
     }
@@ -517,10 +517,10 @@
     #adminNotesUnderReview #part3 .dots-img {
         margin-right: 10px;
         margin-left: 10px;
-    }
+    }*/
 
     /* Admin Published Notes */
-    #adminPublishedNotes #part3 th {
+  /*  #adminPublishedNotes #part3 th {
         font-size: 12px;
         line-height: 18px;
         text-align: center;
@@ -534,7 +534,7 @@
 
     #adminPublishedNotes #part3 td .dots-img {
         margin-right: 10px;
-    }
+    }*/
 
     /* Admin Downloads Notes */
     #adminDownloadesNotes #part2 #search {
@@ -580,7 +580,7 @@
         font-weight: 700;
     }
 
-    #adminDownloadesNotes #part3 th {
+   /* #adminDownloadesNotes #part3 th {
         font-size: 12px;
         line-height: 16px;
     }
@@ -596,14 +596,14 @@
 
     #adminDownloadesNotes #part3 .dots-img {
         margin-right: 15px;
-    }
+    }*/
 
     /* Admin Rejected Notes */
     #adminRejectedNotes .search-icon-img {
         left: 50px;
     }
 
-    #adminRejectedNotes #part3 th {
+   /* #adminRejectedNotes #part3 th {
         font-size: 14px;
         line-height: 18px;
     }
@@ -611,7 +611,7 @@
     #adminRejectedNotes #part3 td {
         font-size: 12px;
         line-height: 14px;
-    }
+    }*/
 
 
     /* Admin Footer */
@@ -943,7 +943,7 @@
         width: 150px;
     }
 
-    #adminDashboard #section2 #part2 th {
+   /* #adminDashboard #section2 #part2 th {
         font-size: 12px;
         line-height: 16px;
         padding-left: 5px;
@@ -1009,7 +1009,7 @@
         width: 130px;
     }
 
-    #adminDashboard #section2 #part2 th {
+   /* #adminDashboard #section2 #part2 th {
         font-size: 10px;
         line-height: 14px;
         padding-left: 5px;
@@ -1029,7 +1029,7 @@
     }
     #adminDashboard #section2 #part2 td:nth-child(10) a{
         font-size: 14px;
-    }
+    }*/
 
 }
 
@@ -1094,7 +1094,7 @@
         height: 10px;
         width: 15px;
     }
-    #adminDashboard #section2 #part2 th {
+    /*#adminDashboard #section2 #part2 th {
         font-size: 6px;
         line-height: 10px;
         padding-left:2px;
@@ -1112,7 +1112,7 @@
         height: 15px;
         padding-right: 5px;
         padding-left: 0;
-    }
+    }*/
 
 }
 
@@ -1139,7 +1139,7 @@
         margin-left: -16px;
     }
 
-    #adminMembers #part2 th {
+   /* #adminMembers #part2 th {
         font-size: 12px;
         font-weight: 600;
         line-height: 16px;
@@ -1174,7 +1174,7 @@
 
     #adminMembers #part2 .dots-img {
         margin-right: 10px;
-    }
+    }*/
 
 }
 
@@ -1190,7 +1190,7 @@
         right: 365px;
     }
 
-    #adminMembers #part2 th {
+   /* #adminMembers #part2 th {
         font-size: 10px;
         font-weight: 600;
         line-height: 14px;
@@ -1225,7 +1225,7 @@
 
     #adminMembers #part2 .dots-img {
         margin-right: 10px;
-    }
+    }*/
 
 }
 
@@ -1252,7 +1252,7 @@
         line-height: 20px;
     }
 
-    #adminMembers #part2 th {
+   /* #adminMembers #part2 th {
         font-size: 7px;
         line-height: 11px;
         padding-left: 2px;
@@ -1286,7 +1286,7 @@
 
     #adminMembers #part2 .dots-img {
         margin-right: 5px;
-    }
+    }*/
 
 }
 
@@ -1339,7 +1339,7 @@
         right: 410px;
     }
 
-    #adminPublishedNotes #part3 th {
+   /* #adminPublishedNotes #part3 th {
         font-size: 14px;
         line-height: 18px;
         padding-left: 7px;
@@ -1363,7 +1363,7 @@
     #adminPublishedNotes #part3 td .dots-img {
         margin-right: 10px;
         height: 20px;
-    }
+    }*/
 
     /* Admin Rejected Notes */
     #adminRejectedNotes #seller {
@@ -1435,7 +1435,7 @@
         line-height: 18px;
     }
 
-    #adminNotesUnderReview #part3 th {
+    /*#adminNotesUnderReview #part3 th {
         font-size: 12px;
         line-height: 16px;
         padding-left: 5px;
@@ -1470,7 +1470,7 @@
         height: 15px;
         margin-right: 5px;
         margin-left: 0px;
-    }
+    }*/
 
     /* Admin Published Notes */
     #adminPublishedNotes #part1 p {
@@ -1506,7 +1506,7 @@
         line-height: 18px;
     }
 
-    #adminPublishedNotes #part3 th {
+   /* #adminPublishedNotes #part3 th {
         font-size: 11px;
         line-height: 15px;
         padding-left: 5px;
@@ -1530,7 +1530,7 @@
     #adminPublishedNotes #part3 td .dots-img {
         margin-right: 5px;
         height: 15px;
-    }
+    }*/
 
     /* Admin Rejected Notes */
     #adminRejectedNotes #part1 p {
@@ -1566,7 +1566,7 @@
         line-height: 18px;
     }
 
-    #adminRejectedNotes #part3 th {
+   /* #adminRejectedNotes #part3 th {
         font-size: 14px;
         line-height: 18px;
         padding-left: 5px;
@@ -1588,7 +1588,7 @@
 
     #adminRejectedNotes #part3 td .dots-img {
         margin-right: 10px;
-    }
+    }*/
 
     /* Admin Downloads Notes */
     #adminDownloadesNotes #part2 .arrow-down-img1 {
@@ -1643,7 +1643,7 @@
         font-weight: 700;
     }
 
-    #adminDownloadesNotes #part3 th {
+   /* #adminDownloadesNotes #part3 th {
         font-size: 13px;
         line-height: 17px;
         padding-left: 5px;
@@ -1668,7 +1668,7 @@
         margin-right: 5px;
         margin-left: 5px;
         height: 20px;
-    }
+    }*/
 
 }
 
@@ -1708,7 +1708,7 @@
         line-height: 16px;
     }
 
-    #adminNotesUnderReview #part3 th {
+   /* #adminNotesUnderReview #part3 th {
         font-size: 10px;
         line-height: 14px;
         padding-left: 5px;
@@ -1747,7 +1747,7 @@
         height: 15px;
         margin-right: 5px;
         margin-left: 0px;
-    }
+    }*/
 
     /* Admin Published Notes */
     #adminPublishedNotes #part1 p {
@@ -1783,7 +1783,7 @@
         line-height: 16px;
     }
 
-    #adminPublishedNotes #part3 th {
+    /*#adminPublishedNotes #part3 th {
         font-size: 8px;
         line-height: 12px;
         padding-left: 5px;
@@ -1807,7 +1807,7 @@
     #adminPublishedNotes #part3 td .dots-img {
         margin-right: 5px;
         height: 15px;
-    }
+    }*/
 
     /* Admin Rejected Notes */
     #adminRejectedNotes #part1 p {
@@ -1844,7 +1844,7 @@
         line-height: 16px;
     }
 
-    #adminRejectedNotes #part3 th {
+    /*#adminRejectedNotes #part3 th {
         font-size: 12px;
         line-height: 16px;
         padding-left: 3px;
@@ -1868,7 +1868,7 @@
     #adminRejectedNotes #part3 td .dots-img {
         margin-right: 5px;
         height: 15px;
-    }
+    }*/
 
     /* Admin Downloads Notes */
     #adminDownloadesNotes #part1 p {
@@ -1938,7 +1938,7 @@
         font-weight: 700;
     }
 
-    #adminDownloadesNotes #part3 th {
+   /* #adminDownloadesNotes #part3 th {
         font-size: 10px;
         line-height: 14px;
         padding-left: 5px;
@@ -1962,7 +1962,7 @@
     #adminDownloadesNotes #part3 .dots-img {
         margin-right: 5px;
         height: 15px;
-    }
+    }*/
 
 }
 
@@ -1992,7 +1992,7 @@
         line-height: 14px;
     }
 
-    #adminMembers #part2 th {
+    /*#adminMembers #part2 th {
         font-size: 5px;
         line-height: 10px;
         padding-left: 2px;
@@ -2026,7 +2026,7 @@
 
     #adminMembers #part2 .dots-img {
         margin-right: 5px;
-    }
+    }*/
 
     /* Admin Notes Under Review */
 
@@ -2063,7 +2063,7 @@
         line-height: 16px;
     }
 
-    #adminNotesUnderReview #part3 th {
+    /*#adminNotesUnderReview #part3 th {
         font-size: 8px;
         line-height: 12px;
         padding-left: 5px;
@@ -2102,7 +2102,7 @@
         height: 15px;
         margin-right: 5px;
         margin-left: 0px;
-    }
+    }*/
 
 
     /* Admin Published Notes */
@@ -2139,7 +2139,7 @@
         line-height: 16px;
     }
 
-    #adminPublishedNotes #part3 th {
+    /*#adminPublishedNotes #part3 th {
         font-size: 6px;
         line-height: 10px;
         padding-left: 3px;
@@ -2163,7 +2163,7 @@
     #adminPublishedNotes #part3 td .dots-img {
         margin-right: 5px;
         height: 15px;
-    }
+    }*/
 
     /* Admin Rejected Notes */
     #adminRejectedNotes #part1 p {
@@ -2200,7 +2200,7 @@
         line-height: 16px;
     }
 
-    #adminRejectedNotes #part3 th {
+    /*#adminRejectedNotes #part3 th {
         font-size: 9px;
         line-height: 13px;
         padding-left: 3px;
@@ -2225,7 +2225,7 @@
         margin-right: 5px;
         margin-left: 5px;
         height: 15px;
-    }
+    }*/
 
     /* Admin Downloads Notes */
     #adminDownloadesNotes #part1 p {
@@ -2295,7 +2295,7 @@
         font-weight: 700;
     }
 
-    #adminDownloadesNotes #part3 th {
+   /* #adminDownloadesNotes #part3 th {
         font-size: 8px;
         line-height: 12px;
         padding-left: 5px;
@@ -2319,7 +2319,7 @@
     #adminDownloadesNotes #part3 .dots-img {
         margin-right: 5px;
         height: 15px;
-    }
+    }*/
 
 }
 
@@ -2347,7 +2347,7 @@
         margin-bottom: 5px;
     }
 
-    #adminMemberDetails #section2 #part2 th {
+    /*#adminMemberDetails #section2 #part2 th {
         font-size: 12px;
         line-height: 16px;
         padding-left: 5px;
@@ -2367,7 +2367,7 @@
         margin-right: 5px;
         height: 15px;
         margin-left: 5px;
-    }
+    }*/
 
 }
 
@@ -2400,7 +2400,7 @@
         margin-bottom: 5px;
     }
 
-    #adminMemberDetails #section2 #part2 th {
+   /* #adminMemberDetails #section2 #part2 th {
         font-size: 10px;
         line-height: 14px;
         padding-left: 5px;
@@ -2419,7 +2419,7 @@
     #adminMemberDetails #section2 #part2 .dots-img {
         margin-right: 5px;
         height: 15px;
-    }
+    }*/
 
 }
 
@@ -2452,7 +2452,7 @@
         margin-bottom: 5px;
     }
 
-    #adminMemberDetails #section2 #part2 th {
+   /* #adminMemberDetails #section2 #part2 th {
         font-size: 6px;
         line-height: 10px;
         padding-left: 5px;
@@ -2471,7 +2471,7 @@
     #adminMemberDetails #section2 #part2 .dots-img {
         margin-right: 5px;
         height: 15px;
-    }
+    }*/
 
 
     /* Pagination */

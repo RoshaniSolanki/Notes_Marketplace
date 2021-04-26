@@ -176,6 +176,7 @@
                                 <div class="form-group">
                                     <label class="subjectLabel" for="subject">Subject *</label>
                                     <input type="text" id="subject" name="subject" placeholder="Enter your subject" class="form-control">
+                                    <small>Error Message</small>
                                 </div>
                             </div>
                         </div>
@@ -184,6 +185,7 @@
                         <div class="form-group">
                             <label class="commentsLabel" for="comments/questions">Comments/Questions *</label>
                             <input type="text" id="comments" name="comments" placeholder="Comments..." class="form-control">
+                            <small>Error Message</small>
                         </div>
                     </div>
                     

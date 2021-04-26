@@ -585,7 +585,6 @@ ul.navbar-nav>li>a:focus {
 
 #userProfile #phone-number,
 #userProfile #address-line1,
-#userProfile #address-line2,
 #userProfile #city,
 #userProfile #state,
 #userProfile #zipcode {
@@ -593,7 +592,6 @@ ul.navbar-nav>li>a:focus {
 }
 
 #userProfile .error #address-line1,
-#userProfile .error #address-line2,
 #userProfile .error #city,
 #userProfile .error #state,
 #userProfile .error #zipcode,

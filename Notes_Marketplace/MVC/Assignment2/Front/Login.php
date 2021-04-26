@@ -4,7 +4,7 @@
 
 if(isset($_POST['submit'])) {
 
-    $email = escape_string($_POST['email']);
+    echo $email = escape_string($_POST['email']);
     $password = escape_string($_POST['password']);
 
     $email_search = query("SELECT * FROM users WHERE EmailID = '$email' and IsEmailVerified = 1 ");
@@ -194,6 +194,61 @@ if(isset($_POST['submit'])) {
             setSuccessFor(email);
             flag=1;
         }
+
+       /* var c1=0,c2=0;
+        for(var i=0;i<emailValue.length;i++)
+        {
+          if(emailValue[i]=='@')
+            c1++;
+        }
+
+        for(var j=0;j<emailValue.length;j++)
+        {
+          if(emailValue[j]=='.')
+            c2++;
+        }
+
+        var c3=emailValue.indexOf('@');
+        var c4=emailValue.indexOf('.');
+
+        //var c5=emailValue.length();
+        var c6=emailValue.lastIndexOf(".");
+        
+        if (emailValue === '') {
+            setErrorFor(email, 'Email cannot be blank');
+            flag=0;
+        }else if(emailValue.search(/[a-z]/) == -1) {
+            setErrorFor(email, 'Email must have at least 1 lowercase character');
+            flag=0;
+        }else if(emailValue.search(/[0-9]/) == -1) {
+            setErrorFor(email, 'Email must have at least 1 digit character');
+            flag=0;
+        }else if(emailValue.search(/[@\.]/) == -1) {
+            setErrorFor(email, 'Email must have @ and .');
+            flag=0;
+        }else if(c3==1) {
+            setErrorFor(email, '');
+            flag=0;
+        }
+        else if (c1!=1) {
+            setErrorFor(email, 'Email should contain only one @');
+            flag=0;
+        } else if(c2<1 || c2>2) {
+            setErrorFor(email, 'only 1-2 dot is allowed');
+            flag=0;
+        } else if(c3+1==c4) {
+            setErrorFor(email, 'atleast one char required between @ and . in email');
+            flag=0;
+        } else if(c4+1==c6) {
+            setErrorFor(email, 'two consecutive dot are not allowed in email');
+            flag=0;
+        } 
+        else {
+            setSuccessFor(email);
+            flag=1;
+        }
+        */
+
 
         var c = 0;
         for (var i = 0; i < passwordValue.length; i++) {

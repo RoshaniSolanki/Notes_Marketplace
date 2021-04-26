@@ -3,6 +3,8 @@ include "../includes/db.php";
 include "../includes/functions.php";
 session_start();
 
+if(isset($_SESSION['email'])) {
+
 $seller_id = $_SESSION['userid'];
 
 
@@ -10,9 +12,11 @@ if(isset($_POST['save'])) {
 
         $sell_for_radio_btn = escape_string($_POST['sellfor-radio']);
         if($sell_for_radio_btn == "free") {
+            $ispaid = false;
             $selling_price = null;
         }else {
             $selling_price = escape_string($_POST['sell-price']);
+            $ispaid = true;
         }
        
         $title                     = escape_string($_POST['title']);
@@ -26,7 +30,7 @@ if(isset($_POST['save'])) {
         $course_name               = escape_string($_POST['course-name']);
         $course_code               = escape_string($_POST['course-code']);
         $professor                 = escape_string($_POST['professor']);
-        $ispaid                    = escape_string($_POST['sellfor-radio']);
+        //$ispaid                    = escape_string($_POST['sellfor-radio']);
         $note_preview              = "../Members/Default/Admin_default_img.png";
         $created_date              = date("Y-m-d H:i:s");
         $modified_date             = date("Y-m-d H:i:s");
@@ -182,6 +186,14 @@ if(isset($_POST['save'])) {
             $ispaid                    = escape_string($_POST['sellfor-radio']);
             $sell_price                = escape_string($_POST['sell-price']);
 
+            if($ispaid == "free") {
+                $ispaid = false;
+                $sell_price = null;
+            }else {
+                $sell_price = escape_string($_POST['sell-price']);
+                $ispaid = true;
+            }
+
         unlink($db_display_pic);
         unlink($db_note_preview);
 
@@ -309,6 +321,198 @@ if(isset($_POST['save'])) {
         }
 
     }
+
+    if(isset($_POST['publish'])) {
+        $get_note_id = $_GET['note_id'];
+
+        $title                     = escape_string($_POST['title']);
+        $category                  = escape_string($_POST['category']);
+        $type                      = escape_string($_POST['type']);
+        $display_picture           = "../Members/Default/Admin_default_img.png";
+        $upload_notes              = escape_string($_FILES['upload-notes']['name']);
+        $upload_notes_tmp_loc      = escape_string($_FILES['upload-notes']['tmp_name']);
+        $number_of_pages           = escape_string($_POST['number-of-pages']);
+        $description               = escape_string($_POST['description']);
+        $country                   = escape_string($_POST['country']);
+        $institute_name            = escape_string($_POST['institution-name']);
+        $course_name               = escape_string($_POST['course-name']);
+        $course_code               = escape_string($_POST['course-code']);
+        $professor                 = escape_string($_POST['professor']);
+        $note_preview              = "../Members/Default/Admin_default_img.png";
+        $ispaid                    = escape_string($_POST['sellfor-radio']);
+        $sell_price                = escape_string($_POST['sell-price']);
+
+        if($ispaid == "free") {
+            $ispaid = false;
+            $sell_price = null;
+        }else {
+            $sell_price = escape_string($_POST['sell-price']);
+            $ispaid = true;
+        }
+
+    unlink($db_display_pic);
+    unlink($db_note_preview);
+
+    $modified_date = date('Y-m-d H:i:s');
+    $update_status_query ="UPDATE seller_notes SET ";
+    $update_status_query .="Title             = '{$title}'             , ";
+    $update_status_query .="Category          = '{$category}'          , ";
+    $update_status_query .="NoteType          = '{$type}'              , ";
+    $update_status_query .="NumberOfPages     = '{$number_of_pages}'   , ";
+    $update_status_query .="Description       = '{$description}'       , ";
+    $update_status_query .="Country           = '{$country}'           , ";
+    $update_status_query .="UniversityName    = '{$institute_name}'    , ";
+    $update_status_query .="Course            = '{$course_name}'       , ";
+    $update_status_query .="CourseCode        = '{$course_code}'       , ";
+    $update_status_query .="Professor         = '{$professor}'         , ";
+    $update_status_query .="IsPaid            = '{$ispaid}'            , ";
+    $update_status_query .="SellingPrice      = '{$sell_price}'        , ";
+    $update_status_query .="Status            = 7                      , ";
+    $update_status_query .="ModifiedDate      = '{$modified_date}'      ";
+    $update_status_query .="WHERE ID= '{$get_note_id}' ";
+
+    $update_notes_status = query($update_status_query);
+    confirm($update_notes_status);
+
+    if($update_notes_status) {
+                $select_id = query("SELECT Title,SellerID FROM seller_notes WHERE ID='{$get_note_id}' ");
+                confirm($select_id);
+                while($note_row=mysqli_fetch_assoc($select_id)) {
+                   $note_title = $note_row['Title'];
+                   $seller_id = $note_row['SellerID'];
+                }
+
+                $select_seller_name = query("SELECT * FROM users WHERE ID='$seller_id' ");
+                confirm($select_seller_name);
+                while($seller_row=mysqli_fetch_assoc($select_seller_name)) {
+                   $seller_fname = $seller_row['FirstName'];
+                   $seller_lname = $seller_row['LastName'];
+                   $seller_email = $seller_row['EmailID'];
+                }
+
+              
+                $subject = $seller_fname." ".$seller_lname." sent his note for review";
+                $email = "sroshani025@gmail.com";
+                $body = "Hello Admins, "."\r\n"."\r\n"."We want to inform you that, " .$seller_fname." ".$seller_lname. " sent his note"."\r\n".$note_title." for review. Please look at the notes and take required actions. " ."\r\n"."\r\n"."Regards,"."\r\n". "Notes Marketplace";
+                $sender_email = "Email From: {$email}";
+                $result = mail($seller_email, $subject, $body, $sender_email);
+         
+                if(!$result) {
+                echo "<script>alert('Email sending failed....')</script>";
+                }else {
+                    redirect("Dashboard.php");
+                }
+
+    }
+
+
+    /* Diplay Picture */
+    $display_picture           = $_FILES['display-picture'];
+    $display_picture_name      = $display_picture['name'];
+    $display_picture_tmp_loc   = $display_picture['tmp_name'];
+    $display_picture_extension = explode('.',$display_picture_name);
+    $display_picture_check     = strtolower(end($display_picture_extension));
+    $display_picture_extstored = array('png', 'jpg', 'jpeg');
+
+        if(in_array($display_picture_check, $display_picture_extstored)) {
+            if(!is_dir("../Members/")) {
+                mkdir('../Members/');
+            }
+            if(!is_dir("../Members/" . $seller_id)) {
+                mkdir('../Members/' . $seller_id);
+            }
+            if(!is_dir("../Members/" . $seller_id . "/" . $get_note_id)) {
+                mkdir('../Members/' . $seller_id . '/' . $get_note_id);
+            }
+            $display_picture_destination = '../Members/' . $seller_id . '/' . $get_note_id . '/' . "DP_" . time() . '.' .$display_picture_check;
+            move_uploaded_file($display_picture_tmp_loc, $display_picture_destination);
+            $display_picture_query = query("UPDATE seller_notes SET DisplayPicture='$display_picture_destination' WHERE ID = '$get_note_id' ");
+            confirm($display_picture_query);
+
+        }else {
+            echo "Display Picture Upload failed";
+        }
+    
+
+    /* Note Preview */
+    $note_preview           = $_FILES['note-preview'];
+    $note_preview_name      = $note_preview['name'];
+    $note_preview_tmp_loc   = $note_preview['tmp_name'];
+    $note_preview_extension = explode('.',$note_preview_name);
+    $note_preview_check     = strtolower(end($note_preview_extension));
+    $note_preview_extstored = array('pdf');
+
+        if(in_array($note_preview_check, $note_preview_extstored)) {
+            if(!is_dir("../Members/")) {
+                mkdir('../Members/');
+            }
+            if(!is_dir("../Members/" . $seller_id)) {
+                mkdir('../Members/' . $seller_id);
+            }
+            if(!is_dir("../Members/" . $seller_id . "/" . $get_note_id)) {
+                mkdir('../Members/' . $seller_id . '/' . $get_note_id);
+            }
+            $note_preview_destination = '../Members/' . $seller_id . '/' . $get_note_id . '/' . "Preview_" . time() . '.' .$note_preview_check;
+            move_uploaded_file($note_preview_tmp_loc, $note_preview_destination);
+            $note_preview_query = query("UPDATE seller_notes SET NotesPreview='$note_preview_destination' WHERE ID = '$get_note_id' ");
+            confirm($note_preview_query);
+        }else {
+            echo "Notes Preview Upload failed";
+        }
+
+       /* Upload Multiple Notes */
+       $select_upload_notes = query("SELECT ID,FilePath FROM seller_notes_attachements WHERE NoteID = '{$get_note_id}' ");
+       confirm($select_upload_notes);
+
+       while($r = mysqli_fetch_assoc($select_upload_notes)){
+
+            $db_file_path = $r['FilePath'];
+            unlink($db_file_path);
+
+       }
+       
+    $upload_notes=$_FILES['upload-notes']['name'];
+    
+    foreach($_FILES['upload-notes']['name'] as $key=>$val) {
+        $upload_notes=$_FILES['upload-notes']['name'][$key];
+        
+    $upload_notes_extension=explode('.',$upload_notes);
+    $upload_notes_check=strtolower(end($upload_notes_extension));
+    $upload_notes_extstored=array('pdf');
+    
+
+        if (in_array($upload_notes_check, $upload_notes_extstored)) {
+            
+            if (!is_dir("../Members/")) {
+                mkdir('../Members/');
+            }
+            if (!is_dir("../Members/" . $seller_id)) {
+                mkdir("../Members/" . $seller_id);
+            }
+            if (!is_dir("../Members/" . $seller_id . "/" . $get_note_id)) {
+                mkdir('../Members/' . $seller_id . '/' . $get_note_id);
+            }
+            if (!is_dir("../Members/" . $seller_id . "/" . $get_note_id . "/" . "Attachements")) {
+                    mkdir('../Members/' . $seller_id . '/' . $get_note_id . '/' . 'Attachements');
+            }
+
+            $multiple_file_name = '../Members/' . $seller_id . '/' . $get_note_id . '/' . 'Attachements/' . $attach_id . '_' . time() . '.' . $upload_notes_check;
+            move_uploaded_file($_FILES['upload-notes']['tmp_name'][$key], $multiple_file_name);
+            $attached_name = $attach_id . "_" . time() . $upload_notes_check;
+            
+            $query= query("UPDATE seller_notes_attachements SET FileName='$attached_name' , FilePath='$multiple_file_name',  ModifiedDate = '$modified_date'  WHERE ID='$attach_id' ");
+            confirm($query);
+            
+        } else {
+            echo "Upload Notes failed";
+        }
+    }
+
+}
+
+}
+}else {
+    redirect("Login.php");
 }
 ?>
 <!DOCTYPE html>
@@ -385,12 +589,12 @@ if(isset($_POST['save'])) {
                                                 src="images/User-Profile/user-img.png" width="40" height="40"
                                                 alt=""></a>
                                         <div class="user-menu-show">
-                                            <p><a href="#">My Profile</a></p>
-                                            <p><a href="#">My Downloads</a></p>
-                                            <p><a href="#">My Sold Notes</a></p>
-                                            <p><a href="#">My Rejected Notes</a></p>
-                                            <p><a href="#">Change Password</a></p>
-                                            <p><a href="#">LOGOUT</a></p>
+                                            <p><a href="User_Profile.php">My Profile</a></p>
+                                            <p><a href="My_Downloads.php">My Downloads</a></p>
+                                            <p><a href="My_Sold_Notes.php">My Sold Notes</a></p>
+                                            <p><a href="My_Rejected_Notes.php">My Rejected Notes</a></p>
+                                            <p><a href="Change_Password_Page.php">Change Password</a></p>
+                                            <p><a href="Logout.php">LOGOUT</a></p>
                                         </div>
                                     </div>
                                 </li>
@@ -459,8 +663,7 @@ if(isset($_POST['save'])) {
                         <div class="form-group">
                             <label class="title" for="title">Title *</label>
                             <input type="text" name="title" id="title" class="form-control"
-                                placeholder="Enter your notes title" value="<?php if(isset($_GET['note_id'])){echo $db_title;}?>">
-                                <small>Error Message<small>
+                                placeholder="Enter your notes title" value="<?php if(isset($_GET['note_id'])){echo $db_title;}?>" required>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -511,7 +714,7 @@ if(isset($_POST['save'])) {
                             <span class="un-text">Upload your notes</span>
                             <div style="border:1px solid #d1d1d1;border-radius: 3px;height: 110px;">
                             <input type="file" accept=".pdf" id="upload-notes" name="upload-notes[]" class="form-control"
-                                placeholder="Upload your notes" multiple value="<?php if(isset($_GET['note_id'])){echo $db_upload_notes;}?>">
+                                placeholder="Upload your notes" multiple value="<?php if(isset($_GET['note_id'])){echo $db_upload_notes;}?>" required>
                             </div>
                         </div>
                     </div>
@@ -553,8 +756,7 @@ if(isset($_POST['save'])) {
                     <div class="col-md-12">
                         <div class="form-group">
                             <label class="description" for="description">Description *</label>
-                            <input type="text" id="description" name="description" placeholder="Enter your description" value="<?php if(isset($_GET['note_id'])){echo $db_description;}?>">
-                            <small>Error Message<small>
+                            <input type="text" id="description" name="description" placeholder="Enter your description" value="<?php if(isset($_GET['note_id'])){echo $db_description;}?>" required>
                         </div>
                     </div>
                 </div>
@@ -633,16 +835,73 @@ if(isset($_POST['save'])) {
                                     <div class="row">
                                         <div class="col-md-3 col-sm-2 col-xs-4">
                                             <label for="free" class="radio">
+                                                <?php 
+                                                if(isset($_GET['note_id'])){?>
+                                                    <input type="radio" name="sellfor-radio" id="free" value="free"
+                                                    class="radio-input form-control" <?php if($db_ispaid == 0) {echo 'checked';}?> onChange="getValue(this)">
+                                                    <?php
+
+                                                    }else {
+                                                       
+                                                ?>
                                                 <input type="radio" name="sellfor-radio" id="free" value="free"
                                                     class="radio-input form-control" onChange="getValue(this)">
+                                                    <?php }
+                                                
+
+
+                                                   /* if(isset($_GET['note_id'])){?>
+                                                    <input type="radio" name="sellfor-radio" id="free" value="5"
+                                                    class="radio-input form-control" <?php if($db_ispaid == 5) {echo checked;}?> onChange="getValue(this)">
+                                                    <?php
+
+                                                    }else {
+                                                        $find_note_mode = query("SELECT ID FROM reference_data WHERE Value='Free'");
+                                                        confirm($find_note_mode);
+                                                while ($r = mysqli_fetch_assoc($find_note_mode)) {
+                                                    $note_type_id = $r['ID'];
+                                                  ?>
+                                                <input type="radio" name="sellfor-radio" id="free" value="<?php$note_type_id?>"
+                                                    class="radio-input form-control" onChange="getValue(this)">
+                                                    <?php }}*/?>
+                                                
                                                 <div class="internal-circle"></div>
                                                 Free
                                             </label>
                                         </div>
                                         <div class="col-md-9 col-sm-10 col-xs-8">
                                             <label for="paid" class="radio">
+                                            <?php 
+
+                                                if(isset($_GET['note_id'])){?>
+                                                    <input type="radio" name="sellfor-radio" id="paid" value="paid"
+                                                    class="radio-input form-control" <?php if($db_ispaid == 1) {echo 'checked';}?> onChange="getValue(this)">
+                                                    <?php
+
+                                                    }else {
+                                                    
+                                                ?>
                                                 <input type="radio" name="sellfor-radio" id="paid" value="paid"
+                                                    class="radio-input form-control" onChange="getValue(this)">
+                                                    <?php }
+                                            
+                                            /*
+                                                    if(isset($_GET['note_id'])){?>
+                                                    <input type="radio" name="sellfor-radio" id="paid" value="paid"
+                                                    class="radio-input form-control" <?php if($db_ispaid == 4) {echo checked;}?> onChange="getValue(this)">
+                                                    <?php
+
+                                                    }else {
+                                                        $find_note_mode = query("SELECT ID FROM reference_data WHERE Value='Paid'");
+                                                        confirm($find_note_mode);
+                                                while ($r = mysqli_fetch_assoc($find_note_mode)) {
+                                                    $note_type_id = $r['ID'];
+                                                  ?>
+                                               <input type="radio" name="sellfor-radio" id="paid" value="<?php$note_type_id?>"
                                                     class="radio-input form-control" onChange="getValue(this)" checked>
+                                                    <?php }}*/?>
+                                                
+                                                   
                                                 <div class="internal-circle"></div>
                                                 Paid
                                             </label>
@@ -655,7 +914,7 @@ if(isset($_POST['save'])) {
                                 <div class="form-group" id="sell-price-field">
                                     <label class="sellPrice" for="sellPrice">Sell Price *</label>
                                     <input type="text" name="sell-price" id="sell-price" class="form-control"
-                                        placeholder="Enter your price" value="<?php if(isset($_GET['note_id'])){echo $db_sell_price;}?>">
+                                        placeholder="Enter your price" value="<?php if(isset($_GET['note_id'])){echo $db_sell_price;}?>" required>
                                 </div>
                             </div>
                         </div>
@@ -678,13 +937,15 @@ if(isset($_POST['save'])) {
                 <div class="row">
 
                     <?php 
-                        if(isset($_GET['note_id'])){?>
-
+                        if(isset($_GET['note_id'])){
+                            $get_noteid = $_GET['note_id'];
+                            ?>
+                            
                             <div class="col-md-2 col-sm-3 col-xs-6">
                                 <button type="submit" name="save2" class="btn btn-primary add-notes-save-btn">SAVE</button>
                             </div>
                             <div class="col-md-10 col-sm-9 col-xs-6">
-                                <a><button type="submit" name="publish" onclick="publish_btn_check()" class="btn btn-primary add-notes-publish-btn">PUBLISH</button></a>
+                                <button type="submit" class="btn btn-primary add-notes-publish-btn" onclick='javascript:Publish($(this));return false;' name="publish">PUBLISH</button>
                             </div>
 
                      <?php }else{
@@ -692,6 +953,9 @@ if(isset($_POST['save'])) {
                     <div class="col-md-2 col-sm-3 col-xs-6">
                         <button type="submit" name="save" class="btn btn-primary add-notes-save-btn">SAVE</button>
                     </div>
+                    <div class="col-md-10 col-sm-9 col-xs-6">
+                                <a><button type="submit" name="publish" class="btn btn-primary add-notes-publish-btn" disabled>PUBLISH</button></a>
+                            </div>
                     <?php }?>
                 </div>
             </div>
@@ -733,7 +997,7 @@ if(isset($_POST['save'])) {
 
 </html>
 <script>
-
+/*
 const title       = document.getElementById('title');
 const description = document.getElementById('description');
 
@@ -790,51 +1054,8 @@ function add_notes() {
         formGroup.className = 'form-group';
        
     }
-  
-    function publish_btn_check() {
-        var r= confirm("Publishing this note will send note to administrator for review, once administrator review and approve then this note will be published to portal. Press yes to continue.");
-        if(r) {
-            <?php 
-            
-              /*  $t = escape_string($_POST['title']);
-                $select_id = query("SELECT * FROM seller_notes WHERE Title='$t' ");
-                confirm($select_id);
-                while($note_row=mysqli_fetch_assoc($select_id)) {
-                   $note_id = $note_row['ID'];
-                   $seller_id = $note_row['SellerID'];
-                }
+  */
 
-                $select_seller_name = query("SELECT * FROM users WHERE ID='$seller_id' ");
-                confirm($select_seller_name);
-                while($seller_row=mysqli_fetch_assoc($select_seller_name)) {
-                   $seller_fname = $seller_row['FirstName'];
-                   $seller_lname = $seller_row['LastName'];
-                }*/
-
-              /*  $update_status = query("UPDATE seller_notes SET Status=7 WHERE ID='$note_id' ");
-                confirm($update_status);*/
-
-               /* $subject = $seller_fname." ".$seller_lname." sent his note for review";
-                $email = "sroshani025@gmail.com";
-                $body = "Hello Admins, "."\r\n"."\r\n"."We want to inform you that, " .$seller_fname." ".$seller_lname. " sent his note"."\r\n".$t." for review. Please look at the notes and take required actions. " ."\r\n"."\r\n"."Regards,"."\r\n". "Notes Marketplace";
-                $sender_email = "Email From: {$email}";
-         
-                $result = mail($email, $subject, $body, $sender_email);
-         
-                if(!$result) {
-                echo "<script>alert('Email sending failed....')</script>";
-                }else {
-                    redirect("Dashboard.php");
-                }*/?>
-              
-                alert('ok...............');
-           
-           
-        }else {
-            alert('cancel...............');
-            return false;
-        }
-    }
 
     
 </script>

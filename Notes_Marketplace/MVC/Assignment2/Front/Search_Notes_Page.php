@@ -185,6 +185,9 @@ confirm($select_query);
                 $university = $row['UniversityName'];
                 $country_id = $row['Country'];
                 $no_of_pages = $row['NumberOfPages'];
+                $db_published_date = $row['PublishedDate'];
+                $db_pub_date_timestamp = strtotime($db_published_date);
+                $published_date = date('D, M d Y', $db_pub_date_timestamp); 
 
                 $get_country = query("SELECT Country_Name FROM countries WHERE ID = '$country_id' ");
                 confirm($get_country);
@@ -219,7 +222,7 @@ confirm($select_query);
                                 <img class="date-img" src="./images/search-page/date.png">
                             </div>
                             <div class="col-md-10 col-sm-10 col-xs-9">
-                                <p class="SPS2T3">Thu, Nov 26 2020</p>
+                                <p class="SPS2T3"><?php echo $published_date; ?></p>
                             </div>
                         </div>
                         <div class="row">

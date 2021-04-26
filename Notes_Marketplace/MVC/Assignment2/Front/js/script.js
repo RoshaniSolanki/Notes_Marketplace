@@ -93,8 +93,24 @@ $(function () {
 });
 
 /*=======================================================
+                     Add  Notes Page
+=========================================================*/
+
+function Publish() {
+    if(confirm("Publishing this note will send note to administrator for review, once administrator review and approve then this note will be published to portal. Press yes to continue.")) {
+        txt = "You Pressed Ok!";
+        //window.location = anchor.attr("href");
+    } else {
+        txt = "You Pressed Cancel!";
+    }
+}
+
+
+
+/*=======================================================
                   Thank you popup  
 =========================================================*/
+
 /*
 $(function () {
 
@@ -127,11 +143,69 @@ $(function () {
     });
 }
 
+
 /*=======================================================
-                  My Downloads Dropdown 
+                   Dashboard
 =========================================================*/
 
-{
+//In Progress Notes Table
+$(document).ready(function () {
+        
+    var inProgressNotesTable = $('#in-progress-notes-table').DataTable({
+        "order": [[ 4, "desc" ]],
+        "fnRowCallback": function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+            //debugger;
+            var index = iDisplayIndexFull + 1;
+            $("td:first", nRow).html(index);
+            return nRow;
+        },
+        'sDom': '"top"i',
+        "iDisplayLength": 5,
+        "bInfo": false,
+        language: {
+            "zeroRecords": "No record found",
+            paginate: {
+                next: "<img src='./images/My_Download/right-arrow.png' alt=''>",
+                previous: "<img src='./images/My_Download/left-arrow.png' alt=''>"
+            }
+        }
+    });
+});
+
+
+//Published Notes Table
+$(document).ready(function () {
+        
+    var publishedNotesTable = $('#published-notes-table').DataTable({
+        "order": [[ 4, "desc" ]],
+        "fnRowCallback": function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+            //debugger;
+            var index = iDisplayIndexFull + 1;
+            $("td:first", nRow).html(index);
+            return nRow;
+        },
+        'sDom': '"top"i',
+        "iDisplayLength": 5,
+        "bInfo": false,
+        language: {
+            "zeroRecords": "No record found",
+            paginate: {
+                next: "<img src='./images/My_Download/right-arrow.png' alt=''>",
+                previous: "<img src='./images/My_Download/left-arrow.png' alt=''>"
+            }
+        }
+    });
+});
+
+
+
+/*=======================================================
+                  My Downloads 
+=========================================================*/
+
+/* Dropdown */
+
+//{
     var target = "";
     $(function () {
 
@@ -146,11 +220,36 @@ $(function () {
 
     });
 
+        
+    
+    $(document).ready(function () {
+        
+        var myDownloadsTable = $('#my-downloads-table').DataTable({
+            "order": [[ 4, "desc" ]],
+            "fnRowCallback": function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                //debugger;
+                var index = iDisplayIndexFull + 1;
+                $("td:first", nRow).html(index);
+                return nRow;
+            },
+            'sDom': '"top"i',
+            "iDisplayLength": 10,
+            "bInfo": false,
+            language: {
+                "zeroRecords": "No record found",
+                paginate: {
+                    next: "<img src='./images/My_Download/right-arrow.png' alt=''>",
+                    previous: "<img src='./images/My_Download/left-arrow.png' alt=''>"
+                }
+            }
+        });
+    });
+
     /*=======================================================
                       Add Review popup  
     =========================================================*/
 
-    $(function () {
+  /*  $(function () {
         $("#close-btn").click(function () {
             $("#add-review-bg").toggle();
         });
@@ -160,10 +259,12 @@ $(function () {
         });
 
     });
-}
+}*/
 /*=======================================================
-                  My Sold Notes Dropdown 
+                  My Sold Notes 
 =========================================================*/
+
+/* Dropdown */
 {
     var target = "";
     $(function () {
@@ -181,9 +282,34 @@ $(function () {
     });
 }
 
+$(document).ready(function () {
+                
+    var mySoldNotesTable = $('#my-sold-note-table').DataTable({
+        "order": [[ 4, "desc" ]],
+        "fnRowCallback": function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+            //debugger;
+            var index = iDisplayIndexFull + 1;
+            $("td:first", nRow).html(index);
+            return nRow;
+        },
+        'sDom': '"top"i',
+        "iDisplayLength": 10,
+        "bInfo": false,
+        language: {
+            "zeroRecords": "No record found",
+            paginate: {
+                next: "<img src='./images/My_Sold_Notes/right-arrow.png' alt=''>",
+                previous: "<img src='./images/My_Sold_Notes/left-arrow.png' alt=''>"
+            }
+        }
+    });
+});
+
 /*=======================================================
-                  My Rejected Notes Dropdown 
+                  My Rejected Notes 
 =========================================================*/
+
+/* Dropdown */
 {
     var target = "";
     $(function () {
@@ -201,9 +327,35 @@ $(function () {
     });
 }
 
+$(document).ready(function () {
+        
+    var myRejectedNotesTable = $('#my-rejected-notes-table').DataTable({
+        "order": [[ 4, "desc" ]],
+        "fnRowCallback": function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+            //debugger;
+            var index = iDisplayIndexFull + 1;
+            $("td:first", nRow).html(index);
+            return nRow;
+        },
+        'sDom': '"top"i',
+        "iDisplayLength": 10,
+        "bInfo": false,
+        language: {
+            "zeroRecords": "No record found",
+            paginate: {
+                next: "<img src='./images/My_Download/right-arrow.png' alt=''>",
+                previous: "<img src='./images/My_Download/left-arrow.png' alt=''>"
+            }
+        }
+    });
+});
+
+
 /*=======================================================
-                  Buyer Requests Dropdown 
+                  Buyer Requests 
 =========================================================*/
+
+/* Dropdown */
 {
     var target = "";
     $(function () {
@@ -220,6 +372,29 @@ $(function () {
 
     });
 }
+
+$(document).ready(function () {
+        
+    var buyerRequestsTable = $('#buyer-requests-table').DataTable({
+        "order": [[ 4, "desc" ]],
+        "fnRowCallback": function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+            //debugger;
+            var index = iDisplayIndexFull + 1;
+            $("td:first", nRow).html(index);
+            return nRow;
+        },
+        'sDom': '"top"i',
+        "iDisplayLength": 10,
+        "bInfo": false,
+        language: {
+            "zeroRecords": "No record found",
+            paginate: {
+                next: "<img src='./images/My_Download/right-arrow.png' alt=''>",
+                previous: "<img src='./images/My_Download/left-arrow.png' alt=''>"
+            }
+        }
+    });
+});
 
 
 /*=======================================================

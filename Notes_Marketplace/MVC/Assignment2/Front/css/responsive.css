@@ -1092,7 +1092,7 @@
         font-size: 16px;
         line-height: 20px;
     }
-    #dashboard #section2 #part2 th,
+   /* #dashboard #section2 #part2 th,
     #dashboard #section3 #part2 th {
         font-size: 11px;
         line-height: 16px;
@@ -1106,7 +1106,7 @@
     }
     #dashboard #section2 #part2 .edit-img {
         margin-right: 5px;
-    }
+    }*/
 
 }
 @media (min-width:700px) and (max-width: 767px) {
@@ -1125,7 +1125,7 @@
     #buyerRequests #part1 #search {
         margin-left: -20px;
     }
-    #buyerRequests #part2 th {
+   /* #buyerRequests #part2 th {
         font-size: 14px;
         line-height: 18px;
         padding-left: 7px;
@@ -1141,7 +1141,7 @@
     }
     #buyerRequests #part2 .eye-img {
         width: 20px;
-    }
+    }*/
 
     /* My Rejected Notes */
     #myRejectedNotes #part1 #search {
@@ -1166,7 +1166,7 @@
     .my-downloads-search-btn {
         width: 100px;
     }
-    #myDownloads #part2 th {
+   /* #myDownloads #part2 th {
         font-size: 10px;
         line-height: 14px;
         padding-left: 5px;
@@ -1184,7 +1184,7 @@
 
     #myDownloads #part2 .dots-img {
         margin-right: 10px;
-    }
+    }*/
 
     /* My Sold Notes */
     #mySoldNotes #part1 p {
@@ -1202,7 +1202,7 @@
     .my-sold-notes-search-btn {
         width: 100px;
     }
-    #mySoldNotes #part2 th {
+  /*  #mySoldNotes #part2 th {
         font-size: 12px;
         line-height: 16px;
         padding-left: 5px;
@@ -1220,7 +1220,7 @@
 
     #mySoldNotes #part2 .dots-img {
         margin-right: 10px;
-    }
+    }*/
 
     /* My Rejected Notes */
     #myRejectedNotes #part1 p {
@@ -1258,7 +1258,7 @@
     .buyer-requests-search-btn {
         width: 100px;
     }
-    #buyerRequests #part2 th {
+   /* #buyerRequests #part2 th {
         font-size: 12px;
         line-height: 16px;
         padding-left: 5px;
@@ -1270,7 +1270,7 @@
     }
     #buyerRequests #part2 td:nth-child(9) a {
         font-size: 14px;
-    }
+    }*/
 
 
 }
@@ -1295,7 +1295,7 @@
         font-size: 14px;
         line-height: 18px;
     }
-    #buyerRequests #part2 th {
+   /* #buyerRequests #part2 th {
         font-size: 8px;
         line-height: 12px;
         padding-left: 2px;
@@ -1318,7 +1318,7 @@
     }
     #buyerRequests #part2 .eye-img {
         width: 15px;
-    }
+    }*/
 
 }
 @media (min-width:400px) and (max-width: 500px) {
@@ -1342,7 +1342,7 @@
         font-size: 14px;
         line-height: 18px;
     }
-    #myDownloads #part2 th {
+    /*#myDownloads #part2 th {
         font-size: 10px;
         line-height: 14px;
         padding-left: 4px;
@@ -1365,7 +1365,7 @@
     }
     #myDownloads #part2 .eye-img {
         width: 20px;
-    }
+    }*/
 
     /* My Sold Notes */
     #mySoldNotes #part1 p {
@@ -1386,7 +1386,7 @@
         font-size: 14px;
         line-height: 18px;
     }
-    #mySoldNotes #part2 th {
+   /* #mySoldNotes #part2 th {
         font-size: 12px;
         line-height: 16px;
         padding-left: 5px;
@@ -1408,7 +1408,7 @@
     }
     #mySoldNotes #part2 .eye-img {
         width: 20px;
-    }
+    }*/
 
     /* My Rejected Notes */
     #myRejectedNotes #part1 p {
@@ -1454,7 +1454,7 @@
         font-size: 14px;
         line-height: 18px;
     }
-    #myDownloads #part2 th {
+    /*#myDownloads #part2 th {
         font-size: 8px;
         line-height: 14px;
         padding-left: 2px;
@@ -1478,7 +1478,7 @@
     #myDownloads #part2 .eye-img {
         width: 20px;
         margin-right: -10px;
-    }
+    }*/
 
     /* My Sold Notes */
     #mySoldNotes #part1 p {
@@ -1501,7 +1501,7 @@
         font-size: 14px;
         line-height: 18px;
     }
-    #mySoldNotes #part2 th {
+   /* #mySoldNotes #part2 th {
         font-size: 8px;
         line-height: 14px;
         padding-left: 2px;
@@ -1527,7 +1527,7 @@
     }
     #mySoldNotes #part2 .eye-img {
         width: 20px;
-    }
+    }*/
 
     /* My Rejected Notes */
     #myRejectedNotes #part1 p {
@@ -1550,7 +1550,7 @@
         font-size: 14px;
         line-height: 18px;
     }
-    #myRejectedNotes #part2 th {
+    /*#myRejectedNotes #part2 th {
         font-size: 14px;
         line-height: 18px;
         padding-left: 5px;
@@ -1565,7 +1565,7 @@
     }
     #myRejectedNotes #part2 .dots-img {
         margin-right: 10px;
-    }
+    }*/
 
     /* Buyer Requests */
     #buyerRequests #part1 p {
@@ -1588,7 +1588,7 @@
         font-size: 14px;
         line-height: 18px;
     }
-    #buyerRequests #part2 th {
+   /* #buyerRequests #part2 th {
         font-size: 8px;
         line-height: 14px;
         padding-left: 1px;
@@ -1610,7 +1610,7 @@
     }
     #buyerRequests #part2 .eye-img {
         width: 15px;
-    }
+    }*/
 }
 
 

@@ -332,7 +332,13 @@ ul.navbar-nav>li>a:focus {
     line-height: 19px;
     color: #333;
     text-align: center;
-    margin-bottom: 45px;
+    margin-bottom: 30px;
+}
+
+#changePasswordPage .success-msg {
+    color:green;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 #changePasswordPage .oldPasswordLabel,
@@ -356,9 +362,24 @@ ul.navbar-nav>li>a:focus {
     width: 480px;
     height: 50px;
     border-radius: 3px;
-    margin: 10px 0 30px 0;
+    margin: 10px 0 0px 0;
 }
-
+#changePasswordPage .error #old-password,
+#changePasswordPage .error #new-password,
+#changePasswordPage .error #confirm-password {
+    border: 1px solid #ff3636;
+}
+#changePasswordPage small {
+    visibility: hidden;
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 20px;
+    color: #ff3636;
+    margin-bottom: 30px;
+}
+#changePasswordPage .error small {
+    visibility: visible;
+}
 #changePasswordPage .submit-btn {
     background-color: #6255a5;
     width: 480px;
@@ -373,7 +394,7 @@ ul.navbar-nav>li>a:focus {
 #changePasswordPage .eye-img {
     position: absolute;
     margin-left: 440px;
-    margin-top: -63px;
+    margin-top: -35px;
 }
 
 /*=======================================================
@@ -583,21 +604,19 @@ ul.navbar-nav>li>a:focus {
     margin-bottom: 30px;
 }
 
-#userProfile #phone-number,
+#userProfile #phone-number/*,
 #userProfile #address-line1,
-#userProfile #address-line2,
 #userProfile #city,
 #userProfile #state,
-#userProfile #zipcode {
+#userProfile #zipcode*/ {
     margin-bottom: 0px;
 }
 
+#userProfile .error #phone-number/*,
 #userProfile .error #address-line1,
-#userProfile .error #address-line2,
 #userProfile .error #city,
 #userProfile .error #state,
-#userProfile .error #zipcode,
-#userProfile .error #phone-number {
+#userProfile .error #zipcode */{
     border: 1px solid #ff3636;
 }
 #userProfile small {
@@ -1683,7 +1702,28 @@ ul.navbar-nav>li>a:focus {
     color: #8a8a8a;
     margin-bottom: 30px;
 }
+/*
+#addNotes #title,
+#addNotes #description {
+    margin-bottom: 0px;
+}
 
+#addNotes .error #title,
+#addNotes .error #description {
+    border: 1px solid #ff3636;
+}
+#addNotes small {
+    visibility: hidden;
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 20px;
+    color: #ff3636;
+    margin-bottom: 20px;
+}
+#addNotes .error small {
+    visibility: visible;
+}
+*/
 #addNotes #display-picture,
 #addNotes #upload-notes,
 #addNotes #note-preview {
@@ -1943,45 +1983,29 @@ ul.navbar-nav>li>a:focus {
 
 /*** add review Popup ***/
 
-#add-review-bg {
-    display: none;
-    background-color: rgba(0, 0, 0, .5);
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 9999;
-    height: 200%;
+#addReviewPopup {
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
 }
 
-.add-review-popup {
-    background: #fff;
-    position: absolute;
-    top: 200px;
-    left: 50%;
-    transform: translateX(-50%);
-    -webkit-transform: translateX(-50%);
-    padding: 30px 50px 30px 50px;
-    width: 580px;
-    height: 450px;
-
-}
-
-.add-review-popup #close-btn {
+#add-review-close-btn {
     position: absolute;
     top: 20px;
     right: 20px;
 }
 
-.add-review-popup .title {
+#addReviewPopup .modal-title {
     font-size: 24px;
     font-weight: 600;
     line-height: 28px;
     color: #6255a5;
 }
 
-.add-review-popup .commentsLabel {
+#addReviewPopup .commentsLabel {
     font-size: 16px;
     font-weight: 400;
     line-height: 20px;
@@ -1989,7 +2013,7 @@ ul.navbar-nav>li>a:focus {
     margin-bottom: 10px;
 }
 
-.add-review-popup #comments {
+#addReviewPopup #comments {
     font-size: 16px;
     font-weight: 400;
     line-height: 20px;
@@ -2009,10 +2033,9 @@ ul.navbar-nav>li>a:focus {
     line-height: 22px;
 }
 
-.add-review-popup .stars img {
+#addReviewPopup .stars img {
     margin: 30px 30px 60px 0;
 }
-
 /*=======================================================
                     My Sold Notes
 =========================================================*/
@@ -2431,8 +2454,8 @@ ul.navbar-nav>li>a:focus {
 
 #contactUs .error #email-address,
 #contactUs .error #full-name,
-#contactUs #subject,
-#contactUs #comments {
+#contactUs .error #subject,
+#contactUs .error #comments {
     border: 1px solid #ff3636;
 }
 

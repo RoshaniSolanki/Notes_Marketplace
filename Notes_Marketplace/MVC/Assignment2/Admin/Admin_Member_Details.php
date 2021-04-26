@@ -198,7 +198,8 @@
                 <div id="part2">
                     <div class="row">
                         <div class="col-md-12">
-                            <table>
+                        <div class="table-responsive">
+                            <table class="table">
                                 <tr>
                                     <th>SR NO.</th>
                                     <th>NOTE TITLE</th>
@@ -312,6 +313,7 @@
                                 </tr>
 
                             </table>
+                        </div>
                         </div>
                     </div>
                 </div>

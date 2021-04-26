@@ -222,12 +222,12 @@ if($count>0) {
                                                 src="images/User-Profile/user-img.png" width="40" height="40"
                                                 alt=""></a>
                                         <div class="user-menu-show">
-                                            <p><a href="#">My Profile</a></p>
-                                            <p><a href="">My Downloads</a></p>
-                                            <p><a href="#">My Sold Notes</a></p>
-                                            <p><a href="#">My Rejected Notes</a></p>
-                                            <p><a href="#">Change Password</a></p>
-                                            <p><a href="#">LOGOUT</a></p>
+                                        <p><a href="User_Profile.php">My Profile</a></p>
+                                            <p><a href="My_Downloads.php">My Downloads</a></p>
+                                            <p><a href="My_Sold_Notes.php">My Sold Notes</a></p>
+                                            <p><a href="My_Rejected_Notes.php">My Rejected Notes</a></p>
+                                            <p><a href="Change_Password_Page.php">Change Password</a></p>
+                                            <p><a href="Logout.php">LOGOUT</a></p>
                                         </div>
                                     </div>
                                 </li>
@@ -288,7 +288,7 @@ if($count>0) {
             <div class="user-profile-img-text">User Profile</div>
         </div>
 
-        <form action="" method="POST" enctype="multipart/form-data" onsubmit="return profile()">
+        <form action="" method="POST" onsubmit="return profile()" enctype="multipart/form-data" >
             <div class="container">
                 <p class="user-profile-headings">Basic Profile Details</p>
                 <div class="row">
@@ -297,21 +297,21 @@ if($count>0) {
                         <div class="form-group">
                             <label class="firstName" for="firstName">First Name *</label>
                             <input type="text" name="first-name" id="first-name" class="form-control"
-                                placeholder="Enter your first name" value="<?php if(isset($_SESSION['firstname'])){echo $_SESSION['firstname']; }?>">
+                                placeholder="Enter your first name" value="<?php if(isset($_SESSION['firstname'])){echo $_SESSION['firstname']; }?>" required>
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6">
                         <div class="form-group">
                             <label class="lastName" for="lastName">Last Name *</label>
                             <input type="text" name="last-name" id="last-name" class="form-control"
-                                placeholder="Enter your last name" value="<?php if(isset($_SESSION['lastname'])){echo $_SESSION['lastname']; } ?>">
+                                placeholder="Enter your last name" value="<?php if(isset($_SESSION['lastname'])){echo $_SESSION['lastname']; } ?>" required>
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6">
                         <div class="form-group">
                             <label class="email" for="email">Email *</label>
                             <input type="email" name="email" id="email" class="form-control"
-                                placeholder="Enter your email address" value="<?php if(isset($_SESSION['email'])){echo $_SESSION['email']; }?>">
+                                placeholder="Enter your email address" value="<?php if(isset($_SESSION['email'])){echo $_SESSION['email']; }?>" required>
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6">
@@ -359,6 +359,7 @@ if($count>0) {
 
                             <div class="row">
                                 <div class="col-md-3 col-sm-3">
+                                     
                                     <span><img class="pn-arrow-down-img"
                                             src="images/User-Profile/down-arrow.png"></span>
                                     <select type="text" name="code" id="code" class="form-control"
@@ -386,15 +387,18 @@ if($count>0) {
                                         }
                                         ?>
                                     </select>
+                                    
                                 </div>
                                 <div class="col-md-9 col-sm-9">
+                                    
                                     <input type="tel" name="phone-number" id="phone-number" class="form-control"
                                         placeholder="Enter your phone number" value="<?php if($count > 0){ echo $db_phone_number;}?>">
-                                    <small>Error Message<small>
+                                    <small>Error Message</small>
+                                       
                                 </div>
                             </div>
 
-                        </div>
+                                    </div>
                     </div>
                     <div class="col-md-6 col-sm-6">
                         <div class="form-group">
@@ -415,8 +419,8 @@ if($count>0) {
                         <div class="form-group">
                             <label class="addressLine1" for="addressLine1">Address Line 1 *</label>
                             <input type="text" name="address-line1" id="address-line1" class="form-control"
-                                placeholder="Enter your address" value="<?php if($count > 0){ echo $db_address_line1;}?>">
-                                <small>Error Message<small>
+                                placeholder="Enter your address" value="<?php if($count > 0){ echo $db_address_line1;}?>" required>
+                                <small>Error Message</small>
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6">
@@ -430,24 +434,21 @@ if($count>0) {
                         <div class="form-group">
                             <label class="city" for="city">City *</label>
                             <input type="text" name="city" id="city" class="form-control" placeholder="Enter your city" 
-                            value="<?php if($count > 0){ echo $db_city;}?>">
-                            <small>Error Message<small>
+                            value="<?php if($count > 0){ echo $db_city;}?>" required>
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6">
                         <div class="form-group">
                             <label class="state" for="state">State *</label>
                             <input type="text" name="state" id="state" class="form-control"
-                                placeholder="Enter your state" value="<?php if($count > 0){ echo $db_state;}?>">
-                                <small>Error Message<small>
+                                placeholder="Enter your state" value="<?php if($count > 0){ echo $db_state;}?>" required>
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6">
                         <div class="form-group">
                             <label class="zipCode" for="zipCode">ZipCode *</label>
                             <input type="text" name="zipcode" id="zipcode" class="form-control"
-                                placeholder="Enter your zipcode" value="<?php if($count > 0){ echo $db_zipcode;}?>">
-                                <small>Error Message<small>
+                                placeholder="Enter your zipcode" value="<?php if($count > 0){ echo $db_zipcode;}?>" required>
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6">
@@ -543,10 +544,10 @@ if($count>0) {
 <script>
 
 const phone_number  = document.getElementById('phone-number');
-const address_line1 = document.getElementById('address-line1');
+/*const address_line1 = document.getElementById('address-line1');
 const city          = document.getElementById('city');
 const state         = document.getElementById('state');
-const zipcode       = document.getElementById('zipcode');
+const zipcode       = document.getElementById('zipcode');*/
 
     function profile() {
         var x= checkInputs();
@@ -560,19 +561,19 @@ const zipcode       = document.getElementById('zipcode');
     function checkInputs() {
         var flag =0;
         const phoneNumberValue  = phone_number.value.trim();
-        const addressLine1Value = address_line1.value.trim();
+        /*const addressLine1Value = address_line1.value.trim();
         const cityValue         = city.value.trim();
         const stateValue        = state.value.trim();
-        const zipcodeValue      = zipcode.value.trim();
+        const zipcodeValue      = zipcode.value.trim();*/
 
-        var m=/[0-9]+$/
+        var m=/[0-9]+$/;
         if (phoneNumberValue === '') {
             setErrorFor(phone_number, 'Phone Number cannot be blank');
             flag=0;
         }else if(phoneNumberValue.length!=10) {
             setErrorFor(phone_number, 'Phone Number length should be 10');
             flag=0;
-        }else if(!phoneNumberValue.match(c)){
+        }else if(!phoneNumberValue.match(m)){
             setErrorFor(phone_number, 'Phone Number value should be numeric');
             flag=0;
         }else{
@@ -581,7 +582,7 @@ const zipcode       = document.getElementById('zipcode');
         }
 
         
-        if (addressLine1Value === '') {
+       /* if (addressLine1Value === '') {
             setErrorFor(address_line1, 'Address Line1 Value cannot be blank');
             flag=0;
         }else {
@@ -612,7 +613,7 @@ const zipcode       = document.getElementById('zipcode');
         }else {
             setSuccessFor(zipcode);
             flag=1;
-        }
+        }*/
 
 
         if(flag == 1) {

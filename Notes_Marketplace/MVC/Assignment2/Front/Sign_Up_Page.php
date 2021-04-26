@@ -183,23 +183,6 @@ if(isset($_POST['submit'])) {
 
 <script>
 
-   /***** function Sign_Up() {
-        const first_name = document.getElementById('first-name');
-        const firstNameValue = first_name.value.trim();
-
-        var a = /[A-Za-z]+$/;
-        if (firstNameValue === '') {
-            first_name.style.border = "1px solid red";
-            document.getElementById('fn').innerHTML = "First Name cannot be blank";
-            return false;
-
-        }if (!firstNameValue.match(a)) {
-            document.getElementById('fn').innerHTML = "Not a valid First Name";
-            return false;
-        } 
-        
-    }*****/
-    
     const sign_up_form = document.getElementById('sign_up_form');
     const first_name = document.getElementById('first-name');
     const last_name = document.getElementById('last-name');
@@ -207,11 +190,6 @@ if(isset($_POST['submit'])) {
     const password = document.getElementById('password');
     const confirm_password = document.getElementById('confirm-password');
 
-   /* sign_up_form.addEventListener('submit', e => {
-        e.preventDefault();
-
-        checkInputs();
-    });*/
 
     function Sign_Up() {
         var x= checkInputs();

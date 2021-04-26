@@ -1,12 +1,158 @@
 <?php
 include "../includes/db.php";
 include "../includes/functions.php";
+session_start();
 
-$note_id = $_GET['Note_id'];
+if(isset($_GET['Note_id'])) {
+    $note_id = $_GET['Note_id'];
+}
+if(isset($_SESSION['email'])) {
+    //$email = $_SESSION['email'];
+    $buyer_id = $_SESSION['userid'];
+    $buyer_full_name = $_SESSION['firstname'] ." ". $_SESSION['lastname'];
+        
+    $select_query = query("SELECT * FROM seller_notes WHERE ID = '$note_id' ");
+    confirm($select_query);
 
-$select_query = query("SELECT * FROM seller_notes WHERE ID = '$note_id' ");
-confirm($select_query);
+    while($r = mysqli_fetch_assoc($select_query)) {
+        $seller_id = $r['SellerID'];
+        $note_title = $r['Title'];
+        $note_cat_id = $r['Category'];
+        $price = $r['SellingPrice'];
+    }
 
+    $find_category_name = query("SELECT Category_Name FROM note_categories WHERE ID = '{$note_cat_id}' ");
+    confirm($find_category_name);
+
+    while($cr = mysqli_fetch_assoc($find_category_name)) {
+        $category = $cr['Category_Name'];
+    }
+
+    $find_download_entry = query("SELECT ID FROM downloads WHERE NoteID = '{$note_id}' AND Downloader = '{$buyer_id}' ");
+    confirm($find_download_entry);
+
+    $download_entry_count = mysqli_num_rows($find_download_entry);
+
+}
+
+if(isset($_POST['single_attachement'])) {
+
+    $find_file_path = query("SELECT FilePath FROM seller_notes_attachements WHERE NoteID = '{$note_id}' ");
+    confirm($find_file_path);
+    while($ar = mysqli_fetch_assoc($find_file_path)){
+
+        $file_path = $ar['FilePath'];
+
+    }
+
+    header('Cache-Control: public');
+    header('Content-Description: File Transfer');
+    header('Content-Disposition: attachment; filename=' . $file_path. '.pdf');
+    header('Content-Type: application/pdf');
+    header('Content-Transfer-Encoding:binary');
+    @readfile($file_path);
+
+    $date = date("Y-m-d H:i:s");
+
+    if($download_entry_count == 0 && $seller_id != $buyer_id) {
+
+        $download_insert = query("INSERT INTO 
+        downloads(NoteID, Seller, Downloader, IsSellerHasAllowedDownload, AttachementPath, IsAttachementDownloaded, AttachementDownloadedDate,IsPaid,	
+        PurchasedPrice,	NoteTitle,	NoteCategory, CreatedDate,	CreatedBy,	ModifiedDate, ModifiedBy)
+        VALUES('{$note_id}', '{$seller_id}', '{$buyer_id}', 1, '{$file_path}', 1, '{$date}', 0, NULL, '{$note_title}', '{$category}',
+        '{$date}', '{$buyer_id}', '{$date}', '{$buyer_id}') ");
+        confirm($download_insert);
+    }
+}
+
+if(isset($_POST['multiple_attachement'])) {
+
+    $find_title = query("SELECT DISTINCT Title FROM seller_notes WHERE ID = '{$note_id}' ");
+    confirm($find_title);
+
+    while($tr = mysqli_fetch_assoc($find_title)) {
+        $title = $tr['Title'];
+    }
+    $zipname = $title . '.zip';
+    $zip = new ZipArchive;
+    $zip->open($zipname, ZipArchive::CREATE);
+    $path_query = query("SELECT FilePath FROM seller_notes_attachements WHERE NoteID = '{$note_id}' ");
+    confirm($path_query);
+    while($path_row = mysqli_fetch_assoc($path_query)){
+        $attact_id = $path_row['FilePath'];
+        $zip->addFile($attact_id);
+    }
+    $zip->close();
+    header('Content-Type: application/zip');
+    header('Content-disposition: attachment; filename=' . $zipname);
+    header('Content-Length: ' . filesize($zipname));
+    readfile($zipname);
+
+    $date = date("Y-m-d H:i:s");
+
+    if($download_entry_count == 0 && $seller_id != $buyer_id) {
+
+        $get_file_path = query("SELECT FilePath FROM seller_notes_attachements WHERE NoteID = '{$note_id}' ");
+        confirm($get_file_path);
+        while($get_path_row = mysqli_fetch_assoc($get_file_path)){
+            $file_path = $get_path_row['FilePath'];
+        
+
+        $download_insert = query("INSERT INTO 
+        downloads(NoteID, Seller, Downloader, IsSellerHasAllowedDownload, AttachementPath, IsAttachementDownloaded, AttachementDownloadedDate,IsPaid,	
+        PurchasedPrice,	NoteTitle,	NoteCategory, CreatedDate,	CreatedBy,	ModifiedDate, ModifiedBy)
+        VALUES('{$note_id}', '{$seller_id}', '{$buyer_id}', 1, '{$file_path}', 1, '{$date}', 0, NULL, '{$note_title}', '{$category}',
+        '{$date}', '{$buyer_id}', '{$date}', '{$buyer_id}') ");
+        confirm($download_insert);
+
+        }
+    }
+}
+if(isset($_POST['confirm-yes-btn'])) {
+    
+
+    
+    if($download_entry_count == 0 && $seller_id != $buyer_id) {
+
+        /*$get_file_path = query("SELECT FilePath FROM seller_notes_attachements WHERE NoteID = '{$note_id}' ");
+        confirm($get_file_path);
+        while($get_path_row = mysqli_fetch_assoc($get_file_path)){
+            $file_path = $get_path_row['FilePath'];
+        */
+        $date = date("Y-m-d H:i:s");
+        $download_insert = query("INSERT INTO 
+        downloads(NoteID, Seller, Downloader, IsSellerHasAllowedDownload, AttachementPath, IsAttachementDownloaded, AttachementDownloadedDate,IsPaid,	
+        PurchasedPrice,	NoteTitle,	NoteCategory, CreatedDate,	CreatedBy,	ModifiedDate, ModifiedBy)
+        VALUES('{$note_id}', '{$seller_id}', '{$buyer_id}', 0, NULL, 0, '{$date}', 1, '{$price}', '{$note_title}', '{$category}',
+        '{$date}', '{$buyer_id}', '{$date}', '{$buyer_id}') ");
+        confirm($download_insert); 
+        if($download_insert) {
+            echo "<script>alert('Inserted Successfully');</script>";
+        }
+
+    // }
+    }
+            /* send email to seller */
+           $find_seller_email = query("SELECT EmailID, FirstName, LastName FROM users WHERE ID = '{$seller_id}' ");
+            confirm($find_seller_email);
+
+            while($er = mysqli_fetch_assoc($find_seller_email)){
+
+                $seller_email = $er['EmailID'];
+                $seller_full_name = $er['FirstName']. " " .$er['LastName']; 
+
+            }
+            $subject = "Buyer wants to purchase your notes";
+            $email = "sroshani025@gmail.com";
+            $body = "Hello ".$seller_full_name.","."\r\n"."\r\n"."We would like to inform you that, <Buyer name> wants to purchase your notes. Please see Buyer Requests tab and allow download access to Buyer if you have received the payment from him. " ."\r\n"."\r\n"."Regards,"."\r\n". "Notes Marketplace";
+            $sender_email = "Email From: {$email}";
+         
+            $result = mail($seller_email, $subject, $body, $sender_email);
+            if(!$result) {
+                   echo "<script>alert('sending fails...........');</script>";                             
+            }
+
+}
 
 ?>
 <!DOCTYPE html>
@@ -33,34 +179,7 @@ confirm($select_query);
 
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="css/responsive.css">
-    
-<script>
-function download1(){
-   /* if(confirm('sure?')) {
-        header("content-disposition: attachment; filename=" .urldecode('srs.pdf'));
-                $fb = fopen($note_pdf, "r");
-                while(!feof($fb)){
-                    echo fread($fb, 8192);
-                    flush();
-                    }     
-                fclose($fb);
-                    return true;
-    }else {
-        console.log("hiiiiiiiiiiiiiiii");
-        return false;
-    }*/
-        if(confirm('Are you sure you want to download this Paid note. Please confirm.')) {
-            $(function () {
-            $("#thank-you-popup1").show();
-            $(".close-btn").click(function () {
-                $("#thank-you-popup1").hide();
-            });
-        });
-
-        }else {}    
-}
-
-</script>  
+ 
 
 
 
@@ -100,12 +219,12 @@ function download1(){
                                                     src="images/User-Profile/user-img.png" width="40" height="40"
                                                     alt=""></a>
                                             <div class="user-menu-show">
-                                                <p><a href="#">My Profile</a></p>
-                                                <p><a href="">My Downloads</a></p>
-                                                <p><a href="#">My Sold Notes</a></p>
-                                                <p><a href="#">My Rejected Notes</a></p>
-                                                <p><a href="#">Change Password</a></p>
-                                                <p><a href="#">LOGOUT</a></p>
+                                            <p><a href="User_Profile.php">My Profile</a></p>
+                                            <p><a href="My_Downloads.php">My Downloads</a></p>
+                                            <p><a href="My_Sold_Notes.php">My Sold Notes</a></p>
+                                            <p><a href="My_Rejected_Notes.php">My Rejected Notes</a></p>
+                                            <p><a href="Change_Password_Page.php">Change Password</a></p>
+                                            <p><a href="Logout.php">LOGOUT</a></p>
                                             </div>
                                         </div>
                                     </li>
@@ -160,6 +279,28 @@ function download1(){
         </header>
         <!-- Header Ends -->
         <!-- Note Details -->
+        <form action="" method="post"> 
+            <!-- Confirm Box For Paid Note -->
+            <div class="modal" id="confirm-box" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                <h5>Are you sure you want to download this Paid note. Please confirm.</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-secondary" data-dismiss="modal">No</button>
+                    <button type="submit" class="btn btn-primary"  name="confirm-yes-btn" id="confirm-yes">Yes</button>
+                </div>
+                </div>
+            </div>
+            </div>
+        </form>
         <div id="note-details-section1">
             <div class="container">
                 <p class="NDS1MH">Notes Details</p>
@@ -167,6 +308,8 @@ function download1(){
                     <div class="col-md-7 col-sm-12 col-xs-12">
                         <div class="row">
                             <?php 
+                            $select_query = query("SELECT * FROM seller_notes WHERE ID = '$note_id' ");
+                            confirm($select_query);
                             while($row = mysqli_fetch_assoc($select_query)) {
                                 $ispaid       = $row['IsPaid'];
                                 $title        = $row['Title'];
@@ -180,7 +323,7 @@ function download1(){
                                 $professor    = $row['Professor'];
                                 $no_of_pages  = $row['NumberOfPages'];
                                 $approve_date = $row['PublishedDate'];
-
+                                $note_preview = $row['NotesPreview'];
                             
                             $get_cat = query("SELECT Category_Name FROM note_categories WHERE ID = '$category_id' ");
                             confirm($get_cat);
@@ -203,17 +346,34 @@ function download1(){
                                 <p class="NDS1LT1"><?php echo $category; ?></p>
                                 <p class="NDS1LT2"><?php echo $description; ?></p>
 
-                                <?php  
-                                    if($ispaid == 0){ ?>
-                                        <a href="download.php?note_pdf=srs"><button class="note-details-page-download-btn">DOWNLOAD</button></a>
-                                    <?php
-                                    }else { ?>
+                            <?php  
+                            if(isset($_SESSION['email'])){     
+                                if($ispaid == 0){
+
+                                    $find_attachement_count = query("SELECT NoteID FROM seller_notes_attachements WHERE NoteID = '{$note_id}' ");
+                                    confirm($find_attachement_count); 
+                                    $count = mysqli_num_rows($find_attachement_count);
+                                    if($count == 1){ ?>
+                                        <form action="" method="post">
+                                            <button class="note-details-page-download-btn" name="single_attachement">DOWNLOAD</button>
+                                        </form>
+                                   <?php }
+                                    if($count>1) { ?>
+                                        <form action="" method="post">
+                                            <button class="note-details-page-download-btn" name="multiple_attachement">DOWNLOAD</button>
+                                        </form>
+                                   <?php }
+                                
+                                } else { ?>
                                         <!--a href="download.php?note_pdf=srs"><button class="note-details-page-download-btn" onClick="return confirm('Are you sure you want to download this Paid note. Please confirm.')">DOWNLOAD/$15</button></a-->
-                                        <a href="download.php?note_pdf=srs"><button class="note-details-page-download-btn" onclick="download1()">DOWNLOAD/$<?php echo $price; ?></button></a>
+                                        <button class="note-details-page-download-btn" data-toggle="modal" data-target="#confirm-box">DOWNLOAD/&#36;<?php echo $price; ?></button>
                                    <?php 
                                     }
-                                
-                                ?>
+                            }else {?>
+                                <button type='submit' class="note-details-page-download-btn" href='Login.php'>DOWNLOAD</button>
+                            <?php 
+                            } 
+                            ?>
                                 
                             </div>
                         </div>
@@ -302,7 +462,7 @@ function download1(){
                             <div class="col-md-6  col-sm-6 col-xs-12">
                                 <p class="NDS1RT3">5 Users marked this note as inappropriate</p>
                             </div>
-                               <?php } ?>     
+                                  
                         </div>
                     </div>
                 </div>
@@ -325,18 +485,13 @@ function download1(){
                             <div class="responsive-wrapper 
                                responsive-wrapper-padding-bottom-90pct"
                                 style="-webkit-overflow-scrolling: touch; overflow: auto;">
-                                <iframe src="http://unec.edu.az/application/uploads/2014/12/pdf-sample.pdf">
-                                    <p style="font-size: 110%;"><em><strong>ERROR: </strong>
-                                            An &#105;frame should be displayed here but your browser version does not
-                                            support &#105;frames.</em> Please update your browser to its most recent
-                                        version and try again, or access the file <a
-                                            href="http://unec.edu.az/application/uploads/2014/12/pdf-sample.pdf">with
-                                            this link.</a></p>
-                                </iframe>
+                                <iframe src="<?php echo $note_preview; ?>">
+                                    
+                                </iframe> 
                             </div>
                         </div>
                     </div>
-
+                    <?php } ?> 
                     <div class="col-md-6 col-sm-12">
                         <p class="NDS2RMH">Customer Reviews</p>
                         <div class="NDS2RC">
@@ -478,3 +633,16 @@ function download1(){
 </body>
 
 </html>
+   
+<script>
+/*
+$(function () {
+$('#confirm-yes').click(function(){
+    $('#thank-you-popup1').show();
+    setTimeout(function() {
+      $( "#thank-you-popup1" ).hide();
+    }, 2000);
+    
+});
+});*/
+</script>  

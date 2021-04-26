@@ -1,3 +1,34 @@
+<?php
+include "../includes/db.php";
+include "../includes/functions.php";
+
+session_start();
+
+if(isset($_SESSION['email'])) {
+    $user_id = $_SESSION['userid'];
+
+
+    if(isset($_POST['search-btn'])) {
+
+        $search_result = $_POST['search'];
+        
+        $select_query = query("SELECT downloads.* FROM downloads LEFT JOIN users ON downloads.Downloader=users.ID LEFT JOIN seller_notes_reported_issues 
+        ON downloads.NoteID = seller_notes_reported_issues.NoteID WHERE (downloads.NoteTitle LIKE '%$search_result%' OR downloads.NoteCategory LIKE '%$search_result%') 
+        AND downloads.Downloader=$user_id ORDER BY downloads.AttachementDownloadedDate DESC");
+        confirm($select_query);
+
+    }else {
+
+        $select_query = query("SELECT downloads.* FROM downloads LEFT JOIN users ON downloads.Downloader=users.ID LEFT JOIN seller_notes_reported_issues 
+        ON downloads.NoteID = seller_notes_reported_issues.NoteID LEFT JOIN user_profile ON downloads.Downloader=user_profile.UserID LEFT JOIN countries ON 
+        user_profile.PhoneNumberCountryCode=countries.ID WHERE downloads.Downloader=$user_id AND IsSellerHasAllowedDownload = 0  ORDER BY downloads.AttachementDownloadedDate DESC");
+        confirm($select_query);
+
+    }
+}else{
+    redirect("Login.php");
+}
+?> 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,6 +47,9 @@
     
         <!-- Custom CSS -->
         <link rel="stylesheet" href="css/style.css">
+
+        <!-- Datatables -->
+        <link rel="stylesheet" href="css/datatables.css">
     
         <!-- Responsive CSS -->
         <link rel="stylesheet" href="css/responsive.css">
@@ -54,12 +88,12 @@
                                                 src="images/User-Profile/user-img.png" width="40" height="40"
                                                 alt=""></a>
                                         <div class="user-menu-show">
-                                            <p><a href="#">My Profile</a></p>
-                                            <p><a href="">My Downloads</a></p>
-                                            <p><a href="#">My Sold Notes</a></p>
-                                            <p><a href="#">My Rejected Notes</a></p>
-                                            <p><a href="#">Change Password</a></p>
-                                            <p><a href="#">LOGOUT</a></p>
+                                        <p><a href="User_Profile.php">My Profile</a></p>
+                                            <p><a href="My_Downloads.php">My Downloads</a></p>
+                                            <p><a href="My_Sold_Notes.php">My Sold Notes</a></p>
+                                            <p><a href="My_Rejected_Notes.php">My Rejected Notes</a></p>
+                                            <p><a href="Change_Password_Page.php">Change Password</a></p>
+                                            <p><a href="Logout.php">LOGOUT</a></p>
                                         </div>
                                     </div>
                                 </li>
@@ -126,7 +160,7 @@
                         <form action="" method="POST">
                         <input type="text" name="search" id="search" placeholder="Search">
                         <span><img class="search-icon-img" src="./images/My_Rejected_Notes/search-icon.png"></span>
-                        <a href=""><button class="btn btn-primary my-rejected-notes-search-btn">SEARCH</button></a>
+                        <button type="submit" name="search-btn" class="btn btn-primary my-rejected-notes-search-btn">SEARCH</button>
                         </form>
                     </div>
                 </div>
@@ -134,7 +168,9 @@
             <div id="part2">
                 <div class="row">
                     <div class="col-md-12">
-                        <table>
+                        <div class="table-responsive">
+                        <table class="table" id="my-rejected-notes-table">
+                            <thead>
                             <tr>
                                 <th>SR NO.</th>
                                 <th>NOTE TITLE</th>
@@ -143,6 +179,8 @@
                                 <th>CLONE</th>
                                 <th></th>
                             </tr>
+                            </thead>
+                            <tbody>
                             <tr>
                                 <td>1</td>
                                 <td>Data Science</td>
@@ -313,39 +351,11 @@
                                     </div>
                                 </td>
                             </tr>
+                            </tbody>
                         </table>
                     </div>
+                    </div>
                 </div>
-            </div>
-            <div id="part3">
-                <div class="row">
-                    <!-- Pagination-->
-                    <center>
-                        <div class="pagination-section">
-                                <ul class="pagination">
-                                    <li class="page-item">
-                                        <a class="page-link" href="#">
-                                            <img class="left-arrow-img" src="./images/My_Rejected_Notes/left-arrow.png">
-                                        </a>
-                                    </li>
-                                    <li class="page-item"><a id="one" class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a id="two" class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a id="three" class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a id="four" class="page-link" href="#">4</a></li>
-                                    <li class="page-item"><a id="five" class="page-link" href="#">5</a></li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#">
-                                            <img class="right-arrow-img"
-                                                src="./images/My_Rejected_Notes/right-arrow.png">
-                                        </a>
-                                    </li>
-                                </ul>
-                        </div>
-                    </center>
-                    <!-- Pagination Ends -->
-                </div>
-
-
             </div>
         </div>
         <!-- My Rejected Notes Ends -->
@@ -377,6 +387,9 @@
 
         <!-- Bootstrap JS -->
         <script src="js/bootstrap/bootstrap.min.js"></script>
+
+        
+        <script src="js/datatables.js"></script>
 
         <!-- Custom JS -->
         <script src="js/script.js"></script>
