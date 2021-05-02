@@ -211,11 +211,11 @@ if($count>0) {
                     <div class="container">
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav pull-right">
-                                <li><a href="Search_Notes_Page.html">Search Notes</a></li>
-                                <li><a href="My_Sold_Notes.html">Sell Your Notes</a></li>
-                                <li><a href="Buyer_Requests.html">Buyer Requests</a></li>
-                                <li><a href="FAQ.html">FAQ</a></li>
-                                <li><a href="Contact_Us.html">Contact Us</a></li>
+                                <li><a href="Search_Notes_Page.php">Search Notes</a></li>
+                                <li><a href="Dashboard.php">Sell Your Notes</a></li>
+                                <li><a href="Buyer_Requests.php">Buyer Requests</a></li>
+                                <li><a href="FAQ.php">FAQ</a></li>
+                                <li><a href="Contact_Us.php">Contact Us</a></li>
                                 <li>
                                     <div class="user-menu-popup">
                                         <a class="user-menu-check" target=".user-menu-show"><img class="user-img"

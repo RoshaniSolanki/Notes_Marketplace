@@ -535,19 +535,17 @@ if(isset($_POST['save'])) {
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
 
+    <!-- Datatables -->
+    <link rel="stylesheet" href="css/datatables.css">
+
+
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="css/responsive.css">
 
 
     <script>
-    /* Show & Hide Sell Price Field */
-    function getValue(x) {
-    if(x.value == 'free') {
-        document.getElementById("sell-price-field").style.display = 'none';
-    }else {
-        document.getElementById("sell-price-field").style.display = 'block';
-    }
-    }
+  
+
 
   
     </script>
@@ -963,6 +961,20 @@ if(isset($_POST['save'])) {
         </form>
     </div>
     <!-- Add Notes Ends -->
+
+    <script>
+    
+    /* Show & Hide Sell Price Field */
+    
+    function getValue(x) {
+        if(x.value == 'free') {
+            document.getElementById("sell-price-field").style.display = 'none';
+        }else {
+            document.getElementById("sell-price-field").style.display = 'block';
+        }
+    }
+    </script>
+    
     <!-- Footer -->
     <footer class="footer">
         <hr>
@@ -990,6 +1002,8 @@ if(isset($_POST['save'])) {
 
     <!-- Bootstrap JS -->
     <script src="js/bootstrap/bootstrap.min.js"></script>
+
+    <script src="js/datatables.js"></script>
 
     <!-- Custom JS -->
     <script src="js/script.js"></script>

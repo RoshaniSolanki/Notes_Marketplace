@@ -1,6 +1,7 @@
 <?php
 include "../includes/db.php";
 include "../includes/functions.php";
+session_start();
 /*
 if(isset($_GET['order'])) {
     $order = $_GET['order'];
@@ -151,8 +152,8 @@ $total_page_t2 = ceil($total_progress_notes_t2/$item_per_page_t2);
                                 <ul class="nav navbar-nav pull-right">
                                     <li><a href="Search_Notes_Page.php">Search Notes</a></li>
                                     <li><a href="Dashboard.php">Sell Your Notes</a></li>
-                                    <li><a href="Buyer_Requests.html">Buyer Requests</a></li>
-                                    <li><a href="FAQ.html">FAQ</a></li>
+                                    <li><a href="Buyer_Requests.php">Buyer Requests</a></li>
+                                    <li><a href="FAQ.php">FAQ</a></li>
                                     <li><a href="Contact_Us.php">Contact Us</a></li>
                                     <li>
                                         <div class="user-menu-popup">
@@ -485,6 +486,13 @@ $total_page_t2 = ceil($total_progress_notes_t2/$item_per_page_t2);
             </div>
         </div>
         <!-- Dashboard Ends -->
+        <script>
+        
+            function check_delete() {
+                return confirm("Are you sure, you want to delete this note?");
+            }
+                
+        </script>
         <!-- Footer -->
         <footer class="footer">
             <hr>
@@ -523,8 +531,3 @@ $total_page_t2 = ceil($total_progress_notes_t2/$item_per_page_t2);
 </body>
 
 </html>
-<script>
-    function check_delete() {
-        return confirm("Are you sure, you want to delete this note?");
-    }
-</script>

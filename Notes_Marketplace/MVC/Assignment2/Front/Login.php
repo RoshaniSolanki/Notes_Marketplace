@@ -152,25 +152,14 @@ if(isset($_POST['submit'])) {
 
     <!-- Login Page Ends -->
 
-    <!-- JQuery -->
-    <script src="js/jquery-3.5.1.min.js"></script>
-
-    <!-- Bootstrap JS -->
-    <script src="js/bootstrap/bootstrap.min.js"></script>
-
-    <!-- Custom JS -->
-    <script src="js/script.js"></script>
-</body>
-
-</html>
-
-<script>
+    
+    <script>
 
     const email = document.getElementById('email');
     const password = document.getElementById('password');
 
-  
-  function login_form() {
+
+    function login_form() {
     var x= checkInputs();
         if(x) {
             return true;
@@ -178,7 +167,7 @@ if(isset($_POST['submit'])) {
             return false;
         }
     }
-    
+
     function checkInputs(){
         var flag =0;
         const emailValue = email.value.trim();
@@ -195,16 +184,16 @@ if(isset($_POST['submit'])) {
             flag=1;
         }
 
-       /* var c1=0,c2=0;
+    /* var c1=0,c2=0;
         for(var i=0;i<emailValue.length;i++)
         {
-          if(emailValue[i]=='@')
+        if(emailValue[i]=='@')
             c1++;
         }
 
         for(var j=0;j<emailValue.length;j++)
         {
-          if(emailValue[j]=='.')
+        if(emailValue[j]=='.')
             c2++;
         }
 
@@ -298,11 +287,23 @@ if(isset($_POST['submit'])) {
     function setSuccessFor(input) {
         const formGroup = input.parentElement;
         formGroup.className = 'form-group';
-       
+    
     }
 
     function isEmail(email) {
         return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
             .test(email);
     }
-</script>
+    </script>
+
+    <!-- JQuery -->
+    <script src="js/jquery-3.5.1.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+</body>
+
+</html>

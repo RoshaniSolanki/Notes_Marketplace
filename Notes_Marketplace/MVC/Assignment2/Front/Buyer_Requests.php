@@ -26,6 +26,53 @@ if(isset($_SESSION['email'])) {
         confirm($select_query);
 
     }
+
+    
+    if(isset($_GET['Note_id'])){
+        $note_id=$_GET['Note_id'];
+
+        $modified_date = date("Y-m-d H:i:s");
+
+        $update_query = query("UPDATE downloads SET IsSellerHasAllowedDownload = 1, ModifiedDate = '$modified_date', ModifiedBy = $user_id WHERE NoteID = $note_id ");
+        confirm($update_query);
+
+        // find Seller Information
+        $find_seller_name = query("SELECT FirstName, LastName FROM users WHERE ID = '{$user_id}' ");
+        confirm($find_seller_name);
+
+        while($sr = mysqli_fetch_assoc($find_seller_name)) {
+            $seller_name = $sr['FirstName'] . " " .$sr['LastName']; 
+        }
+
+        //find buyer information
+        $find_buyer_id = query("SELECT Downloader FROM downloads WHERE NoteID = '{$note_id}' ");
+        confirm($find_buyer_id);
+
+        while($br = mysqli_fetch_assoc($find_buyer_id)) {
+            $buyer_id = $br['Downloader']; 
+        }
+
+        $find_buyer_info = query("SELECT FirstName, LastName, EmailID FROM users WHERE ID = '{$buyer_id}' ");
+        confirm($find_buyer_info);
+
+        while($br = mysqli_fetch_assoc($find_buyer_info)) {
+            $buyer_name = $br['FirstName'] . " " .$br['LastName']; 
+            $buyer_email = $br['EmailID'];
+        }
+
+
+        $subject = $buyer_name." Allows you to download a note";
+        $email = "sroshani025@gmail.com";
+        $body = "Hello ".$buyer_name.","."\r\n"."\r\n"."We would like to inform you that, " .$seller_name. "  Allows you to download a note. Please login and see My Download tabs to download particular note." . "\r\n"."\r\n"."Regards,"."\r\n". "Notes Marketplace";
+        $sender_email = "Email From: {$email}";
+        $result = mail($buyer_email, $subject, $body, $sender_email);
+             
+            if(!$result) {
+                echo "<script>alert('Email sending failed....')</script>";
+            }
+
+    }
+
 }else{
     redirect("Login.php");
 }
@@ -249,7 +296,7 @@ if(isset($_SESSION['email'])) {
                                                 <img class="dots-img" src="./images/Buyer_Requests/dots.png">
                                             </a>
                                             <div id="br<?php echo $i; ?>" class="buyer-req-menu-show">
-                                                <p><a href="#">Download Note</a></p>
+                                                <p><a href="Buyer_Requests.php?Note_id=<?php echo $note_id; ?>">Yes, I Received</a></p>
                                             </div>
                                         </div>
                                     </td>

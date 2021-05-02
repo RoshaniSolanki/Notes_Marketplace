@@ -195,41 +195,8 @@
         </form>
     </div>
     <!-- Contact Us Ends -->
-    <!-- Footer -->
-    <footer class="footer">
-        <hr>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-sm-6 col-xs-6">
-                    <p class="footer-text">
-                        Copyright &copy; TatvaSoft All Rights Reserved.
-                    </p>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-6">
-                    <ul class="social-list">
-                        <li><a href="#"><img src="images/Contact_Us/facebook.png"></a></li>
-                        <li><a href="#"><img src="images/Contact_Us/twitter.png"></a></li>
-                        <li><a href="#"><img src="images/Contact_Us/linkedin.png"></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
 
-    </footer>
-    <!-- Footer Ends -->
-    <!-- JQuery -->
-    <script src="js/jquery-3.5.1.min.js"></script>
-
-    <!-- Bootstrap JS -->
-    <script src="js/bootstrap/bootstrap.min.js"></script>
-
-    <!-- Custom JS -->
-    <script src="js/script.js"></script>
-</section>
-</body>
-
-</html>
-
+    
 <script>
     
     const full_name = document.getElementById('full-name');
@@ -320,3 +287,38 @@
     }
 
 </script>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <hr>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <p class="footer-text">
+                        Copyright &copy; TatvaSoft All Rights Reserved.
+                    </p>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <ul class="social-list">
+                        <li><a href="#"><img src="images/Contact_Us/facebook.png"></a></li>
+                        <li><a href="#"><img src="images/Contact_Us/twitter.png"></a></li>
+                        <li><a href="#"><img src="images/Contact_Us/linkedin.png"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+    <!-- Footer Ends -->
+    <!-- JQuery -->
+    <script src="js/jquery-3.5.1.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+</section>
+</body>
+
+</html>

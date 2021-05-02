@@ -25,28 +25,73 @@ if(isset($_POST['search-btn'])) {
 
 }
 
+if(isset($_GET['Note_id'])){
+	$note_id=$_GET['Note_id'];
+
+    $find_path = query("SELECT * FROM seller_notes_attachements WHERE NoteID = '{$note_id}' ");
+    confirm($find_path);
+
+    $find_attachement_count = mysqli_num_rows($find_path);
+
+    while($row = mysqli_fetch_assoc($find_path)) {
+        $file_path = $row['FilePath'];
+    }
+
+    $find_note_title = query("SELECT Title FROM seller_notes WHERE ID = '{$note_id}' ");
+    confirm($find_note_title);
+
+    while($row = mysqli_fetch_assoc($find_note_title)) {
+        $title = $row['Title'];
+    }
+
+    
+    if($find_attachement_count==1){
+    header('Cache-Control:public');
+    header('Content-Description:File Transfer');
+    header('Content-Disposition:attachment; filename='.$title.'.pdf');
+    header('Control-Type:application/pdf');
+    header('Content-Transfer-Encoding:binary');
+    readfile($file_path);
+    $date = date('Y-m-d H:i:s');
+
+    $update_entry = query("UPDATE downloads SET AttachementDownloadedDate='$date', IsAttachementDownloaded = 1 WHERE NoteID = $note_id AND Downloader = $user_id AND IsSellerHasAllowedDownload = 1");
+    confirm($update_entry);
+
+    }
+    else{
+        
+        $zipname = $title . '.zip';
+        $zip = new ZipArchive;
+        $zip->open($zipname, ZipArchive::CREATE);
+        $find_path = query("SELECT * FROM seller_notes_attachements WHERE NoteID = '{$note_id}' ");
+        confirm($find_path);
+        while($row = mysqli_fetch_assoc($find_path)) {
+            $attach_id = $row['FilePath'];
+            $zip->addFile($attach_id);
+        }
+        $zip->close();
+        header('Content-Type: application/zip');
+        header('Content-disposition: attachment; filename=' . $zipname);
+        header('Content-Length: ' . filesize($zipname));
+        readfile($zipname);
+        $date = date('Y-m-d H:i:s');
+        $update_entry = query("UPDATE downloads SET AttachementDownloadedDate='$date', IsAttachementDownloaded = 1 WHERE NoteID = $note_id AND Downloader = $user_id AND IsSellerHasAllowedDownload = 1");
+        confirm($update_entry);
+    }
+
+}
+
 
 if(isset($_POST['rating_submit_btn'])) {
-
-    /*$select_rating=query("SELECT Ratings FROM seller_notes_review");
-    confirm($select_rating);
-    $total=mysqli_num_rows($select_rating);
-  
-    while($row=mysqli_fetch_array($select_rating))
-    {
-	  $ar[]=$Ratings;
-	  
-    }
-    $total_rating=(array_sum($ar)/$total);*/
 
     $comments      = $_POST['comments'];
 	$downloaded_id = $_POST['review_downloadedid'];
 	$note_id       = $_POST['review_noteid'];
-    $rating       = $_POST['note-rating'];
+    $rating       = $_POST['starrating'];
     $createdDate = date("Y-m-d H:i:s");
     $modifiedDate = date("Y-m-d H:i:s");
 
-    $insert_rate  = query("INSERT INTO seller_notes_review(NoteID, ReviewedByID, AgainstDownloadID, Ratings, Comments, CreatedDate, CreatedBy,	ModifiedDate, ModifiedBy)
+    $insert_rate  = query("INSERT INTO seller_notes_review(NoteID, ReviewedByID, AgainstDownloadsID, Ratings, Comments, CreatedDate, CreatedBy,	ModifiedDate, ModifiedBy)
                     VALUES('{$note_id}', '{$user_id}', '{$downloaded_id}', '{$rating}', '{$comments}', '{$createdDate}', '{$user_id}', '{$modifiedDate}', '{$user_id}')");
     confirm($insert_rate);
 
@@ -55,8 +100,8 @@ if(isset($_POST['rating_submit_btn'])) {
 
     if(isset($_POST['report'])) {
         
-        echo $noteID = $_POST['title_for_report'];
-        echo $noteTitle = $_POST['noteid_for_report'];
+        echo $noteID = $_POST['noteid_for_report'];
+        echo $noteTitle = $_POST['title_for_report'];
         echo $noteDownloadid = $_POST['downloadedid_for_report'];
         echo $remark = $_POST['remark'];
 
@@ -68,7 +113,7 @@ if(isset($_POST['rating_submit_btn'])) {
          confirm($insert_remark);
 
          // find MemberName
-         $find_member_name = query("SELECT FirstName, LastName FROM users WHERE UserID = '{$user_id}' ");
+         $find_member_name = query("SELECT FirstName, LastName FROM users WHERE ID = '{$user_id}' ");
          confirm($find_member_name);
 
          while($mr = mysqli_fetch_assoc($find_member_name)) {
@@ -76,26 +121,25 @@ if(isset($_POST['rating_submit_btn'])) {
          }
 
          //find seller information
-         $find_seller_id = query("SELECT SellerID FROM seller_note WHERE ID = '{$noteID}' ");
+         $find_seller_id = query("SELECT SellerID FROM seller_notes WHERE ID = '{$noteID}' ");
          confirm($find_seller_id);
 
          while($sr = mysqli_fetch_assoc($find_seller_id)) {
              $seller_id = $sr['SellerID']; 
          }
 
-         $find_seller_info = query("SELECT FirstName, LastName, EmailID FROM users WHERE UserID = '{$seller_id}' ");
+         $find_seller_info = query("SELECT FirstName, LastName, EmailID FROM users WHERE ID = '{$seller_id}' ");
          confirm($find_seller_info);
 
          while($sr = mysqli_fetch_assoc($find_seller_info)) {
-             $seller_name = $sr['FirstName'] . " " .$sr['FirstName']; 
+             $seller_name = $sr['FirstName'] . " " .$sr['LastName']; 
              $seller_email = $sr['EmailID'];
          }
         
         
         $subject = $member_name." Reported an issue for ". $noteTitle;
         $email = "sroshani025@gmail.com";
-        $body = "Hello Admins, "."\r\n"."\r\n"."We want to inform you that, " .$member_name. "  Reported an issue for".$seller_name."’s Note with 
-        title " . $note_title . "\r\n"."\r\n"."Regards,"."\r\n". "Notes Marketplace";
+        $body = "Hello Admins, "."\r\n"."\r\n"."We want to inform you that, " .$member_name. "  Reported an issue for"." ".$seller_name."’s Note with title " . $noteTitle ." . "."Please look at the notes and take required actions.". "\r\n"."\r\n"."Regards,"."\r\n". "Notes Marketplace";
         $sender_email = "Email From: {$email}";
         $result = mail($seller_email, $subject, $body, $sender_email);
              
@@ -160,11 +204,11 @@ if(isset($_POST['rating_submit_btn'])) {
                     <div class="container">
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav pull-right">
-                                <li><a href="Search_Notes_Page.html">Search Notes</a></li>
-                                <li><a href="My_Sold_Notes.html">Sell Your Notes</a></li>
-                                <li><a href="Buyer_Requests.html">Buyer Requests</a></li>
-                                <li><a href="FAQ.html">FAQ</a></li>
-                                <li><a href="Contact_Us.html">Contact Us</a></li>
+                                <li><a href="Search_Notes_Page.php">Search Notes</a></li>
+                                <li><a href="Dashboard.php">Sell Your Notes</a></li>
+                                <li><a href="Buyer_Requests.php">Buyer Requests</a></li>
+                                <li><a href="FAQ.php">FAQ</a></li>
+                                <li><a href="Contact_Us.php">Contact Us</a></li>
                                 <li>
                                     <div class="user-menu-popup">
                                         <a class="user-menu-check" target=".user-menu-show"><img class="user-img"
@@ -317,11 +361,11 @@ if(isset($_POST['rating_submit_btn'])) {
                                                     <a class="menu-check" target="#mp<?php echo $i;?>"><img
                                                             class="dots-img" src="./images/My_Download/dots.png"></a>
                                                     <div id="mp<?php echo $i;?>" class="menu-popup-show">
-                                                        <p><a href="download.php?Note_id=<?php echo $note_id; ?>">Download
+                                                        <p><a href="My_Downloads.php?Note_id=<?php echo $note_id; ?>">Download
                                                                 Notes</a></p>
                                                         <p><a class="add-review-popup-click"
                                                                 data-id="<?php echo $note_id; ?>"
-                                                                data-download="<?php echo $id; ?>" data-toggle="modal"
+                                                                data-download="<?php echo $id; ?>" id="add-review-star" data-toggle="modal"
                                                                 data-target="#addReviewPopup">Add Reviews/Feedback</a>
                                                         </p>
                                                         <p><a href="#" data-title="<?php echo $note_title; ?>"
@@ -357,27 +401,27 @@ if(isset($_POST['rating_submit_btn'])) {
                                                         <div class="modal-body">
 
                                                             <div class="stars">
-                                                                <input type="hidden" id="s1_hidden" value="1">
+                                                                <input type="hidden" id="star1_hidden" value="1">
                                                                 <img src="images/My_Download/star-white.png"
-                                                                    onmouseover="change(this.id);" id="s1" class="star">
-                                                                <input type="hidden" id="s2_hidden" value="2">
+                                                                    onmouseover="change(this.id);" id="star1" class="star">
+                                                                <input type="hidden" id="star2_hidden" value="2">
                                                                 <img src="images/My_Download/star-white.png"
-                                                                    onmouseover="change(this.id);" id="s2" class="star">
-                                                                <input type="hidden" id="s3_hidden" value="3">
+                                                                    onmouseover="change(this.id);" id="star2" class="star">
+                                                                <input type="hidden" id="star3_hidden" value="3">
                                                                 <img src="images/My_Download/star-white.png"
-                                                                    onmouseover="change(this.id);" id="s3" class="star">
-                                                                <input type="hidden" id="s4_hidden" value="4">
+                                                                    onmouseover="change(this.id);" id="star3" class="star">
+                                                                <input type="hidden" id="star4_hidden" value="4">
                                                                 <img src="images/My_Download/star-white.png"
-                                                                    onmouseover="change(this.id);" id="s4" class="star">
-                                                                <input type="hidden" id="s5_hidden" value="5">
+                                                                    onmouseover="change(this.id);" id="star4" class="star">
+                                                                <input type="hidden" id="star5_hidden" value="5">
                                                                 <img src="images/My_Download/star-white.png"
-                                                                    onmouseover="change(this.id);" id="s5" class="star">
-                                                                <input type="hidden" name="note-rating" id="noterating">
+                                                                    onmouseover="change(this.id);" id="star5" class="star">
+                                                                <input type="hidden" name="starrating" id="starrating">
                                                             </div>
-                                                            <input type="hidden" name="review_noteid" id="review_noteid"
-                                                                value="">
-                                                            <input type="hidden" name="review_downloadedid"
-                                                                id="review_downloadedid" value="">
+                                                            <input name="review_noteid" id="review_noteid"
+                                                                value="" hidden>
+                                                            <input name="review_downloadedid"
+                                                                id="review_downloadedid" value="" hidden>
                                                             <div class="comments_form">
                                                                 <div class="form-group">
                                                                     <label class="commentsLabel">Comments *</label>
@@ -390,6 +434,8 @@ if(isset($_POST['rating_submit_btn'])) {
                                                                         class="btn btn-primary add-review-popup-submit-btn pull-left"
                                                                         id="modal-btn">SUBMIT</button>
                                                                 </div>
+                                                            </div>
+                                                        </div>    
                                                     </form>
                                                 </div>
                                             </div>
@@ -428,9 +474,9 @@ if(isset($_POST['rating_submit_btn'])) {
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary"
                                                                 data-dismiss="modal">Cancle</button>
-                                                            <button type="submit" class="btn btn-primary"
+                                                            <button type="submit" class="btn btn-primary" name="report"
                                                                 onclick='javascript:Report($(this));return false;'
-                                                                name="report">Report an issue</button>
+                                                                >Report an issue</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -448,6 +494,34 @@ if(isset($_POST['rating_submit_btn'])) {
         </div>
     </div>
 
+    <script>
+        
+                
+        function Report() {
+            if(confirm("Are you sure you want to mark this report as spam, you cannot update it later?")) {
+                txt = "You Pressed Ok!";
+            } else {
+                txt = "You Pressed Cancel!";
+            }
+        }
+
+        function change(id) {
+            var cname=document.getElementById(id).className;
+            var ab=document.getElementById(id+"_hidden").value;
+            document.getElementById(cname+"rating").value=ab;
+
+            for(var i=ab;i>=1;i--)
+            {
+                document.getElementById(cname+i).src="images/My_Download/star.png";
+                
+            }
+            var id = parseInt(ab) + 1;
+            for (var j = id; j <= 5; j++) {
+                document.getElementById(cname + j).src = "images/My_Download/star-white.png";
+            }
+        }
+
+</script>
 
     <!-- Footer -->
     <footer class="footer">
@@ -483,12 +557,11 @@ if(isset($_POST['rating_submit_btn'])) {
 
 
     <script src="js/datatables.js"></script>
-
+    
     <script>
 
-    </script>
+        
 
-    <script>
         $(function () {
 
 
@@ -507,6 +580,8 @@ if(isset($_POST['rating_submit_btn'])) {
             });
 
         });
+
+        
     </script>
 
     <!-- Custom JS -->
@@ -516,31 +591,3 @@ if(isset($_POST['rating_submit_btn'])) {
 </body>
 
 </html>
-<script>
-    /*
-function Report() {
-    if(confirm("Are you sure you want to mark this report as spam, you cannot update it later?")) {
-        txt = "You Pressed Ok!";
-    } else {
-        txt = "You Pressed Cancel!";
-    }
-}
-*/
-
-
-    function change(id) {
-        /*var cname=document.getElementById(id).className;
-        var ab=document.getElementById(id+"_hidden").value;
-        document.getElementById(cname+"seller_notes_review").innerHTML=ab;*/
-        var cname = document.getElementById(id).className;
-        var ab = document.getElementById(id + "_hidden").value;
-
-        for (var i = ab; i >= 1; i--) {
-            document.getElementById(cname + i).src = "images/My_Download/star.png";
-        }
-        var id = parseInt(ab) + 1;
-        for (var j = id; j <= 5; j++) {
-            document.getElementById(cname + j).src = "images/My_Download/star-white.png";
-        }
-    }
-</script>
