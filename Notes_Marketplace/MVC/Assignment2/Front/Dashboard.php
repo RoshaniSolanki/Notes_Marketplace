@@ -2,6 +2,14 @@
 include "../includes/db.php";
 include "../includes/functions.php";
 session_start();
+
+
+if(isset($_SESSION['email'])) {
+    $user_id = $_SESSION['userid'];
+
+
+
+
 /*
 if(isset($_GET['order'])) {
     $order = $_GET['order'];
@@ -94,7 +102,9 @@ confirm($p_query_t2);
 $total_progress_notes_t2 = mysqli_num_rows($p_query_t2);
 $total_page_t2 = ceil($total_progress_notes_t2/$item_per_page_t2);
 */
-
+}else{
+    redirect("Login.php");
+}
 
 
 ?>

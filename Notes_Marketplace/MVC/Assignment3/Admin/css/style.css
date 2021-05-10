@@ -1,0 +1,2718 @@
+body {
+    font-family: "Open Sans", sans-serif;
+    margin: 0;
+}
+
+/*=======================================================
+                   Navigation
+=========================================================*/
+
+.navbar {
+    padding: 25px 0 20px 0;
+    transition: all 300ms linear;
+    -webkit-transition: all 300ms linear;
+}
+
+.site-nav-wrapper {
+    padding: 0 176px;
+}
+
+.navbar-brand {
+    padding: 3px 15px;
+}
+
+ul.navbar-nav>li>a {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 22px;
+    color: #fff;
+}
+
+ul.navbar-nav>li>a:hover,
+ul.navbar-nav>li>a:focus {
+    background: none;
+    color: #6255a5;
+}
+
+/* White Navigation */
+.white-nav-top {
+    background: #fff;
+    padding: 25px 0 15px 0;
+    box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.08);
+}
+
+.white-nav-top ul.navbar-nav>li>a {
+    color: #333;
+}
+
+.white-nav-top ul.navbar-nav>li>a:hover {
+    border-bottom: 4px solid #6255a5;
+}
+
+#home .white-nav-top ul.navbar-nav>li:nth-child(5)>a:hover,
+.white-nav-top ul.navbar-nav>li:nth-child(6)>a:hover,
+.white-nav-top ul.navbar-nav>li:nth-child(7)>a:hover {
+    border-bottom: none;
+}
+
+.white-nav-top ul.navbar-nav>li:nth-child(6) {
+    margin: 4px 15px 0 15px;
+}
+
+.white-nav-top ul.navbar-nav>li>a:hover,
+.white-nav-top ul.navbar-nav>li>a:focus {
+    color: #6255a5;
+}
+
+/**   Buttons   **/
+.login-btn,
+.logout-btn {
+    color: #fff;
+    background: #6255a5;
+    width: 89px;
+    height: 38px;
+    border-radius: 3px;
+    font-size: 16px;
+    line-height: 22px;
+    margin-top: -10px;
+}
+
+
+/*=======================================================
+                    Pagination  
+=========================================================*/
+.left-arrow-img {
+    width: 8px;
+    height: 15px;
+    color: #333;
+    margin-right: 55px;
+}
+
+.right-arrow-img {
+    width: 8px;
+    height: 15px;
+    color: #333;
+    margin-left: 55px;
+}
+
+.pagination-section .page-link {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    border: none;
+    margin-bottom: 50px;
+}
+
+.pagination-section #one {
+    width: 34px;
+    height: 34px;
+    background: #6255a5;
+    color: #fff;
+    border-radius: 50%;
+}
+
+.pagination-section #two,
+.pagination-section #three,
+.pagination-section #four,
+.pagination-section #five {
+    color: #333;
+    margin-left: 30px;
+}
+
+.pagination-section #two {
+    color: #333;
+    margin-left: 20px;
+}
+
+/** Hide the default select icon **/
+select {
+    -webkit-appearance: none;
+}
+
+/*=======================================================
+                         Login
+=========================================================*/
+#loginPage .login {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 50px;
+    height: 600px;
+    width: 580px;
+    background: white;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+}
+
+#loginPage .logo {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#loginPage .login h1 {
+    margin-top: 0px;
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 38px;
+    color: #6255a5;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#loginPage .login-text1 {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 19px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+#loginPage .emailLabel,
+#loginPage .passwordLabel {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #333;
+}
+
+#loginPage #email,
+#loginPage #password {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #000;
+    border: 1px solid #6255a5;
+    width: 480px;
+    height: 50px;
+    border-radius: 3px;
+    margin: 10px 0 0px 0;
+}
+
+#loginPage #forgot-password a {
+    padding-left: 93px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #6255a5;
+}
+
+#loginPage .eye-img {
+    position: absolute;
+    top: 294px;
+    left: 455px;
+}
+
+#loginPage .error #email,
+#loginPage .error #password {
+    border: 1px solid #ff3636;
+}
+
+#loginPage small {
+    visibility: hidden;
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 20px;
+    color: #ff3636;
+    margin-bottom: 20px;
+}
+
+#loginPage .error small {
+    visibility: visible;
+}
+
+#loginPage #checkbox {
+    border: 1px solid #d1d1d1;
+    width: 30px;
+    height: 30px;
+    border-radius: 3px;
+    margin-bottom: 30px;
+}
+
+#loginPage .form-check-label {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #333;
+    position: absolute;
+    top: 375px;
+    left: 60px;
+}
+
+#loginPage .login-btn {
+    background-color: #6255a5;
+    width: 480px;
+    height: 50px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 20px;
+}
+
+#loginPage .login-text2 {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #333;
+    text-align: center;
+}
+
+#loginPage .login-text2 a {
+    color: #6255a5;
+}
+
+/*=======================================================
+                  Forgot Password
+=========================================================*/
+
+#forgotPasswordPage .forgotPassword {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 50px;
+    height: 380px;
+    width: 580px;
+    background: white;
+}
+
+#forgotPasswordPage .logo {
+    position: absolute;
+    top: 125px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#forgotPasswordPage h1 {
+    margin-top: 0px;
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 38px;
+    color: #6255a5;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#forgotPasswordPage .text {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 19px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+#forgotPasswordPage .emailLabel {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #333;
+}
+
+#forgotPasswordPage #email {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #000;
+    border: 1px solid #6255a5;
+    width: 480px;
+    height: 50px;
+    border-radius: 3px;
+    margin: 10px 0 30px 0;
+}
+
+#forgotPasswordPage .submit-btn {
+    background-color: #6255a5;
+    width: 480px;
+    height: 50px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 20px;
+}
+
+
+/*=======================================================
+                       Dashboard
+=========================================================*/
+
+
+#adminDashboard {
+    padding-top: 100px;
+}
+
+/**   section1   **/
+#adminDashboard #section1 #part1 h1 {
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 38px;
+    color: #6255a5;
+    margin: 60px 0 30px 0;
+}
+
+#adminDashboard #section1 #part2 {
+    margin-bottom: 50px;
+}
+
+#adminDashboard #section1 #part2 .text1 {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 34px;
+    color: #6255a5;
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 25px;
+}
+
+#adminDashboard #section1 #part2 .text1 a {
+    color: inherit;
+    text-decoration: none;
+
+}
+
+#adminDashboard #section1 #part2 .text2 {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #333;
+    text-align: center;
+
+}
+
+#adminDashboard #section1 #part2 .box {
+    width: 30.7%;
+    margin-left: 30px;
+    height: 151px;
+    border: 1px solid #d1d1d1;
+}
+
+#adminDashboard #section1 #part2 .box:nth-child(1) {
+
+    margin-left: 17px;
+}
+
+/**   section2   **/
+#adminDashboard #section2 #part1 p {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 28px;
+    color: #6255a5;
+    margin-bottom: 0px;
+}
+
+#adminDashboard #section2 #part1 #search {
+    margin-right: 10px;
+    padding-left: 45px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #8a8a8a;
+    width: 322px;
+    height: 50px;
+    border: 1px solid #d1d1d1;
+    margin-bottom: 20px;
+}
+
+#adminDashboard #section2 #part1 .row div:nth-child(2) {
+    text-align: right;
+}
+
+#adminDashboard .search-icon-img {
+    position: absolute;
+    right: 650px;
+    top: 16px;
+}
+
+#adminDashboard .search-btn {
+    background: #6255a5;
+    width: 117px;
+    height: 50px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 700;
+    margin-bottom: 3px;
+    margin-right: 10px;
+}
+
+#adminDashboard #month {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #8a8a8a;
+    border: 1px solid #d1d1d1;
+    margin-bottom: 20px;
+    height: 50px;
+    padding-left: 10px;
+}
+
+#adminDashboard .arrow-down-img {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+}
+
+#adminDashboard #section2 #part2 table {
+    width: 100%;
+    height: 444px;
+    border-radius: 3px;
+    margin-bottom: 50px;
+}
+
+#adminDashboard #section2 #part2 tr {
+    border: 1px solid #d1d1d1;
+    height: 75px;
+}
+
+#adminDashboard #section2 #part2 th {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    color: #333;
+    padding-left: 10px;
+}
+
+#adminDashboard #section2 #part2 td {
+    padding-left: 10px;
+}
+
+#adminDashboard #section2 #part2 td:nth-child(2),
+#adminDashboard #section2 #part2 td:nth-child(9) {
+    color: #6255a5;
+}
+
+#adminDashboard #section2 #part2 td:nth-child(2) a,
+#adminDashboard #section2 #part2 td:nth-child(9) a{
+    color: inherit;
+    text-decoration: none;
+}
+
+#adminDashboard #section2 #part2 td:nth-child(1),
+#adminDashboard #section2 #part2 td:nth-child(4),
+#adminDashboard #section2 #part2 td:nth-child(5),
+#adminDashboard #section2 #part2 td:nth-child(9) {
+    text-align: center;
+}
+
+#adminDashboard #section2 #part2 th:nth-child(1),
+#adminDashboard #section2 #part2 th:nth-child(4),
+#adminDashboard #section2 #part2 th:nth-child(5),
+#adminDashboard #section2 #part2 th:nth-child(9) {
+    text-align: center;
+}
+
+#adminDashboard #section2 #part2 td .dots-img {
+    padding-right: 20px;
+}
+
+#adminDashboard #section2 #part2 tr:hover {
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+/*=======================================================
+                    Admin Profile
+=========================================================*/
+
+
+#adminProfile {
+    padding-top: 150px;
+}
+
+.admin-profile-heading {
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 38px;
+    color: #6255a5;
+    margin-bottom: 40px;
+}
+
+#adminProfile .firstName,
+#adminProfile .lastName,
+#adminProfile .email,
+#adminProfile .secondaryEmail,
+#adminProfile .phoneNumber,
+#adminProfile .profilePicture {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#adminProfile #first-name,
+#adminProfile #last-name,
+#adminProfile #email,
+#adminProfile #secondary-email,
+#adminProfile #code,
+#adminProfile #phone-number,
+#adminProfile #profile-picture {
+    width: 100%;
+    height: 50px;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #8a8a8a;
+    margin-bottom: 30px;
+}
+
+#adminProfile #profile-picture {
+    height: 110px;
+    opacity: 0;
+}
+
+#adminProfile .pp-text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #8a8a8a;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    
+}
+.apn-arrow-down-img {
+    position: absolute;
+    right: 25px;
+    top: 20px;
+}
+
+#adminProfile .upload-img {
+    position: absolute;
+    top: 50px;
+    /*left: 346px;
+    */
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+}
+
+#adminProfile .submit-btn {
+    background: #6255a5;
+    width: 150px;
+    height: 50px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 22px;
+    margin: 20px 0 60px 0;
+}
+
+/*=======================================================
+               Admin Manage Administrator
+=========================================================*/
+
+
+#adminManageAdministrator {
+    padding-top: 100px;
+}
+
+#adminManageAdministrator #part1 p {
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 38px;
+    color: #6255a5;
+    margin: 60px 0 30px 0;
+}
+
+#adminManageAdministrator .add-administrator-btn {
+    background: #6255a5;
+    height: 50px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+#adminManageAdministrator #part2 #search {
+    margin-left: 102px;
+    margin-right: 10px;
+    padding-left: 45px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #8a8a8a;
+    width: 322px;
+    height: 50px;
+    border: 1px solid #d1d1d1;
+}
+
+#adminManageAdministrator .search-icon-img {
+    position: absolute;
+    left: 130px;
+    top: 16px;
+}
+
+#adminManageAdministrator .search-btn {
+    background: #6255a5;
+    width: 117px;
+    height: 50px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 700;
+    margin-bottom: 3px;
+}
+
+#adminManageAdministrator #part3 table {
+    width: 100%;
+    height: 444px;
+    border-radius: 3px;
+    margin-bottom: 50px;
+}
+
+#adminManageAdministrator #part3 tr {
+    border: 1px solid #d1d1d1;
+    height: 75px;
+}
+
+#adminManageAdministrator #part3 th {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    color: #333;
+    padding-left: 10px;
+}
+
+#adminManageAdministrator #part3 td {
+    padding-left: 10px;
+}
+
+#adminManageAdministrator #part3 th:nth-child(1),
+#adminManageAdministrator #part3 th:nth-child(7) {
+    text-align: center;
+    padding-left: 0;
+}
+
+#adminManageAdministrator #part3 td:nth-child(1),
+#adminManageAdministrator #part3 td:nth-child(7) {
+    padding-left: 0;
+    text-align: center;
+}
+
+#adminManageAdministrator #part3 tr:hover {
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+#adminManageAdministrator #part3 .delete-img {
+    margin-left: 15px;
+}
+
+/*=======================================================
+                    Admin Add Administrator
+=========================================================*/
+
+
+#adminAddAdministrator {
+    padding-top: 150px;
+}
+
+#adminAddAdministrator .heading {
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 38px;
+    color: #6255a5;
+    margin-bottom: 40px;
+}
+
+#adminAddAdministrator .firstName,
+#adminAddAdministrator .lastName,
+#adminAddAdministrator .email,
+#adminAddAdministrator .phoneNumber {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#adminAddAdministrator #first-name,
+#adminAddAdministrator #last-name,
+#adminAddAdministrator #email,
+#adminAddAdministrator #phone-number,
+#adminAddAdministrator #code {
+    width: 100%;
+    height: 50px;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #8a8a8a;
+    margin-bottom: 30px;
+}
+
+#adminAddAdministrator .pn-arrow-down-img {
+    position: absolute;
+    right: 25px;
+    top: 20px;
+}
+
+#adminAddAdministrator .submit-btn {
+    background: #6255a5;
+    width: 150px;
+    height: 50px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 22px;
+    margin: 20px 0 60px 0;
+}
+
+/*=======================================================
+               Admin Manage Category
+=========================================================*/
+
+
+#adminManageCategory {
+    padding-top: 150px;
+}
+
+#adminManageCategory #part1 p {
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 38px;
+    color: #6255a5;
+    margin: 60px 0 30px 0;
+}
+
+#adminManageCategory .add-category-btn {
+    background: #6255a5;
+    height: 50px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+#adminManageCategory #part2 #search {
+    margin-left: 102px;
+    margin-right: 10px;
+    padding-left: 45px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #8a8a8a;
+    width: 322px;
+    height: 50px;
+    border: 1px solid #d1d1d1;
+
+}
+
+#adminManageCategory .search-icon-img {
+    position: absolute;
+    left: 130px;
+    top: 16px;
+}
+
+#adminManageCategory .search-btn {
+    background: #6255a5;
+    width: 117px;
+    height: 50px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 700;
+    margin-bottom: 3px;
+}
+
+#adminManageCategory #part3 table {
+    width: 100%;
+    height: 444px;
+    border-radius: 3px;
+    margin-bottom: 50px;
+}
+
+#adminManageCategory #part3 tr {
+    border: 1px solid #d1d1d1;
+    height: 75px;
+}
+
+#adminManageCategory #part3 th {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    color: #333;
+    padding-left: 10px;
+}
+
+#adminManageCategory #part3 td {
+    padding-left: 10px;
+}
+
+#adminManageCategory #part3 th:nth-child(1),
+#adminManageCategory #part3 th:nth-child(6) {
+    text-align: center;
+    padding-left: 0;
+}
+
+#adminManageCategory #part3 td:nth-child(1),
+#adminManageCategory #part3 td:nth-child(6) {
+    padding-left: 0;
+    text-align: center;
+}
+
+#adminManageCategory #part3 tr:hover {
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+#adminManageCategory #part3 .delete-img {
+    margin-left: 15px;
+}
+
+
+/*=======================================================
+                Admin Add Category
+=========================================================*/
+
+
+#adminAddCategory {
+    padding-top: 150px;
+}
+
+#adminAddCategory .heading {
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 38px;
+    color: #6255a5;
+    margin-bottom: 40px;
+}
+
+#adminAddCategory .categoryName,
+#adminAddCategory .description {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#adminAddCategory #category-name,
+#adminAddCategory #description {
+    width: 100%;
+    height: 50px;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #8a8a8a;
+    margin-bottom: 30px;
+}
+
+#adminAddCategory #description {
+    height: 151px;
+    padding-bottom: 110px;
+}
+
+#adminAddCategory .submit-btn {
+    background: #6255a5;
+    width: 150px;
+    height: 50px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 22px;
+    margin: 20px 0 60px 0;
+}
+
+/*=======================================================
+               Admin Manage Country
+=========================================================*/
+
+
+#adminManageCountry {
+    padding-top: 150px;
+}
+
+#adminManageCountry #part1 p {
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 38px;
+    color: #6255a5;
+    margin: 60px 0 30px 0;
+}
+
+#adminManageCountry .add-country-btn {
+    background: #6255a5;
+    height: 50px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+#adminManageCountry #part2 #search {
+    margin-left: 102px;
+    margin-right: 10px;
+    padding-left: 45px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #8a8a8a;
+    width: 322px;
+    height: 50px;
+    border: 1px solid #d1d1d1;
+}
+
+#adminManageCountry .search-icon-img {
+    position: absolute;
+    left: 130px;
+    top: 16px;
+}
+
+#adminManageCountry .search-btn {
+    background: #6255a5;
+    width: 117px;
+    height: 50px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 700;
+    margin-bottom: 3px;
+}
+
+#adminManageCountry #part3 table {
+    width: 100%;
+    height: 444px;
+    border-radius: 3px;
+    margin-bottom: 50px;
+}
+
+#adminManageCountry #part3 tr {
+    border: 1px solid #d1d1d1;
+    height: 75px;
+}
+
+#adminManageCountry #part3 th {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    color: #333;
+    padding-left: 10px;
+}
+
+#adminManageCountry #part3 td {
+    padding-left: 10px;
+}
+
+#adminManageCountry #part3 th:nth-child(1),
+#adminManageCountry #part3 th:nth-child(6) {
+    text-align: center;
+    padding-left: 0;
+}
+
+#adminManageCountry #part3 td:nth-child(1),
+#adminManageCountry #part3 td:nth-child(6) {
+    padding-left: 0;
+    text-align: center;
+}
+
+#adminManageCountry #part3 tr:hover {
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+#adminManageCountry #part3 .delete-img {
+    margin-left: 15px;
+}
+
+/*=======================================================
+                Admin Add Country
+=========================================================*/
+
+
+#adminAddCountry {
+    padding-top: 150px;
+}
+
+#adminAddCountry .heading {
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 38px;
+    color: #6255a5;
+    margin-bottom: 40px;
+}
+
+#adminAddCountry .countryName,
+#adminAddCountry .countryCode {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#adminAddCountry #country-name,
+#adminAddCountry #country-code {
+    width: 100%;
+    height: 50px;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #8a8a8a;
+    margin-bottom: 30px;
+}
+
+#adminAddCountry .submit-btn {
+    background: #6255a5;
+    width: 150px;
+    height: 50px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 22px;
+    margin: 20px 0 160px 0;
+}
+
+/*=======================================================
+               Admin Manage Type
+=========================================================*/
+
+
+#adminManageType {
+    padding-top: 150px;
+}
+
+#adminManageType #part1 p {
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 38px;
+    color: #6255a5;
+    margin: 60px 0 30px 0;
+}
+
+#adminManageType .add-type-btn {
+    background: #6255a5;
+    height: 50px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+#adminManageType #part2 #search {
+    margin-left: 102px;
+    margin-right: 10px;
+    padding-left: 45px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #8a8a8a;
+    width: 322px;
+    height: 50px;
+    border: 1px solid #d1d1d1;
+}
+
+#adminManageType .search-icon-img {
+    position: absolute;
+    left: 130px;
+    top: 16px;
+}
+
+#adminManageType .search-btn {
+    background: #6255a5;
+    width: 117px;
+    height: 50px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 700;
+    margin-bottom: 3px;
+}
+
+#adminManageType #part3 table {
+    width: 100%;
+    height: 444px;
+    border-radius: 3px;
+    margin-bottom: 50px;
+}
+
+#adminManageType #part3 tr {
+    border: 1px solid #d1d1d1;
+    height: 75px;
+}
+
+#adminManageType #part3 th {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    color: #333;
+    padding-left: 10px;
+}
+
+#adminManageType #part3 td {
+    padding-left: 10px;
+}
+
+#adminManageType #part3 th:nth-child(1),
+#adminManageType #part3 th:nth-child(6) {
+    text-align: center;
+    padding-left: 0;
+}
+
+#adminManageType #part3 td:nth-child(1),
+#adminManageType #part3 td:nth-child(6) {
+    padding-left: 0;
+    text-align: center;
+}
+
+#adminManageType #part3 tr:hover {
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+#adminManageType #part3 .delete-img {
+    margin-left: 15px;
+}
+
+/*=======================================================
+                Admin Add Type
+=========================================================*/
+
+
+#adminAddType {
+    padding-top: 150px;
+}
+
+#adminAddType .heading {
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 38px;
+    color: #6255a5;
+    margin-bottom: 40px;
+}
+
+#adminAddType .type,
+#adminAddType .description {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#adminAddType #type,
+#adminAddType #description {
+    width: 100%;
+    height: 50px;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #8a8a8a;
+    margin-bottom: 30px;
+}
+
+#adminAddType #description {
+    height: 151px;
+    padding-bottom: 110px;
+}
+
+#adminAddType .submit-btn {
+    background: #6255a5;
+    width: 150px;
+    height: 50px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 22px;
+    margin: 20px 0 60px 0;
+}
+
+
+/*=======================================================
+                    Admin Note Details  
+=========================================================*/
+
+/** section 1 **/
+#adminNoteDetails #note-details-section1 {
+    margin-top: 100px;
+    padding-bottom: 20px;
+}
+
+#adminNoteDetails #note-details-section1 img {
+    height: 300px;
+    width: 240px;
+}
+
+#adminNoteDetails .NDS1MH {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 28px;
+    color: #6255a5;
+    margin-top: 60px;
+    margin-bottom: 20px;
+}
+
+#adminNoteDetails .NDS1LH {
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 38px;
+    color: #6255a5;
+    margin-bottom: 10px;
+}
+
+#adminNoteDetails .NDS1LT1 {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 26px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#adminNoteDetails .NDS1LT2 {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+#adminNoteDetails .download-btn {
+    background: #6255a5;
+    width: 204px;
+    height: 50px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+#adminNoteDetails .NDS1RT1 {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 36px;
+    color: #333;
+    margin-bottom: 0;
+}
+
+#adminNoteDetails .NDS1RT2 {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 36px;
+    color: #6255a5;
+    text-align: right;
+    margin-bottom: 0;
+    margin-left: 0;
+}
+
+#adminNoteDetails .NDS1RT3 {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    color: #df3434;
+}
+
+#adminNoteDetails #note-details-section1 .Rating {
+    margin: 7px 0 0 0;
+    text-align: right;
+}
+
+#adminNoteDetails #note-details-section1 .Rating img {
+    height: 20px;
+    width: 20px;
+}
+
+/** section2 **/
+#adminNoteDetails #note-details-section2 {
+    margin-bottom: 60px;
+}
+
+#adminNoteDetails .NDS2LMH,
+#adminNoteDetails .NDS2RMH {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 28px;
+    color: #6255a5;
+    margin-top: 60px;
+}
+
+/** left side content **/
+
+#adminNoteDetails .set-border-cicis-menu-to-go {
+    border: 1px solid #d1d1d1;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+}
+
+#adminNoteDetails .responsive-wrapper {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+}
+
+#adminNoteDetails .responsive-wrapper img,
+#adminNoteDetails .responsive-wrapper object,
+#adminNoteDetails .responsive-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#adminNoteDetails #Iframe-Cicis-Menu-To-Go {
+    width: 100%;
+    height: 450px;
+    overflow: hidden;
+}
+
+#adminNoteDetails .responsive-wrapper-padding-bottom-90pct {
+    padding-bottom: 100%;
+}
+
+#adminNoteDetails .NDS2RC {
+    border: 1px solid #d1d1d1;
+    height: 450px;
+    width: 100%;
+    border-radius: 3px;
+    padding: 30px;
+}
+
+#adminNoteDetails .NDS2RC img {
+    height: 50px;
+    width: 50px;
+
+}
+
+#adminNoteDetails .NDS2RT1 {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    color: #333;
+    margin-left: 20px;
+    margin-bottom: 0;
+}
+
+#adminNoteDetails #note-details-section2 .Rating {
+    margin: 0 0 10px 20px;
+}
+
+#adminNoteDetails #note-details-section2 .Rating img {
+    height: 20px;
+    width: 20px;
+}
+
+#adminNoteDetails .NDS2RT2 {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #333;
+    margin-bottom: auto;
+    margin-top: auto;
+    margin-left: 20px;
+}
+
+/*=======================================================
+               Admin Members
+=========================================================*/
+
+
+#adminMembers {
+    padding-top: 100px;
+}
+
+#adminMembers #part1 p {
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 38px;
+    color: #6255a5;
+    margin: 60px 0 30px 0;
+}
+
+#adminMembers #part1 #search {
+    padding-left: 40px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #8a8a8a;
+    width: 322px;
+    height: 50px;
+    border: 1px solid #d1d1d1;
+    margin: 60px 10px 30px 0px;
+}
+
+#adminMembers #part1 .row div:nth-child(2) {
+    text-align: right;
+}
+
+#adminMembers .search-icon-img {
+    position: absolute;
+    right: 435px;
+    top: 77px;
+}
+
+#adminMembers .search-btn {
+    background: #6255a5;
+    width: 117px;
+    height: 50px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 700;
+    margin-bottom: 3px;
+}
+
+#adminMembers #part2 table {
+    width: 100%;
+    height: 444px;
+    border-radius: 3px;
+    margin-bottom: 50px;
+}
+
+#adminMembers #part2 tr {
+    border: 1px solid #d1d1d1;
+    height: 75px;
+}
+
+#adminMembers #part2 th {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    color: #333;
+    padding-left: 10px;
+}
+
+#adminMembers #part2 td {
+    padding-left: 10px;
+}
+
+
+#adminMembers #part2 th:nth-child(1),
+#adminMembers #part2 th:nth-child(6),
+#adminMembers #part2 th:nth-child(7),
+#adminMembers #part2 th:nth-child(8),
+#adminMembers #part2 th:nth-child(9),
+#adminMembers #part2 th:nth-child(10) {
+
+    text-align: center;
+    padding-left: 0;
+}
+
+#adminMembers #part2 td:nth-child(1),
+#adminMembers #part2 td:nth-child(6),
+#adminMembers #part2 td:nth-child(7),
+#adminMembers #part2 td:nth-child(8),
+#adminMembers #part2 td:nth-child(9),
+#adminMembers #part2 td:nth-child(10) {
+
+    padding-left: 0;
+    text-align: center;
+}
+
+#adminMembers #part2 td:nth-child(6),
+#adminMembers #part2 td:nth-child(7),
+#adminMembers #part2 td:nth-child(8),
+#adminMembers #part2 td:nth-child(9) {
+    color: #6255a5;
+}
+
+
+#adminMembers #part2 td:nth-child(6) a,
+#adminMembers #part2 td:nth-child(7) a,
+#adminMembers #part2 td:nth-child(8) a,
+#adminMembers #part2 td:nth-child(9) a {
+    color: inherit;
+}
+
+#adminMembers #part2 tr:hover {
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+#adminMembers #part2 .dots-img {
+    margin-right: 15px;
+}
+
+
+/*=======================================================
+               Admin Member Details
+=========================================================*/
+
+
+#adminMemberDetails {
+    padding-top: 100px;
+}
+
+#adminMemberDetails #section1 #part1 p {
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 38px;
+    color: #6255a5;
+    margin: 60px 0 30px 0;
+}
+
+#adminMemberDetails #section1 #part2 .vl {
+    border-left: 1px solid #d1d1d1;
+    height: 190px;
+}
+
+#adminMemberDetails #section1 #part2 .text1 {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+#adminMemberDetails #section1 #part2 .text2 {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    color: #6255a5;
+    margin-bottom: 15px;
+}
+
+#adminMemberDetails #section2 #part1 p {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 28px;
+    color: #6255a5;
+    margin: 60px 0 30px 0;
+}
+
+
+#adminMemberDetails #section2 #part1 #search {
+    padding-left: 40px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #8a8a8a;
+    width: 322px;
+    height: 50px;
+    border: 1px solid #d1d1d1;
+    margin: 60px 10px 30px 0px;
+}
+
+#adminMemberDetails #section2 #part1 .row div:nth-child(2) {
+    text-align: right;
+}
+
+#adminMemberDetails .search-icon-img {
+    position: absolute;
+    right: 435px;
+    top: 77px;
+}
+
+#adminMemberDetails .search-btn {
+    background: #6255a5;
+    width: 117px;
+    height: 50px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 700;
+    margin-bottom: 3px;
+}
+
+#adminMemberDetails #section2 #part2 table {
+    width: 100%;
+    height: 444px;
+    border-radius: 3px;
+    margin-bottom: 50px;
+}
+
+#adminMemberDetails #section2 #part2 tr {
+    border: 1px solid #d1d1d1;
+    height: 75px;
+}
+
+#adminMemberDetails #section2 #part2 th {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    color: #333;
+    padding-left: 10px;
+}
+
+#adminMemberDetails #section2 #part2 td {
+    padding-left: 10px;
+}
+
+#adminMemberDetails #section2 #part2 th:nth-child(1),
+#adminMemberDetails #section2 #part2 th:nth-child(4),
+#adminMemberDetails #section2 #part2 th:nth-child(5) {
+
+    text-align: center;
+    padding-left: 0;
+}
+
+#adminMemberDetails #section2 #part2 td:nth-child(1),
+#adminMemberDetails #section2 #part2 td:nth-child(4),
+#adminMemberDetails #section2 #part2 td:nth-child(5) {
+
+    padding-left: 0;
+    text-align: center;
+}
+
+#adminMemberDetails #section2 #part2 td:nth-child(2),
+#adminMemberDetails #section2 #part2 td:nth-child(5) {
+    color: #6255a5;
+}
+
+#adminMemberDetails #section2 #part2 td:nth-child(2) a,
+#adminMemberDetails #section2 #part2 td:nth-child(5) a{
+    color: inherit;
+}
+
+#adminMemberDetails #section2 #part2 tr:hover {
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+#adminMemberDetails #section2 #part2 .dots-img {
+    margin-right: 15px;
+}
+
+/*=======================================================
+               Admin Spam Reports
+=========================================================*/
+
+
+#adminSpamReports {
+    padding-top: 100px;
+}
+
+#adminSpamReports #part1 p {
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 38px;
+    color: #6255a5;
+    margin: 60px 0 30px 0;
+}
+
+#adminSpamReports #part1 #search {
+    padding-left: 40px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #8a8a8a;
+    width: 322px;
+    height: 50px;
+    border: 1px solid #d1d1d1;
+    margin: 60px 10px 30px 102px;
+}
+
+#adminSpamReports .search-icon-img {
+    position: absolute;
+    left: 130px;
+    top: 77px;
+}
+
+#adminSpamReports .search-btn {
+    background: #6255a5;
+    width: 117px;
+    height: 50px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 700;
+    margin-bottom: 3px;
+}
+
+#adminSpamReports #part2 table {
+    width: 100%;
+    height: 444px;
+    border-radius: 3px;
+    margin-bottom: 50px;
+}
+
+#adminSpamReports #part2 tr {
+    border: 1px solid #d1d1d1;
+    height: 75px;
+}
+
+#adminSpamReports #part2 th {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    color: #333;
+    padding-left: 10px;
+}
+
+#adminSpamReports #part2 td {
+    padding-left: 10px;
+}
+
+#adminSpamReports #part2 th:nth-child(1),
+#adminSpamReports #part2 th:nth-child(7) {
+
+    text-align: center;
+    padding-left: 0;
+}
+
+#adminSpamReports #part2 td:nth-child(1),
+#adminSpamReports #part2 td:nth-child(7) {
+
+    padding-left: 0;
+    text-align: center;
+}
+
+#adminSpamReports #part2 td:nth-child(3) {
+    color: #6255a5;
+}
+
+#adminSpamReports #part2 tr:hover {
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+#adminSpamReports #part2 .dots-img {
+    margin-right: 15px;
+}
+
+/*=======================================================
+            Admin Manage System Configuration
+=========================================================*/
+
+
+#adminManageSystemConfiguration {
+    padding-top: 150px;
+}
+
+#adminManageSystemConfiguration p {
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 38px;
+    color: #6255a5;
+    margin-bottom: 40px;
+}
+
+#adminManageSystemConfiguration .supportEmail,
+#adminManageSystemConfiguration .supportPhoneNumber,
+#adminManageSystemConfiguration .email,
+#adminManageSystemConfiguration .facebookURL,
+#adminManageSystemConfiguration .twitterURL,
+#adminManageSystemConfiguration .linkedinURL,
+#adminManageSystemConfiguration .defaultImage,
+#adminManageSystemConfiguration .defaultProfilePicture {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#adminManageSystemConfiguration #support-email,
+#adminManageSystemConfiguration #support-phone-number,
+#adminManageSystemConfiguration #email,
+#adminManageSystemConfiguration #facebook-url,
+#adminManageSystemConfiguration #twitter-url,
+#adminManageSystemConfiguration #linkedin-url,
+#adminManageSystemConfiguration #default-image,
+#adminManageSystemConfiguration #default-profile-picture {
+    width: 705px;
+    height: 50px;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #8a8a8a;
+    margin-bottom: 30px;
+}
+
+#adminManageSystemConfiguration #default-image,
+#adminManageSystemConfiguration #default-profile-picture {
+    height: 110px;
+    text-align: center;
+    padding-top: 70px;
+}
+
+#adminManageSystemConfiguration .upload-img {
+    position: absolute;
+    top: 60px;
+    left: 343px;
+}
+
+#adminManageSystemConfiguration .submit-btn {
+    background: #6255a5;
+    width: 150px;
+    height: 50px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 22px;
+    margin: 20px 0 60px 0;
+}
+
+/*=======================================================
+               Admin Notes Under Review
+=========================================================*/
+
+
+#adminNotesUnderReview {
+    padding-top: 100px;
+}
+
+#adminNotesUnderReview #part1 p {
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 38px;
+    color: #6255a5;
+    margin: 60px 0 30px 0;
+}
+
+#adminNotesUnderReview .seller,
+#adminNotesUnderReview #seller {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #333;
+}
+
+#adminNotesUnderReview #seller {
+    width: 174px;
+    height: 50px;
+    border: 1px solid #d1d1d1;
+    margin: 0px 0 20px 0;
+}
+
+#adminNotesUnderReview #part2 .arrow-down-img {
+    position: absolute;
+    top: 20px;
+    left: 160px;
+}
+
+#adminNotesUnderReview #part2 #search {
+    margin-right: 10px;
+    padding-left: 45px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #8a8a8a;
+    width: 322px;
+    height: 50px;
+    border: 1px solid #d1d1d1;
+}
+
+#adminNotesUnderReview #part2 .row:nth-child(2) div:nth-child(2) {
+    text-align: right;
+}
+
+#adminNotesUnderReview .search-icon-img {
+    position: absolute;
+    right: 435px;
+    top: 16px;
+}
+
+#adminNotesUnderReview .search-btn {
+    background: #6255a5;
+    width: 117px;
+    height: 50px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 700;
+    margin-bottom: 3px;
+}
+
+
+#adminNotesUnderReview #part3 table {
+    width: 100%;
+    height: 444px;
+    border-radius: 3px;
+    margin-bottom: 50px;
+}
+
+#adminNotesUnderReview #part3 tr {
+    border: 1px solid #d1d1d1;
+    height: 75px;
+}
+
+#adminNotesUnderReview #part3 th {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    color: #333;
+    padding-left: 10px;
+}
+
+#adminNotesUnderReview #part3 td {
+    padding-left: 10px;
+}
+#adminNotesUnderReview #part3 td:nth-child(4) {
+    padding-right: 20px;
+}
+/*
+#adminNotesUnderReview #part3 td .eye-img {
+    padding-left: 15px;
+}
+*/
+#adminNotesUnderReview #part3 td .approve-btn,
+#adminNotesUnderReview #part3 td .reject-btn,
+#adminNotesUnderReview #part3 td .inreview-btn {
+    background: #28a745;
+    height: 40px;
+    border-radius: 3px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    border-style: none;
+    margin-right: 10px;
+}
+
+#adminNotesUnderReview #part3 td .reject-btn {
+    background: #ff3636;
+}
+
+#adminNotesUnderReview #part3 td .inreview-btn {
+    background: #ccc;
+}
+
+#adminNotesUnderReview #part3 td:nth-child(2) {
+    color: #6522a5;
+}
+
+#adminNotesUnderReview #part3 td:nth-child(2) a {
+    color: inherit;
+    text-decoration: none;
+}
+
+#adminNotesUnderReview #part3 th:nth-child(1),
+#adminNotesUnderReview #part3 th:nth-child(7) {
+    text-align: center;
+
+}
+
+#adminNotesUnderReview #part3 td:nth-child(1),
+#adminNotesUnderReview #part3 td:nth-child(7) {
+
+    text-align: center;
+}
+
+#adminNotesUnderReview #part3 tr:hover {
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+#adminNotesUnderReview #part3 .dots-img {
+    margin-right: 20px;
+}
+
+
+/*=======================================================
+               Admin Published Notes
+=========================================================*/
+
+
+#adminPublishedNotes {
+    padding-top: 100px;
+}
+
+#adminPublishedNotes #part1 p {
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 38px;
+    color: #6255a5;
+    margin: 60px 0 30px 0;
+}
+
+#adminPublishedNotes #part2 .arrow-down-img {
+    position: absolute;
+    top: 20px;
+    left: 160px;
+}
+
+#adminPublishedNotes #part2 #search {
+    margin-right: 10px;
+    padding-left: 45px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #8a8a8a;
+    width: 322px;
+    height: 50px;
+    border: 1px solid #d1d1d1;
+
+}
+
+#adminPublishedNotes #part2 .row:nth-child(2) div:nth-child(2) {
+    text-align: right;
+}
+
+#adminPublishedNotes .search-icon-img {
+    position: absolute;
+    right: 435px;
+    top: 16px;
+}
+
+#adminPublishedNotes .search-btn {
+    background: #6255a5;
+    width: 117px;
+    height: 50px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 700;
+    margin-bottom: 3px;
+}
+
+#adminPublishedNotes .seller,
+#adminPublishedNotes #seller {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #333;
+}
+
+#adminPublishedNotes #seller {
+    width: 174px;
+    height: 50px;
+    border: 1px solid #d1d1d1;
+    margin: 0px 0 20px 0;
+}
+
+#adminPublishedNotes #part3 table {
+    width: 100%;
+    height: 444px;
+    border-radius: 3px;
+    margin-bottom: 50px;
+}
+
+#adminPublishedNotes #part3 tr {
+    border: 1px solid #d1d1d1;
+    height: 75px;
+}
+
+#adminPublishedNotes #part3 th {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    color: #333;
+    padding-left: 10px;
+}
+
+#adminPublishedNotes #part3 td {
+    padding-left: 10px;
+}
+
+#adminPublishedNotes #part3 td .eye-img {
+    padding-left: 15px;
+}
+
+#adminPublishedNotes #part3 td:nth-child(2),
+#adminPublishedNotes #part3 td:nth-child(9) {
+    color: #6522a5;
+}
+
+#adminPublishedNotes #part3 td:nth-child(2) a,
+#adminPublishedNotes #part3 td:nth-child(9) a{
+    color: inherit;
+    text-decoration: none;
+}
+
+#adminPublishedNotes #part3 th:nth-child(1),
+#adminPublishedNotes #part3 th:nth-child(9) {
+    text-align: center;
+
+}
+
+#adminPublishedNotes #part3 td:nth-child(1),
+#adminPublishedNotes #part3 td:nth-child(9) {
+
+    text-align: center;
+}
+
+#adminPublishedNotes #part3 tr:hover {
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+#adminPublishedNotes #part3 .dots-img {
+    margin-right: 20px;
+}
+
+/*=======================================================
+               Admin Downloades Notes
+=========================================================*/
+
+
+#adminDownloadesNotes {
+    padding-top: 100px;
+}
+
+#adminDownloadesNotes #part1 p {
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 38px;
+    color: #6255a5;
+    margin: 60px 0 30px 0;
+}
+
+#adminDownloadesNotes #part2 .arrow-down-img1 {
+    position: absolute;
+    top: 20px;
+    left: 155px;
+}
+
+#adminDownloadesNotes #part2 .arrow-down-img2 {
+    position: absolute;
+    top: 20px;
+    left: 340px;
+}
+
+#adminDownloadesNotes #part2 .arrow-down-img3 {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+}
+
+#adminDownloadesNotes #part2 #search {
+    margin-right: 10px;
+    padding-left: 45px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #8a8a8a;
+    width: 322px;
+    height: 50px;
+    border: 1px solid #d1d1d1;
+
+}
+
+#adminDownloadesNotes #part2 .row:nth-child(2) div:nth-child(2) {
+    text-align: right;
+}
+
+#adminDownloadesNotes .search-icon-img {
+    position: absolute;
+    right: 435px;
+    top: 16px;
+}
+
+#adminDownloadesNotes .search-btn {
+    background: #6255a5;
+    width: 117px;
+    height: 50px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 700;
+    margin-bottom: 3px;
+}
+
+#adminDownloadesNotes .seller,
+#adminDownloadesNotes .note,
+#adminDownloadesNotes .buyer {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #333;
+}
+
+#adminDownloadesNotes .note {
+    padding-right: 144px;
+}
+
+#adminDownloadesNotes .buyer {
+    padding-right: 0px;
+}
+
+#adminDownloadesNotes .seller {
+    padding-right: 138px;
+}
+
+#adminDownloadesNotes #seller,
+#adminDownloadesNotes #note,
+#adminDownloadesNotes #buyer {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #333;
+    padding-left: 20px;
+    width: 170px;
+    height: 50px;
+    border: 1px solid #d1d1d1;
+    margin: 0px 10px 20px 0;
+}
+
+#adminDownloadesNotes #seller,
+#adminDownloadesNotes #note {
+    color: #8a8a8a;
+}
+
+#adminDownloadesNotes #part3 table {
+    width: 100%;
+    height: 444px;
+    border-radius: 3px;
+    margin-bottom: 50px;
+}
+
+#adminDownloadesNotes #part3 tr {
+    border: 1px solid #d1d1d1;
+    height: 75px;
+}
+
+#adminDownloadesNotes #part3 th {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    color: #333;
+    padding-left: 10px;
+}
+
+#adminDownloadesNotes #part3 td {
+    padding-left: 10px;
+}
+
+#adminDownloadesNotes #part3 td .eye-img {
+    margin-left: 15px;
+}
+
+#adminDownloadesNotes #part3 td:nth-child(2) {
+    color: #6522a5;
+}
+
+#adminDownloadesNotes #part3 td:nth-child(2) a {
+    color: inherit;
+    text-decoration: none;
+}
+
+#adminDownloadesNotes #part3 th:nth-child(1),
+#adminDownloadesNotes #part3 th:nth-child(8) {
+    text-align: center;
+
+}
+
+#adminDownloadesNotes #part3 td:nth-child(1),
+#adminDownloadesNotes #part3 td:nth-child(8) {
+
+    text-align: center;
+}
+
+#adminDownloadesNotes #part3 tr:hover {
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+#adminDownloadesNotes #part3 .dots-img {
+    margin-right: 20px;
+}
+
+/*=======================================================
+               Admin Rejected Notes
+=========================================================*/
+
+
+#adminRejectedNotes {
+    padding-top: 100px;
+}
+
+#adminRejectedNotes #part1 p {
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 38px;
+    color: #6255a5;
+    margin: 60px 0 30px 0;
+}
+
+#adminRejectedNotes .seller,
+#adminRejectedNotes #seller {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #333;
+}
+
+#adminRejectedNotes #seller {
+    width: 174px;
+    height: 50px;
+    border: 1px solid #d1d1d1;
+    margin: 0px 0 20px 0;
+}
+
+#adminRejectedNotes #part2 .arrow-down-img {
+    position: absolute;
+    top: 20px;
+    left: 160px;
+}
+
+#adminRejectedNotes #part2 #search {
+    margin-right: 10px;
+    padding-left: 45px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #8a8a8a;
+    width: 322px;
+    height: 50px;
+    border: 1px solid #d1d1d1;
+
+}
+
+#adminRejectedNotes #part2 .row:nth-child(2) div:nth-child(2) {
+    text-align: right;
+}
+
+#adminRejectedNotes .search-icon-img {
+    position: absolute;
+    right: 435px;
+    top: 16px;
+}
+
+#adminRejectedNotes .search-btn {
+    background: #6255a5;
+    width: 117px;
+    height: 50px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 700;
+    margin-bottom: 3px;
+}
+
+
+#adminRejectedNotes #part3 table {
+    width: 100%;
+    height: 444px;
+    border-radius: 3px;
+    margin-bottom: 50px;
+}
+
+#adminRejectedNotes #part3 tr {
+    border: 1px solid #d1d1d1;
+    height: 75px;
+}
+
+#adminRejectedNotes #part3 th {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    color: #333;
+    padding-left: 10px;
+}
+
+#adminRejectedNotes #part3 td {
+    padding-left: 10px;
+}
+
+#adminRejectedNotes #part3 td .eye-img {
+    padding-left: 15px;
+}
+
+#adminRejectedNotes #part3 td:nth-child(2) {
+    color: #6522a5;
+}
+
+
+#adminRejectedNotes #part3 td:nth-child(2) a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+#adminRejectedNotes #part3 th:nth-child(1),
+#adminRejectedNotes #part3 th:nth-child(9) {
+    text-align: center;
+
+}
+
+#adminRejectedNotes #part3 td:nth-child(1),
+#adminRejectedNotes #part3 td:nth-child(9) {
+
+    text-align: center;
+}
+
+#adminRejectedNotes #part3 tr:hover {
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+#adminRejectedNotes #part3 .dots-img {
+    margin-right: 20px;
+}
+
+
+/*=======================================================
+                    Admin User menu
+=========================================================*/
+
+.admin-user-menu-popup {
+    display: inline;
+    position: relative;
+}
+
+.admin-user-menu-popup .admin-user-menu-show {
+    z-index: 9999;
+    display: none;
+    background-color: #fff;
+    width: 200px;
+    position: absolute;
+    right: -80px;
+    top: 30px;
+    text-align: left;
+    padding: 30px;
+    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.11);
+}
+
+.admin-user-menu-popup .admin-user-menu-show p {
+    margin-bottom: 20px;
+}
+
+.admin-user-menu-popup .admin-user-menu-show p a {
+    color: #333;
+    padding: 10px 0;
+    font-weight: 600;
+
+}
+
+.admin-user-menu-popup .admin-user-menu-show p:nth-child(3) {
+    margin-bottom: 0;
+}
+
+.admin-user-menu-popup .admin-user-menu-show p:nth-child(3) a {
+    color: #6255a5;
+}
+
+.admin-user-menu-popup .admin-user-menu-show p a:hover {
+    color: #fff;
+    text-decoration: none;
+    background-color: #6255a5;
+}
+
+/*=======================================================
+                    Admin Notes Popup
+=========================================================*/
+
+.admin-notes-popup {
+    display: inline;
+    position: relative;
+}
+
+.admin-notes-popup a {
+    color: inherit;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 22px;
+}
+
+.admin-notes-popup .admin-notes-popup-show {
+    z-index: 9999;
+    display: none;
+    background-color: #fff;
+    width: 220px;
+    position: absolute;
+    right: -80px;
+    top: 50px;
+    text-align: left;
+    padding: 30px;
+    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.11);
+}
+
+.admin-notes-popup .admin-notes-popup-show p {
+    margin-bottom: 20px;
+}
+
+.admin-notes-popup .admin-notes-popup-show p a {
+    color: #333;
+    padding: 10px 0;
+    font-weight: 600;
+
+}
+
+.admin-notes-popup .admin-notes-popup-show p a:hover {
+    color: #fff;
+    text-decoration: none;
+    background-color: #6255a5;
+}
+
+/*=======================================================
+                    Admin Setting Popup
+=========================================================*/
+
+.admin-setting-popup {
+    display: inline;
+    position: relative;
+}
+
+.admin-setting-popup a {
+    color: inherit;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 22px;
+}
+
+.admin-setting-popup .admin-setting-popup-show {
+    z-index: 9999;
+    display: none;
+    background-color: #fff;
+    width: 300px;
+    position: absolute;
+    right: -120px;
+    top: 50px;
+    text-align: left;
+    padding: 30px;
+    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.11);
+}
+
+.admin-setting-popup .admin-setting-popup-show p {
+    margin-bottom: 20px;
+}
+
+.admin-setting-popup .admin-setting-popup-show p a {
+    color: #333;
+    padding: 10px 0;
+    font-weight: 600;
+
+}
+
+.admin-setting-popup .admin-setting-popup-show p a:hover {
+    color: #fff;
+    text-decoration: none;
+    background-color: #6255a5;
+}
+
+/*=======================================================
+                    Admin Report Popup
+=========================================================*/
+
+.admin-report-popup {
+    display: inline;
+    position: relative;
+}
+
+.admin-report-popup a {
+    color: inherit;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 22px;
+}
+
+.admin-report-popup .admin-report-popup-show {
+    z-index: 9999;
+    display: none;
+    background-color: #fff;
+    width: 200px;
+    position: absolute;
+    right: -80px;
+    top: 50px;
+    text-align: left;
+    padding: 30px;
+    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.11);
+}
+
+.admin-report-popup .admin-report-popup-show p {
+    margin-bottom: 20px;
+}
+
+.admin-report-popup .admin-report-popup-show p a {
+    color: #333;
+    padding: 10px 0;
+    font-weight: 600;
+
+}
+
+.admin-report-popup .admin-report-popup-show p a:hover {
+    color: #fff;
+    text-decoration: none;
+    background-color: #6255a5;
+}
+
+/*=======================================================
+                    Admin popup menu
+=========================================================*/
+
+.admin-menu-popup {
+    display: inline;
+    position: relative;
+}
+
+.admin-menu-popup .admin-menu-show {
+    z-index: 9999;
+    display: none;
+    background-color: #fff;
+    position: absolute;
+    width: 200px;
+    right: 2px;
+    bottom: 10px;
+    text-align: left;
+    padding: 25px 20px 10px 30px;
+    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.11);
+}
+
+.admin-menu-popup .admin-menu-show p a {
+    color: #333;
+}
+
+.admin-menu-popup .admin-menu-show p {
+    padding-bottom: 10px;
+}
+
+/*=======================================================
+                       Admin Footer
+=========================================================*/
+.admin-footer {
+    height: 60px;
+}
+
+.footer-text-left {
+    position: absolute;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    color: #333;
+    left: 80px;
+}
+
+.footer-text-right {
+    position: absolute;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    color: #333;
+    right: -150px;
+
+}
+
+/*** Note Details ***/
+/* Social List */
+ul.social-list {
+    text-align: right;
+    margin-top: 10px;
+}
+
+ul.social-list li {
+    display: inline-block;
+}
+
+ul.social-list li a {
+    width: 36px;
+    height: 36px;
+    display: inline-block;
+    line-height: 36px;
+    background: #6255a5;
+    border-radius: 50%;
+    text-align: center;
+}
