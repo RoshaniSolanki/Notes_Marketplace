@@ -121,7 +121,21 @@ if(isset($_GET['Member_id'])) {
                             <span><img class="arrow-down-img"
                                     src="./images/Admin/Note_Under_Review/down-arrow.png"></span>
                             <select class="form-control" id="seller" name="seller">
-                                <option selected disabled hidden>Khayati</option>
+                                <option selected>Select Seller</option>
+                                <?php 
+                                $show_seller = query("SELECT FirstName, LastName FROM users LEFT JOIN seller_notes ON users.ID = seller_notes.SellerID WHERE seller_notes.Status = 7 OR 
+                                seller_notes.Status = 8");
+                                confirm($show_seller);
+
+                                
+                                while($row = mysqli_fetch_assoc($show_seller)) {
+                                    $seller_name = $row['FirstName']. " " .$row['LastName'];
+                                ?>
+                                <option><?php echo $seller_name; ?></option>
+                                <?php    
+                                }
+                                ?>
+                                
                             </select>
                         </div>
                     </div>

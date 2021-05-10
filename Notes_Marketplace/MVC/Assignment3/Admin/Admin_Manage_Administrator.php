@@ -27,7 +27,7 @@ if(isset($_GET['admin_id'])) {
     $delete_admin = query("UPDATE users SET IsActive = 0 WHERE ID = '$adminID' ");
     confirm($delete_admin);
     redirect("Admin_Manage_Administrator.php");
-    }
+}
 
 ?>
 

@@ -1,3 +1,30 @@
+<?php
+include "../includes/db.php";
+include "../includes/functions.php";
+session_start();
+
+
+if(isset($_POST['search-btn'])) {
+
+    $search_result = $_POST['search'];
+    $select_query = query("SELECT * FROM countries WHERE (Country_Name LIKE '%$search_result%' OR CountryCode LIKE '%$search_result%') ORDER BY CreatedDate DESC");
+    confirm($select_query);
+
+}else {
+
+    $select_query = query("SELECT * FROM countries ORDER BY CreatedDate DESC");
+    confirm($select_query);
+
+}
+if(isset($_GET['countryid'])) {
+
+    $countryid = $_GET['countryid'];
+    
+    $delete_country = query("UPDATE countries SET IsActive = 0 WHERE ID = '$countryid' ");
+    confirm($delete_country);
+    redirect("Admin_Manage_Country.php");
+}
+?>
 <?php include "header.php"; ?>
 
     <!-- Manage Country -->
@@ -13,12 +40,14 @@
                 <div id="part2">
                     <div class="row">
                         <div class="col-md-6">
-                            <a href=""><button class="btn btn-primary add-country-btn">ADD COUNTRY</button></a>
+                            <a href="Admin_Add_Country.php"><button class="btn btn-primary add-country-btn">ADD COUNTRY</button></a>
                         </div>
                         <div class="col-md-6">
+                        <form action="" method="POST">
                             <span><img class="search-icon-img" src="./images/Admin/Manage_Country/search-icon.png"></span>
                             <input type="text" name="search" id="search" placeholder="Search">
-                            <a href=""><button class="btn btn-primary search-btn">SEARCH</button></a>
+                            <button type="submit" name="search-btn" class="btn btn-primary search-btn">SEARCH</button>
+                        </form>    
                         </div>
                     </div>
                 </div>
@@ -39,71 +68,49 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <?php
+                                $i=1;
+                                    while($row = mysqli_fetch_assoc($select_query)) {
+
+                                        $country_id = $row['ID'];
+                                        $country_name = $row['Country_Name'];
+                                        $country_code = $row['CountryCode'];
+                                        $db_date_added = $row['CreatedDate'];
+                                        $added_by_id   = $row['CreatedBy'];
+                                        $isactive = $row['IsActive'];
+
+                                        $db_date_timestamp = strtotime($db_date_added);
+                                        $date_added = date('d-m-Y, H:i', $db_date_timestamp);
+
+                                            //added_by info
+                                            $find_added_by_info = query("SELECT FirstName, LastName FROM users WHERE ID = '{$added_by_id}' ");
+                                            confirm($find_added_by_info);
+
+                                            while($row = mysqli_fetch_assoc($find_added_by_info)) {
+                                                $added_by = $row['FirstName'] . " " . $row['LastName'];
+                                            }
+
+                                            if($isactive == 0){
+                                                $active = 'No';
+                                            }else {
+                                                $active = 'Yes';
+                                            }
+                                    ?>
                                 <tr>
-                                    <td>1</td>
-                                    <td>India</td>
-                                    <td>11</td>
-                                    <td>09-10-2020, 10:10</td>
-                                    <td>Khayati Patel</td>
-                                    <td>Yes</td>
-                                    <td><img class="edit-img"
-                                            src="./images/Admin/Manage_Country/edit.png">
-                                        <img class="delete-img"
-                                            src="./images/Admin/Manage_Country/delete.png">
+                                    <td><?php echo $i; ?></td>
+                                    <td><?php echo $country_name; ?></td>
+                                    <td><?php echo $country_code; ?></td>
+                                    <td><?php echo $date_added ;?></td>
+                                    <td><?php echo $added_by; ?></td>
+                                    <td><?php echo $active; ?></td>
+                                    <td>
+                                        <a href="Admin_Add_Country.php?country_id=<?php echo $country_id;?>"><img class="edit-img"
+                                            src="./images/Admin/Manage_Country/edit.png"></a>
+                                        <a href="Admin_Manage_Country.php?countryid=<?php echo $country_id;?>" onclick="check_delete()"><img class="delete-img"
+                                            src="./images/Admin/Manage_Country/delete.png"></a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Australia</td>
-                                    <td>24</td>
-                                    <td>10-10-2020, 11:25</td>
-                                    <td>Rahul Shah</td>
-                                    <td>Yes</td>
-                                    <td><img class="edit-img"
-                                        src="./images/Admin/Manage_Country/edit.png">
-                                    <img class="delete-img"
-                                        src="./images/Admin/Manage_Country/delete.png">
-                                </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>USA</td>
-                                    <td>04</td>
-                                    <td>11-10-2020, 01:00</td>
-                                    <td>Suman Trivedi</td>
-                                    <td>No</td>
-                                    <td><img class="edit-img"
-                                        src="./images/Admin/Manage_Country/edit.png">
-                                    <img class="delete-img"
-                                        src="./images/Admin/Manage_Country/delete.png">
-                                </td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>United Kingdom</td>
-                                    <td>12</td>
-                                    <td>12-10-2020, 10:10</td>
-                                    <td>Raj Malhotra</td>
-                                    <td>Yes</td>
-                                    <td><img class="edit-img"
-                                        src="./images/Admin/Manage_Country/edit.png">
-                                    <img class="delete-img"
-                                        src="./images/Admin/Manage_Country/delete.png">
-                                </td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Canada</td>
-                                    <td>13</td>
-                                    <td>13-10-2020, 11:25</td>
-                                    <td>Niya Patel</td>
-                                    <td>No</td>
-                                    <td><img class="edit-img"
-                                        src="./images/Admin/Manage_Country/edit.png">
-                                    <img class="delete-img"
-                                        src="./images/Admin/Manage_Country/delete.png">
-                                </td>
-                                </tr>
+                                <?php $i++; } ?>
                                 </tbody>
                             </table>
                         </div>
@@ -113,5 +120,13 @@
             
     </div>
     <!-- Manage Country Ends -->
+
+    <script>
+                
+        function check_delete() {
+            return confirm("Are you sure you want to make this country inactive?");
+        }
+                
+    </script>
 
     <?php include "footer.php"; ?>
