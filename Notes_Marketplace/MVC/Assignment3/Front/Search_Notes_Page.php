@@ -232,42 +232,42 @@ confirm($select_query);
                     <div class="col-md-2 col-sm-4 col-xs-6">
                         <div class="form-group">
                             <select id="type">
-                                <option class="form-control" selected disabled hidden>Select type</option>
+                                <option value="0" class="form-control" selected>Select type</option>
                             </select><span><img class="arrow-down-img" src="./images/search-page/arrow-down.png"></span>
                         </div>
                     </div>
                     <div class="col-md-2 col-sm-4 col-xs-6">
                         <div class="form-group">
                             <select id="category">
-                                <option class="form-control" selected disabled hidden>Select category</option>
+                                <option value="0" class="form-control" selected>Select category</option>
                             </select><span><img class="arrow-down-img" src="./images/search-page/arrow-down.png"></span>
                         </div>
                     </div>
                     <div class="col-md-2 col-sm-4 col-xs-6">
                         <div class="form-group">
                             <select id="university">
-                                <option class="form-control" selected disabled hidden>Select university</option>
+                                <option value="0" class="form-control" selected>Select university</option>
                             </select><span><img class="arrow-down-img" src="./images/search-page/arrow-down.png"></span>
                         </div>
                     </div>
                     <div class="col-md-2 col-sm-4 col-xs-6">
                         <div class="form-group">
                             <select id="course">
-                                <option class="form-control" selected disabled hidden>Select course</option>
+                                <option value="0" class="form-control" selected>Select course</option>
                             </select><span><img class="arrow-down-img" src="./images/search-page/arrow-down.png"></span>
                         </div>
                     </div>
                     <div class="col-md-2 col-sm-4 col-xs-6">
                         <div class="form-group">
                             <select id="country">
-                                <option class="form-control" selected disabled hidden>Select country</option>
+                                <option value="0" class="form-control" selected>Select country</option>
                             </select><span><img class="arrow-down-img" src="./images/search-page/arrow-down.png"></span>
                         </div>
                     </div>
                     <div class="col-md-2 col-sm-4 col-xs-6">
                         <div class="form-group">
                             <select id="rating">
-                                <option class="form-control" selected disabled hidden>Select rating</option>
+                                <option value="0" class="form-control" selected>Select rating</option>
                             </select><span><img class="arrow-down-img" src="./images/search-page/arrow-down.png"></span>
                         </div>
                     </div>

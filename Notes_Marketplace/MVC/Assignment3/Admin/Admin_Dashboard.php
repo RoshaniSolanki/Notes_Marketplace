@@ -3,9 +3,7 @@ include "../includes/db.php";
 include "../includes/functions.php";
 session_start();
 
-    $select_query = query("SELECT seller_notes.*, note_categories.Category_Name FROM seller_notes LEFT JOIN downloads ON seller_notes.ID = downloads.NoteID LEFT JOIN note_categories 
-    ON seller_notes.Category = note_categories.ID WHERE seller_notes.Status = 9");
-    confirm($select_query);
+    
 
     //download note
     if(isset($_GET['Note_id'])){
@@ -97,22 +95,22 @@ session_start();
 ?>
 <?php include "header.php"; ?>
 
-    <!-- Dashboard -->
-    <div id="adminDashboard">
-        <div class="container">
-            <div id="section1">
-                <div id="part1">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h1>Dashboard</h1>
-                        </div>
+<!-- Dashboard -->
+<div id="adminDashboard">
+    <div class="container">
+        <div id="section1">
+            <div id="part1">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>Dashboard</h1>
                     </div>
                 </div>
-                <div id="part2">
-                    <div class="row">
-                        <div class="col-md-4 col-sm-4 col-xs-4 box">
-                            <div class="row">
-                                <div class="col-md-12">
+            </div>
+            <div id="part2">
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 col-xs-4 box">
+                        <div class="row">
+                            <div class="col-md-12">
                                 <?php
 
                                     $find_in_review_count = query("SELECT ID FROM seller_notes WHERE Status = 8");
@@ -121,18 +119,19 @@ session_start();
                                     $in_review_count = mysqli_num_rows($find_in_review_count);
 
                                 ?>
-                                    <p class="text1"><a href="Admin_Notes_Under_Reb_Page.php"><?php echo $in_review_count; ?></a></p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <p class="text2">Numbers of Notes in Review for Publish</p>
-                                </div>
+                                <p class="text1"><a
+                                        href="Admin_Notes_Under_Reb_Page.php"><?php echo $in_review_count; ?></a></p>
                             </div>
                         </div>
-                        <div class="col-md-4 col-sm-4 col-xs-4 box">
-                            <div class="row">
-                                <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p class="text2">Numbers of Notes in Review for Publish</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-4 box">
+                        <div class="row">
+                            <div class="col-md-12">
                                 <?php
 
                                     $find_download_count = query("SELECT DISTINCT NoteID FROM downloads WHERE IsAttachementDownloaded = 1 AND AttachementDownloadedDate >= DATE(NOW()) - INTERVAL 7 DAY ");
@@ -141,18 +140,19 @@ session_start();
                                     $download_count = mysqli_num_rows($find_download_count);
 
                                 ?>
-                                    <p class="text1"><a href="Admin_Downloads_Notes.php"><?php echo $download_count; ?></a></p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <p class="text2">Numbers of New Notes Downloaded<br>(Last 7 days)</p>
-                                </div>
+                                <p class="text1"><a href="Admin_Downloads_Notes.php"><?php echo $download_count; ?></a>
+                                </p>
                             </div>
                         </div>
-                        <div class="col-md-4 col-sm-4 col-xs-4 box">
-                            <div class="row">
-                                <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p class="text2">Numbers of New Notes Downloaded<br>(Last 7 days)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-4 box">
+                        <div class="row">
+                            <div class="col-md-12">
                                 <?php
 
                                     $find_user_count = query("SELECT ID FROM users WHERE CreatedDate >= DATE(NOW()) - INTERVAL 7 DAY ");
@@ -161,181 +161,119 @@ session_start();
                                     $user_count  = mysqli_num_rows($find_user_count );
 
                                 ?>
-                                    <p class="text1"><a href="Admin_Members.php"><?php echo $user_count; ?></a></p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <p class="text2">Numbers of New Registrations<br>(Last 7 days)</p>
-                                </div>
+                                <p class="text1"><a href="Admin_Members.php"><?php echo $user_count; ?></a></p>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div id="section2">
-                <div id="part1">
-                    <div class="row">
-                        <div class="col-md-4 col-sm-3 col-xs-3">
-                            <p>Published Notes</p>
-                        </div>
-                        <div class="col-md-8 col-sm-9 col-xs-9">
-                            <span><img class="search-icon-img" src="./images/Admin/Dashboard/search-icon.png"></span>
-                            <input type="text" name="search" id="search" placeholder="Search">
-                            <a href=""><button class="btn btn-primary search-btn">SEARCH</button></a>
-                            <span><img class="arrow-down-img" src="./images/Admin/Dashboard/down-arrow.png"></span>
-                            <input type="text" id="month" name="month" placeholder="Select month">
-                        </div>
-                    </div>
-                </div>
-                <div id="part2">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="table-responsive">
-                            <table class="table" id="dashboard-table">
-                                <thead>
-                                    <tr>
-                                        <th>SR NO.</th>
-                                        <th>TITLE</th>
-                                        <th>CATEGORY</th>
-                                        <th>ATTACHMENT SIZE</th>
-                                        <th>SELL TYPE</th>
-                                        <th>PRICE</th>
-                                        <th>PUBLISHER</th>
-                                        <th>PUBLISHED DATE</th>
-                                        <th>NUMBER OF<br> DOWNLOADES</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    $i=1;
-                                        while($row = mysqli_fetch_assoc($select_query)) {
-
-                                            $note_id = $row['ID'];
-                                            $note_title = $row['Title'];
-                                            $note_cat = $row['Category_Name'];
-                                            $ispaid = $row['IsPaid'];
-                                            $price = $row['SellingPrice'];
-                                            $seller_id = $row['SellerID'];
-                                            $db_pub_date = $row['PublishedDate'];
-
-                                            $db_date_timestamp = strtotime($db_pub_date);
-                                            $pub_date = date('d-m-Y, H:i', $db_date_timestamp);
-
-                                            //publisher
-                                            $find_publisher_info = query("SELECT FirstName, LastName FROM users WHERE ID = '{$seller_id}' ");
-                                            confirm($find_publisher_info);
-
-                                            while($row = mysqli_fetch_assoc($find_publisher_info)) {
-                                                $publisher = $row['FirstName'] . " " . $row['LastName'];
-                                            }
-
-                                            if($ispaid == 0) {
-                                                $sell_type = 'Free';
-                                            }else {
-                                                $sell_type = 'Paid';
-                                            }
-
-                                            //downloaded notes count
-                                            $downloaded = query("SELECT DISTINCT seller_notes.ID FROM seller_notes LEFT JOIN downloads ON seller_notes.ID = downloads.NoteID WHERE 
-                                            downloads.IsAttachementDownloaded = 1 AND NoteID = $note_id");
-                                            confirm($downloaded);
-
-                                            $download_count = mysqli_num_rows($downloaded);
-
-                                    ?>
-                                <tr>
-                                    <td><?php echo $i; ?></td>
-                                    <td><a href="Admin_Note_Details.php?Note_id=<?php echo $note_id; ?>"><?php echo $note_title; ?></a></td>
-                                    <td><?php echo $note_cat; ?></td>
-                                    <td>10 KB</td>
-                                    <td><?php echo $sell_type; ?></td>
-                                    <td>&#36;<?php echo $price; ?></td>
-                                    <td><?php echo $publisher; ?></td>
-                                    <td><?php echo $pub_date; ?></td>
-                                    <td><a href="Admin_Downloads_Notes.php?download_note_id=<?php echo $note_id;?>"><?php echo $download_count; ?></a></td>
-                                    <td>
-                                        <div class="admin-menu-popup">
-                                            <a class="admin-menu-check" target="#ad<?php echo $i; ?>">
-                                                <img class="dots-img" src="./images/Admin/Dashboard/dots.png">
-                                            </a>
-                                            <div id="ad<?php echo $i; ?>" class="admin-menu-show">
-                                                <p><a href="Admin_Dashboard.php?Note_id=<?php echo $note_id; ?>">Download Note</a></p>
-                                                <p><a href="Admin_Note_Details.php?Note_id=<?php echo $note_id; ?>">View More Details</a></p>
-                                                <p><a href="#" data-title="<?php echo $note_title; ?>"
-                                                            data-id="<?php echo $note_id; ?>"
-                                                            data-sellerid="<?php echo $seller_id; ?>" 
-                                                            id="unpublish" data-toggle="modal"
-                                                            data-target="#unpublishPopup">Unpublish</a></p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-
-                                <!-- unpublish popup -->
-                                <div class="modal" id="unpublishPopup" tabindex="-1" role="dialog"
-                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 style="color:#6255a5;font-weight:600;font-size:16px;" class="modal-title" id="exampleModalLabel">
-                                                            <?php echo $note_title;?></h5>
-                                                        <button type="button" class="close" data-dismiss="modal"
-                                                            aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <form action="" method="POST">
-                                                        <div class="modal-body">
-                                                            <input name="noteid_for_unpublish" id="noteid_for_unpublish"
-                                                                value="" hidden>
-                                                            <input name="notetitle_for_unpublish" id="notetitle_for_unpublish"
-                                                                value="" hidden>
-                                                            <input name="sellerid_for_unpublish" id="sellerid_for_unpublish"
-                                                                value="" hidden>
-                                                            <div class="form-group">
-                                                                <label for="remark">Remarks*</label>
-                                                                <textarea id="remark" class="form-control" name="remark" placeholder="Write remarks" rows="7"
-                                                                    required></textarea>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="modal-footer">
-                                                        <button type="submit" class="btn btn-primary" name="unpublish-btn" style="background:#ff3636";
-                                                                onclick='javascript:Unpublish($(this));return false;'
-                                                                >Unpublish</button>
-                                                            <button type="button" class="btn btn-secondary"
-                                                                data-dismiss="modal">Cancle</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    <?php    
-                                    $i++; }
-                                    ?>
-                                
-                            </tbody>
-                            </table>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p class="text2">Numbers of New Registrations<br>(Last 7 days)</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Dashboard Ends -->
+        <div id="section2">
+            <div id="part1">
+                <div class="row">
+                    <div class="col-md-4 col-sm-3 col-xs-3">
+                        <p>Published Notes</p>
+                    </div>
+                    <div class="col-md-8 col-sm-9 col-xs-9">
+                        <span><img class="search-icon-img" src="./images/Admin/Dashboard/search-icon.png"></span>
+                        <input type="text" name="search" id="search" placeholder="Search">
+                        <button type="submit" name="search-btn" onclick="showdata()"
+                            class="btn btn-primary search-btn">SEARCH</button>
 
-    <script>
-                
-        function Unpublish() {
-            if(confirm("Are you sure you want to Unpublish this note?")) {
-                window.location = anchor.attr("href");
-            } else {
-                txt = "You Pressed Cancel!";
+                        <span><img class="arrow-down-img" src="./images/Admin/Dashboard/down-arrow.png"></span>
+                        <select style="width:200px;" id="month" name="month" onchange="showdata()">
+                            <option value="0" selected>Select month</option>
+                            <?php 
+                               for($i = 0; $i<=5; $i++) {
+                                    $month = date('M Y', strtotime('last day of' . -$i . 'month'));
+                                    $date  = date('Y-m', strtotime('last day of' . -$i . 'month'));
+                                ?>
+                            <option value="<?php echo $date; ?>"><?php echo $month; ?></option>
+                            <?php }
+                                ?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div id="result">
+            
+            
+            </div>
+        </div>
+        </div>
+</div>
+        
+        <!-- Dashboard Ends -->
+
+        <script>
+            function Unpublish() {
+                if (confirm("Are you sure you want to Unpublish this note?")) {
+                    window.location = anchor.attr("href");
+                } else {
+                    txt = "You Pressed Cancel!";
+                }
             }
-        }
+        </script>
 
-    </script>
-<?php include "footer.php";?>
+        <!-- Footer -->
+        <footer class="admin-footer">
+            <hr>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="footer-text-left">Version : 1.1.24</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="footer-text-right">
+                            Copyright &copy; TatvaSoft All rights reserved.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+        </footer>
+        <!-- Footer Ends -->
+
+        <!-- JQuery -->
+        <script src="js/jquery-3.5.1.min.js"></script>
+
+
+        <script type="text/javascript">
+            function showdata(page_current) {
+                let search_month = $("#month").val();
+                let search_result = $("#search").val();
+
+                $.ajax({
+                    url: "Admin_Dashboard_Ajax.php",
+                    method: "GET",
+                    data: {
+                        selected_month: search_month,
+                        selected_search: search_result
+                    },
+                    success: function (search_data) {
+                        $("#result").html(search_data);
+                    }
+                });
+            }
+            $(function () {
+                showdata(1);
+            });
+        </script>
+
+
+        <!-- Bootstrap JS -->
+        <script src="js/bootstrap/bootstrap.min.js"></script>
+
+        <!-- Datatables JS -->
+        <script src="js/datatables.js"></script>
+
+        </body>
+
+        </html>

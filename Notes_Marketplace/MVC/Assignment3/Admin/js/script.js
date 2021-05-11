@@ -207,29 +207,6 @@ $(document).ready(function () {
 =========================================================*/
 
 
-//Dashboard Table
-$(document).ready(function () {
-        
-    var inProgressNotesTable = $('#dashboard-table').DataTable({
-        "order": [[ 4, "desc" ]],
-        "fnRowCallback": function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-            //debugger;
-            var index = iDisplayIndexFull + 1;
-            $("td:first", nRow).html(index);
-            return nRow;
-        },
-        'sDom': '"top"i',
-        "iDisplayLength": 5,
-        "bInfo": false,
-        language: {
-            "zeroRecords": "No record found",
-            paginate: {
-                next: "<img src='./images/Admin/Members/right-arrow.png' alt=''>",
-                previous: "<img src='./images/Admin/Members/left-arrow.png' alt=''>"
-            }
-        }
-    });
-});
 
 /*=======================================================
                       Notes Under Review Page
@@ -245,117 +222,23 @@ $(function () {
 
 });
 
-//Notes under review Table
-$(document).ready(function () {
-        
-    var inProgressNotesTable = $('#notes-under-review-table').DataTable({
-        "order": [[ 4, "desc" ]],
-        "fnRowCallback": function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-            //debugger;
-            var index = iDisplayIndexFull + 1;
-            $("td:first", nRow).html(index);
-            return nRow;
-        },
-        'sDom': '"top"i',
-        "iDisplayLength": 5,
-        "bInfo": false,
-        language: {
-            "zeroRecords": "No record found",
-            paginate: {
-                next: "<img src='./images/Admin/Members/right-arrow.png' alt=''>",
-                previous: "<img src='./images/Admin/Members/left-arrow.png' alt=''>"
-            }
-        }
-    });
-});
 
 /*=======================================================
                 Published Notes Page
 =========================================================*/
  
-//Notes under review Table
-$(document).ready(function () {
-        
-    var inProgressNotesTable = $('#published-notes-table').DataTable({
-        "order": [[ 4, "desc" ]],
-        "fnRowCallback": function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-            //debugger;
-            var index = iDisplayIndexFull + 1;
-            $("td:first", nRow).html(index);
-            return nRow;
-        },
-        'sDom': '"top"i',
-        "iDisplayLength": 5,
-        "bInfo": false,
-        language: {
-            "zeroRecords": "No record found",
-            paginate: {
-                next: "<img src='./images/Admin/Members/right-arrow.png' alt=''>",
-                previous: "<img src='./images/Admin/Members/left-arrow.png' alt=''>"
-            }
-        }
-    });
-});
-
 /*=======================================================
                 Downloads Notes Page
 =========================================================*/
  
      
 
-//Notes under review Table
-$(document).ready(function () {
-        
-    var inProgressNotesTable = $('#downloads-notes-table').DataTable({
-        "order": [[ 4, "desc" ]],
-        "fnRowCallback": function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-            //debugger;
-            var index = iDisplayIndexFull + 1;
-            $("td:first", nRow).html(index);
-            return nRow;
-        },
-        'sDom': '"top"i',
-        "iDisplayLength": 5,
-        "bInfo": false,
-        language: {
-            "zeroRecords": "No record found",
-            paginate: {
-                next: "<img src='./images/Admin/Members/right-arrow.png' alt=''>",
-                previous: "<img src='./images/Admin/Members/left-arrow.png' alt=''>"
-            }
-        }
-    });
-});
 
 /*=======================================================
                 Rejected Notes Page
 =========================================================*/
  
-     
-
-//Notes under review Table
-$(document).ready(function () {
-        
-    var inProgressNotesTable = $('#rejected-notes-table').DataTable({
-        "order": [[ 4, "desc" ]],
-        "fnRowCallback": function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-            //debugger;
-            var index = iDisplayIndexFull + 1;
-            $("td:first", nRow).html(index);
-            return nRow;
-        },
-        'sDom': '"top"i',
-        "iDisplayLength": 5,
-        "bInfo": false,
-        language: {
-            "zeroRecords": "No record found",
-            paginate: {
-                next: "<img src='./images/Admin/Members/right-arrow.png' alt=''>",
-                previous: "<img src='./images/Admin/Members/left-arrow.png' alt=''>"
-            }
-        }
-    });
-});
+    
 
 /*=======================================================
             Manage Administrator

@@ -12,13 +12,6 @@ if(isset($_GET['Member_id'])) {
     confirm($select_query);
 
 }
-
-    $select_query = query("SELECT seller_notes.*, note_categories.Category_Name FROM seller_notes LEFT JOIN note_categories ON seller_notes.Category = note_categories.ID WHERE 
-    Status = 10 ORDER BY seller_notes.CreatedDate DESC");
-    confirm($select_query);
-
-
-
     //download note
     if(isset($_GET['Note_id'])){
         $note_id=$_GET['Note_id'];
@@ -81,131 +74,127 @@ if(isset($_GET['Member_id'])) {
 
 ?>
 <?php include "header.php"; ?>
-    <!-- Rejected Notes-->
-    <div id="adminRejectedNotes">
-        <div class="container">
-            <div id="part1">
-                <div class="row">
-                    <div class="col-md-12">
-                        <p>Rejected Notes</p>
-                    </div>
+<!-- Rejected Notes-->
+<div id="adminRejectedNotes">
+    <div class="container">
+        <div id="part1">
+            <div class="row">
+                <div class="col-md-12">
+                    <p>Rejected Notes</p>
                 </div>
             </div>
-            <div id="part2">
-                <div class="row">
-                    <div class="col-md-12">
-                        <label class="seller" for="seller">Seller</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 col-sm-4 col-xs-4">
-                        <div class="form-group">
-                            <span><img class="arrow-down-img" src="./images/Admin/Rejected_Notes/down-arrow.png"></span>
-                            <select class="form-control" id="seller" name="seller">
-                                <option selected disabled hidden>Rahul Shah</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-sm-8 col-xs-8">
-
-                        <span><img class="search-icon-img" src="./images/Admin/Rejected_Notes/search-icon.png"></span>
-                        <input type="text" name="search" id="search" placeholder="Search">
-                        <a href=""><button class="btn btn-primary search-btn">SEARCH</button></a>
-
-                    </div>
+        </div>
+        <div id="part2">
+            <div class="row">
+                <div class="col-md-12">
+                    <label class="seller" for="seller">Seller</label>
                 </div>
             </div>
-            <div id="part3">
-                <div class="row">
-                    <div class="col-md-12">
-                    <div class="table-responsive">
-                            <table class="table" id="rejected-notes-table">
-                            <thead>
-                                <tr>
-                                    <th>SR NO.</th>
-                                    <th>NOTE TITLE</th>
-                                    <th>CATEGORY</th>
-                                    <th>SELLER</th>
-                                    <th>DATE EDITED</th>
-                                    <th>REJECTED BY</th>
-                                    <th>REMARK</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                            <?php
-                            $i=1;
-                                while($row = mysqli_fetch_assoc($select_query)) {
-                                    $note_id = $row['ID'];
-                                    $note_title = $row['Title'];
-                                    $note_cat  = $row['Category_Name'];
-                                    $seller_id = $row['SellerID'];
-                                    $db_date_edited = $row['CreatedDate'];
-                                    $rejected_by_id = $row['ActionedBy'];
-                                    $remark = $row['AdminRemarks'];
-
-                                    $db_date_timestamp = strtotime($db_date_edited);
-                                    $date_edited = date('d-m-Y, H:i', $db_date_timestamp);
-
-                                //admin info
-                                $find_admin_info = query("SELECT FirstName, LastName FROM users WHERE ID = '{$rejected_by_id}' ");
-                                confirm($find_admin_info);
-
-                                while($row = mysqli_fetch_assoc($find_admin_info )) {
-                                    $rejected_by = $row['FirstName'] . " " . $row['LastName'];
-                                }
-
-                                //seller
-                                $find_seller_info = query("SELECT FirstName, LastName FROM users WHERE ID = '{$seller_id}' ");
-                                confirm($find_seller_info);
-
-                                while($row = mysqli_fetch_assoc($find_seller_info)) {
-                                    $seller = $row['FirstName'] . " " . $row['LastName'];
-                                }
+            <div class="row">
+                <div class="col-md-6 col-sm-4 col-xs-4">
+                    <div class="form-group">
+                        <span><img class="arrow-down-img" src="./images/Admin/Rejected_Notes/down-arrow.png"></span>
+                        <select class="form-control" id="seller" name="seller" onchange="showdata()">
+                            <option value="0" selected>Sellect Seller</option>
+                            <?php 
+                                $show_seller = query("SELECT DISTINCT users.ID, FirstName, LastName FROM users LEFT JOIN seller_notes ON users.ID = seller_notes.SellerID WHERE 
+                                seller_notes.Status = 10");
+                                confirm($show_seller);
 
                                 
-                            ?>
-                                <td><?php echo $i; ?></td>
-                                <td><a href="Admin_Note_Details.php?Note_id=<?php echo $note_id; ?>"><?php echo $note_title; ?></a></td>
-                                <td><?php echo $note_cat; ?></td>
-                                <td><?php echo $seller; ?><span><a href="Admin_Member_Details.php?Member_id=<?php echo $seller_id;?>"><img class="eye-img"
-                                            src="./images/Admin/Rejected_Notes/eye.png"></a></span></td>
-                                <td><?php echo $date_edited; ?></td>
-                                <td><?php echo $rejected_by; ?></td>
-                                <td><?php echo $remark; ?></td>
-                                <td>
-                                    <div class="admin-menu-popup">
-                                        <a class="admin-menu-check" target="#arn<?php echo $i; ?>">
-                                            <img class="dots-img" src="./images/Admin/Rejected_Notes/dots.png">
-                                        </a>
-                                        <div id="arn<?php echo $i; ?>" class="admin-menu-show">
-                                            <p><a style="color:inherit;text-decoration:none;" href="Admin_Rejected_Notes.php?approve_noteid=<?php echo $note_id;?>" onclick='javascript:Approve($(this));return false;'>Approve</a></p>
-                                            <p><a href="Admin_Rejected_Notes.php?Note_id=<?php echo $note_id; ?>">Download Notes</a></p>
-                                            <p><a href="Admin_Note_Details.php?Note_id=<?php echo $note_id; ?>">View More Details</a></p>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <?php $i++; }?>
-                        </tbody>
-                        </table>
+                                while($row = mysqli_fetch_assoc($show_seller)) {
+                                    $seller_name = $row['FirstName']. " " .$row['LastName'];
+                                    $seller_id = $row['ID'];
+                                ?>
+                            <option value="<?php echo $seller_id; ?>"><?php echo $seller_name; ?></option>
+                            <?php    
+                                }
+                                ?>
+                        </select>
                     </div>
-                    </div>
+                </div>
+                <div class="col-md-6 col-sm-8 col-xs-8">
+
+                    <span><img class="search-icon-img" src="./images/Admin/Rejected_Notes/search-icon.png"></span>
+                    <input type="text" name="search" id="search" placeholder="Search">
+                    <button type="submit" class="btn btn-primary search-btn" onclick="showdata()">SEARCH</button>
+
                 </div>
             </div>
         </div>
 
-        <script>
+        <div id="result">
             
-    function Approve() {
-        if(confirm("If you approve the notes – System will publish the notes over portal. Please press yes to continue.")) {
-            //txt = "You Pressed Ok!";
-            window.location = anchor.attr("href");
-        } else {
-            txt = "You Pressed Cancel!";
+            
+        </div>
+        
+    </div>
+</div>
+    <script>
+        function Approve() {
+            if (confirm(
+                    "If you approve the notes – System will publish the notes over portal. Please press yes to continue."
+                    )) {
+                //txt = "You Pressed Ok!";
+                window.location = anchor.attr("href");
+            } else {
+                txt = "You Pressed Cancel!";
+            }
         }
-    }
-        </script>
-        <!-- Rejected Notes Ends -->
-        <?php include "footer.php"; ?>
+    </script>
+    <!-- Rejected Notes Ends -->
+    <!-- Footer -->
+    <footer class="admin-footer">
+        <hr>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="footer-text-left">Version : 1.1.24</p>
+                </div>
+                <div class="col-md-6">
+                    <p class="footer-text-right">
+                        Copyright &copy; TatvaSoft All rights reserved.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+    </footer>
+    <!-- Footer Ends -->
+
+    <!-- JQuery -->
+    <script src="js/jquery-3.5.1.min.js"></script>
+
+    <script type="text/javascript">
+            function showdata(page_current) {
+                let search_seller = $("#seller").val();
+                let search_result = $("#search").val();
+
+                $.ajax({
+                    url: "Admin_Rejected_Notes_Ajax.php",
+                    method: "GET",
+                    data: {
+                        selected_seller: search_seller,
+                        selected_search: search_result
+                    },
+                    success: function (search_data) {
+                        $("#result").html(search_data);
+                    }
+                });
+            }
+            $(function () {
+                showdata(1);
+            });
+
+</script>
+
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+
+    <!-- Datatables JS -->
+    <script src="js/datatables.js"></script>
+
+    </body>
+
+    </html>
