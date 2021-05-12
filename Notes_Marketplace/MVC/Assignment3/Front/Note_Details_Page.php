@@ -442,18 +442,33 @@ if(isset($_POST['confirm-yes-btn'])) {
                             </div>
                             <div class="col-md-8 col-sm-8 col-xs-6">
                                 <div class="row">
-
+                                    <?php 
+                                     $find_rating = query("SELECT AVG(Ratings) as rating FROM seller_notes_review WHERE NoteID = '{$note_id}' ");
+                                     confirm($find_rating);
+ 
+                                     $find_rating_count = query("SELECT ID FROM seller_notes_review WHERE NoteID = '{$note_id}' ");
+                                     confirm($find_rating_count);
+ 
+                                     $review_count = mysqli_num_rows($find_rating_count);
+ 
+                                     while($row = mysqli_fetch_assoc($find_rating)) {
+                                         $avg_rating = $row['rating'];
+                                     }
+ 
+                                    ?>
                                     <div class="col-md-6  col-sm-6 col-xs-6">
                                         <div class="Rating">
-                                            <img src="./images/Note-Details/star.png" class="Rating-Star">
-                                            <img src="./images/Note-Details/star.png" class="Rating-Star">
-                                            <img src="./images/Note-Details/star.png" class="Rating-Star">
-                                            <img src="./images/Note-Details/star.png" class="Rating-Star">
-                                            <img src="./images/Note-Details/star-white.png" class="Rating-Star">
+                                            <?php 
+                                                for($i=1;$i<=$avg_rating;$i++) {?>
+                                                    <img src="./images/Note-Details/star.png" class="Rating-Star">
+                                            <?php    } 
+                                                for($i=1;$i<=(5-$avg_rating);$i++) { ?>
+                                                    <img src="./images/Note-Details/star-white.png" class="Rating-Star">
+                                            <?php }?>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-sm-6 col-xs-6">
-                                        <p class="NDS1RT2">100 Reviews</p>
+                                        <p class="NDS1RT2"><?php echo $review_count; ?> Reviews</p>
                                     </div>
 
                                 </div>
@@ -461,7 +476,17 @@ if(isset($_POST['confirm-yes-btn'])) {
                         </div>
                         <div class="row">
                             <div class="col-md-6  col-sm-6 col-xs-12">
-                                <p class="NDS1RT3">5 Users marked this note as inappropriate</p>
+                                <?php 
+                                $find_user_count = query("SELECT DISTINCT ReportedByID FROM seller_notes_reported_issues WHERE NoteID = '{$note_id}' ");
+                                confirm($find_user_count);
+
+                                $user_count = mysqli_num_rows($find_user_count);
+
+                                if($user_count){?>
+                                    <p class="NDS1RT3"><?php  echo $user_count; ?> Users marked this note as inappropriate</p>
+                               <?php }
+                                ?>
+                                
                             </div>
                                   
                         </div>
@@ -492,79 +517,47 @@ if(isset($_POST['confirm-yes-btn'])) {
                             </div>
                         </div>
                     </div>
-                    <?php } ?> 
+                    
                     <div class="col-md-6 col-sm-12">
                         <p class="NDS2RMH">Customer Reviews</p>
                         <div class="NDS2RC">
                             <div class="row">
                                 <div class="col-md-12 col-sm-12">
                                     <div class="row">
-                                        <div class="col-md-1 col-sm-1 col-xs-1">
-                                            <img src="./images/Note-Details/reviewer-1.png">
-                                        </div>
-                                        <div class="col-md-11 col-sm-11 col-xs-11">
-                                            <p class="NDS2RT1">Richard Brown</p>
-                                            <div class="Rating">
-                                                <img src="./images/Note-Details/star.png" class="Rating-Star">
-                                                <img src="./images/Note-Details/star.png" class="Rating-Star">
-                                                <img src="./images/Note-Details/star.png" class="Rating-Star">
-                                                <img src="./images/Note-Details/star.png" class="Rating-Star">
-                                                <img src="./images/Note-Details/star-white.png" class="Rating-Star">
-                                            </div>
-                                            <p class="NDS2RT2">Lorem ipsum is simply dummy text of the printing and
-                                                typesetting industry.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12 col-sm-12">
-                                    <div class="row">
-                                        <div class="col-md-1 col-sm-1 col-xs-1">
-                                            <img src="./images/Note-Details/reviewer-2.png">
-                                        </div>
-                                        <div class="col-md-11 col-sm-11 col-xs-11">
-                                            <p class="NDS2RT1">Alice Ortiaz</p>
-                                            <div class="Rating">
-                                                <img src="./images/Note-Details/star.png" class="Rating-Star">
-                                                <img src="./images/Note-Details/star.png" class="Rating-Star">
-                                                <img src="./images/Note-Details/star.png" class="Rating-Star">
-                                                <img src="./images/Note-Details/star.png" class="Rating-Star">
-                                                <img src="./images/Note-Details/star-white.png" class="Rating-Star">
-                                            </div>
-                                            <p class="NDS2RT2">Lorem ipsum is simply dummy text of the printing and
-                                                typesetting industry.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12 col-sm-12">
-                                    <div class="row">
-                                        <div class="col-md-1 col-sm-1 col-xs-1">
-                                            <img src="./images/Note-Details/reviewer-3.png">
-                                        </div>
-                                        <div class="col-md-11 col-sm-11 col-xs-11">
-                                            <p class="NDS2RT1">Sara Passmore</p>
-                                            <div class="Rating">
-                                                <img src="./images/Note-Details/star.png" class="Rating-Star">
-                                                <img src="./images/Note-Details/star.png" class="Rating-Star">
-                                                <img src="./images/Note-Details/star.png" class="Rating-Star">
-                                                <img src="./images/Note-Details/star.png" class="Rating-Star">
-                                                <img src="./images/Note-Details/star-white.png" class="Rating-Star">
-                                            </div>
-                                            <p class="NDS2RT2">Lorem ipsum is simply dummy text of the printing and
-                                                typesetting industry.
-                                            </p>
-                                        </div>
-                                    </div>
+                                    <?php 
+                                        $find_cutomers_review = query("SELECT Comments, Ratings, users.FirstName, users.LastName, user_profile.ProfilePicture FROM seller_notes_review LEFT JOIN 
+                                        users ON seller_notes_review.ReviewedByID = users.ID LEFT JOIN user_profile ON user_profile.UserID = users.ID WHERE 
+                                        seller_notes_review.NoteID = '{$note_id}' ");
+                                        confirm($find_cutomers_review);
 
+                                        while($row = mysqli_fetch_assoc($find_cutomers_review)) {
+                                            $rating = $row['Ratings'];
+                                            $comments= $row['Comments'];
+                                            $name = $row['FirstName']. " " . $row['LastName'];
+                                            $pro_pic = $row['ProfilePicture'];
+                                        
+                                        ?>
+                                    <div class="col-md-1 col-sm-1 col-xs-1">
+                                            <img src="<?php echo $pro_pic; ?>">
+                                        </div>
+                                        <div class="col-md-11 col-sm-11 col-xs-11">
+                                            <p class="NDS2RT1"><?php echo $name; ?></p>
+                                            <div class="Rating">
+                                            <?php
+                                                for($i=1;$i<=$rating;$i++) {?>
+                                                <img src="./images/search-page/star.png" class="Rating-Star">
+                                                <?php    } 
+                                                for($i=1;$i<=(5-$rating);$i++) { ?>
+                                                <img src="./images/search-page/star-white.png" class="Rating-Star">
+                                                <?php }?>
+                                            </div>
+                                            <p class="NDS2RT2"><?php echo $comments; ?></p>
+                                        </div>
+                                    </div>
+                                    <hr>
                                 </div>
                             </div>
+                            <?php } } ?>
                         </div>
                     </div>
                 </div>

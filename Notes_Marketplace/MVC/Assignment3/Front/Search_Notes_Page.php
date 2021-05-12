@@ -2,47 +2,45 @@
 include "../includes/db.php";
 include "../includes/functions.php";
 
-$select_query = query("SELECT * FROM seller_notes");
-confirm($select_query);
 
-/*while($row = mysqli_fetch_assoc($select_query)) {
-    $note_id = $row['ID'];
-}*/
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0 ,user-scalable=no">
-    
-        <title>Document</title>
-    
-        <!-- Google Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
-    
-        <!-- Custom CSS -->
-        <link rel="stylesheet" href="css/style.css">
-    
-        <!-- Responsive CSS -->
-        <link rel="stylesheet" href="css/responsive.css">
-    
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0 ,user-scalable=no">
+
+    <title>Document</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="css/responsive.css">
+
+</head>
 
 <body>
     <section id="search-notes-page">
-    <!-- Header -->
-    <?php 
+        <!-- Header -->
+        <?php 
     if(isset($_SESSION['userid'])) {
         echo "heloo";
         echo $_SESSION['userid'];
-     ?>   
+     ?>
 
-<header>
+        <header>
             <nav class="navbar navbar-fixed-top">
                 <div class="container-fluid">
                     <div class="site-nav-wrapper">
@@ -134,277 +132,298 @@ confirm($select_query);
             </nav>
         </header>
 
-    <?php
+        <?php
     }else {?>
 
-    <header>
-        <nav class="navbar navbar-fixed-top">
-            <div class="container-fluid">
-                <div class="site-nav-wrapper">
+        <header>
+            <nav class="navbar navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="site-nav-wrapper">
 
-                    <div class="navbar-header">
+                        <div class="navbar-header">
 
-                        <!-- Mobile Menu Open Button -->
-                        <span id="mobile-nav-open-btn">&#9776;</span>
+                            <!-- Mobile Menu Open Button -->
+                            <span id="mobile-nav-open-btn">&#9776;</span>
 
-                        <!-- Logo -->
-                        <a class="navbar-brand" href="Home_Page.php">
-                            <img src="images/home/logo.png" alt="logo">
-                        </a>
-                    </div>
-
-                    <!-- Main Menu -->
-                    <div class="container">
-                        <div class="collapse navbar-collapse">
-                            <ul class="nav navbar-nav pull-right">
-                                <li><a href="Search_Notes_Page.php">Search Notes</a></li>
-                                <li><a href="Dashboard.php">Sell Your Notes</a></li>
-                                <li><a href="FAQ.php">FAQ</a></li>
-                                <li><a href="Contact_Us.php">Contact Us</a></li>
-                                <li><a href="Login.php">
-                                        <button class="btn btn-primary login-btn">Login</button>
-                                    </a></li>
-                            </ul>
+                            <!-- Logo -->
+                            <a class="navbar-brand" href="Home_Page.php">
+                                <img src="images/home/logo.png" alt="logo">
+                            </a>
                         </div>
-                    </div>
 
-                    <!-- Mobile Menu -->
-                    <div id="mobile-nav">
+                        <!-- Main Menu -->
+                        <div class="container">
+                            <div class="collapse navbar-collapse">
+                                <ul class="nav navbar-nav pull-right">
+                                    <li><a href="Search_Notes_Page.php">Search Notes</a></li>
+                                    <li><a href="Dashboard.php">Sell Your Notes</a></li>
+                                    <li><a href="FAQ.php">FAQ</a></li>
+                                    <li><a href="Contact_Us.php">Contact Us</a></li>
+                                    <li><a href="Login.php">
+                                            <button class="btn btn-primary login-btn">Login</button>
+                                        </a></li>
+                                </ul>
+                            </div>
+                        </div>
 
-                        <!-- Logo -->
-                        <a href="Home_Page.html">
-                            <img class="logo" src="images/home/logo.png" alt="logo">
-                        </a>
+                        <!-- Mobile Menu -->
+                        <div id="mobile-nav">
 
-                        
-                        <!-- Mobile Menu close Button -->
-                        <span id="mobile-nav-close-btn">&times;</span>
-                        
-                        <div id="mobile-nav-content">
-                            <ul class="nav">
-                                <li>
-                                    <a href="Search_Notes_Page.php">Search Notes</a>
-                                </li>
-                                <li>
-                                    <a href="Dashboard.php">Sell Your Notes</a>
-                                </li>
-                                <li>
-                                    <a href="FAQ.php">FAQ</a>
-                                </li>
+                            <!-- Logo -->
+                            <a href="Home_Page.html">
+                                <img class="logo" src="images/home/logo.png" alt="logo">
+                            </a>
 
-                                <li>
-                                    <a href="Contact_Us.php">Contact Us</a>
-                                </li>
-                                <li>
-                                    <a href="Login.php">
-                                        <button class="btn btn-primary login-btn">Login</button>
-                                    </a>
-                                </li>
-                            </ul>
+
+                            <!-- Mobile Menu close Button -->
+                            <span id="mobile-nav-close-btn">&times;</span>
+
+                            <div id="mobile-nav-content">
+                                <ul class="nav">
+                                    <li>
+                                        <a href="Search_Notes_Page.php">Search Notes</a>
+                                    </li>
+                                    <li>
+                                        <a href="Dashboard.php">Sell Your Notes</a>
+                                    </li>
+                                    <li>
+                                        <a href="FAQ.php">FAQ</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="Contact_Us.php">Contact Us</a>
+                                    </li>
+                                    <li>
+                                        <a href="Login.php">
+                                            <button class="btn btn-primary login-btn">Login</button>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </nav>
-    </header>
-    
-   <?php }
+            </nav>
+        </header>
+
+        <?php }
     ?>
-    <!-- Header Ends -->
-    <div class="search-page-img">
-        <img src="images/search-page/banner-with-overlay.jpg">
-        <div class="search-page-img-text">Search Notes</div>
-    </div>
-    <!-- Section1 -->
-    <div class="search-page-section1">
-        <div class="container">
-            <p class="SPS1H">Search and Filter notes</p>
-            <div class="SPS1C">
-                <div class="row">
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                        <div class="form-group">
-                            <input type="text" class="form-control" name="search" id="search"
-                                placeholder="Search notes here..."><span><img class="search-icon-img" src="./images/search-page/search-icon.png"></span>
+        <!-- Header Ends -->
+        <div class="search-page-img">
+            <img src="images/search-page/banner-with-overlay.jpg">
+            <div class="search-page-img-text">Search Notes</div>
+        </div>
+        <!-- Section1 -->
+        <div class="search-page-section1">
+            <div class="container">
+                <p class="SPS1H">Search and Filter notes</p>
+                <div class="SPS1C">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="search" id="search" onchange="showdata()"
+                                    placeholder="Search notes here...">
+                                <span><img class="search-icon-img" src="./images/search-page/search-icon.png"></span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="form-group">
-                            <select id="type">
-                                <option value="0" class="form-control" selected>Select type</option>
-                            </select><span><img class="arrow-down-img" src="./images/search-page/arrow-down.png"></span>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="form-group">
-                            <select id="category">
-                                <option value="0" class="form-control" selected>Select category</option>
-                            </select><span><img class="arrow-down-img" src="./images/search-page/arrow-down.png"></span>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="form-group">
-                            <select id="university">
-                                <option value="0" class="form-control" selected>Select university</option>
-                            </select><span><img class="arrow-down-img" src="./images/search-page/arrow-down.png"></span>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="form-group">
-                            <select id="course">
-                                <option value="0" class="form-control" selected>Select course</option>
-                            </select><span><img class="arrow-down-img" src="./images/search-page/arrow-down.png"></span>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="form-group">
-                            <select id="country">
-                                <option value="0" class="form-control" selected>Select country</option>
-                            </select><span><img class="arrow-down-img" src="./images/search-page/arrow-down.png"></span>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="form-group">
-                            <select id="rating">
-                                <option value="0" class="form-control" selected>Select rating</option>
-                            </select><span><img class="arrow-down-img" src="./images/search-page/arrow-down.png"></span>
-                        </div>
-                    </div>
+                    <div class="row">
+                        <div class="col-md-2 col-sm-4 col-xs-6">
+                            <div class="form-group">
+                                <select id="type" onchange="showdata()">
+                                    <option value="0" class="form-control" selected>Select type</option>
+                                    <?php 
+                                $select_type = query("SELECT * FROM note_types WHERE IsActive = 1");
+                                confirm($select_type);
 
+                                while($t_row = mysqli_fetch_assoc($select_type)) {
+                                    $type = $t_row['Type_Name'];
+                                    $type_id = $t_row['ID'];
+                                ?>
+                                    <option value="<?php echo $type_id;?>"><?php echo $type; ?></option>
+                                    <?php    
+                                }
+                                ?>
+                                </select><span><img class="arrow-down-img"
+                                        src="./images/search-page/arrow-down.png"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-4 col-xs-6">
+                            <div class="form-group">
+                                <select id="category" onchange="showdata()">
+                                    <option value="0" class="form-control" selected>Select category</option>
+
+                                    <?php 
+                                $select_category = query("SELECT * FROM note_categories WHERE IsActive = 1");
+                                confirm($select_category);
+
+                                while($row = mysqli_fetch_assoc($select_category)) {
+                                    $category = $row['Category_Name'];
+                                    $cat_id = $row['ID'];
+                                ?>
+                                    <option value="<?php echo $cat_id;?>"><?php echo $category; ?></option>
+                                    <?php    
+                                }
+                                ?>
+
+                                </select><span><img class="arrow-down-img"
+                                        src="./images/search-page/arrow-down.png"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-4 col-xs-6">
+                            <div class="form-group">
+                                <select id="university" onchange="showdata()">
+                                    <option value="0" class="form-control" selected>Select university</option>
+
+                                    <?php 
+                                $select_university = query("SELECT DISTINCT UniversityName FROM seller_notes");
+                                confirm($select_university);
+
+                                while($row = mysqli_fetch_assoc($select_university)) {
+                                    $university = $row['UniversityName'];
+                                ?>
+                                    <option value="<?php echo $university;?>"><?php echo $university; ?></option>
+                                    <?php    
+                                }
+                                ?>
+
+                                </select><span><img class="arrow-down-img"
+                                        src="./images/search-page/arrow-down.png"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-4 col-xs-6">
+                            <div class="form-group">
+                                <select id="course" onchange="showdata()">
+                                    <option value="0" class="form-control" selected>Select course</option>
+
+                                <?php 
+                                $select_course = query("SELECT DISTINCT Course FROM seller_notes");
+                                confirm($select_course);
+
+                                while($row = mysqli_fetch_assoc($select_course)) {
+                                    $course = $row['Course'];
+                                ?>
+                                    <option value="<?php echo $course;?>"><?php echo $course; ?></option>
+                                    <?php    
+                                }
+                                ?>
+
+                                </select><span><img class="arrow-down-img"
+                                        src="./images/search-page/arrow-down.png"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-4 col-xs-6">
+                            <div class="form-group">
+                                <select id="country" onchange="showdata()">
+                                    <option value="0" class="form-control" selected>Select country</option>
+
+                                    <?php 
+                                $select_country = query("SELECT * FROM countries WHERE IsActive = 1");
+                                confirm($select_country);
+
+                                while($row = mysqli_fetch_assoc($select_country)) {
+                                    $country = $row['Country_Name'];
+                                    $country_id = $row['ID'];
+                                ?>
+                                    <option value="<?php echo $country_id;?>"><?php echo $country; ?></option>
+                                    <?php    
+                                }
+                                ?>
+
+                                </select><span><img class="arrow-down-img"
+                                        src="./images/search-page/arrow-down.png"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-4 col-xs-6">
+                            <div class="form-group">
+                                <select id="rating" onchange="showdata()">
+                                    <option value="0" class="form-control" selected>Select rating</option>
+
+                                    <?php 
+                                        for($i = 1; $i <=5 ; $i++) {?>
+                                        <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                                    <?php    }
+                                    ?>
+
+                                </select><span><img class="arrow-down-img"
+                                        src="./images/search-page/arrow-down.png"></span>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Section 2-->
-    <div class="search-page-section2">
-        <div class="container">
-            <p class="SPS2MH">Total 18 notes</p>
-            <div class="row">
-               <?php 
-               while($row = mysqli_fetch_assoc($select_query)) {
-                $note_id = $row['ID'];
-                $title = $row['Title'];
-                $university = $row['UniversityName'];
-                $country_id = $row['Country'];
-                $no_of_pages = $row['NumberOfPages'];
-                $db_published_date = $row['PublishedDate'];
-                $db_pub_date_timestamp = strtotime($db_published_date);
-                $published_date = date('D, M d Y', $db_pub_date_timestamp); 
 
-                $get_country = query("SELECT Country_Name FROM countries WHERE ID = '$country_id' ");
-                confirm($get_country);
-
-                while($crow = mysqli_fetch_assoc($get_country)) {
-                    $country = $crow['Country_Name'];
-                }    
-                ?>
+        <div id="result">
             
-                <div class="col-md-4 col-sm-6 col-xs-12">
-                    <img class="search1-img" src="./images/search-page/search1.png">
-                    <div id="search1">
-                        <a href="Note_details_Page.php?Note_id=<?php echo $note_id; ?>"><p class="SPS2H"><?php echo $title; ?></p></a>
-                        <div class="row">
-                            <div class="col-md-2 col-sm-2 col-xs-3">
-                                <img class="university-img" src="./images/search-page/university.png">
-                            </div>
-                            <div class="col-md-10 col-sm-10 col-xs-9">
-                                <p class="SPS2T1"><?php echo $university; ?>, <?php echo $country; ?></p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2 col-sm-2 col-xs-3">
-                                <img class="page-img" src="./images/search-page/pages.png">
-                            </div>
-                            <div class="col-md-10 col-sm-10 col-xs-9">
-                                <p class="SPS2T2"><?php echo $no_of_pages; ?> Pages</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2 col-sm-2 col-xs-3">
-                                <img class="date-img" src="./images/search-page/date.png">
-                            </div>
-                            <div class="col-md-10 col-sm-10 col-xs-9">
-                                <p class="SPS2T3"><?php echo $published_date; ?></p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2 col-sm-2 col-xs-3">
-                                <img class="flag-img" src="./images/search-page/flag.png">
-                            </div>
-                            <div class="col-md-10 col-sm-10 col-xs-9">
-                                <p class="SPS2T4">5 Users marked this note as inappropriate</p>
-                            </div>
-                        </div>
+            
+        </div>
+        
+                <!-- Footer -->
+                <footer class="footer">
+                    <hr>
+                    <div class="container">
                         <div class="row">
                             <div class="col-md-6 col-sm-6 col-xs-6">
-                                <div class="Rating">
-                                    <img src="./images/search-page/star.png" class="Rating-Star">
-                                    <img src="./images/search-page/star.png" class="Rating-Star">
-                                    <img src="./images/search-page/star.png" class="Rating-Star">
-                                    <img src="./images/search-page/star.png" class="Rating-Star">
-                                    <img src="./images/search-page/star.png" class="Rating-Star">
-                                  </div>
+                                <p class="footer-text">
+                                    Copyright &copy; TatvaSoft All Rights Reserved.
+                                </p>
                             </div>
-                            <div class="col-md-6 col-sm-6 col-xs-6"><p class="SPS2T5">100 reviews</p></div>
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <ul class="social-list">
+                                    <li><a href="#"><img src="images/home/facebook.png"></a></li>
+                                    <li><a href="#"><img src="images/home/twitter.png"></a></li>
+                                    <li><a href="#"><img src="images/home/linkedin.png"></a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div><?php }?>
-    </div>
-    <!-- Pagination-->
-    <center>
-        <div class="pagination-section">
-                <ul class="pagination">
-                    <li class="page-item">
-                        <a class="page-link" href="#">
-                            <img class="left-arrow-img" src="./images/search-page/left-arrow.png">
-                        </a>
-                    </li>
-                    <li class="page-item"><a  id="one" class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a id="two" class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a id="three" class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a  id="four" class="page-link" href="#">4</a></li>
-                    <li class="page-item"><a id="five" class="page-link" href="#">5</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">
-                            <img class="right-arrow-img" src="./images/search-page/right-arrow.png">
-                        </a>
-                    </li>
-                </ul>
-        </div>
-    </center>
-    <!-- Pagination Ends -->
-    <!-- Footer -->
-    <footer class="footer">
-        <hr>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-sm-6 col-xs-6">
-                    <p class="footer-text">
-                        Copyright &copy; TatvaSoft All Rights Reserved.
-                    </p>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-6">
-                    <ul class="social-list">
-                        <li><a href="#"><img src="images/home/facebook.png"></a></li>
-                        <li><a href="#"><img src="images/home/twitter.png"></a></li>
-                        <li><a href="#"><img src="images/home/linkedin.png"></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
 
-    </footer>
-    <!-- Footer Ends -->
-    <!-- JQuery -->
-    <script src="js/jquery-3.5.1.min.js"></script>
+                </footer>
+                <!-- Footer Ends -->
+                <!-- JQuery -->
+                <script src="js/jquery-3.5.1.min.js"></script>
 
-    <!-- Bootstrap JS -->
-    <script src="js/bootstrap/bootstrap.min.js"></script>
+                <script type="text/javascript">
+                    function showdata(page_current) {
+                        let search_type = $("#type").val();
+                        let search_category = $("#category").val();
+                        let search_university = $("#university").val();
+                        let search_course = $("#course").val();
+                        let search_country = $("#country").val();
+                        let search_rating = $("#rating").val();
+                        let search_result = $("#search").val();
 
-    <!-- Custom JS -->
-    <script src="js/script.js"></script>
-</section>
+                        $.ajax({
+                            url: "Search_Notes_Page_Ajax.php",
+                            method: "GET",
+                            data: {
+                                selected_type: search_type,
+                                selected_category: search_category,
+                                selected_university: search_university,
+                                selected_course: search_course,
+                                selected_country: search_country,
+                                selected_rating: search_rating,
+                                selected_search: search_result
+                            },
+                            success: function (search_data) {
+                                $("#result").html(search_data);
+                            }
+                        });
+                    }
+                    $(function () {
+                        showdata(1);
+                    });
+                </script>
+
+
+                <!-- Bootstrap JS -->
+                <script src="js/bootstrap/bootstrap.min.js"></script>
+
+                <!-- Custom JS -->
+                <script src="js/script.js"></script>
+    </section>
 </body>
 
 </html>
