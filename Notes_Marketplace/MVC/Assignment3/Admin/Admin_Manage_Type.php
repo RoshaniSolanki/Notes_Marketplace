@@ -19,7 +19,7 @@ if(isset($_POST['search-btn'])) {
 if(isset($_GET['typeid'])) {
 
     $typeid = $_GET['typeid'];
-    
+
     $delete_type = query("UPDATE note_types SET IsActive = 0 WHERE ID = '$typeid' ");
     confirm($delete_type);
     redirect("Admin_Manage_Type.php");
@@ -105,7 +105,7 @@ if(isset($_GET['typeid'])) {
                                     <td><?php echo $active; ?></td>
                                     <td><a href="Admin_Add_Type.php?type_id=<?php echo $type_id; ?>"><img class="edit-img"
                                             src="./images/Admin/Manage_Type/edit.png"></a>
-                                        <a href="Admin_Manage_Type.php?typeid=<?php echo $type_id; ?>" onclick="check_delete()"><img class="delete-img"
+                                        <a href="Admin_Manage_Type.php?typeid=<?php echo $type_id; ?>" onclick="return check_delete()"><img class="delete-img"
                                             src="./images/Admin/Manage_Type/delete.png"></a>
                                     </td>
                                 </tr>

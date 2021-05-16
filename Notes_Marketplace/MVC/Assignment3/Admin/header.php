@@ -88,12 +88,12 @@
                                                 height="40" alt="user-img"></a>
                                         <div class="admin-user-menu-show">
                                             <p><a href="Admin_Profile.php">Update Profile</a></p>
-                                            <p><a href="">Change Password</a></p>
-                                            <p><a href="#">LOGOUT</a></p>
+                                            <p><a href="../Front/Change_Password_Page.php">Change Password</a></p>
+                                            <p><a href="../Front/Logout.php">LOGOUT</a></p>
                                         </div>
                                     </div>
                                 </li>
-                                <li><a href="Logout.html">
+                                <li><a href="../Front/Logout.php">
                                         <button class="btn btn-primary logout-btn">Logout</button>
                                     </a></li>
                             </ul>
@@ -117,20 +117,48 @@
                                     <a href="Admin_Dashboard.php">Dashboard</a>
                                 </li>
                                 <li>
-                                    <a href="#">Notes</a>
+                                    <a href="Admin_Notes_Under_Reb_Page.php">Notes Under Review</a>
                                 </li>
-                                <li><a href="#">Members</a></li>
                                 <li>
-                                    <a href="#">Reports</a>
+                                    <a href="Admin_Published_Notes.php">Published Notes</a>
+                                </li>
+                                <li>
+                                    <a href="Admin_Downloads_Notes.php">Downloaded Notes</a>
+                                </li>
+                                <li>
+                                    <a href="Admin_Rejected_Notes.php">Rejected Notes</a>
+                                </li>
+                                <li>
+                                    <a href="Admin_Members.php">Members</a>
+                                </li>
+                                <li>
+                                    <a href="Admin_Spam_Reports.php">Spam Reports</a>
                                 </li>
 
                                 <li>
-                                    <a href="#">Settings</a>
+                                    <a href="Admin_Manage_System_Configuration.php">Manage System Configuration</a>
                                 </li>
-                                <li><a href="#"><img src="images/Admin/Dashboard/user-img.png" class="user-img"
-                                            width="40" height="40" alt="user-img"></a></li>
                                 <li>
-                                    <a href="">
+                                    <a href="Admin_Manage_Administrator.php">Manage Administrator</a>
+                                </li>
+                                <li>
+                                    <a href="Admin_Manage_Category.php">Manage Category</a>
+                                </li>
+                                <li>
+                                    <a href="Admin_Manage_Type.php">Manage Type</a>
+                                </li>
+                                <li>
+                                    <a href="Admin_Manage_Country.php">Manage Countries</a>
+                                </li>
+                                <li>
+                                    <a href="Admin_Profile.php">Update Profile<img src="images/Admin/Dashboard/user-img.png" class="user-img"
+                                            width="40" height="40" alt="user-img"></a>
+                                </li>
+                                <li>
+                                    <a href="../Front/Change_Password_Page.php">Change Password</a>
+                                </li>
+                                <li>
+                                    <a href="../Front/Logout.php">
                                         <button class="btn btn-primary logout-btn">Logout</button>
                                     </a>
                                 </li>

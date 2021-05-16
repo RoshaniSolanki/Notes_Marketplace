@@ -2,213 +2,17 @@
 include "../includes/db.php";
 include "../includes/functions.php";
 
-
-
+session_start();
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
+<?php 
+if(isset($_SESSION['userid'])) {
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0 ,user-scalable=no">
-
-    <title>Document</title>
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css">
-
-
-    <!-- Responsive CSS -->
-    <link rel="stylesheet" href="css/responsive.css">
-
-</head>
-
-<body>
-    <section id="search-notes-page">
-        <!-- Header -->
-        <?php 
-    if(isset($_SESSION['userid'])) {
-        echo "heloo";
-        echo $_SESSION['userid'];
-     ?>
-
-        <header>
-            <nav class="navbar navbar-fixed-top">
-                <div class="container-fluid">
-                    <div class="site-nav-wrapper">
-
-                        <div class="navbar-header">
-
-                            <!-- Mobile Menu Open Button -->
-                            <span id="mobile-nav-open-btn">&#9776;</span>
-
-                            <!-- Logo -->
-                            <a class="navbar-brand" href="Home_Page.php">
-                                <img src="images/home/logo.png" alt="logo">
-                            </a>
-                        </div>
-
-                        <!-- Main Menu -->
-                        <div class="container">
-                            <div class="collapse navbar-collapse">
-                                <ul class="nav navbar-nav pull-right">
-                                    <li><a href="Search_Notes_Page.php">Search Notes</a></li>
-                                    <li><a href="Dashboard.php">Sell Your Notes</a></li>
-                                    <li><a href="Buyer_Requests.php">Buyer Requests</a></li>
-                                    <li><a href="FAQ.php">FAQ</a></li>
-                                    <li><a href="Contact_Us.php">Contact Us</a></li>
-                                    <li>
-                                        <div class="user-menu-popup">
-                                            <a class="user-menu-check" target=".user-menu-show"><img class="user-img"
-                                                    src="images/User-Profile/user-img.png" width="40" height="40"
-                                                    alt=""></a>
-                                            <div class="user-menu-show">
-                                                <p><a href="User_Profile.php">My Profile</a></p>
-                                                <p><a href="My_Downloads.php">My Downloads</a></p>
-                                                <p><a href="My_Sold_Notes.php">My Sold Notes</a></p>
-                                                <p><a href="My_Rejected_Notes.php">My Rejected Notes</a></p>
-                                                <p><a href="Change_Password_Page.php">Change Password</a></p>
-                                                <p><a href="Logout.php">LOGOUT</a></p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li><a href="Logout.html">
-                                            <button class="btn btn-primary logout-btn">Logout</button>
-                                        </a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!-- Mobile Menu -->
-                        <div id="mobile-nav">
-
-                            <!-- Logo -->
-                            <a href="Home_Page.html">
-                                <img class="logo" src="images/home/logo.png" alt="logo">
-                            </a>
-
-                            <!-- Mobile Menu close Button -->
-                            <span id="mobile-nav-close-btn">&times;</span>
-
-                            <div id="mobile-nav-content">
-                                <ul class="nav">
-                                    <li>
-                                        <a href="Search_Notes_Page.php">Search Notes</a>
-                                    </li>
-                                    <li>
-                                        <a href="Dashboard.php">Sell Your Notes</a>
-                                    </li>
-                                    <li><a href="Buyer_Requests.html">Buyer Requests</a></li>
-                                    <li>
-                                        <a href="FAQ.html">FAQ</a>
-                                    </li>
-
-                                    <li>
-                                        <a href="Contact_Us.php">Contact Us</a>
-                                    </li>
-                                    <li>
-                                        <a><img class="user-img" src="images/User-Profile/user-img.png" width="40"
-                                                height="40" alt=""></a>
-
-                                    </li>
-                                    <li>
-                                        <a href="Login.html">
-                                            <button class="btn btn-primary logout-btn">Logout</button>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </header>
-
-        <?php
-    }else {?>
-
-        <header>
-            <nav class="navbar navbar-fixed-top">
-                <div class="container-fluid">
-                    <div class="site-nav-wrapper">
-
-                        <div class="navbar-header">
-
-                            <!-- Mobile Menu Open Button -->
-                            <span id="mobile-nav-open-btn">&#9776;</span>
-
-                            <!-- Logo -->
-                            <a class="navbar-brand" href="Home_Page.php">
-                                <img src="images/home/logo.png" alt="logo">
-                            </a>
-                        </div>
-
-                        <!-- Main Menu -->
-                        <div class="container">
-                            <div class="collapse navbar-collapse">
-                                <ul class="nav navbar-nav pull-right">
-                                    <li><a href="Search_Notes_Page.php">Search Notes</a></li>
-                                    <li><a href="Dashboard.php">Sell Your Notes</a></li>
-                                    <li><a href="FAQ.php">FAQ</a></li>
-                                    <li><a href="Contact_Us.php">Contact Us</a></li>
-                                    <li><a href="Login.php">
-                                            <button class="btn btn-primary login-btn">Login</button>
-                                        </a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!-- Mobile Menu -->
-                        <div id="mobile-nav">
-
-                            <!-- Logo -->
-                            <a href="Home_Page.html">
-                                <img class="logo" src="images/home/logo.png" alt="logo">
-                            </a>
-
-
-                            <!-- Mobile Menu close Button -->
-                            <span id="mobile-nav-close-btn">&times;</span>
-
-                            <div id="mobile-nav-content">
-                                <ul class="nav">
-                                    <li>
-                                        <a href="Search_Notes_Page.php">Search Notes</a>
-                                    </li>
-                                    <li>
-                                        <a href="Dashboard.php">Sell Your Notes</a>
-                                    </li>
-                                    <li>
-                                        <a href="FAQ.php">FAQ</a>
-                                    </li>
-
-                                    <li>
-                                        <a href="Contact_Us.php">Contact Us</a>
-                                    </li>
-                                    <li>
-                                        <a href="Login.php">
-                                            <button class="btn btn-primary login-btn">Login</button>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </header>
-
-        <?php }
-    ?>
-        <!-- Header Ends -->
+    include "header.php";
+}else {
+    include "header2.php";
+}
+?>
         <div class="search-page-img">
             <img src="images/search-page/banner-with-overlay.jpg">
             <div class="search-page-img-text">Search Notes</div>
@@ -340,10 +144,18 @@ include "../includes/functions.php";
                                     <option value="0" class="form-control" selected>Select rating</option>
 
                                     <?php 
-                                        for($i = 1; $i <=5 ; $i++) {?>
-                                        <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                                    <?php    }
-                                    ?>
+                                        $select_rating = query("SELECT DISTINCT Ratings FROM seller_notes_review WHERE IsActive = 1");
+                                        confirm($select_rating);
+
+                                        while($row = mysqli_fetch_assoc($select_rating)) {
+
+                                            $rating = $row['Ratings']; 
+                                            ?>
+
+                                            <option value="<?php echo $rating; ?>"><?php echo $rating; ?></option>
+                                        <?php 
+                                        }
+                                       ?>
 
                                 </select><span><img class="arrow-down-img"
                                         src="./images/search-page/arrow-down.png"></span>
@@ -359,6 +171,7 @@ include "../includes/functions.php";
             
             
         </div>
+
         
                 <!-- Footer -->
                 <footer class="footer">
@@ -405,7 +218,8 @@ include "../includes/functions.php";
                                 selected_course: search_course,
                                 selected_country: search_country,
                                 selected_rating: search_rating,
-                                selected_search: search_result
+                                selected_search: search_result,
+                                page:page_current
                             },
                             success: function (search_data) {
                                 $("#result").html(search_data);

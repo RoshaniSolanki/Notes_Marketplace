@@ -110,7 +110,7 @@ if(isset($_GET['admin_id'])) {
                                     <td>
                                         <a href="Admin_Add_Administrator.php?Admin_id=<?php echo $admin_id;?>"><img class="edit-img"
                                             src="./images/Admin/Manage_Administrator/edit.png"></a>
-                                        <a href="Admin_Manage_Administrator.php?admin_id=<?php echo $admin_id;?>" onclick="check_delete()"><img class="delete-img"
+                                        <a href="Admin_Manage_Administrator.php?admin_id=<?php echo $admin_id;?>" onclick="return check_delete()"><img class="delete-img"
                                             src="./images/Admin/Manage_Administrator/delete.png"></a>
                                     </td>
                                 </tr>

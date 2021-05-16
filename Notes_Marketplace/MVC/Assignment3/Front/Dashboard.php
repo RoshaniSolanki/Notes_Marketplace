@@ -4,36 +4,10 @@ include "../includes/functions.php";
 session_start();
 
 
-if(isset($_SESSION['email'])) {
+if(isset($_SESSION['email']) && $_SESSION['roleid']==3) {
     $user_id = $_SESSION['userid'];
 
 
-
-
-/*
-if(isset($_GET['order'])) {
-    $order = $_GET['order'];
-}else {
-    $order = 'CreatedDate';
-}
-
-if(isset($_GET['sort'])) {
-    $sort = $_GET['sort'];
-}else {
-    $sort = 'DESC';
-}*/
-
-
-/* In Progress Notes */
-/*if(isset($_GET['page_t1'])) {
-
-    $page_t1 = $_GET['page_t1'];
-}else {
-    $page_t1 = 1;
-}
-
-$item_per_page_t1 = 5;
-$start_from_t1 = ($page_t1-1)*5;*/
 
 if(isset($_POST['progress_notes_search_btn'])) {
 
@@ -42,14 +16,6 @@ if(isset($_POST['progress_notes_search_btn'])) {
     $select_in_progress_notes = query("SELECT * FROM seller_notes WHERE Title LIKE '%$search%' AND Status IN(6,7,8) AND IsActive = 1 ORDER BY CreatedDate DESC");
     confirm($select_in_progress_notes);
 
-   /* $total_progress_notes = mysqli_num_rows($select_in_progress_notes);
-    $total_page_t1 = ceil($total_progress_notes/$item_per_page_t1);
-                                    
-    $count = mysqli_num_rows($select_in_progress_notes);
-
-    if($count == 0) {
-        echo "<script>alert('No record found');</script>";
-    }*/
 
 }else {   
 
@@ -59,17 +25,6 @@ confirm($select_in_progress_notes);
 }
 
 
-/* Published Notes */
-/*if(isset($_GET['page_t2'])) {
-
-    $page_t2 = $_GET['page_t2'];
-}else {
-    $page_t2 = 1;
-}
-
-$item_per_page_t2 = 5;
-$start_from_t2 = ($page_t2-1)*5;*/
-
 if(isset($_POST['published_notes_search_btn'])) {
 
     $search = $_POST['search_published_notes'];
@@ -77,161 +32,31 @@ if(isset($_POST['published_notes_search_btn'])) {
     $select_published_notes = query("SELECT * FROM seller_notes WHERE Title LIKE '%$search%' AND Status=9 AND IsActive = 1 ORDER BY CreatedDate DESC");
     confirm($select_published_notes); 
 
-    /*$total_published_notes = mysqli_num_rows($select_published_notes);
-    $total_page_t1 = ceil($total_published_notes/$item_per_page_t1);
-                                    
-    $count = mysqli_num_rows($select_published_notes);
-
-    if($count == 0) {
-        echo "<script>alert('No record found');</script>";
-    }*/
 
 }else {   
 
     $select_published_notes = query("SELECT * FROM seller_notes WHERE Status=9 AND IsActive = 1 ORDER BY CreatedDate DESC");
     confirm($select_published_notes);
-                            
-    /*$total_published_notes = mysqli_num_rows($select_published_notes);
-    $total_page_t2 = ceil($total_published_notes/$item_per_page_t2);*/
-                            
+                          
 }
 
- /*                           
-$p_query_t2 = query("SELECT * FROM seller_notes");
-confirm($p_query_t2);
-$total_progress_notes_t2 = mysqli_num_rows($p_query_t2);
-$total_page_t2 = ceil($total_progress_notes_t2/$item_per_page_t2);
-*/
 }else{
     redirect("Login.php");
+}
+
+if(isset($_GET['id'])) {
+    $id = $_GET['id'];
+
+    $update_query = query("UPDATE seller_notes SET IsActive = 0 WHERE ID = '$id' ");
+    confirm($update_query);
+    redirect("Dashboard.php");
 }
 
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
+    <?php include "header.php"; ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0 ,user-scalable=no">
-
-    <title>Document</title>
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome CSS -->
-    <!--link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'-->
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css">
-
-    <!-- Datatables -->
-    <link rel="stylesheet" href="css/datatables.css">
-
-    <!-- Responsive CSS -->
-    <link rel="stylesheet" href="css/responsive.css">
-</head>
-
-<body>
-    <section id="dashboard">
-        <!-- Header -->
-        <header>
-            <nav class="navbar navbar-fixed-top">
-                <div class="container-fluid">
-                    <div class="site-nav-wrapper">
-
-                        <div class="navbar-header">
-
-                            <!-- Mobile Menu Open Button -->
-                            <span id="mobile-nav-open-btn">&#9776;</span>
-
-                            <!-- Logo -->
-                            <a class="navbar-brand" href="Home_Page.php">
-                                <img src="images/home/logo.png" alt="logo">
-                            </a>
-                        </div>
-
-                        <!-- Main Menu -->
-                        <div class="container">
-                            <div class="collapse navbar-collapse">
-                                <ul class="nav navbar-nav pull-right">
-                                    <li><a href="Search_Notes_Page.php">Search Notes</a></li>
-                                    <li><a href="Dashboard.php">Sell Your Notes</a></li>
-                                    <li><a href="Buyer_Requests.php">Buyer Requests</a></li>
-                                    <li><a href="FAQ.php">FAQ</a></li>
-                                    <li><a href="Contact_Us.php">Contact Us</a></li>
-                                    <li>
-                                        <div class="user-menu-popup">
-                                            <a class="user-menu-check" target=".user-menu-show"><img class="user-img"
-                                                    src="images/User-Profile/user-img.png" width="40" height="40"
-                                                    alt=""></a>
-                                            <div class="user-menu-show">
-                                                <p><a href="User_Profile.php">My Profile</a></p>
-                                                <p><a href="My_Downloads.php">My Downloads</a></p>
-                                                <p><a href="My_Sold_Notes.php">My Sold Notes</a></p>
-                                                <p><a href="My_Rejected_Notes.php">My Rejected Notes</a></p>
-                                                <p><a href="Change_Password_Page.php">Change Password</a></p>
-                                                <p><a href="Logout.php">LOGOUT</a></p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li><a href="Logout.html">
-                                            <button class="btn btn-primary logout-btn">Logout</button>
-                                        </a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!-- Mobile Menu -->
-                        <div id="mobile-nav">
-
-                            <!-- Logo -->
-                            <a href="Home_Page.html">
-                                <img class="logo" src="images/home/logo.png" alt="logo">
-                            </a>
-
-                            <!-- Mobile Menu close Button -->
-                            <span id="mobile-nav-close-btn">&times;</span>
-
-                            <div id="mobile-nav-content">
-                                <ul class="nav">
-                                    <li>
-                                        <a href="Search_Notes_Page.php">Search Notes</a>
-                                    </li>
-                                    <li>
-                                        <a href="Dashboard.php">Sell Your Notes</a>
-                                    </li>
-                                    <li><a href="Buyer_Requests.html">Buyer Requests</a></li>
-                                    <li>
-                                        <a href="FAQ.html">FAQ</a>
-                                    </li>
-
-                                    <li>
-                                        <a href="Contact_Us.php">Contact Us</a>
-                                    </li>
-                                    <li>
-                                        <a><img class="user-img" src="images/User-Profile/user-img.png" width="40"
-                                                height="40" alt=""></a>
-
-                                    </li>
-                                    <li>
-                                        <a href="Login.html">
-                                            <button class="btn btn-primary logout-btn">Logout</button>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </header>
-        <!-- Header Ends -->
         <!-- Dashboard -->
         <div id="dashboard">
             <div class="container">
@@ -377,7 +202,6 @@ $total_page_t2 = ceil($total_progress_notes_t2/$item_per_page_t2);
                                 <div class="table-responsive">
                                     <table class="table" id="in-progress-notes-table">
                                         <?php 
-                                       // $sort == 'DESC' ? $sort = 'ASC' : $sort = 'DESC';
                                     ?>
                                         <thead>
                                         <tr>
@@ -426,7 +250,7 @@ $total_page_t2 = ceil($total_progress_notes_t2/$item_per_page_t2);
                                             <?php if($Status == 'Draft') { ?>
                                             <td><a href="add_notes.php?note_id=<?php echo $note_id; ?>"><img
                                                         class="edit-img" src="./images/Dashboard/edit.png"></a>
-                                                <a href="delete_note.php?id=<?php echo $note_id; ?>"
+                                                <a href="Dashboard.php?id=<?php echo $note_id; ?>"
                                                     onclick="return check_delete()"><img
                                                         src="./images/Dashboard/delete.png"></a></td>
                                             <?php } ?>

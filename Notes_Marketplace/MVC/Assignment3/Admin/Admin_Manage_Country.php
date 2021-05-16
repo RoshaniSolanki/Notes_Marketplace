@@ -106,7 +106,7 @@ if(isset($_GET['countryid'])) {
                                     <td>
                                         <a href="Admin_Add_Country.php?country_id=<?php echo $country_id;?>"><img class="edit-img"
                                             src="./images/Admin/Manage_Country/edit.png"></a>
-                                        <a href="Admin_Manage_Country.php?countryid=<?php echo $country_id;?>" onclick="check_delete()"><img class="delete-img"
+                                        <a href="Admin_Manage_Country.php?countryid=<?php echo $country_id;?>" onclick="return check_delete()"><img class="delete-img"
                                             src="./images/Admin/Manage_Country/delete.png"></a>
                                     </td>
                                 </tr>

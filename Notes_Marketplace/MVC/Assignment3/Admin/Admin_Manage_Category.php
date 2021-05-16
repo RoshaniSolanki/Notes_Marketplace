@@ -105,7 +105,7 @@ if(isset($_GET['catid'])) {
                                     <td><?php echo $active ;?></td>
                                     <td><a href="Admin_Add_Category.php?cat_id=<?php echo $cat_id;?>"><img class="edit-img"
                                             src="./images/Admin/Manage_Category/edit.png"></a>
-                                        <a href="Admin_Manage_Category.php?catid=<?php echo $cat_id;?>" onclick="check_delete()"><img class="delete-img"
+                                        <a href="Admin_Manage_Category.php?catid=<?php echo $cat_id;?>" onclick="return check_delete()"><img class="delete-img"
                                             src="./images/Admin/Manage_Category/delete.png"></a>
                                     </td>
                                 </tr>

@@ -19,14 +19,18 @@ if(isset($_POST['submit'])){
     $db_password = $row['Password'];
 
     if($old_password == $db_password) {
-        $update_password = query("UPDATE users SET Password = '{$new_password}' ");
+        $update_password = query("UPDATE users SET Password = '{$new_password}' WHERE EmailID = '{$email}'");
         confirm($update_password);
         
         if($update_password){
             $message = "Password has been changed successfully";
         }
+
+        redirect("Login.php");
     }
 
+    }else {
+        redirect("Login.php");
     }
 
 }else {
@@ -214,7 +218,7 @@ if(isset($_POST['submit'])){
             setErrorFor(confirm_password, 'Password must not contain whitespaces');
             flag=0;
         }
-         else if (passwordValue !== confirmPasswordValue) {
+         else if (newPasswordValue !== confirmPasswordValue) {
             setErrorFor(confirm_password, 'Passwords does not match');
             flag=0;
         }else {

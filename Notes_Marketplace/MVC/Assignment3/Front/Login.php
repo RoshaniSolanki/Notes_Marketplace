@@ -37,7 +37,7 @@ if(isset($_POST['submit'])) {
                 }
             }
 
-            if($role_id==2) {
+            if($role_id==2 || $role_id==1) {
                 if(isset($_POST['rememberme'])) {
                     setcookie('emailcookie', $email, time()+86400);
                     setcookie('passwordcookie', $password, time()+86400);

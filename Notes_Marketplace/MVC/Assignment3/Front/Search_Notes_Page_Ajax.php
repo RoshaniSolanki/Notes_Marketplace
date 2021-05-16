@@ -2,17 +2,6 @@
 include "../includes/db.php";
 include "../includes/functions.php";
 
-    //pagination
-    if(isset($_GET['page'])) {
-
-       echo $page = $_GET['page'];
-    }else {
-        $page = 1;
-    }
-
-    $item_per_page = 9;
-    $start_from = ($page-1)*9;
-
 
     //searching and filtering
     if(isset($_GET['selected_search'])){
@@ -70,12 +59,28 @@ include "../includes/functions.php";
     $select_query .= (!empty($selected_course)&&$selected_course!="")? "AND Course = '$selected_course' ":"";
     $select_query .= (!empty($selected_country)&&$selected_country!="")? "AND Country =$selected_country ":"";
     $select_query .= (!empty($selected_rating)&&$selected_rating!="")? "AND seller_notes_review.Ratings =$selected_rating ":"";
-    $select_query .= " LIMIT $start_from,$item_per_page";
-    $select_query = query($select_query);
-    confirm($select_query);
+    
+    $select_query1 = query($select_query);
+    confirm($select_query1);
 
-    $total_notes = mysqli_num_rows($select_query);
+    $total_notes = mysqli_num_rows($select_query1);
+    
+
+   //pagination
+    (!empty(isset($_GET['page']))) && ($_GET['page'] != "") ? $page = $_GET['page'] : $page = 1;
+    $item_per_page = 9;
+    
     $total_page = ceil($total_notes/$item_per_page);
+    
+    ($page < 1) ? $page = 1 : "";
+    ($total_notes > 0 && $total_page < $page) ? $page = $total_page : "";
+    $start_from = ($page-1)*$item_per_page;
+
+    $query = $select_query. " LIMIT $start_from,$item_per_page";
+    $query1 = query($query);
+    confirm($query1);
+
+   
     
     
 
@@ -83,11 +88,15 @@ include "../includes/functions.php";
 ?>
 <!-- Section 2-->
 <div class="search-page-section2">
-            <div class="container">
-                <p class="SPS2MH">Total <?php echo mysqli_num_rows($select_query); ?> notes</p>
-                <div class="row">
-                    <?php 
-               while($row = mysqli_fetch_assoc($select_query)) {
+    <div class="container">
+        <?php if($total_notes !=0){ ?>
+            <p class="SPS2MH">Total <?php echo $total_notes; ?> notes</p> 
+        <?php }else { ?>
+            <p class="SPS2MH">No record Found</p> 
+        <?php } ?>
+        <div class="row">
+            <?php 
+               while($row = mysqli_fetch_assoc($query1)) {
                 $note_id = $row['ID'];
                 $title = $row['Title'];
                 $category = $row['Category_Name'];
@@ -107,58 +116,59 @@ include "../includes/functions.php";
                 }    
                 ?>
 
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <img class="search1-img" src="<?php echo $display_picture;?>">
-                        <div id="search1">
-                            <a href="Note_details_Page.php?Note_id=<?php echo $note_id; ?>">
-                                <p class="SPS2H"><?php echo $title. "-" . $category; ?></p>
-                            </a>
-                            <div class="row">
-                                <div class="col-md-2 col-sm-2 col-xs-3">
-                                    <img class="university-img" src="./images/search-page/university.png">
-                                </div>
-                                <div class="col-md-10 col-sm-10 col-xs-9">
-                                    <p class="SPS2T1"><?php echo $university; ?>, <?php echo $country; ?></p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-2 col-sm-2 col-xs-3">
-                                    <img class="page-img" src="./images/search-page/pages.png">
-                                </div>
-                                <div class="col-md-10 col-sm-10 col-xs-9">
-                                    <p class="SPS2T2"><?php echo $no_of_pages; ?> Pages</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-2 col-sm-2 col-xs-3">
-                                    <img class="date-img" src="./images/search-page/date.png">
-                                </div>
-                                <div class="col-md-10 col-sm-10 col-xs-9">
-                                    <p class="SPS2T3"><?php echo $published_date; ?></p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-2 col-sm-2 col-xs-3">
-                                    <img class="flag-img" src="./images/search-page/flag.png">
-                                </div>
-                                <div class="col-md-10 col-sm-10 col-xs-9">
-                                    <?php 
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <img class="search1-img" src="<?php echo $display_picture;?>">
+                <div id="search1">
+                    <a style="text-decoration:none;" href="Note_details_Page.php?Note_id=<?php echo $note_id; ?>">
+                        <p class="SPS2H"><?php echo $title;?></p>
+                    </a>
+                    <div class="row">
+                        <div class="col-md-2 col-sm-2 col-xs-3">
+                            <img class="university-img" src="./images/search-page/university.png">
+                        </div>
+                        <div class="col-md-10 col-sm-10 col-xs-9">
+                            <p class="SPS2T1"><?php echo (!empty($university OR $country) && ($university OR $country) != '') ? $university.", ".$country : 'Not specified' ?></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2 col-sm-2 col-xs-3">
+                            <img class="page-img" src="./images/search-page/pages.png">
+                        </div>
+                        <div class="col-md-10 col-sm-10 col-xs-9">
+                            <p class="SPS2T2"><?php echo $no_of_pages; ?> Pages</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2 col-sm-2 col-xs-3">
+                            <img class="date-img" src="./images/search-page/date.png">
+                        </div>
+                        <div class="col-md-10 col-sm-10 col-xs-9">
+                            <p class="SPS2T3"><?php echo $published_date; ?></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2 col-sm-2 col-xs-3">
+                        <?php 
                                 $find_user_count = query("SELECT DISTINCT ReportedByID FROM seller_notes_reported_issues WHERE NoteID = '{$note_id}' ");
                                 confirm($find_user_count);
 
                                 $user_count = mysqli_num_rows($find_user_count);
 
                                 if($user_count){?>
-                                    <p class="SPS2T4"><?php  echo $user_count; ?> Users marked this note as
-                                        inappropriate</p>
-                                    <?php }
+                            <img class="flag-img" src="./images/search-page/flag.png">
+                        </div>
+                        <div class="col-md-10 col-sm-10 col-xs-9">
+                            
+                            <p class="SPS2T4"><?php  echo $user_count; ?> Users marked this note as
+                                inappropriate</p>
+                            <?php }
                                 ?>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6 col-sm-6 col-xs-6">
-                                    <div class="Rating">
-                                    <?php 
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <div class="Rating">
+                                <?php 
                                     $find_rating = query("SELECT AVG(Ratings) as rating FROM seller_notes_review WHERE NoteID = '{$note_id}' ");
                                     confirm($find_rating);
 
@@ -172,65 +182,60 @@ include "../includes/functions.php";
                                     }
 
                                     for($i=1;$i<=ceil($avg_rating);$i++) {?>
-                                        <img src="./images/search-page/star.png" class="Rating-Star">
-                                        <?php    } 
+                                <img src="./images/search-page/star.png" class="Rating-Star">
+                                <?php    } 
                                     for($i=1;$i<=(5-ceil($avg_rating));$i++) { ?>
-                                        <img src="./images/search-page/star-white.png" class="Rating-Star">
-                                        <?php }?>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-sm-6 col-xs-6">
-                                    <p class="SPS2T5"><?php echo $review_count; ?> reviews</p>
-                                </div>
+                                <img src="./images/search-page/star-white.png" class="Rating-Star">
+                                <?php }?>
                             </div>
                         </div>
-                    </div><?php }?>
-                </div>
-                <!-- Pagination-->
-                <center>
-                    <div class="pagination-section">
-                        <ul class="pagination">
-
-                        <li class="page-item">
-
-                                            <?php 
-                                            
-                                             echo "<a class='page-link' href='Search_Notes_Page_Ajax.php?page=".($page-1)."'>
-                                             <img class='left-arrow-img' src='./images/search-page/left-arrow.png'></a>";
-                                            
-                                            ?>
-                                            
-                                        </li>
-                                        <?php 
-
-                                            for($i=1;$i<=$total_page;$i++) {
-
-                                                if($i==$page){
-                                                    
-                                                    echo "<li class='page-item'><a class='page-link active-link' href='Search_Notes_Page_Ajax?page=".$i."'>$i</a></li>";
-
-                                                }else {
-
-                                                    echo "<li class='page-item'><a class='page-link' href='Search_Notes_Page_Ajax.php?page=".$i."'>$i</a></li>";
-
-                                                }
-                                                
-                                            }
-
-                                        ?>
-                                        
-                                        <li class="page-item">
-
-                                        <?php 
-                                             
-                                             echo "<a class='page-link' href='Search_Notes_Page_Ajax?page=".($page+1)."'>
-                                             <img class='right-arrow-img' src='./images/search-page/right-arrow.png'></a>";
-                                             
-                                        ?>
-
-                                        </li>
-                           
-                        </ul>
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <p class="SPS2T5"><?php echo $review_count; ?> reviews</p>
+                        </div>
                     </div>
-                </center>
-                <!-- Pagination Ends -->
+                </div>
+            </div><?php }?>
+        </div>
+       
+        <!-- Pagination-->
+        <center>
+            <div class="pagination-section">
+                <ul class="pagination">
+
+                    <li class="page-item">
+                        <?php                  
+                        echo "<a class='page-link' onclick=" . "showdata($page-1)" . ">
+                        <img class='left-arrow-img' src='./images/search-page/left-arrow.png'></a>";
+                        ?>
+                    </li>
+
+                    <?php 
+
+                    for($i=1;$i<=$total_page;$i++) {
+
+                        if($i==$page){
+                                                    
+                            echo "<li class='page-item'><a class='page-link active-link' onclick=" . "showdata($i)" . ">$i</a></li>";
+
+                        }else {
+
+                            echo "<li class='page-item'><a class='page-link' onclick=" . "showdata($i)" . ">$i</a></li>";
+
+                        }
+                                                
+                    }
+                    ?>
+
+                    <li class="page-item">
+                        <?php 
+                                             
+                        echo "<a class='page-link' onclick=" . "showdata($page+1)" . ">
+                        <img class='right-arrow-img' src='./images/search-page/right-arrow.png'></a>";
+                        ?>
+                    </li>
+
+                </ul>
+            </div>
+        </center>
+        <!-- Pagination Ends -->
+    
