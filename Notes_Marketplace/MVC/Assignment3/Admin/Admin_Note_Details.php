@@ -2,6 +2,7 @@
 include "../includes/db.php";
 include "../includes/functions.php";
 session_start();
+$note_id = $_GET['Note_id'];
     if(isset($_GET['Note_id'])) {
         $note_id = $_GET['Note_id'];
 
@@ -55,6 +56,17 @@ session_start();
     
 
     }
+
+    
+if(isset($_GET['review_id'])) {
+
+    $review_id = $_GET['review_id'];
+    
+    $delete_review = query("UPDATE seller_notes_review SET IsActive = 0 WHERE ID = '$review_id' ");
+    confirm($delete_review);
+    
+    redirect("Admin_Note_Details.php?Note_id=8");
+}
 ?>
 
 <?php include "header.php"; ?>
@@ -280,9 +292,9 @@ session_start();
                         <p class="NDS2RMH">Customer Reviews</p>
                         <div class="NDS2RC" style="overflow-y:scroll">
                             <?php 
-                                $find_cutomers_review = query("SELECT Comments, Ratings, users.FirstName, users.LastName, user_profile.ProfilePicture FROM seller_notes_review LEFT JOIN 
+                                $find_cutomers_review = query("SELECT Comments, Ratings, seller_notes_review.ID, users.FirstName, users.LastName, user_profile.ProfilePicture FROM seller_notes_review LEFT JOIN 
                                 users ON seller_notes_review.ReviewedByID = users.ID LEFT JOIN user_profile ON user_profile.UserID = users.ID WHERE 
-                                seller_notes_review.NoteID = '{$note_id}' ORDER BY Ratings DESC, seller_notes_review.CreatedDate DESC");
+                                seller_notes_review.NoteID = '{$note_id}' AND seller_notes_review.IsActive = 1 ORDER BY Ratings DESC, seller_notes_review.CreatedDate DESC");
                                 confirm($find_cutomers_review);
 
                                 if(mysqli_num_rows($find_cutomers_review)) {
@@ -290,6 +302,7 @@ session_start();
                                         $rating = $row['Ratings'];
                                         $comments= $row['Comments'];
                                         $name = $row['FirstName']. " " . $row['LastName'];
+                                        $review_id = $row['ID'];
                                         $pro_pic = $row['ProfilePicture'];
                                                 
                             ?>
@@ -314,7 +327,9 @@ session_start();
                                             </p>
                                         </div>
                                         <div class="col-md-1 col-sm-1 col-xs-1">
-                                            <img src="images/Admin/Note_Details/delete.png" height="20" width="20">
+                                            <a href="Admin_Note_Details.php?review_id=<?php echo $review_id;?>" onclick="return check_delete()">
+                                                <img src="images/Admin/Note_Details/delete.png" height="20" width="20">
+                                            </a>
                                         </div>
                                     </div>
                                     
@@ -334,6 +349,14 @@ session_start();
             </div>
         </div>
     <!-- Note Details ends -->
+
+    <script>
+                
+        function check_delete() {
+            return confirm("Are you sure you want to delete this member review?");
+        }
+                
+    </script>
 
     <!-- Footer -->
     <footer class="footer">

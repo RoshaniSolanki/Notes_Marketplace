@@ -203,9 +203,32 @@ $(document).ready(function () {
 });
 
 /*=======================================================
-                      Dashboard Page
+                      Spam Report Page
 =========================================================*/
 
+//Spam Report Table
+$(document).ready(function () {
+        
+    var inProgressNotesTable = $('#spam-report-table').DataTable({
+        "order": [[ 4, "desc" ]],
+        "fnRowCallback": function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+            //debugger;
+            var index = iDisplayIndexFull + 1;
+            $("td:first", nRow).html(index);
+            return nRow;
+        },
+        'sDom': '"top"i',
+        "iDisplayLength": 5,
+        "bInfo": false,
+        language: {
+            "zeroRecords": "No record found",
+            paginate: {
+                next: "<img src='./images/Admin/Members/right-arrow.png' alt=''>",
+                previous: "<img src='./images/Admin/Members/left-arrow.png' alt=''>"
+            }
+        }
+    });
+});
 
 
 /*=======================================================

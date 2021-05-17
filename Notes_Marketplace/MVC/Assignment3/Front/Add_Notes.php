@@ -718,23 +718,7 @@ if(isset($_POST['save'])) {
                                                 <input type="radio" name="sellfor-radio" id="free" value="free"
                                                     class="radio-input form-control" onChange="getValue(this)">
                                                     <?php }
-                                                
-
-
-                                                   /* if(isset($_GET['note_id'])){?>
-                                                    <input type="radio" name="sellfor-radio" id="free" value="5"
-                                                    class="radio-input form-control" <?php if($db_ispaid == 5) {echo checked;}?> onChange="getValue(this)">
-                                                    <?php
-
-                                                    }else {
-                                                        $find_note_mode = query("SELECT ID FROM reference_data WHERE Value='Free'");
-                                                        confirm($find_note_mode);
-                                                while ($r = mysqli_fetch_assoc($find_note_mode)) {
-                                                    $note_type_id = $r['ID'];
-                                                  ?>
-                                                <input type="radio" name="sellfor-radio" id="free" value="<?php$note_type_id?>"
-                                                    class="radio-input form-control" onChange="getValue(this)">
-                                                    <?php }}*/?>
+                                                ?>
                                                 
                                                 <div class="internal-circle"></div>
                                                 Free
@@ -755,22 +739,7 @@ if(isset($_POST['save'])) {
                                                 <input type="radio" name="sellfor-radio" id="paid" value="paid"
                                                     class="radio-input form-control" onChange="getValue(this)">
                                                     <?php }
-                                            
-                                            /*
-                                                    if(isset($_GET['note_id'])){?>
-                                                    <input type="radio" name="sellfor-radio" id="paid" value="paid"
-                                                    class="radio-input form-control" <?php if($db_ispaid == 4) {echo checked;}?> onChange="getValue(this)">
-                                                    <?php
-
-                                                    }else {
-                                                        $find_note_mode = query("SELECT ID FROM reference_data WHERE Value='Paid'");
-                                                        confirm($find_note_mode);
-                                                while ($r = mysqli_fetch_assoc($find_note_mode)) {
-                                                    $note_type_id = $r['ID'];
-                                                  ?>
-                                               <input type="radio" name="sellfor-radio" id="paid" value="<?php$note_type_id?>"
-                                                    class="radio-input form-control" onChange="getValue(this)" checked>
-                                                    <?php }}*/?>
+                                           ?>
                                                 
                                                    
                                                 <div class="internal-circle"></div>
@@ -944,6 +913,4 @@ function add_notes() {
     }
   */
 
-
-    
 </script>
