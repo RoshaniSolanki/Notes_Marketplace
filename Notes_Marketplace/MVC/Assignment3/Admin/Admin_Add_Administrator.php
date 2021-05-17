@@ -3,6 +3,7 @@ include "../includes/db.php";
 include "../includes/functions.php";
 session_start();
 
+    
         if(isset($_POST['submit'])) {
 
             $firstname    = escape_string($_POST['first-name']);
@@ -70,7 +71,8 @@ session_start();
                 echo '<script>alert("Not Inserted");</script>';
                 //$msg = "Not Inserted";
             }
-        }
+        } 
+       
 
         if(isset($_GET['Admin_id'])) {
             $admin_id = $_GET['Admin_id'];

@@ -3,6 +3,7 @@ include "../includes/db.php";
 include "../includes/functions.php";
 session_start();
 
+if(isset($_SESSION['userid']) && ($_SESSION['roleid']==1)) {
 if(isset($_POST['search-btn'])) {
 
     $search_result = $_POST['search'];
@@ -18,7 +19,9 @@ if(isset($_POST['search-btn'])) {
     countries ON user_profile.PhoneNumberCountryCode = countries.ID WHERE RoleID = 2 AND users.IsActive = 1 ORDER BY users.CreatedDate DESC");
     confirm($select_admin);
 }
-
+}else {
+    redirect("../Front/Login.php");
+}
 
 if(isset($_GET['admin_id'])) {
 

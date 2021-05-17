@@ -6,15 +6,6 @@ session_start();
 if(isset($_SESSION['userid'])) {
     $admin_id = $_SESSION['userid'];
 }
-$admin_id=48;
-if(isset($_GET['Member_id'])) {
-
-    $member_id = $_GET['Member_id'];
-
-    $select_query = query("SELECT seller_notes.*, users.FirstName, users.LastName, note_categories.Category_Name FROM seller_notes LEFT JOIN users ON 
-    seller_notes.sellerID = users.ID LEFT JOIN note_categories ON seller_notes.Category = note_categories.ID WHERE Status = 9 ORDER BY seller_notes.PublishedDate DESC");
-    confirm($select_query);
-}
     
     //download note
     if(isset($_GET['noteid'])){
@@ -74,11 +65,9 @@ if(isset($_GET['Member_id'])) {
         $sellerid = $_POST['sellerid_for_unpublish'];
         $remark  = $_POST['remark'];
 
-        $update_to_removed = query("UPDATE seller_notes SET Status = 11 WHERE ID = '$noteid' AND Status = 9 ");
+        $modified_date = date("Y-m-d H:i:s");
+        $update_to_removed = query("UPDATE seller_notes SET Status = 11 AND ActionedBy = '$admin_id' AND AdminRemarks = '$remark' ModifiedDate ='$modified_date' ModifiedBy = '$admin_id' WHERE ID = '$noteid' AND Status = 9 ");
         confirm($update_to_removed);
-
-        $insert_remark = query("UPDATE seller_notes SET ActionedBy = '$admin_id' AND AdminRemarks = '$remark' ");
-        confirm($insert_remark);
 
         $seller_info = query("SELECT FirstName, LastName, EmailID FROM users WHERE ID = '{$sellerid}' ");
         confirm($seller_info);
@@ -99,7 +88,7 @@ if(isset($_GET['Member_id'])) {
                 echo "<script>alert('Email sending failed....')</script>";
             }
 
-        redirect("Admin_Published_Notes.php");
+        
 
     }
 ?>
@@ -126,20 +115,39 @@ if(isset($_GET['Member_id'])) {
                     <div class="form-group">
                         <span><img class="arrow-down-img" src="./images/Admin/Published_Notes/down-arrow.png"></span>
                         <select class="form-control" id="seller" name="seller" onchange="showdata()">
-                            <option value="0" selected>Select Seller</option>
-                            <?php 
-                                $show_seller = query("SELECT DISTINCT users.ID, FirstName, LastName FROM users LEFT JOIN seller_notes ON users.ID = seller_notes.SellerID WHERE seller_notes.Status = 9");
-                                confirm($show_seller);
 
+                        <?php
+                                if(isset($_GET['Member_id'])) {
+                                    $member_id = $_GET['Member_id'];
+
+                                    $find_seller = query("SELECT FirstName, LastName FROM users WHERE ID = '$member_id' ");
+                                    confirm($find_seller); ?>
+                                    
+                                <?php    while($row = mysqli_fetch_assoc($find_seller)) {
+                                        $seller_name = $row['FirstName']. " ". $row['LastName'];
+
+                                    ?>
+                                    <option value="<?php echo $member_id; ?>" selected><?php echo $seller_name; ?></option>
+                                <?php 
+                                    } 
+                                } else {
+
+                                    $show_seller = query("SELECT DISTINCT users.ID, FirstName, LastName FROM users LEFT JOIN seller_notes ON users.ID = seller_notes.SellerID WHERE 
+                                    seller_notes.Status = 9");
+                                    confirm($show_seller);
+                                    ?>
+                                    <option value="0" selected>Select</option>
+                                <?php    while($row = mysqli_fetch_assoc($show_seller)) {
+                                        $seller_name = $row['FirstName']. " ". $row['LastName'];
+                                        $seller_id = $row['ID'];
+                                    ?>
+                                    <option value="<?php echo $seller_id; ?>"><?php echo $seller_name; ?></option>
+                                <?php    
+                                    }
                                 
-                                while($row = mysqli_fetch_assoc($show_seller)) {
-                                    $seller_name = $row['FirstName']. " ". $row['LastName'];
-                                    $seller_id = $row['ID'];
-                                ?>
-                            <option value="<?php echo $seller_id; ?>"><?php echo $seller_name; ?></option>
-                            <?php    
                                 }
                                 ?>
+
                         </select>
                     </div>
                 </div>
@@ -158,29 +166,21 @@ if(isset($_GET['Member_id'])) {
             
         </div>
 
-    </div>
-</div>    
+        </div>
+</div> 
     <!-- Published Notes Ends -->
 
     <script>
-        function Unpublish() {
+    /*   
+function Unpublish() {
             if (confirm("Are you sure you want to Unpublish this note?")) {
                 window.location = anchor.attr("href");
             } else {
                 txt = "You Pressed Cancel!";
             }
-        }
+}*/
 
-        $(function () {
-
-            $(document).on("click", "#unpublish", function () {
-                $('#noteid_for_unpulish').val($(this).data('id'));
-                $('#notetitle_for_unpulish').val($(this).data('title'));
-                $('#sellerid_for_unpulish').val($(this).data('sellerid'));
-                $('#unpublishPopup').modal('show');
-            });
         
-        });
     </script>
 
     <!-- Footer -->

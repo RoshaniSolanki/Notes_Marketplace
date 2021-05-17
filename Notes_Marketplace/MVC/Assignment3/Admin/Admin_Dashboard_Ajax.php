@@ -2,6 +2,7 @@
 include "../includes/db.php";
 include "../includes/functions.php";
 
+
     if(isset($_GET['selected_search'])){
         $selected_search=$_GET['selected_search'];
     }
@@ -15,7 +16,7 @@ include "../includes/functions.php";
     else{
         $selected_month="";
     }
-
+    
     $select_query = "";
     
     $select_query = "SELECT seller_notes.*, note_categories.Category_Name, seller_notes_attachements.FilePath, users.FirstName, users.LastName FROM seller_notes LEFT JOIN downloads 
@@ -27,6 +28,7 @@ include "../includes/functions.php";
     $select_query .= " ORDER BY PublishedDate DESC";
     $select_query = query($select_query);
     confirm($select_query);
+
 ?>
 <div id="part2">
     <div class="row">

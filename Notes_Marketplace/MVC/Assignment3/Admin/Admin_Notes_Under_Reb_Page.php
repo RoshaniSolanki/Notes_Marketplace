@@ -2,16 +2,9 @@
 include "../includes/db.php";
 include "../includes/functions.php";
 session_start();
-if(isset($_GET['Member_id'])) {
 
-    $member_id = $_GET['Member_id'];
-
-    $select_query = query("SELECT seller_notes.ID, seller_notes.Title, seller_notes.CreatedDate, users.FirstName, users.LastName, reference_data.Value, note_categories.Category_Name 
-    FROM seller_notes LEFT JOIN users ON seller_notes.sellerID = users.ID LEFT JOIN note_categories ON seller_notes.Category = note_categories.ID LEFT JOIN reference_data ON 
-    seller_notes.Status = reference_data.ID WHERE SellerID = '{$member_id}' AND (reference_data.Value = 'Submitted For Review' OR reference_data.Value = 'In Review') ORDER BY 
-    seller_notes.CreatedDate ASC");
-    confirm($select_query);
-
+if(isset($_SESSION['userid'])) {
+    $admin_id = $_SESSION['userid'];
 }
 
     
@@ -36,10 +29,15 @@ if(isset($_GET['Member_id'])) {
 
     if(isset($_POST['reject-btn'])) {
 
+        echo "<script>console.log('in reject btn');</script>";
+
         $reject_noteid = $_POST['noteid_for_reject'];
-        $update_to_rejected = query("UPDATE seller_notes SET Status = 10 WHERE ID = '$reject_noteid' AND Status IN(7,8)");
+        $remark = $_POST['remark'];
+        $modified_date = date("Y-m-d H:i:s");
+        
+        $update_to_rejected = query("UPDATE seller_notes SET Status = 10 AND ActionedBy = '$admin_id' AND AdminRemarks = '$remark' AND ModifiedDate ='$modified_date' AND ModifiedBy = '$admin_id' WHERE ID = '$reject_noteid' AND Status IN(7,8)");
         confirm($update_to_rejected);
-        redirect("Admin_Notes_Under_Reb_Page.php");
+        
 
     }
 
@@ -118,19 +116,36 @@ if(isset($_GET['Member_id'])) {
                             <span><img class="arrow-down-img"
                                     src="./images/Admin/Note_Under_Review/down-arrow.png"></span>
                             <select class="form-control" id="seller" name="seller" onchange="showdata()">
-                                <option value="0" selected>Select</option>
-                                <?php 
-                                $show_seller = query("SELECT  DISTINCT users.ID, FirstName, LastName FROM users LEFT JOIN seller_notes ON users.ID = seller_notes.SellerID WHERE 
-                                seller_notes.Status = 7 OR seller_notes.Status = 8");
-                                confirm($show_seller);
-
                                 
-                                while($row = mysqli_fetch_assoc($show_seller)) {
-                                    $seller_name = $row['FirstName']. " ". $row['LastName'];
-                                    $seller_id = $row['ID'];
-                                ?>
-                                <option value="<?php echo $seller_id; ?>"><?php echo $seller_name; ?></option>
+                                <?php
+                                if(isset($_GET['Member_id'])) {
+                                    $member_id = $_GET['Member_id'];
+
+                                    $find_seller = query("SELECT FirstName, LastName FROM users WHERE ID = '$member_id' ");
+                                    confirm($find_seller); ?>
+                                    
+                                <?php    while($row = mysqli_fetch_assoc($find_seller)) {
+                                        $seller_name = $row['FirstName']. " ". $row['LastName'];
+
+                                    ?>
+                                    <option value="<?php echo $member_id; ?>" selected><?php echo $seller_name; ?></option>
+                                <?php 
+                                    } 
+                                } else {
+
+                                    $show_seller = query("SELECT  DISTINCT users.ID, FirstName, LastName FROM users LEFT JOIN seller_notes ON users.ID = seller_notes.SellerID WHERE 
+                                    seller_notes.Status = 7 OR seller_notes.Status = 8");
+                                    confirm($show_seller);
+                                    ?>
+                                    <option value="0" selected>Select</option>
+                                <?php    while($row = mysqli_fetch_assoc($show_seller)) {
+                                        $seller_name = $row['FirstName']. " ". $row['LastName'];
+                                        $seller_id = $row['ID'];
+                                    ?>
+                                    <option value="<?php echo $seller_id; ?>"><?php echo $seller_name; ?></option>
                                 <?php    
+                                    }
+                                
                                 }
                                 ?>
 
@@ -159,9 +174,7 @@ if(isset($_GET['Member_id'])) {
 </div>
 <script>
     function InReview() {
-        if (confirm(
-                "Via marking the note In Review – System will let user know that review process has been initiated. Please press yes to continue."
-                )) {
+        if (confirm("Via marking the note In Review – System will let user know that review process has been initiated. Please press yes to continue.")) {
             //txt = "You Pressed Ok!";
             window.location = anchor.attr("href");
         } else {
@@ -180,14 +193,7 @@ if(isset($_GET['Member_id'])) {
         }
     }
 
-    function Reject() {
-        if (confirm("Are you sure you want to reject seller request?")) {
-            //txt = "You Pressed Ok!";
-            window.location = anchor.attr("href");
-        } else {
-            txt = "You Pressed Cancel!";
-        }
-    }
+  
 </script>
 
 <!-- Notes Under Review Ends -->

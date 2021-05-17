@@ -141,7 +141,7 @@ if(isset($_GET['member_id'])) {
                                                 </a>
                                                 <div id="am<?php echo $i; ?>" class="admin-menu-show">
                                                     <p><a href="Admin_Member_Details.php?Member_id=<?php echo $member_id; ?>">View More Details</a></p>
-                                                    <p><a href="Admin_Members.php?member_id=<?php echo $member_id; ?>" onclick="deactivate_member()">Deactivate</a></p>
+                                                    <p><a href="Admin_Members.php?member_id=<?php echo $member_id; ?>" onclick="return deactivate_member()">Deactivate</a></p>
                                                 </div>
                                             </div>
                                         </td>

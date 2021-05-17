@@ -252,7 +252,7 @@ if(isset($_POST['rating_submit_btn'])) {
                                         </tr>
 
                                         <?php  
-                                $i++;?>
+                                ?>
 
 
                                         <!-- Add Review Popup -->
@@ -356,7 +356,7 @@ if(isset($_POST['rating_submit_btn'])) {
                                         </div>
 
 
-                                        <?php } ?>
+                                        <?php $i++; } ?>
 
                                     </tbody>
                                 </table>

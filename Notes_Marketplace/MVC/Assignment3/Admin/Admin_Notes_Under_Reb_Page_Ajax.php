@@ -18,18 +18,20 @@ include "../includes/functions.php";
 
     $select_query = "";
 
-    $select_query = "SELECT seller_notes.ID,seller_notes.SellerID, seller_notes.Title, seller_notes.CreatedDate, users.FirstName, users.LastName, reference_data.Value, 
-    note_categories.Category_Name FROM seller_notes LEFT JOIN users ON  seller_notes.sellerID = users.ID LEFT JOIN note_categories ON seller_notes.Category = note_categories.ID 
-    LEFT JOIN reference_data ON seller_notes.Status = reference_data.ID WHERE(seller_notes.Title LIKE '%$selected_search%' OR note_categories.Category_Name LIKE '%$selected_search%'
-    OR users.FirstName LIKE '%$selected_search%' OR users.LastName LIKE '%$selected_search%' OR reference_data.Value LIKE '%$selected_search%') AND (reference_data.Value = 
-    'Submitted For Review' OR reference_data.Value = 'In Review') ";
+        $select_query = "SELECT seller_notes.ID,seller_notes.SellerID, seller_notes.Title, seller_notes.CreatedDate, users.FirstName, users.LastName, reference_data.Value, 
+        note_categories.Category_Name FROM seller_notes LEFT JOIN users ON  seller_notes.sellerID = users.ID LEFT JOIN note_categories ON seller_notes.Category = note_categories.ID 
+        LEFT JOIN reference_data ON seller_notes.Status = reference_data.ID WHERE(seller_notes.Title LIKE '%$selected_search%' OR note_categories.Category_Name LIKE '%$selected_search%'
+        OR users.FirstName LIKE '%$selected_search%' OR users.LastName LIKE '%$selected_search%' OR reference_data.Value LIKE '%$selected_search%') AND (reference_data.Value = 
+        'Submitted For Review' OR reference_data.Value = 'In Review') ";
 
-    $select_query .= (!empty($selected_seller)&&$selected_seller!="")? "AND users.ID =$selected_seller ":"";
+        $select_query .= (!empty($selected_seller)&&$selected_seller!="")? "AND users.ID =$selected_seller ":"";
 
-    $select_query .= " ORDER BY seller_notes.CreatedDate ASC";
+        $select_query .= " ORDER BY seller_notes.CreatedDate ASC";
 
-    $select_query = query($select_query);
-    confirm($select_query);
+        $select_query = query($select_query);
+        confirm($select_query);
+
+    
 
 ?>
 <div id="part3">
@@ -84,7 +86,7 @@ include "../includes/functions.php";
                                     <a style="color:inherit;text-decoration:none;"
                                         href="Admin_Notes_Under_Reb_Page.php?approve_noteid=<?php echo $note_id;?>">Approve</a>
                                 </button>
-                                <button class="btn btn-primary reject-btn" data-toggle="modal"
+                                <button type="button" class="btn btn-primary reject-btn" data-toggle="modal"
                                     data-target="#rejectPopup" id="reject-button"
                                     data-id="<?php echo $note_id; ?>">Reject</button>
                                 <button type="submit" class="btn btn-primary inreview-btn"

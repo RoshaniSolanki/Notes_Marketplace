@@ -112,7 +112,7 @@ include "../includes/functions.php";
                                             <img class="dots-img" src="images/Admin/Spam_Reports/dots.png">
                                         </a>
                                         <div id="apn<?php echo $i;?>" class="admin-menu-show">
-                                            <p><a href="Admin_Notes_Under_Reb_Page.php?noteid=<?php echo $note_id; ?>">Download
+                                            <p><a href="Admin_Published_Notes.php?noteid=<?php echo $note_id; ?>">Download
                                                     Notes</a></p>
                                             <p><a href="Admin_Note_Details.php?Note_id=<?php echo $note_id; ?>">View
                                                     More Details</a></p>
@@ -156,7 +156,7 @@ include "../includes/functions.php";
 
                                             <div class="modal-footer">
                                                 <button type="submit" class="btn btn-primary" name="unpublish-btn"
-                                                    style="background:#ff3636" ;
+                                                    style="background:#ff3636";
                                                     onclick='javascript:Unpublish($(this));return false;'>Unpublish</button>
                                                 <button type="button" class="btn btn-secondary"
                                                     data-dismiss="modal">Cancle</button>
@@ -175,8 +175,18 @@ include "../includes/functions.php";
         </div>
     </div>
 </div>
-
+   
 <script>
+
+$(document).on("click", "#unpublish", function () {
+    $('#noteid_for_unpulish').val($(this).data('id'));
+    $('#notetitle_for_unpulish').val($(this).data('title'));
+    $('#sellerid_for_unpulish').val($(this).data('sellerid'));
+    $('#unpublishPopup').modal('show');
+});
+
+
+
 //Published Notes Table
 $(document).ready(function () {
         

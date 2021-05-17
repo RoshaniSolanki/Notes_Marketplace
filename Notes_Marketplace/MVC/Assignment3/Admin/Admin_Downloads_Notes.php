@@ -88,21 +88,41 @@ if(isset($_GET['Member_id'])) {
 
                     <span><img class="arrow-down-img1" src="./images/Admin/Downloades_Notes/down-arrow.png"></span>
                     <select id="note" name="note" onchange="showdata()">
-                        <option value="0" selected>Select note</option>
-                        <?php 
-                                $show_note = query("SELECT DISTINCT seller_notes.ID, seller_notes.Title FROM seller_notes LEFT JOIN downloads ON 
-                                downloads.NoteID = seller_notes.ID WHERE IsAttachementDownloaded = 1");
-                                confirm($show_note);
 
-                                
-                                while($row = mysqli_fetch_assoc($show_note)) {
+                    <?php
+                                if(isset($_GET['download_note_id'])) {
+                                    $download_note_id = $_GET['download_note_id'];
+
+                                    $show_note = query("SELECT seller_notes.Title FROM seller_notes WHERE ID = '$download_note_id' ");
+                                    confirm($show_note); 
+                                    
+                                    ?>
+                                    
+                                <?php    while($row = mysqli_fetch_assoc($show_note)) {
+                                        $note_title = $row['Title'];
+
+                                    ?>
+                                    <option value="<?php echo $download_note_id; ?>" selected><?php echo $note_title; ?></option>
+                                <?php 
+                                    } 
+                                } else {
+
+                                    $show_note = query("SELECT DISTINCT seller_notes.ID, seller_notes.Title FROM seller_notes LEFT JOIN downloads ON 
+                                    downloads.NoteID = seller_notes.ID WHERE IsAttachementDownloaded = 1");
+                                    confirm($show_note);
+                                    ?>
+                                    <option value="0" selected>Select note</option>
+                                <?php 
+                                   while($row = mysqli_fetch_assoc($show_note)) {
                                     $note_title = $row['Title'];
                                     $note_id = $row['ID'];
-                                ?>
-                        <option value="<?php echo $note_id; ?>"><?php echo $note_title; ?></option>
-                        <?php    
+                                    ?>
+                                    <option value="<?php echo $note_id; ?>"><?php echo $note_title; ?></option>
+                                <?php    
+                                    }
+                                
                                 }
-                                ?>
+                    ?>
                     </select>
 
 
@@ -112,7 +132,7 @@ if(isset($_GET['Member_id'])) {
                         <?php 
                                 $show_seller = query("SELECT DISTINCT users.ID, users.FirstName, users.LastName FROM seller_notes LEFT JOIN downloads ON 
                                 downloads.NoteID = seller_notes.ID LEFT JOIN users ON seller_notes.SellerID = users.ID WHERE IsAttachementDownloaded = 1");
-                                confirm($show_note);
+                                confirm($show_seller);
 
                                 
                                 while($row = mysqli_fetch_assoc($show_seller)) {
@@ -128,21 +148,39 @@ if(isset($_GET['Member_id'])) {
 
                     <span><img class="arrow-down-img3" src="./images/Admin/Downloades_Notes/down-arrow.png"></span>
                     <select id="buyer" name="buyer" onchange="showdata()">
-                        <option value="0" selected>Select Buyer</option>
-                        <?php 
-                                $show_buyer = query("SELECT DISTINCT users.ID, users.FirstName, users.LastName FROM downloads LEFT JOIN users ON downloads.Downloader = users.ID 
-                                WHERE IsAttachementDownloaded = 1");
-                                confirm($show_buyer);
 
-                                
-                                while($row = mysqli_fetch_assoc($show_buyer)) {
+                    <?php
+                                if(isset($_GET['Member_id'])) {
+                                    $member_id = $_GET['Member_id'];
+
+                                    $find_buyer = query("SELECT FirstName, LastName FROM users WHERE ID = '$member_id' ");
+                                    confirm($find_buyer); ?>
+                                    
+                                <?php    while($row = mysqli_fetch_assoc($find_buyer)) {
+                                        $buyer_name = $row['FirstName']. " ". $row['LastName'];
+
+                                    ?>
+                                    <option value="<?php echo $member_id; ?>" selected><?php echo $buyer_name; ?></option>
+                                <?php 
+                                    } 
+                                } else {
+
+                                    $show_buyer = query("SELECT DISTINCT users.ID, users.FirstName, users.LastName FROM downloads LEFT JOIN users ON downloads.Downloader = users.ID 
+                                    WHERE IsAttachementDownloaded = 1");
+                                    confirm($show_buyer);
+                                    ?>
+                                    <option value="0" selected>Select</option>
+                                <?php 
+                                   while($row = mysqli_fetch_assoc($show_buyer)) {
                                     $buyer_name = $row['FirstName']. " " .$row['LastName'];
                                     $buyer_id = $row['ID'];
-                                ?>
-                        <option value="<?php echo $buyer_id; ?>"><?php echo $buyer_name; ?></option>
-                        <?php    
+                                    ?>
+                                    <option value="<?php echo $buyer_id; ?>"><?php echo $buyer_name; ?></option>
+                                <?php    
+                                    }
+                                
                                 }
-                                ?>
+                    ?>
                     </select>
 
                 </div>

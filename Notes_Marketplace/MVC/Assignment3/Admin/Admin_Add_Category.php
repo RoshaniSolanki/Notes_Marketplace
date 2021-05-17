@@ -3,7 +3,7 @@ include "../includes/db.php";
 include "../includes/functions.php";
 session_start();
 
-if(isset($_SESSION['userid'])) {
+
     $admin_id = $_SESSION['userid'];
 
     if(isset($_GET['cat_id'])) {
@@ -48,8 +48,6 @@ if(isset($_SESSION['userid'])) {
 
     }
     
-    
-}
 ?>
 
 <?php include "header.php"; ?>

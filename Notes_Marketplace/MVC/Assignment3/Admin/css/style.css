@@ -1397,7 +1397,7 @@ select {
     padding: 30px;
 }
 
-#adminNoteDetails .NDS2RC img {
+#adminNoteDetails .NDS2RC .Rating img {
     height: 50px;
     width: 50px;
 

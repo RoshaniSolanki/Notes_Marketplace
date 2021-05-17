@@ -25,6 +25,7 @@ if(isset($_POST['submit'])) {
             $_SESSION['firstname'] = $query['FirstName'];
             $_SESSION['lastname'] = $query['LastName'];
             $_SESSION['email'] = $query['EmailID'];
+            
            
            if($role_id==3) {
                 if(isset($_POST['rememberme'])) {
