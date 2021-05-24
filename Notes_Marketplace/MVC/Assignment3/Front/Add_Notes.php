@@ -829,9 +829,9 @@ if(isset($_POST['save'])) {
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-6">
                     <ul class="social-list">
-                        <li><a href="#"><img src="images/Add-notes/facebook.png"></a></li>
-                        <li><a href="#"><img src="images/Add-notes/twitter.png"></a></li>
-                        <li><a href="#"><img src="images/Add-notes/linkedin.png"></a></li>
+                        <li><a href=""><img src="images/Add-notes/facebook.png"></a></li>
+                        <li><a href=""><img src="images/Add-notes/twitter.png"></a></li>
+                        <li><a href=""><img src="images/Add-notes/linkedin.png"></a></li>
                     </ul>
                 </div>
             </div>

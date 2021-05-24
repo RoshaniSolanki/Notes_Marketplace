@@ -16,15 +16,51 @@ if(isset($_SESSION['userid']) && ($_SESSION['roleid']==1)) {
         $default_note_picture    = escape_string($_POST['default-note-picture']);
         $default_profile_picture = escape_string($_POST['default-profile-picture']);
 
+        $created_date              = date("Y-m-d H:i:s");
+        $modified_date             = date("Y-m-d H:i:s");
+
+        $insert_support_email = query("INSERT INTO system_configurations(Key, Value, CreatedDate, CreatedBy, ModifiedDate, ModifiedBy) 
+        VALUES ('SupportEmailAddress', '$support_email', '$created_date', 1, '$modified_date', 1)");
+        confirm($insert_support_email);
+
+        $insert_phone_number = query("INSERT INTO system_configurations(Key, Value, CreatedDate, CreatedBy, ModifiedDate, ModifiedBy) 
+        VALUES ('SupportContactNumber', '$support_phone_number', '$created_date', 1, '$modified_date', 1)");
+        confirm($insert_phone_number);
+
+        $insert_email = query("INSERT INTO system_configurations(Key, Value, CreatedDate, CreatedBy, ModifiedDate, ModifiedBy) 
+        VALUES ('EmailAddresssesForNotify', '$email', '$created_date', 1, '$modified_date', 1)");
+        confirm($insert_email);
+
+        $insert_facebook_url = query("INSERT INTO system_configurations(Key, Value, CreatedDate, CreatedBy, ModifiedDate, ModifiedBy) 
+        VALUES ('FBICON', '$facebook_url', '$created_date', 1, '$modified_date', 1)");
+        confirm($insert_facebook_url);
+
+        $insert_twitter_url = query("INSERT INTO system_configurations(Key, Value, CreatedDate, CreatedBy, ModifiedDate, ModifiedBy) 
+        VALUES ('TWITTERICON', '$twitter_url', '$created_date', 1, '$modified_date', 1)");
+        confirm($insert_twitter_url);
+
+        $insert_linkedin_url = query("INSERT INTO system_configurations(Key, Value, CreatedDate, CreatedBy, ModifiedDate, ModifiedBy) 
+        VALUES ('LNICON', '$linkedin_url', '$created_date', 1, '$modified_date', 1)");
+        confirm($insert_linkedin_url);
+
+        $insert_default_note_picture = query("INSERT INTO system_configurations(Key, Value, CreatedDate, CreatedBy, ModifiedDate, ModifiedBy) 
+        VALUES ('DefaultNoteDisplayPicture', '$default_note_picture', '$created_date', 1, '$modified_date', 1)");
+        confirm($insert_default_note_picture);
+
+        $insert_default_profile_picture = query("INSERT INTO system_configurations(Key, Value, CreatedDate, CreatedBy, ModifiedDate, ModifiedBy) 
+        VALUES ('DefaultMemberDisplayPicture', '$default_profile_picture', '$created_date', 1, '$modified_date', 1)");
+        confirm($insert_default_profile_picture);
     }
 
+}else {
+    redirect("../Front/Login.php");
 }
 ?>    
 <?php include "header.php"; ?>
 
     <!-- Manage System Configuration -->
     <div id="adminManageSystemConfiguration">
-        <form action="" method="POST">
+        <form action="" method="POST" enctype="multipart/form-data">
             <div class="container">
                 <p>Manage System Configuration</p>
                 <div class="row">
